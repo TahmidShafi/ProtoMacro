@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProtoMacro — Fuel Your Gains. Track Your Nutrition.</title>
+  <meta name="description" content="ProtoMacro is a private, local-first nutrition calculator: BMI, TDEE, macro tracker, food search and meal planner — all in one place." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%AA%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="logo" href="#home">
+        <div class="logo-icon">&#128170;</div>
+        <div class="logo-text">Proto<span>Macro</span></div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"        class="nav-link active">Home</a></li>
+        <li><a href="#bmi"         class="nav-link">BMI</a></li>
+        <li><a href="#search"      class="nav-link">Foods</a></li>
+        <li><a href="#tracker"     class="nav-link">Tracker</a></li>
+        <li><a href="#planner"     class="nav-link">Planner</a></li>
+        <li><a href="#recovery"    class="nav-link">Recovery</a></li>
+        <li><a href="#calculators" class="nav-link">Calculators</a></li>
+        <li><a href="#progress"    class="nav-link">Progress</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Science-backed nutrition tracking
+        </div>
+        <h1>Fuel Your Gains.<br>Track Your <span class="gradient">Nutrition.</span></h1>
+        <p>Calculate BMI, track macros, search foods and plan meals — all in one place. Built for lifters, runners and anyone chasing a goal.</p>
+        <div class="hero-ctas">
+          <a href="#bmi" class="btn btn-primary">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#search" class="btn btn-ghost">Browse Foods</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-value">100%</div><div class="hero-stat-label">Private — your data stays on your device</div></div>
+          <div><div class="hero-stat-value">230+</div><div class="hero-stat-label">Foods curated in the built-in database</div></div>
+          <div><div class="hero-stat-value">1990</div><div class="hero-stat-label">Mifflin-St Jeor equation (published)</div></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-card-head">
+              <div class="hero-card-title">Today's target</div>
+              <div class="hero-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+            </div>
+            <div class="hero-card-row">
+              <div class="hero-card-val">2,450</div>
+              <div class="hero-card-unit">kcal</div>
+            </div>
+            <div class="hero-card-sub">Daily calorie goal</div>
+
+            <div class="hero-rings">
+              <div class="mini-ring">
+                <svg class="mini-ring-svg" viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="var(--bg-3)" stroke-width="6"/>
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="var(--protein)" stroke-width="6" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="50" transform="rotate(-90 30 30)"/>
+                </svg>
+                <div class="mini-ring-label">Protein</div>
+                <div class="mini-ring-val">184<small>g</small></div>
+              </div>
+              <div class="mini-ring">
+                <svg class="mini-ring-svg" viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="var(--bg-3)" stroke-width="6"/>
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="var(--carbs)" stroke-width="6" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="80" transform="rotate(-90 30 30)"/>
+                </svg>
+                <div class="mini-ring-label">Carbs</div>
+                <div class="mini-ring-val">245<small>g</small></div>
+              </div>
+              <div class="mini-ring">
+                <svg class="mini-ring-svg" viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="var(--bg-3)" stroke-width="6"/>
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="var(--fat)" stroke-width="6" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="100" transform="rotate(-90 30 30)"/>
+                </svg>
+                <div class="mini-ring-label">Fat</div>
+                <div class="mini-ring-val">82<small>g</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-badges">
+          <div class="float-badge float-badge-1">
+            <div class="float-badge-icon" style="background:rgba(255,107,157,0.15);color:var(--protein);">&#127831;</div>
+            <div>
+              <small>Chicken breast</small>
+              <div>+31g protein</div>
+            </div>
+          </div>
+          <div class="float-badge float-badge-2">
+            <div class="float-badge-icon" style="background:rgba(0,200,83,0.15);color:var(--primary);">&#128293;</div>
+            <div>
+              <small>Streak</small>
+              <div>7 days on track</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BMI CALCULATOR -->
+<section id="bmi">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Step 01</div>
+      <h2 class="section-title">Know your numbers</h2>
+      <p class="section-subtitle">Enter your details to calculate BMI, daily calorie needs, and personalized macro targets using the Mifflin-St Jeor equation — the gold-standard formula used by registered dietitians.</p>
+    </div>
+
+    <div class="calc-grid">
+      <div class="card">
+        <div class="card-title">
+          <div class="card-title-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4"/><path d="M12 2v14M8 6l4-4 4 4"/></svg>
+          </div>
+          Your details
+        </div>
+        <p class="card-subtitle">Fill in your information — everything stays on your device.</p>
+
+        <form id="bmiForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="weight">Weight (kg)</label>
+              <input type="number" class="form-input" id="weight" placeholder="e.g. 72" step="0.1" min="20" max="400" />
+              <div class="form-error">Please enter a valid weight (20-400 kg).</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="height">Height (cm)</label>
+              <input type="number" class="form-input" id="height" placeholder="e.g. 175" step="0.1" min="80" max="250" />
+              <div class="form-error">Please enter a valid height (80-250 cm).</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="age">Age</label>
+              <input type="number" class="form-input" id="age" placeholder="e.g. 25" min="10" max="120" />
+              <div class="form-error">Please enter a valid age (10-120).</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Gender</label>
+              <div class="gender-toggle">
+                <input type="radio" name="gender" id="male" value="male" checked />
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="female" value="female" />
+                <label for="female">Female</label>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="activity">Activity level</label>
+              <select class="form-select" id="activity">
+                <option value="1.2">Sedentary (little or no exercise)</option>
+                <option value="1.375">Lightly Active (1-3 days/week)</option>
+                <option value="1.55" selected>Moderately Active (3-5 days/week)</option>
+                <option value="1.725">Very Active (6-7 days/week)</option>
+                <option value="1.9">Extra Active (very hard exercise &amp; physical job)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Calculate
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="results-card">
+        <div id="resultsPlaceholder" class="results-placeholder">
+          <div class="results-placeholder-icon">&#128202;</div>
+          <div style="font-weight:600;color:var(--text);margin-bottom:6px;">Your results will appear here</div>
+          <div style="font-size:0.9rem;">Fill in the form and press calculate.</div>
+        </div>
+
+        <div id="resultsContent" class="results-content hidden">
+          <div class="bmi-display">
+            <div class="bmi-value" id="bmiValue">--</div>
+            <div class="bmi-label">Body Mass Index</div>
+            <div class="bmi-category" id="bmiCategory">--</div>
+          </div>
+
+          <div class="bmi-gauge">
+            <div class="bmi-gauge-bar">
+              <div class="bmi-gauge-marker" id="bmiMarker" style="left: 0%;"></div>
+            </div>
+            <div class="bmi-gauge-labels">
+              <span>16</span><span>18.5</span><span>25</span><span>30</span><span>40</span>
+            </div>
+          </div>
+
+          <div class="calorie-grid">
+            <div class="calorie-card">
+              <div class="calorie-card-label">Lose</div>
+              <div class="calorie-card-value" id="caloriesLose">--</div>
+              <div class="calorie-card-unit">kcal/day</div>
+            </div>
+            <div class="calorie-card highlight">
+              <div class="calorie-card-label">Maintain (TDEE)</div>
+              <div class="calorie-card-value" id="caloriesMaintain">--</div>
+              <div class="calorie-card-unit">kcal/day</div>
+            </div>
+            <div class="calorie-card">
+              <div class="calorie-card-label">Gain</div>
+              <div class="calorie-card-value" id="caloriesGain">--</div>
+              <div class="calorie-card-unit">kcal/day</div>
+            </div>
+          </div>
+
+          <div class="macro-grid">
+            <div class="macro-pill protein">
+              <div class="macro-pill-label">Protein</div>
+              <div class="macro-pill-value"><span id="macroProtein">--</span>g</div>
+            </div>
+            <div class="macro-pill carbs">
+              <div class="macro-pill-label">Carbs</div>
+              <div class="macro-pill-value"><span id="macroCarbs">--</span>g</div>
+            </div>
+            <div class="macro-pill fat">
+              <div class="macro-pill-label">Fat</div>
+              <div class="macro-pill-value"><span id="macroFat">--</span>g</div>
+            </div>
+          </div>
+
+          <div class="mode-toggle-wrap">
+            <div class="mode-toggle-title">Choose your mode</div>
+            <div class="mode-toggle-group" id="modeToggleGroup"></div>
+          </div>
+
+          <button class="save-goals-btn btn btn-sm" id="saveGoalsBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            Set as my daily goals
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD SEARCH -->
+<section id="search">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Step 02</div>
+      <h2 class="section-title">Search any food</h2>
+      <p class="section-subtitle">Backed by a curated local database — with strong South Asian coverage — plus USDA FoodData Central lookups to fill the gaps. Drag cards into meal slots, or add them to your tracker.</p>
+    </div>
+
+    <form class="search-bar" id="searchForm">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Try 'oats', 'chicken breast', 'greek yogurt'..." />
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div class="search-results" id="searchResults">
+      <div class="empty-state">
+        <div class="empty-state-icon">&#128269;</div>
+        <div class="empty-state-title">Start typing to find foods</div>
+        <div>Try: <em>chicken breast, oats, banana, salmon, rice, almonds, greek yogurt</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO TRACKER -->
+<section id="tracker">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Step 03</div>
+      <h2 class="section-title">Track your day</h2>
+      <p class="section-subtitle">Log what you eat and watch your progress in real-time. Data is saved locally in your browser — no account required.</p>
+    </div>
+
+    <div id="trackerModeBanner" class="mode-banner mode-banner-maintain"></div>
+
+    <div class="tracker-header">
+      <div class="progress-ring-card">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-progress cal" cx="60" cy="60" r="50" id="ringCal"/>
+          </svg>
+          <div class="ring-inner">
+            <div class="ring-val" id="ringCalVal">0</div>
+            <div class="ring-goal">/ <span id="ringCalGoal">2000</span></div>
+          </div>
+        </div>
+        <div class="ring-label">Calories</div>
+        <div class="ring-percent" id="ringCalPct">0%</div>
+      </div>
+
+      <div class="progress-ring-card">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-progress pro" cx="60" cy="60" r="50" id="ringPro"/>
+          </svg>
+          <div class="ring-inner">
+            <div class="ring-val" id="ringProVal">0g</div>
+            <div class="ring-goal">/ <span id="ringProGoal">150</span>g</div>
+          </div>
+        </div>
+        <div class="ring-label">Protein</div>
+        <div class="ring-percent" id="ringProPct">0%</div>
+      </div>
+
+      <div class="progress-ring-card">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-progress car" cx="60" cy="60" r="50" id="ringCar"/>
+          </svg>
+          <div class="ring-inner">
+            <div class="ring-val" id="ringCarVal">0g</div>
+            <div class="ring-goal">/ <span id="ringCarGoal">200</span>g</div>
+          </div>
+        </div>
+        <div class="ring-label">Carbs</div>
+        <div class="ring-percent" id="ringCarPct">0%</div>
+      </div>
+
+      <div class="progress-ring-card">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-progress fat" cx="60" cy="60" r="50" id="ringFat"/>
+          </svg>
+          <div class="ring-inner">
+            <div class="ring-val" id="ringFatVal">0g</div>
+            <div class="ring-goal">/ <span id="ringFatGoal">67</span>g</div>
+          </div>
+        </div>
+        <div class="ring-label">Fat</div>
+        <div class="ring-percent" id="ringFatPct">0%</div>
+      </div>
+    </div>
+
+    <div class="log-card">
+      <div class="log-header">
+        <div>
+          <div class="log-title">Today's food log</div>
+          <div class="log-sub" id="logCount">0 items logged</div>
+        </div>
+        <div class="log-actions">
+          <button class="btn btn-ghost btn-sm" id="shareTodayBtn" title="Download today's scorecard as an image">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Share Today
+          </button>
+          <button class="btn btn-ghost btn-sm" id="clearLogBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+            Clear log
+          </button>
+        </div>
+      </div>
+
+      <div id="deficitCard" class="deficit-card deficit-neutral"></div>
+
+      <div class="log-table-wrap">
+        <table class="log-table">
+          <thead>
+            <tr>
+              <th>Food</th>
+              <th>Servings (g)</th>
+              <th>Calories</th>
+              <th>Protein</th>
+              <th>Carbs</th>
+              <th>Fat</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="logTableBody"></tbody>
+          <tfoot id="logTableFoot" class="hidden">
+            <tr class="log-total-row">
+              <td>Total</td>
+              <td></td>
+              <td class="cal-cell" id="totalCal">0 kcal</td>
+              <td class="macro-cell" id="totalPro">0g</td>
+              <td class="macro-cell" id="totalCar">0g</td>
+              <td class="macro-cell" id="totalFat">0g</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEAL PLANNER -->
+<section id="planner">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Step 04</div>
+      <h2 class="section-title">Plan your meals</h2>
+      <p class="section-subtitle">Drag foods from the search results into any meal slot, or click the plate icon on a food card. See totals per meal and across the day.</p>
+    </div>
+
+    <div class="ai-planner-card">
+      <div class="ai-planner-head">
+        <div>
+          <div class="ai-planner-title">&#10024; Smart Meal Planner</div>
+          <div class="ai-planner-sub">Generate a one-day plan tuned to your calorie and macro targets — built instantly on your device from the food database.</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="shareMealPlanBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Share Meal Plan
+        </button>
+      </div>
+      <button class="btn btn-primary btn-block" id="aiGenerateBtn">
+        &#10024; Generate Meal Plan
+      </button>
+      <div id="aiResult" class="ai-result"></div>
+    </div>
+
+    <div class="meal-grid" id="mealGrid"></div>
+
+    <div class="daily-summary">
+      <div>
+        <div class="daily-summary-title">Daily meal plan total</div>
+        <div class="daily-summary-sub">All meals combined — drag &amp; drop foods above to populate.</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-stat-label">Calories</div>
+        <div class="summary-stat-val" id="plannerTotalCal">0</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-stat-label">Protein</div>
+        <div class="summary-stat-val" id="plannerTotalPro">0g</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-stat-label">Carbs</div>
+        <div class="summary-stat-val" id="plannerTotalCar">0g</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-stat-label">Fat</div>
+        <div class="summary-stat-val" id="plannerTotalFat">0g</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOVERY TRACKER -->
+<section id="recovery">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Step 05</div>
+      <h2 class="section-title">Recovery &amp; supplementation</h2>
+      <p class="section-subtitle">Hydration and supplements make or break recovery for serious lifters. Track water, check off your stack and stay on top of your routine every day.</p>
+    </div>
+
+    <div class="recovery-grid">
+      <!-- WATER CARD -->
+      <div class="card recovery-card water-card">
+        <div class="card-title">
+          <div class="card-title-icon" style="background:rgba(79,195,247,0.15);color:var(--info);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          Water intake
+        </div>
+        <p class="card-subtitle">Stay topped up. Resets when you start a new day.</p>
+
+        <div class="water-layout">
+          <div class="water-bottle-wrap">
+            <div class="water-bottle" id="waterBottle">
+              <div class="water-bottle-cap"></div>
+              <div class="water-bottle-body">
+                <div class="water-bottle-fill" id="waterBottleFill"></div>
+                <div class="water-bottle-shine"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="water-content">
+            <div class="water-numbers">
+              <div class="water-amount"><span id="waterAmount">0.00</span><small>L</small></div>
+              <div class="water-goal-label">/ <span id="waterGoalLabel">4.0L</span></div>
+              <div class="water-percent" id="waterPercent">0%</div>
+            </div>
+
+            <div class="water-bar-track">
+              <div class="water-bar-fill" id="waterBar"></div>
+            </div>
+
+            <div class="water-adds" id="waterAdds"></div>
+
+            <div class="water-footer">
+              <label class="water-goal-input-wrap">
+                <span>Daily goal (ml)</span>
+                <input type="number" id="waterGoalInput" class="form-input" min="500" max="10000" step="50" />
+              </label>
+              <button class="btn btn-ghost btn-sm" id="waterResetBtn">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUPPLEMENTS CARD -->
+      <div class="card recovery-card supplement-card-wrap">
+        <div class="card-title">
+          <div class="card-title-icon" style="background:rgba(0,200,83,0.15);color:var(--primary);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a7 7 0 0 1-9.9-9.9l9.9-9.9a7 7 0 0 1 9.9 9.9z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg>
+          </div>
+          Supplement stack
+        </div>
+        <p class="card-subtitle">Check off as you take them. <span id="suppCount">0 / 7 taken</span></p>
+
+        <div class="supplement-list" id="suppList"></div>
+
+        <div class="supp-actions">
+          <button class="btn btn-ghost btn-sm" id="suppAddBtn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add Custom Supplement
+          </button>
+          <div class="supp-totals">
+            From supplements: <strong id="suppTotalCal">0</strong> kcal &middot; <strong id="suppTotalPro">0g</strong> protein
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATORS -->
+<section id="calculators">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Step 06</div>
+      <h2 class="section-title">Serious lifter calculators</h2>
+      <p class="section-subtitle">Five evidence-based tools for strength, body composition and nutrition &mdash; all running locally in your browser.</p>
+    </div>
+
+    <div class="calc-tabs" id="calcTabs"></div>
+
+    <!-- 1RM -->
+    <div class="card calc-panel active" data-calc="1rm">
+      <div class="card-title">One Rep Max (1RM)</div>
+      <p class="card-subtitle">Estimate your max from a working set using three independent formulas.</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="rm-weight">Weight lifted (kg)</label>
+          <input type="number" class="form-input" id="rm-weight" placeholder="e.g. 100" step="0.5" min="1" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="rm-reps">Reps performed</label>
+          <input type="number" class="form-input" id="rm-reps" placeholder="e.g. 5" min="1" max="20" />
+        </div>
+      </div>
+      <button class="btn btn-primary" id="rm-calc-btn">Calculate 1RM</button>
+      <div id="rm-result" class="calc-result"></div>
+    </div>
+
+    <!-- Body Fat -->
+    <div class="card calc-panel" data-calc="bf">
+      <div class="card-title">Body Fat % (US Navy Method)</div>
+      <p class="card-subtitle">Tape-measure estimation used by the US Navy for recruit screening.</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Gender</label>
+          <div class="gender-toggle">
+            <input type="radio" name="bfGender" id="bfMale" value="male" checked />
+            <label for="bfMale">Male</label>
+            <input type="radio" name="bfGender" id="bfFemale" value="female" />
+            <label for="bfFemale">Female</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bf-height">Height (cm)</label>
+          <input type="number" class="form-input" id="bf-height" placeholder="e.g. 175" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bf-neck">Neck (cm)</label>
+          <input type="number" class="form-input" id="bf-neck" placeholder="e.g. 38" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bf-waist">Waist (cm)</label>
+          <input type="number" class="form-input" id="bf-waist" placeholder="e.g. 82" />
+        </div>
+        <div class="form-group" id="bf-hips-row">
+          <label class="form-label" for="bf-hips">Hips (cm)</label>
+          <input type="number" class="form-input" id="bf-hips" placeholder="e.g. 96" />
+        </div>
+      </div>
+      <button class="btn btn-primary" id="bf-calc-btn">Calculate Body Fat</button>
+      <div id="bf-result" class="calc-result"></div>
+    </div>
+
+    <!-- Macro Calc -->
+    <div class="card calc-panel" data-calc="macro">
+      <div class="card-title">Macro Calculator</div>
+      <p class="card-subtitle">Convert a calorie target into grams of protein, carbs and fat for your goal.</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="mc-calories">Daily calories</label>
+          <input type="number" class="form-input" id="mc-calories" placeholder="e.g. 2500" min="800" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mc-goal">Goal</label>
+          <select class="form-select" id="mc-goal">
+            <option value="cut">Cut</option>
+            <option value="maintain" selected>Maintain</option>
+            <option value="bulk">Bulk</option>
+            <option value="recomp">Body recomposition</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="mc-calc-btn">Calculate Macros</button>
+      <div id="mc-result" class="calc-result"></div>
+    </div>
+
+    <!-- Wilks -->
+    <div class="card calc-panel" data-calc="wilks">
+      <div class="card-title">Wilks Score (Powerlifting)</div>
+      <p class="card-subtitle">Compare a total across bodyweights using the classic Wilks coefficient.</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Gender</label>
+          <div class="gender-toggle">
+            <input type="radio" name="wkGender" id="wkMale" value="male" checked />
+            <label for="wkMale">Male</label>
+            <input type="radio" name="wkGender" id="wkFemale" value="female" />
+            <label for="wkFemale">Female</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="wk-bodyweight">Bodyweight (kg)</label>
+          <input type="number" class="form-input" id="wk-bodyweight" placeholder="e.g. 82" step="0.1" />
+        </div>
+        <div class="form-group full">
+          <label class="form-label" for="wk-total">Total (S + B + D, kg)</label>
+          <input type="number" class="form-input" id="wk-total" placeholder="e.g. 500" step="0.5" />
+        </div>
+      </div>
+      <button class="btn btn-primary" id="wk-calc-btn">Calculate Wilks</button>
+      <div id="wk-result" class="calc-result"></div>
+    </div>
+
+    <!-- FFMI -->
+    <div class="card calc-panel" data-calc="ffmi">
+      <div class="card-title">Lean Body Mass &amp; FFMI</div>
+      <p class="card-subtitle">Normalised fat-free mass index &mdash; a popular "natty limit" indicator.</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="ff-weight">Weight (kg)</label>
+          <input type="number" class="form-input" id="ff-weight" placeholder="e.g. 85" step="0.1" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ff-bodyfat">Body fat (%)</label>
+          <input type="number" class="form-input" id="ff-bodyfat" placeholder="e.g. 15" step="0.1" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ff-height">Height (cm)</label>
+          <input type="number" class="form-input" id="ff-height" placeholder="e.g. 178" step="0.1" />
+        </div>
+      </div>
+      <button class="btn btn-primary" id="ff-calc-btn">Calculate FFMI</button>
+      <div id="ff-result" class="calc-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<section id="progress">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Step 07</div>
+      <h2 class="section-title">Your weekly progress</h2>
+      <p class="section-subtitle">Visualise consistency, macro adherence and bodyweight trends over time. Data is pulled from your daily tracker snapshots.</p>
+    </div>
+
+    <div class="progress-grid">
+      <div class="card progress-card wide">
+        <div class="chart-wrap"><canvas id="chartCalories" role="img" aria-label="Weekly calorie intake chart"></canvas></div>
+      </div>
+
+      <div class="card progress-card wide">
+        <div class="chart-wrap"><canvas id="chartMacros" role="img" aria-label="Daily macro breakdown chart"></canvas></div>
+      </div>
+
+      <div class="card progress-card">
+        <div class="progress-card-title">Weekly averages</div>
+        <div class="dough-grid">
+          <div class="dough-cell"><div class="dough-wrap"><canvas id="doughProtein" role="img" aria-label="Average protein versus goal"></canvas><div class="dough-center" id="doughProtein-center"></div></div></div>
+          <div class="dough-cell"><div class="dough-wrap"><canvas id="doughCarbs" role="img" aria-label="Average carbs versus goal"></canvas><div class="dough-center" id="doughCarbs-center"></div></div></div>
+          <div class="dough-cell"><div class="dough-wrap"><canvas id="doughFat" role="img" aria-label="Average fat versus goal"></canvas><div class="dough-center" id="doughFat-center"></div></div></div>
+        </div>
+      </div>
+
+      <div class="card progress-card" id="consistencyCard">
+        <div class="progress-card-title">Consistency score</div>
+        <div class="consistency-score" id="consistencyScore"></div>
+      </div>
+
+      <div class="card progress-card wide">
+        <div class="weight-card-head">
+          <div class="progress-card-title">Body weight</div>
+          <div class="weight-input-row">
+            <input type="number" class="form-input" id="weightInput" placeholder="Log today's weight (kg)" step="0.1" min="25" max="350" />
+            <button class="btn btn-primary btn-sm" id="logWeightBtn">+ Log Weight</button>
+          </div>
+        </div>
+        <div class="chart-wrap"><canvas id="chartWeight" role="img" aria-label="Body weight trend over the last 30 days"></canvas></div>
+        <div id="weightDelta" class="weight-delta weight-delta-flat">Log your first weight to see trends.</div>
+      </div>
+
+      <div class="card progress-card">
+        <div class="progress-card-title">Export</div>
+        <p class="card-subtitle">Download a full weekly PDF summarising your data.</p>
+        <button class="btn btn-primary btn-block" id="exportPdfBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Weekly Report (PDF)
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="logo" href="#home">
+          <div class="logo-icon">&#128170;</div>
+          <div class="logo-text">Proto<span>Macro</span></div>
+        </a>
+        <p>Fuel your gains and track your nutrition with confidence. A free, open tool for anyone serious about health, fitness and performance.</p>
+        <div class="research-note">
+          <strong>Research basis:</strong> Calorie calculations based on the Mifflin-St Jeor (1990) equation &amp; USDA nutritional data. The built-in food database includes curated USDA values and researched cultural cuisine averages; search can also consult USDA FoodData Central live.
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <ul>
+          <li><a href="#bmi">BMI &amp; TDEE</a></li>
+          <li><a href="#search">Food Search</a></li>
+          <li><a href="#tracker">Macro Tracker</a></li>
+          <li><a href="#planner">Meal Planner</a></li>
+          <li><a href="#recovery">Recovery</a></li>
+          <li><a href="#calculators">Calculators</a></li>
+          <li><a href="#progress">Progress</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Project</div>
+        <ul>
+          <li><a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">USDA FoodData Central</a></li>
+          <li><a href="#home">Privacy (local only)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span id="year"></span> ProtoMacro. Built with care for the fitness community.</div>
+      <div>Fuel your gains. &#128170;</div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOASTS -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- App entry — ES modules resolve the dependency graph; Vite bundles Chart.js,
+     jsPDF and the Inter font locally, so there are no CDN calls at runtime. -->
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>
