@@ -27,20 +27,33 @@ export const makeId = () =>
 /* Back-compat alias */
 export const uid = makeId;
 
-/* Animated number easing — skipped entirely under reduced motion */
+/* Animated number easing.
+   - Starts from the element's CURRENT displayed value (no restart-from-0)
+   - Cancels any in-flight animation for that element (no double-run)
+   - Respects prefers-reduced-motion (instant) */
+const numberAnims = new WeakMap();
+
 export const animateNumber = (el, target, duration = 700) => {
   if (!el) return;
   const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   if (reduced || duration <= 0) {
+    numberAnims.delete(el);
     el.textContent = Math.round(target).toLocaleString();
     return;
   }
-  const start = 0;
+
+  const from = numberAnims.get(el)?.current ?? 0;
+  const token = { current: from };
+  numberAnims.set(el, token);
+
   const t0 = performance.now();
   const tick = (now) => {
+    /* superseded by a newer animation for this element → stop silently */
+    if (numberAnims.get(el) !== token) return;
     const t = Math.min(1, (now - t0) / duration);
     const eased = 1 - Math.pow(1 - t, 3);
-    el.textContent = Math.round(start + (target - start) * eased).toLocaleString();
+    token.current = from + (target - from) * eased;
+    el.textContent = Math.round(token.current).toLocaleString();
     if (t < 1) requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
@@ -91,10 +104,12 @@ export const icon = (name, size = 16, strokeWidth = 2) => {
   return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
 };
 
-/* Toast notifications — aria-live so screen readers announce them */
+/* Toast notifications — aria-live so screen readers announce them.
+   Stack is capped at 4 to avoid flooding. */
 export const toast = (msg, type = 'success') => {
   const container = $('#toastContainer');
   if (!container) return;
+  while (container.children.length >= 4) container.firstElementChild.remove();
   const el = document.createElement('div');
   el.className = `toast ${type}`;
   const iconName = type === 'error' ? 'alert' : type === 'info' ? 'info' : 'check';

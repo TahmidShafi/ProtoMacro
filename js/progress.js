@@ -34,6 +34,18 @@ const applyChartDefaults = () => {
   Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
   Chart.defaults.borderColor = COLORS.grid;
   Chart.defaults.plugins.legend.labels.color = COLORS.text;
+  Chart.defaults.plugins.legend.labels.boxWidth = 12;
+  Chart.defaults.plugins.legend.labels.usePointStyle = true;
+  Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(10, 14, 12, 0.92)';
+  Chart.defaults.plugins.tooltip.titleColor = '#F1F5F2';
+  Chart.defaults.plugins.tooltip.bodyColor = '#C9D4CE';
+  Chart.defaults.plugins.tooltip.padding = 10;
+  Chart.defaults.plugins.tooltip.cornerRadius = 8;
+  Chart.defaults.plugins.tooltip.displayColors = false;
+  /* charts stay quiet for reduced-motion users */
+  Chart.defaults.animation = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    ? false
+    : { duration: 400, easing: 'easeOutQuart' };
 };
 
 /* =========================================================

@@ -475,19 +475,24 @@ const rememberRecent = (food) => {
   ].slice(0, 30);
 };
 
-const toggleFoodFav = (food) => {
+const toggleFoodFav = (food, starBtn = null) => {
   const list = STATE.favorites.foods;
   const i = list.indexOf(food.id);
-  if (i >= 0) list.splice(i, 1);
-  else list.push(food.id);
+  const nowFav = i < 0;
+  if (nowFav) list.push(food.id);
+  else list.splice(i, 1);
   saveState();
   emit('food-data:update');
-  if (activeTab === 'results') {
-    /* refresh star state */
-    runSearch(lastQuery || dom.input.value.trim());
-  } else {
-    renderTab();
+
+  /* in-place star update — no grid re-render, no enter-animation replay */
+  if (starBtn) {
+    starBtn.classList.toggle('active', nowFav);
+    starBtn.setAttribute('aria-label', `${nowFav ? 'Unfavorite' : 'Favorite'} ${food.name}`);
+    starBtn.setAttribute('title', starBtn.getAttribute('aria-label'));
+    return;
   }
+  if (activeTab === 'results') runSearch(lastQuery || dom.input.value.trim());
+  else renderTab();
 };
 
 const findFoodById = (id) =>
@@ -605,7 +610,7 @@ const bindEvents = () => {
     const foodFav = e.target.closest('[data-food-fav]');
     if (foodFav) {
       const food = findFoodById(foodFav.dataset.foodFav);
-      if (food) toggleFoodFav(food);
+      if (food) toggleFoodFav(food, foodFav);
       return;
     }
 
@@ -632,7 +637,7 @@ const bindEvents = () => {
     }
 
     if (btn.dataset.action === 'fav') {
-      toggleFoodFav(food);
+      toggleFoodFav(food, btn);
     } else if (btn.dataset.action === 'track') {
       addToTracker(food);
       rememberRecent(food);

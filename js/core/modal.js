@@ -48,10 +48,17 @@ export function openModal({ title, body, actions = [], onClose = null, wide = fa
   function close() {
     if (!overlay.isConnected) return;
     openStack = openStack.filter((m) => m !== api);
-    overlay.remove();
-    document.body.style.overflow = openStack.length ? 'hidden' : '';
-    onClose?.();
-    if (prevFocus instanceof HTMLElement) prevFocus.focus();
+    /* graceful exit: fade/scale out, then detach */
+    overlay.classList.add('closing');
+    const finish = () => {
+      overlay.remove();
+      document.body.style.overflow = openStack.length ? 'hidden' : '';
+      onClose?.();
+      if (prevFocus instanceof HTMLElement) prevFocus.focus();
+    };
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) finish();
+    else setTimeout(finish, 160);
   }
 
   overlay.addEventListener('mousedown', (e) => {

@@ -35,6 +35,7 @@ import { initProgress } from './progress.js';
 import { initAiPlanner } from './smart-planner.js';
 import { initShare } from './share.js';
 import { initDashboard } from './dashboard.js';
+import { initReveal } from './reveal.js';
 import { initHabits } from './habits.js';
 import { initWorkouts } from './workouts.js';
 import { initSettings, applyTheme } from './settings.js';
@@ -92,6 +93,7 @@ const boot = () => {
   initSettings();
 
   bindSyncPill();
+  initReveal();
   initSync();
   initAuth().then(() => {
     maybeShowWelcome();

@@ -4,8 +4,7 @@
    Shows calories/macros, recovery, mode, completion score and
    quick actions. Updates reactively via the event bus.
    ============================================================ */
-import { $, escapeHtml, animateNumber } from './utils.js';
-import { STATE } from './state.js';
+import { $, escapeHtml, animateNumber } from './utils.js';import { STATE } from './state.js';
 import { MODES } from './mode.js';
 import { getTrackerTotals } from './tracker.js';
 import { computeDailyScore } from './core/metrics.js';
@@ -30,34 +29,57 @@ const ringSvg = (pct, color) => `
 const renderMacroRings = (totals) => {
   const g = STATE.goals;
   const macros = [
-    { label: 'Protein', val: totals.pro, goal: g.protein, color: 'var(--protein)' },
-    { label: 'Carbs',   val: totals.car, goal: g.carbs,   color: 'var(--carbs)' },
-    { label: 'Fat',     val: totals.fat, goal: g.fat,     color: 'var(--fat)' }
+    { label: 'Protein', val: totals.pro, goal: g.protein, color: 'var(--protein)', key: 'pro' },
+    { label: 'Carbs',   val: totals.car, goal: g.carbs,   color: 'var(--carbs)',   key: 'car' },
+    { label: 'Fat',     val: totals.fat, goal: g.fat,     color: 'var(--fat)',     key: 'fat' }
   ];
-  dom.macroRings.innerHTML = macros.map((m) => {
-    const pct = m.goal > 0 ? m.val / m.goal : 0;
-    return `
-      <div class="progress-ring-card" style="padding:10px 6px;">
-        <div class="ring-wrap" style="width:80px;height:80px;">
-          ${ringSvg(pct, m.color)}
+
+  /* update-in-place: build once, then mutate dashoffsets + text
+     (avoids re-running the enter animation on every log change) */
+  if (!dom.macroRings.children.length) {
+    dom.macroRings.innerHTML = macros.map((m) => `
+      <div class="progress-ring-card mini">
+        <div class="ring-wrap mini-ring-svg">
+          <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+            <circle cx="40" cy="40" r="${R}" fill="none" stroke="var(--ring-track)" stroke-width="7"/>
+            <circle class="ring-arc" data-arc="${m.key}" cx="40" cy="40" r="${R}" fill="none" stroke="${m.color}" stroke-width="7"
+              stroke-linecap="round" stroke-dasharray="${CIRC}" stroke-dashoffset="${CIRC}"/>
+          </svg>
           <div class="ring-inner" style="width:80px;height:80px;">
-            <div class="ring-val" style="font-size:var(--text-sm);">${Math.round(m.val)}g</div>
+            <div class="ring-val" style="font-size:var(--text-sm);" data-val="${m.key}">0g</div>
           </div>
         </div>
         <div class="ring-label" style="font-size:var(--text-xs);">${m.label}</div>
-        <div class="ring-percent" style="font-size:var(--text-xs);">${Math.round(pct * 100)}%</div>
+        <div class="ring-percent" style="font-size:var(--text-xs);" data-pct="${m.key}">0%</div>
       </div>
-    `;
-  }).join('');
+    `).join('');
+  }
+
+  for (const m of macros) {
+    const pct = m.goal > 0 ? m.val / m.goal : 0;
+    dom.macroRings.querySelector(`[data-arc="${m.key}"]`)
+      .style.strokeDashoffset = CIRC * (1 - Math.min(1, pct));
+    dom.macroRings.querySelector(`[data-val="${m.key}"]`).textContent = `${Math.round(m.val)}g`;
+    dom.macroRings.querySelector(`[data-pct="${m.key}"]`).textContent = `${Math.round(pct * 100)}%`;
+  }
 };
 
 const renderScore = (totals, score) => {
   const b = score.breakdown;
   const color = score.score >= 80 ? 'var(--primary)' : score.score >= 40 ? 'var(--warning)' : 'var(--danger)';
+  const prevPct = dom.scoreWrap.querySelector('.today-score-pct');
+
+  /* animate the big number smoothly when it changes; the ring arc
+     and breakdown re-render inline */
+  if (prevPct && +prevPct.textContent === score.score) {
+    /* unchanged — skip re-render entirely */
+    return;
+  }
+
   dom.scoreWrap.innerHTML = `
     <div class="today-score-ring">
       ${ringSvg(score.score / 100, color)}
-      <div class="today-score-pct" style="color:${color}">${score.score}</div>
+      <div class="today-score-pct" style="color:${color}">${prevPct ? prevPct.textContent : '0'}</div>
     </div>
     <div class="score-breakdown" role="list" aria-label="Score breakdown">
       <div class="score-breakdown-row" role="listitem"><span>Calories within ±10% (40)</span><span class="earned">${b.calories}/40</span></div>
@@ -66,6 +88,7 @@ const renderScore = (totals, score) => {
       <div class="score-breakdown-row" role="listitem"><span>Logged 3+ items (15)</span><span class="earned">${b.logging}/15</span></div>
     </div>
   `;
+  animateNumber($('.today-score-pct', dom.scoreWrap), score.score, 600);
 };
 
 const renderRecovery = () => {
@@ -126,7 +149,7 @@ const render = () => {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
   });
   dom.modeChip.textContent = `${mode.emoji} ${mode.label} · ${goal.toLocaleString()} kcal`;
-  dom.calConsumed.textContent = Math.round(totals.cal).toLocaleString();
+  animateNumber(dom.calConsumed, Math.round(totals.cal), 500);
   dom.calGoal.textContent = goal.toLocaleString();
   dom.calRemaining.textContent = Math.max(0, Math.round(goal - totals.cal)).toLocaleString();
 
