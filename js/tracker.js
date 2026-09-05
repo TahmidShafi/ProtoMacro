@@ -3,10 +3,14 @@
    Macro tracker: progress rings, food log, totals, persistence.
    Also renders mode banner + surplus/deficit card.
    ============================================================ */
-import { $, escapeHtml, icon, uid, clamp, num, toast } from './utils.js';
+import { $, escapeHtml, icon, makeId, clamp, num, toast } from './utils.js';
 import { STATE, saveState, recordDailySnapshot } from './state.js';
-import { MODES, bindTrackerUpdate } from './mode.js';
+import { MODES } from './mode.js';
+import { on } from './core/bus.js';
+import { computeDailyScore } from './core/metrics.js';
 import { shareScorecard } from './share.js';
+
+import { today } from './datetime.js';
 
 const RING_CIRC = 2 * Math.PI * 50;
 
@@ -169,15 +173,29 @@ export function updateTracker() {
 
   renderModeBanner();
 
+  const totals = items.length ? getTrackerTotals() : { cal: 0, pro: 0, car: 0, fat: 0 };
+  const score = computeDailyScore({
+    calories: totals.cal,
+    protein: totals.pro,
+    items: items.length,
+    water: STATE.water.consumed,
+    goals: { ...STATE.goals, water: STATE.water.goal }
+  });
+
   if (!items.length) {
     dom.tbody.innerHTML = '<tr><td colspan="7"><div class="log-empty">No foods logged yet. Use the Food Search to add items.</div></td></tr>';
     dom.tfoot.classList.add('hidden');
     dom.count.textContent = '0 items logged';
-    const zero = { cal: 0, pro: 0, car: 0, fat: 0 };
-    renderRings(zero);
-    renderDeficitCard(zero);
-    recordDailySnapshot(zero);
+    renderRings(totals);
+    renderDeficitCard(totals);
+    /* No snapshot when nothing was logged today — a zero-day is "not
+       logged", never pollute history with fake 0-kcal entries. */
+    const existing = STATE.history.find((h) => h.date === today() && (h.items ?? 1) > 0);
+    if (!existing) {
+      STATE.history = STATE.history.filter((h) => h.date !== today());
+    }
     saveState();
+    emit('dashboard:update');
     return;
   }
 
@@ -185,7 +203,6 @@ export function updateTracker() {
   dom.count.textContent = `${items.length} item${items.length === 1 ? '' : 's'} logged`;
   dom.tbody.innerHTML = items.map(renderRow).join('');
 
-  const totals = getTrackerTotals();
   dom.totalCal.textContent = `${Math.round(totals.cal)} kcal`;
   dom.totalPro.textContent = `${totals.pro.toFixed(1)}g`;
   dom.totalCar.textContent = `${totals.car.toFixed(1)}g`;
@@ -193,15 +210,26 @@ export function updateTracker() {
 
   renderRings(totals);
   renderDeficitCard(totals);
-  recordDailySnapshot(totals);
+  recordDailySnapshot(totals, { score: score.score });
   saveState();
+  emit('dashboard:update');
 }
 
 export const addToTracker = (food) => {
-  STATE.log.push({ ...food, uid: uid(), servings: 100 });
+  STATE.log.push({ ...food, uid: makeId(), servings: 100 });
+  rememberRecent(food);
   saveState();
   updateTracker();
   toast(`Added "${food.name.slice(0, 36)}" to tracker`, 'success');
+};
+
+/* Track recently used foods (by stable id) for quick re-logging */
+const rememberRecent = (food) => {
+  if (!food?.id) return;
+  STATE.recents = [
+    { id: food.id, ts: Date.now() },
+    ...STATE.recents.filter((r) => r.id !== food.id)
+  ].slice(0, 30);
 };
 
 const bindEvents = () => {
@@ -268,8 +296,9 @@ export function initTracker() {
     r.progress.setAttribute('stroke-dashoffset', RING_CIRC);
   });
 
-  /* Let mode.js trigger tracker refreshes without a static import cycle */
-  bindTrackerUpdate(updateTracker);
+  /* Bus: mode.js triggers tracker refreshes without a static import cycle */
+  on('tracker:update', updateTracker);
+  on('state:replaced', updateTracker);
 
   bindEvents();
   updateTracker();

@@ -1,20 +1,27 @@
 {
   "name": "protomacro",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "description": "ProtoMacro — private, local-first nutrition & fitness tracker: BMI/TDEE, macro tracking, food search, meal planner, recovery and progress analytics.",
+  "description": "ProtoMacro — private, local-first nutrition & fitness tracker: BMI/TDEE, macro tracking, food search, meal planner, recovery, habits, workouts and progress analytics. Optional cloud sync via Supabase.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint js tests"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.5",
+    "@supabase/supabase-js": "^2.45.0",
     "chart.js": "^4.4.9",
     "jspdf": "^4.2.1"
   },
   "devDependencies": {
-    "vite": "^6.3.5"
+    "eslint": "^9.15.0",
+    "vite": "^6.3.5",
+    "vite-plugin-pwa": "^0.21.1",
+    "vitest": "^2.1.8"
   }
 }

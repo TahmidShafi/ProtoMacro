@@ -7,7 +7,8 @@
 import { $ } from './utils.js';
 import { num, clamp, animateNumber, toast } from './utils.js';
 import { STATE, saveState } from './state.js';
-import { setMode, calcMacrosFor, onGoalsApplied } from './mode.js';
+import { setMode, calcMacrosFor } from './mode.js';
+import { on } from './core/bus.js';
 
 const BMI_CATEGORIES = [
   { max: 18.5, label: 'Underweight',   bg: 'rgba(79, 195, 247, 0.15)', color: '#4FC3F7' },
@@ -119,10 +120,7 @@ export function initBmi() {
     saveBtn:          $('#saveGoalsBtn')
   };
 
-  // Reasonable defaults (without overwriting saved values if pre-filled)
-  if (!dom.weight.value) dom.weight.value = 72;
-  if (!dom.height.value) dom.height.value = 175;
-  if (!dom.age.value)    dom.age.value    = 25;
+  /* Leave inputs empty — no fake default body stats. */
 
   dom.form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -144,7 +142,7 @@ export function initBmi() {
 
   /* Keep the results panel consistent whenever goals change
      (mode toggle anywhere in the app). */
-  onGoalsApplied(() => {
+  on('goals:applied', () => {
     if (!STATE.lastResults || dom.content.classList.contains('hidden')) return;
     renderMacroPills();
   });

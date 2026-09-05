@@ -4,7 +4,7 @@
    ============================================================ */
 import { $, $$, rafThrottle } from './utils.js';
 
-const SECTIONS = ['home', 'bmi', 'search', 'tracker', 'planner', 'recovery', 'calculators', 'progress'];
+const SECTIONS = ['today', 'bmi', 'search', 'tracker', 'planner', 'workouts', 'recovery', 'reset', 'progress', 'calculators', 'settings'];
 
 export function initNav() {
   const navbar    = $('#navbar');
@@ -25,7 +25,7 @@ export function initNav() {
   const onScroll = rafThrottle(() => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
 
-    let current = 'home';
+    let current = 'today';
     for (const el of sectionEls) {
       if (el.getBoundingClientRect().top <= 120) current = el.id;
     }

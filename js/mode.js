@@ -9,6 +9,7 @@
    ============================================================ */
 import { STATE, saveState } from './state.js';
 import { toast, $ } from './utils.js';
+import { emit } from './core/bus.js';
 
 export const MODES = {
   cut: {
@@ -43,22 +44,11 @@ export const calcMacrosFor = (tdee, modeKey) => {
 };
 
 /* ------------------------------------------------------------
-   Goals-applied hook registry.
-   Modules register callbacks that run whenever active goals are
-   recalculated (mode switch / TDEE save), keeping UI panels in
-   sync without circular imports.
+   Goals-applied notifications via the shared event bus.
+   Modules subscribe with on('goals:applied', fn) to react when
+   active goals change, without circular imports.
    ------------------------------------------------------------ */
-const goalsHooks = new Set();
-
-export const onGoalsApplied = (fn) => {
-  if (typeof fn === 'function') goalsHooks.add(fn);
-};
-
-const emitGoalsApplied = () => {
-  for (const fn of goalsHooks) {
-    try { fn(); } catch (e) { console.warn('[ProtoMacro] goals hook failed:', e); }
-  }
-};
+const emitGoalsApplied = () => emit('goals:applied');
 
 /* Change mode + (optionally) also persist a new TDEE from BMI calc */
 export function setMode(modeKey, opts = {}) {
@@ -69,17 +59,15 @@ export function setMode(modeKey, opts = {}) {
   saveState();
   renderModeButtons();
   emitGoalsApplied();
-  updateTrackerFn?.();
+  emit('tracker:update');
   if (!opts.silent) {
     const m = MODES[modeKey];
     toast(`${m.emoji} ${m.label} mode — target ${STATE.goals.calories} kcal/day`, 'success');
   }
 }
 
-/* tracker.js registers its updater here to avoid a static cycle
-   (tracker imports MODES from this module). Call-time only. */
-let updateTrackerFn = null;
-export const bindTrackerUpdate = (fn) => { updateTrackerFn = fn; };
+/* tracker.js subscribes to 'tracker:update' via bus to avoid a static cycle */
+export const bindTrackerUpdate = (fn) => {};
 
 /* =========================================================
    Mode toggle buttons (rendered inside BMI results section)

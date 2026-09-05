@@ -1,14 +1,21 @@
 /* ============================================================
    ProtoMacro — progress.js
-   Weekly analytics dashboard using Chart.js (bundled locally).
-   Charts: daily calories, macro breakdown, weekly averages,
-           weight trend, consistency score.
+   Weekly analytics dashboard (Chart.js, bundled locally).
+   v2: charts update in place (no destroy/recreate churn),
+   weight stats row (start/current/goal/weekly/monthly/total),
+   7-day moving-average trend alongside actual readings,
+   weekly review + history calendar panels.
    ============================================================ */
 import Chart from 'chart.js/auto';
-import { $, toast } from './utils.js';
+import { $, toast, num, clamp } from './utils.js';
 import { STATE, saveState } from './state.js';
 import { today, toDateStr } from './datetime.js';
 import { exportWeeklyPdf } from './share.js';
+import { macroConsistency, weightStats } from './core/metrics.js';
+import { weightUnit, formatWeight, parseWeightToKg } from './core/format.js';
+import { renderWeeklyReview, initWeeklyReview } from './weekly-review.js';
+import { initCalendar } from './calendar.js';
+import { on } from './core/bus.js';
 
 const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const COLORS = {
@@ -16,23 +23,17 @@ const COLORS = {
   carbs:   '#FFB648',
   fat:     '#4FC3F7',
   grid:    'rgba(255,255,255,0.06)',
-  text:    '#8A9691'
+  text:    '#8A9691',
+  good:    '#00C853'
 };
 
 const charts = {}; /* active Chart.js instances, indexed by id */
 
-/* =========================================================
-   Chart.js global defaults — configured once
-   ========================================================= */
 const applyChartDefaults = () => {
   Chart.defaults.color = COLORS.text;
   Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
   Chart.defaults.borderColor = COLORS.grid;
   Chart.defaults.plugins.legend.labels.color = COLORS.text;
-};
-
-const destroyChart = (id) => {
-  if (charts[id]) { charts[id].destroy(); delete charts[id]; }
 };
 
 /* =========================================================
@@ -62,37 +63,75 @@ const last30Days = () => {
 
 const findHistory = (date) => STATE.history.find((h) => h.date === date);
 
+/* Update-in-place chart helper (perf fix: no destroy/recreate churn) */
+const ensureChart = (id, ctx, config) => {
+  if (charts[id]) {
+    charts[id].data = config.data;
+    charts[id].options = config.options;
+    charts[id].update();
+    return charts[id];
+  }
+  charts[id] = new Chart(ctx, config);
+  return charts[id];
+};
+
+/* Scoped target-line plugin — registered once, idempotent */
+let goalLineRegistered = false;
+const registerGoalLine = () => {
+  if (goalLineRegistered) return;
+  goalLineRegistered = true;
+  Chart.register({
+    id: 'mmGoalLine',
+    afterDatasetsDraw(chart) {
+      const g = chart.options.plugins?.mmGoalLine?.goal;
+      if (!g) return;
+      const { ctx: c, chartArea: area, scales } = chart;
+      if (!scales.y || !chart.chartArea) return;
+      const y = scales.y.getPixelForValue(g);
+      c.save();
+      c.strokeStyle = 'rgba(0,200,83,0.6)';
+      c.setLineDash([6, 6]);
+      c.lineWidth = 2;
+      c.beginPath();
+      c.moveTo(area.left, y);
+      c.lineTo(area.right, y);
+      c.stroke();
+      c.fillStyle = 'rgba(0,200,83,0.9)';
+      c.font = '600 11px Inter';
+      c.fillText(`Target: ${g} kcal`, area.left + 6, y - 4);
+      c.restore();
+    }
+  });
+};
+
 /* =========================================================
    CHART 1 — Daily Calories (bar)
    ========================================================= */
 const renderCaloriesChart = () => {
   const ctx = $('#chartCalories');
   if (!ctx) return;
-  destroyChart('cal');
+  registerGoalLine();
 
   const days  = last7Days();
   const goal  = STATE.goals.calories;
-  const data  = days.map((d) => findHistory(d.date)?.calories ?? 0);
+  const data  = days.map((d) => {
+    const h = findHistory(d.date);
+    return h && (h.items ?? 1) > 0 ? h.calories : 0;
+  });
 
   const colors = data.map((v) => {
     if (v === 0) return 'rgba(255,255,255,0.08)';
     const diff = v - goal;
-    if (diff > 100)  return COLORS.protein;           /* over */
-    if (diff < -200) return COLORS.carbs;             /* under */
-    return '#00C853';                                 /* on target */
+    if (diff > 100)  return COLORS.protein;
+    if (diff < -200) return COLORS.carbs;
+    return COLORS.good;
   });
 
-  charts.cal = new Chart(ctx, {
+  ensureChart('cal', ctx, {
     type: 'bar',
     data: {
       labels: days.map((d) => d.label),
-      datasets: [{
-        label: 'Calories',
-        data,
-        backgroundColor: colors,
-        borderRadius: 8,
-        borderWidth: 0
-      }]
+      datasets: [{ label: 'Calories', data, backgroundColor: colors, borderRadius: 8, borderWidth: 0 }]
     },
     options: {
       responsive: true,
@@ -115,51 +154,27 @@ const renderCaloriesChart = () => {
   });
 };
 
-/* Scoped target-line plugin — only draws on charts that opt in */
-Chart.register({
-  id: 'mmGoalLine',
-  afterDatasetsDraw(chart) {
-    const g = chart.options.plugins?.mmGoalLine?.goal;
-    if (!g) return;
-    const { ctx: c, chartArea: area, scales } = chart;
-    if (!scales.y || !chart.chartArea) return;
-    const y = scales.y.getPixelForValue(g);
-    c.save();
-    c.strokeStyle = 'rgba(0,200,83,0.6)';
-    c.setLineDash([6, 6]);
-    c.lineWidth = 2;
-    c.beginPath();
-    c.moveTo(area.left, y);
-    c.lineTo(area.right, y);
-    c.stroke();
-    c.fillStyle = 'rgba(0,200,83,0.9)';
-    c.font = '600 11px Inter';
-    c.fillText(`Target: ${g} kcal`, area.left + 6, y - 4);
-    c.restore();
-  }
-});
-
 /* =========================================================
    CHART 2 — Macro Breakdown (stacked bar)
    ========================================================= */
 const renderMacroChart = () => {
   const ctx = $('#chartMacros');
   if (!ctx) return;
-  destroyChart('mac');
 
   const days = last7Days();
-  const prot = days.map((d) => findHistory(d.date)?.protein ?? 0);
-  const carb = days.map((d) => findHistory(d.date)?.carbs   ?? 0);
-  const fat  = days.map((d) => findHistory(d.date)?.fat     ?? 0);
+  const val = (key) => days.map((d) => {
+    const h = findHistory(d.date);
+    return h && (h.items ?? 1) > 0 ? (h[key] ?? 0) : 0;
+  });
 
-  charts.mac = new Chart(ctx, {
+  ensureChart('mac', ctx, {
     type: 'bar',
     data: {
       labels: days.map((d) => d.label),
       datasets: [
-        { label: 'Protein', data: prot, backgroundColor: COLORS.protein, borderRadius: 6, stack: 'm' },
-        { label: 'Carbs',   data: carb, backgroundColor: COLORS.carbs,   borderRadius: 6, stack: 'm' },
-        { label: 'Fat',     data: fat,  backgroundColor: COLORS.fat,     borderRadius: 6, stack: 'm' }
+        { label: 'Protein', data: val('protein'), backgroundColor: COLORS.protein, borderRadius: 6, stack: 'm' },
+        { label: 'Carbs',   data: val('carbs'),   backgroundColor: COLORS.carbs,   borderRadius: 6, stack: 'm' },
+        { label: 'Fat',     data: val('fat'),     backgroundColor: COLORS.fat,     borderRadius: 6, stack: 'm' }
       ]
     },
     options: {
@@ -178,14 +193,14 @@ const renderMacroChart = () => {
 };
 
 /* =========================================================
-   CHART 3 — Weekly Average Doughnuts (protein/carbs/fat)
+   CHART 3 — Weekly Average Doughnuts
    ========================================================= */
 const renderDoughnut = (id, label, value, goal, color) => {
   const ctx = $('#' + id);
   if (!ctx) return;
-  destroyChart(id);
   const pct = goal > 0 ? Math.min(100, (value / goal) * 100) : 0;
-  charts[id] = new Chart(ctx, {
+
+  ensureChart(id, ctx, {
     type: 'doughnut',
     data: {
       datasets: [{
@@ -198,10 +213,7 @@ const renderDoughnut = (id, label, value, goal, color) => {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { enabled: false }
-      }
+      plugins: { legend: { display: false }, tooltip: { enabled: false } }
     }
   });
   const labelEl = $(`#${id}-center`);
@@ -210,7 +222,7 @@ const renderDoughnut = (id, label, value, goal, color) => {
 
 const renderAverages = () => {
   const days = last7Days();
-  const rows = days.map((d) => findHistory(d.date)).filter(Boolean);
+  const rows = days.map((d) => findHistory(d.date)).filter((h) => h && (h.items ?? 1) > 0);
   const avg = (key) => rows.length ? rows.reduce((s, r) => s + (r[key] || 0), 0) / rows.length : 0;
   const goals = STATE.goals;
 
@@ -220,45 +232,72 @@ const renderAverages = () => {
 };
 
 /* =========================================================
-   CHART 4 — Body Weight Trend (30 days)
+   CHART 4 — Body Weight: actual + 7-day moving average
    ========================================================= */
 const renderWeightChart = () => {
   const ctx = $('#chartWeight');
   if (!ctx) return;
-  destroyChart('wt');
 
+  const units = STATE.settings.units;
   const dates = last30Days();
   const byDate = new Map(STATE.weightLog.map((w) => [w.date, w.weight]));
 
-  /* Forward-fill: last known value is used until a new reading appears */
   let last = null;
   const series = dates.map((d) => {
     if (byDate.has(d)) last = byDate.get(d);
     return last;
   });
 
-  charts.wt = new Chart(ctx, {
+  /* 7-day moving average over actual readings, forward-filled */
+  const readings = [...STATE.weightLog].sort((a, b) => a.date.localeCompare(b.date));
+  const ma = [];
+  for (let i = 0; i < readings.length; i++) {
+    const slice = readings.slice(Math.max(0, i - 6), i + 1);
+    ma.push(slice.reduce((s, r) => s + r.weight, 0) / slice.length);
+  }
+  const maByDate = new Map(readings.map((r, i) => [r.date, ma[i]]));
+  let lastMa = null;
+  const trendSeries = dates.map((d) => {
+    if (maByDate.has(d)) lastMa = maByDate.get(d);
+    return lastMa;
+  });
+
+  const toDisplay = (v) => (v === null ? null : +(weightUnit(units) === 'lb' ? v / 0.45359237 : v).toFixed(1));
+
+  ensureChart('wt', ctx, {
     type: 'line',
     data: {
       labels: dates.map((d) => d.slice(5)),
-      datasets: [{
-        label: 'Weight (kg)',
-        data: series,
-        borderColor: '#00C853',
-        backgroundColor: 'rgba(0,200,83,0.12)',
-        fill: true,
-        tension: 0.35,
-        spanGaps: true,
-        pointRadius: 3,
-        pointBackgroundColor: '#00C853'
-      }]
+      datasets: [
+        {
+          label: `Weight (${weightUnit(units)})`,
+          data: series.map(toDisplay),
+          borderColor: COLORS.good,
+          backgroundColor: 'rgba(0,200,83,0.12)',
+          fill: true,
+          tension: 0.35,
+          spanGaps: true,
+          pointRadius: 3,
+          pointBackgroundColor: COLORS.good
+        },
+        {
+          label: '7-day trend',
+          data: trendSeries.map(toDisplay),
+          borderColor: COLORS.fat,
+          borderDash: [5, 5],
+          fill: false,
+          tension: 0.4,
+          spanGaps: true,
+          pointRadius: 0
+        }
+      ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { display: false },
-        title:  { display: true, text: 'Body Weight — last 30 days', color: '#F1F5F2', font: { size: 15, weight: '600' } }
+        legend: { position: 'bottom', labels: { boxWidth: 12 } },
+        title:  { display: true, text: `Body Weight — last 30 days (${weightUnit(units)})`, color: '#F1F5F2', font: { size: 15, weight: '600' } }
       },
       scales: {
         x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 10 } },
@@ -267,57 +306,62 @@ const renderWeightChart = () => {
     }
   });
 
-  /* Trend annotation (this week delta) */
+  renderWeightStats();
+};
+
+/* Stats row: start/current/goal/weekly/monthly/total */
+const renderWeightStats = () => {
+  const el = $('#weightStatsRow');
+  if (!el) return;
+  const units = STATE.settings.units;
+  const s = weightStats(STATE.weightLog, { goalWeight: STATE.goalWeight });
+
+  const cell = (val, label, signed = false) => {
+    const shown = val === null || val === undefined
+      ? '—'
+      : `${signed && val > 0 ? '+' : ''}${formatWeight(Math.abs(val) !== val && signed ? Math.abs(val) : Math.abs(val), units)}${signed ? (val > 0 ? ' ↑' : val < 0 ? ' ↓' : ' →') : ''}`;
+    return `<div class="review-stat"><div class="review-stat-val">${shown}</div><div class="review-stat-label">${label}</div></div>`;
+  };
+
+  el.innerHTML = [
+    cell(s.start, 'Starting weight'),
+    cell(s.current, 'Current weight'),
+    cell(s.goal, 'Goal weight'),
+    cell(s.weekly, 'Weekly change', true),
+    cell(s.monthly, 'Monthly change', true),
+    cell(s.total, 'Total change', true)
+  ].join('');
+
   const ann = $('#weightDelta');
   if (ann) {
-    const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
-    const weekAgoStr = toDateStr(weekAgo);
-    const recent  = STATE.weightLog[STATE.weightLog.length - 1];
-    const oldish  = [...STATE.weightLog].reverse().find((w) => w.date <= weekAgoStr);
-    if (recent && oldish) {
-      const diff = recent.weight - oldish.weight;
-      const arr = diff > 0 ? '\u2191' : diff < 0 ? '\u2193' : '\u2192';
-      const sign = diff > 0 ? '+' : '';
-      const cls = diff > 0 ? 'up' : diff < 0 ? 'down' : 'flat';
-      ann.className = `weight-delta weight-delta-${cls}`;
-      ann.textContent = `${arr} ${sign}${diff.toFixed(1)}kg this week`;
-    } else if (recent) {
-      ann.className = 'weight-delta weight-delta-flat';
-      ann.textContent = `Latest: ${recent.weight}kg on ${recent.date}`;
-    } else {
+    if (s.current === null) {
       ann.className = 'weight-delta weight-delta-flat';
       ann.textContent = 'Log your first weight to see trends.';
+    } else if (s.weekly !== null) {
+      const arr = s.weekly > 0 ? '↑' : s.weekly < 0 ? '↓' : '→';
+      ann.className = `weight-delta weight-delta-${s.weekly > 0 ? 'up' : s.weekly < 0 ? 'down' : 'flat'}`;
+      ann.textContent = `${arr} ${formatWeight(Math.abs(s.weekly), units)} this week (trend line filters daily noise)`;
+    } else {
+      ann.className = 'weight-delta weight-delta-flat';
+      ann.textContent = `Latest: ${formatWeight(s.current, units)}`;
     }
   }
 };
 
 /* =========================================================
-   CONSISTENCY SCORE (big circular)
+   CONSISTENCY SCORE (uses shared metrics.js logic)
    ========================================================= */
 const renderConsistency = () => {
   const el = $('#consistencyScore');
   if (!el) return;
 
-  const days = last7Days();
-  const goals = STATE.goals;
-  let hits = 0;
-  let tracked = 0;
+  const days = last7Days().map((d) => findHistory(d.date));
+  const { hits, tracked, pct } = macroConsistency(days, STATE.goals);
 
-  for (const d of days) {
-    const h = findHistory(d.date);
-    if (!h) continue;
-    tracked++;
-    const within = (v, g) => g > 0 ? Math.abs(v - g) / g <= 0.10 : false;
-    if (within(h.protein, goals.protein) && within(h.carbs, goals.carbs) && within(h.fat, goals.fat)) {
-      hits++;
-    }
-  }
-
-  const pct = tracked ? Math.round((hits / tracked) * 100) : 0;
   let color = 'var(--danger)';
-  let emoji = '\ud83d\udca4';
-  if (pct >= 70) { color = 'var(--primary)'; emoji = '\ud83d\udd25'; }
-  else if (pct >= 50) { color = 'var(--warning)'; emoji = '\ud83d\udcaa'; }
+  let emoji = '💤';
+  if (pct >= 70) { color = 'var(--primary)'; emoji = '🔥'; }
+  else if (pct >= 50) { color = 'var(--warning)'; emoji = '💪'; }
 
   const circ = 2 * Math.PI * 54;
   const offset = circ * (1 - pct / 100);
@@ -343,28 +387,26 @@ const renderConsistency = () => {
 };
 
 /* =========================================================
-   Weight log input
+   Weight log input (unit-aware)
    ========================================================= */
 const bindWeight = () => {
   const input = $('#weightInput');
   const btn   = $('#logWeightBtn');
   if (!btn || !input) return;
   btn.addEventListener('click', () => {
-    const wRaw = parseFloat(input.value);
-    if (!Number.isFinite(wRaw) || wRaw < 25 || wRaw > 350) {
-      return toast('Enter a weight between 25 and 350 kg.', 'error');
+    const kg = parseWeightToKg(input.value, STATE.settings.units);
+    if (kg === null || kg < 25 || kg > 350) {
+      return toast(`Enter a weight between 25 and 350 ${weightUnit(STATE.settings.units)}.`, 'error');
     }
     const t = today();
     const idx = STATE.weightLog.findIndex((x) => x.date === t);
-    if (idx >= 0) STATE.weightLog[idx].weight = wRaw;
-    else STATE.weightLog.push({ date: t, weight: wRaw });
-    /* Keep only last 365 */
+    if (idx >= 0) STATE.weightLog[idx].weight = kg;
+    else STATE.weightLog.push({ date: t, weight: kg });
     if (STATE.weightLog.length > 365) STATE.weightLog = STATE.weightLog.slice(-365);
-    /* Keep log sorted by date so "latest" lookups stay correct */
     STATE.weightLog.sort((a, b) => a.date.localeCompare(b.date));
     saveState();
     input.value = '';
-    toast(`Logged ${wRaw}kg for today`, 'success');
+    toast('Weight logged', 'success');
     renderProgress();
   });
 };
@@ -379,21 +421,25 @@ export function renderProgress() {
   renderAverages();
   renderWeightChart();
   renderConsistency();
+  renderWeeklyReview();
 }
 
 export function initProgress() {
   if (!$('#progress')) return;
+  initWeeklyReview();
+  initCalendar();
   bindWeight();
 
   $('#exportPdfBtn')?.addEventListener('click', () => exportWeeklyPdf());
 
-  /* Chart.js is bundled and imported statically — always available.
-     Re-render when Progress tab comes into view (saves work). */
   renderProgress();
 
+  /* Re-render when visible, but charts now update in place. */
   const section = $('#progress');
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) if (e.isIntersecting) renderProgress();
   }, { threshold: 0.15 });
   io.observe(section);
+
+  on('state:replaced', renderProgress);
 }
