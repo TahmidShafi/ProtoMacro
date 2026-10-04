@@ -6,7 +6,7 @@ import {
   sanitizeWeightLog,
   SCHEMA_VERSION
 } from '../js/core/migrate.js';
-import { computeDailyScore, macroConsistency, weightStats, epley1RM, trainingVolume, habitStreak, movingAverage } from '../js/core/metrics.js';
+import { computeDailyScore, macroConsistency, weightStats, epley1RM, trainingVolume, habitStreak, movingAverage, personalRecords } from '../js/core/metrics.js';
 import { toDateStr, today } from '../js/datetime.js';
 import { calcMacrosFor } from '../js/mode.js';
 
@@ -195,6 +195,103 @@ describe('workout math', () => {
   it('volume = Σ weight × reps', () => {
     expect(trainingVolume([{ weight: 100, reps: 5 }, { weight: 60, reps: 10 }])).toBe(1100);
     expect(trainingVolume([{ weight: NaN, reps: 5 }])).toBe(0);
+  });
+});
+
+describe('personalRecords (workout PR calculation)', () => {
+  it('returns empty array when workouts is empty or null', () => {
+    expect(personalRecords([])).toEqual([]);
+    expect(personalRecords(null)).toEqual([]);
+    expect(personalRecords()).toEqual([]);
+  });
+
+  it('determines personal record for a single exercise', () => {
+    const workouts = [
+      {
+        date: '2026-05-01',
+        exercises: [
+          {
+            name: 'Bench Press',
+            sets: [
+              { weight: 80, reps: 5 },
+              { weight: 85, reps: 5 }
+            ]
+          }
+        ]
+      }
+    ];
+    const prs = personalRecords(workouts);
+    expect(prs).toHaveLength(1);
+    expect(prs[0][0]).toBe('Bench Press');
+    expect(prs[0][1].date).toBe('2026-05-01');
+    expect(prs[0][1].e1rm).toBeCloseTo(99.17, 1);
+  });
+
+  it('updates personal record when a subsequent workout has higher e1RM', () => {
+    const workouts = [
+      {
+        date: '2026-05-01',
+        exercises: [
+          {
+            name: 'Squat',
+            sets: [{ weight: 100, reps: 5 }]
+          }
+        ]
+      },
+      {
+        date: '2026-05-08',
+        exercises: [
+          {
+            name: 'Squat',
+            sets: [{ weight: 110, reps: 5 }]
+          }
+        ]
+      },
+      {
+        date: '2026-05-15',
+        exercises: [
+          {
+            name: 'Squat',
+            sets: [{ weight: 90, reps: 10 }]
+          }
+        ]
+      }
+    ];
+    const prs = personalRecords(workouts);
+    expect(prs).toHaveLength(1);
+    expect(prs[0][0]).toBe('Squat');
+    expect(prs[0][1].date).toBe('2026-05-08');
+    expect(prs[0][1].e1rm).toBeCloseTo(128.33, 1);
+  });
+
+  it('sorts multiple exercises in descending order of e1RM', () => {
+    const workouts = [
+      {
+        date: '2026-05-01',
+        exercises: [
+          { name: 'Overhead Press', sets: [{ weight: 50, reps: 5 }] },
+          { name: 'Deadlift', sets: [{ weight: 150, reps: 5 }] },
+          { name: 'Bench Press', sets: [{ weight: 100, reps: 5 }] }
+        ]
+      }
+    ];
+    const prs = personalRecords(workouts);
+    expect(prs.map((p) => p[0])).toEqual(['Deadlift', 'Bench Press', 'Overhead Press']);
+    expect(prs[0][1].e1rm).toBeGreaterThan(prs[1][1].e1rm);
+    expect(prs[1][1].e1rm).toBeGreaterThan(prs[2][1].e1rm);
+  });
+
+  it('ignores sets with non-positive weight or reps', () => {
+    const workouts = [
+      {
+        date: '2026-05-01',
+        exercises: [
+          { name: 'Plank', sets: [{ weight: 0, reps: 60 }] },
+          { name: 'Zero', sets: [{ weight: -10, reps: -5 }] }
+        ]
+      }
+    ];
+    expect(personalRecords(workouts)).toEqual([]);
   });
 });
 

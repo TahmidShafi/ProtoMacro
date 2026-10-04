@@ -11,6 +11,7 @@ import {
   initSavedMeals
 } from '../js/saved-meals.js';
 import { initMigrationWizard } from '../js/migration-wizard.js';
+import '../js/planner.js';
 
 describe('Phase 2 Group 1: Dependency Graph Boundaries', () => {
   const rootDir = path.resolve(__dirname, '..');

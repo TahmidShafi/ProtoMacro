@@ -120,39 +120,6 @@ const render = () => {
   dom.analytics.innerHTML = STATE.habits.map(triggerAnalytics).join('');
 };
 
-const monthCalendar = (habit) => {
-  const y = calendarMonth.getFullYear();
-  const m = calendarMonth.getMonth();
-  const first = new Date(y, m, 1);
-  const startDow = first.getDay();
-  const daysIn = new Date(y, m + 1, 0).getDate();
-
-  let cells = '';
-  for (let i = 0; i < startDow; i++) cells += '<div class="calendar-day other"></div>';
-  for (let d = 1; d <= daysIn; d++) {
-    const key = toDateStr(new Date(y, m, d));
-    const s = habit.log[key];
-    cells += `<div class="calendar-day ${s ?? ''}" title="${key}: ${s ?? 'unmarked'}">${statusIcon(s) || d}</div>`;
-  }
-
-  return `
-    <div class="calendar-nav">
-      <button class="icon-btn" data-cal-nav="-1" aria-label="Previous month">${icon('chevronL', 14)}</button>
-      <span class="calendar-title">${calendarMonth.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</span>
-      <button class="icon-btn" data-cal-nav="1" aria-label="Next month">${icon('chevronR', 14)}</button>
-    </div>
-    <div class="calendar-grid">
-      ${['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d) => `<div class="calendar-dow">${d}</div>`).join('')}
-      ${cells}
-    </div>
-    <div class="calendar-legend">
-      <span><span class="legend-dot" style="background:var(--primary)"></span> Success</span>
-      <span><span class="legend-dot" style="background:var(--warning)"></span> Partial</span>
-      <span><span class="legend-dot" style="background:var(--danger)"></span> Setback</span>
-    </div>
-  `;
-};
-
 /* ---------------- actions ---------------- */
 
 const addOrEditHabit = async (existing = null) => {

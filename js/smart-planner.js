@@ -5,191 +5,23 @@
    easy, vegetarian), per-meal regenerate, single-food swap,
    and "Use Plan" writes proper v2 planner items (grams in
    `servings`, not baked into the name).
+   Delegates pure solving to core/planner-solver.js.
    ============================================================ */
-import { $, escapeHtml, icon, makeId, toast } from './utils.js';
-import { STATE, saveState } from './state.js';
+import { $, escapeHtml, icon, toast } from './utils.js';
+import { STATE } from './state.js';
 import { replacePlannerSlots } from './planner.js';
-import { FOODS_DB } from './foods-db.js';
-import { on } from './core/bus.js';
-
-const MEAL_ORDER = ['breakfast', 'lunch', 'dinner', 'snacks'];
-const MEAL_META  = {
-  breakfast: { emoji: '🌅', label: 'Breakfast', share: 0.25 },
-  lunch:     { emoji: '☀️',  label: 'Lunch',     share: 0.30 },
-  dinner:    { emoji: '🌆', label: 'Dinner',    share: 0.30 },
-  snacks:    { emoji: '🍎', label: 'Snacks',    share: 0.15 }
-};
+import {
+  MEAL_ORDER,
+  MEAL_META,
+  PREFS,
+  generatePlan,
+  regenerateMeal as solverRegenerateMeal,
+  swapFood as solverSwapFood
+} from './core/planner-solver.js';
 
 let lastPlan = null;
 let dom = null;
-let lastBuckets = null;
-
-const PREFS = [
-  { key: 'highProtein', label: 'High protein' },
-  { key: 'southAsian',  label: 'Bangladeshi / South Asian' },
-  { key: 'budget',      label: 'Budget friendly' },
-  { key: 'easy',        label: 'Easy cooking' },
-  { key: 'vegetarian',  label: 'Vegetarian' }
-];
-
 const prefs = new Set();
-const hasPref = (k) => prefs.has(k);
-
-/* Budget proxy: protein-dense cheap staples */
-const BUDGET_NAMES = /rice|dal|lentil|egg|oats|potato|banana|bread|wheat|flour|chicken|milk|yogurt|soy|tofu|peanut/i;
-/* Easy/quick proxy: simple preparations */
-const EASY_NAMES = /boiled|grilled|steamed|plain|fresh|raw|banana|fruit|yogurt|milk|egg|oats|bread|salad/i;
-const NON_VEG = /chicken|beef|mutton|fish|prawn|shrimp|meat|duck|pork|lamb|kebab|wings|ribs|duck/i;
-
-/* =========================================================
-   Bucketing with preference filters
-   ========================================================= */
-
-const bucketFoods = () => {
-  const db = FOODS_DB || [];
-  const buckets = { protein: [], carb: [], fat: [], veg: [], snack: [] };
-
-  for (const f of db) {
-    const kcal = f.calories || 0;
-    if (kcal <= 0) continue;
-
-    if (hasPref('vegetarian') && NON_VEG.test(f.name)) continue;
-    if (hasPref('southAsian') && !(f.tags || []).some((t) => ['bangladeshi', 'indian', 'south asian'].includes(t))) {
-      /* keep a few universal staples even when filtering */
-      if (!/^(egg|rice|milk|banana|oats|bread|chicken breast)/i.test(f.name)) continue;
-    }
-    if (hasPref('easy') && !EASY_NAMES.test(f.name)) continue;
-
-    const total = f.protein + f.carbs + f.fat;
-    if (!total) continue;
-    const pPct = f.protein / total;
-    const cPct = f.carbs / total;
-    const fPct = f.fat / total;
-
-    /* score by protein density for highProtein/budget ordering */
-    let food = f;
-    if (hasPref('highProtein') || hasPref('budget')) {
-      food = { ...f, _score: (f.protein / Math.max(1, kcal)) };
-    }
-    if (hasPref('budget') && !BUDGET_NAMES.test(f.name)) continue;
-
-    if (f.protein >= 15 && pPct > 0.35)      buckets.protein.push(food);
-    else if (f.carbs >= 20 && cPct > 0.45)   buckets.carb.push(food);
-    else if (fPct > 0.55 || (f.fat >= 15 && kcal >= 400)) buckets.fat.push(food);
-    else if (kcal < 80)                      buckets.veg.push(food);
-    else                                     buckets.snack.push(food);
-  }
-
-  if (hasPref('highProtein') || hasPref('budget')) {
-    for (const key of Object.keys(buckets)) {
-      buckets[key].sort((a, b) => (b._score ?? 0) - (a._score ?? 0));
-    }
-  }
-  return buckets;
-};
-
-const pick = (arr, usedNames) => {
-  if (!arr.length) return null;
-  for (let i = 0; i < 10; i++) {
-    const f = arr[Math.floor(Math.random() * arr.length)];
-    if (!usedNames.has(f.name)) { usedNames.add(f.name); return f; }
-  }
-  return arr[Math.floor(Math.random() * arr.length)];
-};
-
-const portionForCalories = (food, targetKcal) => {
-  if (!food || !food.calories) return 100;
-  return Math.round(Math.min(500, Math.max(30, (targetKcal / food.calories) * 100)));
-};
-
-const foodAtGrams = (food, grams) => ({
-  name:   food.name,
-  amount: `${grams}g`,
-  grams,
-  calories: Math.round(food.calories * grams / 100),
-  protein:  +(food.protein * grams / 100).toFixed(1),
-  carbs:    +(food.carbs   * grams / 100).toFixed(1),
-  fat:      +(food.fat     * grams / 100).toFixed(1)
-});
-
-const buildMeal = (key, kcalTarget, buckets, usedNames, mode) => {
-  const proteinFood = pick(buckets.protein, usedNames);
-  const carbFood    = pick(buckets.carb, usedNames);
-  const extraFood   = pick(key === 'snacks' ? buckets.snack : buckets.veg, usedNames)
-                   || pick(buckets.fat, usedNames);
-
-  const pShare = mode === 'cut' ? 0.45 : mode === 'bulk' ? 0.30 : 0.35;
-  const cShare = mode === 'cut' ? 0.35 : mode === 'bulk' ? 0.50 : 0.40;
-  const eShare = 1 - pShare - cShare;
-
-  const foods = [];
-  if (proteinFood) foods.push(foodAtGrams(proteinFood, portionForCalories(proteinFood, kcalTarget * pShare)));
-  if (carbFood)    foods.push(foodAtGrams(carbFood,    portionForCalories(carbFood,    kcalTarget * cShare)));
-  if (extraFood)   foods.push(foodAtGrams(extraFood,   portionForCalories(extraFood,   kcalTarget * eShare)));
-
-  const totals = foods.reduce((t, f) => ({
-    calories: t.calories + f.calories,
-    protein:  +(t.protein + f.protein).toFixed(1),
-    carbs:    +(t.carbs   + f.carbs).toFixed(1),
-    fat:      +(t.fat     + f.fat).toFixed(1)
-  }), { calories: 0, protein: 0, carbs: 0, fat: 0 });
-
-  const primary = proteinFood?.name?.split(',')[0] || 'Meal';
-  const sideName = carbFood?.name?.split(',')[0];
-  const name = sideName ? `${primary} with ${sideName.toLowerCase()}` : primary;
-
-  return { name, foods, totals };
-};
-
-const TIPS_BY_MODE = {
-  cut: [
-    'Prioritise whole-food protein sources — they keep you full longer during a deficit.',
-    'Time most of your carbs around training to preserve gym performance.',
-    'Stay hydrated (target 3.5–4L water/day) — hunger is often thirst in disguise.'
-  ],
-  bulk: [
-    'Eat every 3–4 hours to comfortably hit your calorie surplus.',
-    'Include a carb + protein combo within 60 minutes post-workout.',
-    'If you feel stuffed, swap one solid meal for a calorie-dense smoothie.'
-  ],
-  maintain: [
-    'Track for one week to verify your TDEE is accurate before adjusting.',
-    'Hit at least 1.6g protein per kg of bodyweight for body recomposition.',
-    'Sleep 7–9 hours — it drives recovery more than any supplement.'
-  ]
-};
-
-const generateLocalPlan = (goals, mode) => {
-  lastBuckets = bucketFoods();
-
-  /* Graceful handling of impossible targets (e.g. vegetarian filter
-     emptied a bucket) — relax filters per bucket if missing. */
-  if (!lastBuckets.protein.length) {
-    lastBuckets.protein = FOODS_DB.filter((f) => f.protein >= 15);
-  }
-  if (!lastBuckets.carb.length) {
-    lastBuckets.carb = FOODS_DB.filter((f) => f.carbs >= 20);
-  }
-
-  const used = new Set();
-  const meals = {};
-  for (const key of MEAL_ORDER) {
-    meals[key] = buildMeal(key, goals.calories * MEAL_META[key].share, lastBuckets, used, mode);
-  }
-  const daily = Object.values(meals).reduce((t, m) => ({
-    calories: t.calories + m.totals.calories,
-    protein:  +(t.protein + m.totals.protein).toFixed(1),
-    carbs:    +(t.carbs   + m.totals.carbs).toFixed(1),
-    fat:      +(t.fat     + m.totals.fat).toFixed(1)
-  }), { calories: 0, protein: 0, carbs: 0, fat: 0 });
-
-  return {
-    meals,
-    daily_totals: daily,
-    tips: TIPS_BY_MODE[mode] || TIPS_BY_MODE.maintain,
-    _source: 'local'
-  };
-};
 
 /* =========================================================
    Rendering
@@ -267,58 +99,24 @@ const render = (plan) => {
 /* Regenerate one meal, preserving other meals */
 const regenerateMeal = (mealKey) => {
   if (!lastPlan) return;
-  const mode = STATE.mode;
-  const used = new Set(
-    MEAL_ORDER.filter((k) => k !== mealKey)
-      .flatMap((k) => (lastPlan.meals[k]?.foods || []).map((f) => f.name))
-  );
-  lastPlan.meals[mealKey] = buildMeal(
-    mealKey,
-    STATE.goals.calories * MEAL_META[mealKey].share,
-    lastBuckets || bucketFoods(),
-    used,
-    mode
-  );
-  /* recompute daily totals */
-  lastPlan.daily_totals = Object.values(lastPlan.meals).reduce((t, m) => ({
-    calories: t.calories + m.totals.calories,
-    protein:  +(t.protein + m.totals.protein).toFixed(1),
-    carbs:    +(t.carbs   + m.totals.carbs).toFixed(1),
-    fat:      +(t.fat     + m.totals.fat).toFixed(1)
-  }), { calories: 0, protein: 0, carbs: 0, fat: 0 });
-  render(lastPlan);
+  const updated = solverRegenerateMeal(lastPlan, mealKey, {
+    goals: STATE.goals,
+    mode: STATE.mode,
+    buckets: lastPlan.buckets
+  });
+  render(updated);
 };
 
 /* Swap a single food for a macro-similar alternative */
 const swapFood = (mealKey, name) => {
-  const meal = lastPlan?.meals[mealKey];
-  if (!meal) return;
-  const idx = meal.foods.findIndex((f) => f.name === name);
-  if (idx < 0) return;
-  const old = meal.foods[idx];
-
-  /* find candidates in any bucket with similar calories per 100g */
-  const all = [
-    ...(lastBuckets?.protein || []), ...(lastBuckets?.carb || []),
-    ...(lastBuckets?.fat || []), ...(lastBuckets?.veg || []), ...(lastBuckets?.snack || [])
-  ];
-  const others = meal.foods.filter((f) => f.name !== name).map((f) => f.name);
-  const candidates = all.filter((f) => !others.includes(f.name) && f.name !== old.name);
-  if (!candidates.length) return toast('No alternatives found — try Regenerate.', 'info');
-
-  candidates.sort((a, b) => Math.abs(a.calories - old.calories * 100 / (old.grams || 100)) - Math.abs(b.calories - old.calories * 100 / (old.grams || 100)));
-  const replacement = candidates[Math.floor(Math.random() * Math.min(3, candidates.length))];
-  const targetKcal = old.calories;
-  meal.foods[idx] = foodAtGrams(replacement, portionForCalories(replacement, targetKcal));
-
-  meal.totals = meal.foods.reduce((t, f) => ({
-    calories: t.calories + f.calories,
-    protein:  +(t.protein + f.protein).toFixed(1),
-    carbs:    +(t.carbs   + f.carbs).toFixed(1),
-    fat:      +(t.fat     + f.fat).toFixed(1)
-  }), { calories: 0, protein: 0, carbs: 0, fat: 0 });
-
-  render(lastPlan);
+  if (!lastPlan) return;
+  const res = solverSwapFood(lastPlan, mealKey, name, {
+    buckets: lastPlan.buckets
+  });
+  if (!res.success) {
+    return toast('No alternatives found — try Regenerate.', 'info');
+  }
+  render(res.plan);
 };
 
 const applyPlan = () => {
@@ -346,7 +144,11 @@ const applyPlan = () => {
 
 const run = () => {
   try {
-    const plan = generateLocalPlan(STATE.goals, STATE.mode);
+    const plan = generatePlan({
+      goals: STATE.goals,
+      mode: STATE.mode,
+      prefs
+    });
     if (!plan || !plan.meals) throw new Error('generation failed');
     render(plan);
   } catch (e) {

@@ -8,7 +8,7 @@ import Chart from 'chart.js/auto';
 import { $, escapeHtml, icon, makeId, toast, num, clamp } from './utils.js';
 import { STATE, saveState } from './state.js';
 import { on } from './core/bus.js';
-import { epley1RM, trainingVolume } from './core/metrics.js';
+import { epley1RM, trainingVolume, personalRecords } from './core/metrics.js';
 import { toDateStr, today } from './datetime.js';
 
 let dom = null;
@@ -74,31 +74,6 @@ const saveWorkout = () => {
 };
 
 /* ---------------- analysis ---------------- */
-
-const exerciseHistory = (name) => {
-  const entries = [];
-  for (const w of STATE.workouts) {
-    for (const ex of w.exercises) {
-      if (ex.name.toLowerCase() !== name.toLowerCase()) continue;
-      const best = ex.sets.reduce((m, s) => Math.max(m, epley1RM(s.weight, s.reps)), 0);
-      if (best > 0) entries.push({ date: w.date, e1rm: best, sets: ex.sets });
-    }
-  }
-  return entries.sort((a, b) => a.date.localeCompare(b.date));
-};
-
-const personalRecords = () => {
-  const prs = new Map();
-  for (const w of STATE.workouts) {
-    for (const ex of w.exercises) {
-      const best = ex.sets.reduce((m, s) => Math.max(m, epley1RM(s.weight, s.reps)), 0);
-      if (best <= 0) continue;
-      const cur = prs.get(ex.name);
-      if (!cur || best > cur.e1rm) prs.set(ex.name, { e1rm: best, date: w.date });
-    }
-  }
-  return [...prs.entries()].sort((a, b) => b[1].e1rm - a[1].e1rm);
-};
 
 const e1rmTrend = () => {
   /* best estimated 1RM per day across all exercises (top lift) */
@@ -189,7 +164,7 @@ const renderHistory = () => {
     const rows = w.exercises.map((ex) => {
       const vol = trainingVolume(ex.sets);
       const best = ex.sets.reduce((m, s) => Math.max(m, epley1RM(s.weight, s.reps)), 0);
-      const isPR = personalRecords().some(([n, p]) => n === ex.name && Math.abs(p.e1rm - best) < 0.01);
+      const isPR = personalRecords(STATE.workouts).some(([n, p]) => n === ex.name && Math.abs(p.e1rm - best) < 0.01);
       return `
         <div class="workout-exercise-row">
           <span><strong>${escapeHtml(ex.name)}</strong>${isPR ? '<span class="pr-badge">PR</span>' : ''}
@@ -210,7 +185,7 @@ const renderHistory = () => {
     `;
   }).join('') || '<div class="log-empty">No workouts logged yet.</div>';
 
-  const prs = personalRecords();
+  const prs = personalRecords(STATE.workouts);
   dom.prList.innerHTML = prs.length
     ? prs.slice(0, 8).map(([name, p]) => `
         <div class="food-row">

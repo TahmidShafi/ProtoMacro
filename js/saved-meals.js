@@ -9,8 +9,6 @@ import { formModal, openModal } from './core/modal.js';
 import { updateTracker } from './tracker.js';
 import { emit, on } from './core/bus.js';
 
-export const savedMealById = (id) => STATE.savedMeals.find((m) => m.id === id);
-
 export async function saveMealFromSlot(mealKey) {
   const items = (STATE.planner[mealKey] || []).map((i) => ({ ...i, uid: undefined }));
   if (!items.length) return toast('That meal slot is empty.', 'info');

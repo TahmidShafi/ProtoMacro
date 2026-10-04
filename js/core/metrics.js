@@ -198,6 +198,19 @@ export const trainingVolume = (sets) =>
     return sum + w * r;
   }, 0);
 
+export const personalRecords = (workouts = []) => {
+  const prs = new Map();
+  for (const w of workouts || []) {
+    for (const ex of w.exercises || []) {
+      const best = (ex.sets || []).reduce((m, s) => Math.max(m, epley1RM(s.weight, s.reps)), 0);
+      if (best <= 0) continue;
+      const cur = prs.get(ex.name);
+      if (!cur || best > cur.e1rm) prs.set(ex.name, { e1rm: best, date: w.date });
+    }
+  }
+  return [...prs.entries()].sort((a, b) => b[1].e1rm - a[1].e1rm);
+};
+
 /* ------------------------------------------------------------
    HABIT STREAK LOGIC
    days: Map or object keyed 'YYYY-MM-DD' → 'ok' | 'partial' | 'setback'

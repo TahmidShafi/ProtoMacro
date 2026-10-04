@@ -83,9 +83,10 @@ const renderItem = (item) => {
 
 export const addPlannerItem = (mealKey, food) => {
   if (!STATE.planner[mealKey]) return;
-  STATE.planner[mealKey].push({ ...food, uid: makeId(), servings: food.servings ?? 100 });
+  STATE.planner[mealKey].push({ ...food, uid: food.uid || makeId(), servings: food.servings ?? 100 });
   saveState();
   updatePlanner();
+  emit('planner:update');
 };
 
 export const addToPlanner = (food, mealKey) => {
@@ -98,6 +99,7 @@ export const removePlannerItem = (mealKey, uid) => {
   STATE.planner[mealKey] = STATE.planner[mealKey].filter((i) => i.uid !== uid);
   saveState();
   updatePlanner();
+  emit('planner:update');
 };
 
 export const updatePlannerItemGrams = (mealKey, uid, grams) => {
@@ -106,6 +108,7 @@ export const updatePlannerItemGrams = (mealKey, uid, grams) => {
   item.servings = clamp(num(grams) ?? 100, 1, 5000);
   saveState();
   updatePlanner();
+  emit('planner:update');
 };
 
 export const replacePlannerSlot = (mealKey, items = []) => {
@@ -117,6 +120,7 @@ export const replacePlannerSlot = (mealKey, items = []) => {
   }));
   saveState();
   updatePlanner();
+  emit('planner:update');
 };
 
 export const replacePlannerSlots = (slotsMap = {}) => {
@@ -131,6 +135,7 @@ export const replacePlannerSlots = (slotsMap = {}) => {
   }
   saveState();
   updatePlanner();
+  emit('planner:update');
 };
 
 export const clearPlannerSlot = (mealKey) => {
@@ -138,15 +143,17 @@ export const clearPlannerSlot = (mealKey) => {
   STATE.planner[mealKey] = [];
   saveState();
   updatePlanner();
+  emit('planner:update');
 };
 
 export const loadMealIntoSlot = (mealKey, items = [], name = '') => {
   if (!STATE.planner[mealKey]) return;
   for (const item of items) {
-    STATE.planner[mealKey].push({ ...item, uid: makeId(), servings: item.servings ?? 100 });
+    STATE.planner[mealKey].push({ ...item, uid: item.uid || makeId(), servings: item.servings ?? 100 });
   }
   saveState();
   updatePlanner();
+  emit('planner:update');
   if (name) toast(`Added "${name}" to ${mealKey}`, 'success');
 };
 
@@ -264,8 +271,9 @@ export function initPlanner() {
 
   on('state:replaced', updatePlanner);
   on('planner:update', updatePlanner);
-  on('planner:load-meal', ({ mealKey, items, name }) => {
-    if (mealKey && items) loadMealIntoSlot(mealKey, items, name);
-  });
   updatePlanner();
 }
+
+on('planner:load-meal', ({ mealKey, items, name }) => {
+  if (mealKey && items) loadMealIntoSlot(mealKey, items, name);
+});
