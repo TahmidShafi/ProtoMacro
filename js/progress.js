@@ -8,7 +8,7 @@
    ============================================================ */
 import Chart from 'chart.js/auto';
 import { $, toast, num, clamp } from './utils.js';
-import { STATE, saveState } from './state.js';
+import { STATE, saveState, recordWeight } from './state.js';
 import { today, toDateStr } from './datetime.js';
 import { exportWeeklyPdf } from './share.js';
 import { macroConsistency, weightStats } from './core/metrics.js';
@@ -410,13 +410,7 @@ const bindWeight = () => {
     if (kg === null || kg < 25 || kg > 350) {
       return toast(`Enter a weight between 25 and 350 ${weightUnit(STATE.settings.units)}.`, 'error');
     }
-    const t = today();
-    const idx = STATE.weightLog.findIndex((x) => x.date === t);
-    if (idx >= 0) STATE.weightLog[idx].weight = kg;
-    else STATE.weightLog.push({ date: t, weight: kg });
-    if (STATE.weightLog.length > 365) STATE.weightLog = STATE.weightLog.slice(-365);
-    STATE.weightLog.sort((a, b) => a.date.localeCompare(b.date));
-    saveState();
+    recordWeight(kg);
     input.value = '';
     toast('Weight logged', 'success');
     renderProgress();
@@ -454,4 +448,5 @@ export function initProgress() {
   io.observe(section);
 
   on('state:replaced', renderProgress);
+  on('weight:logged', renderProgress);
 }

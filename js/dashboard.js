@@ -4,7 +4,8 @@
    Shows calories/macros, recovery, mode, completion score and
    quick actions. Updates reactively via the event bus.
    ============================================================ */
-import { $, escapeHtml, animateNumber } from './utils.js';import { STATE } from './state.js';
+import { $, escapeHtml, animateNumber } from './utils.js';
+import { STATE, recordWeight } from './state.js';
 import { MODES } from './mode.js';
 import { getTrackerTotals } from './tracker.js';
 import { computeDailyScore } from './core/metrics.js';
@@ -183,19 +184,9 @@ const quickWeight = async () => {
   const { parseWeightToKg } = await import('./core/format.js');
   const kg = parseWeightToKg(values.weight, units);
   if (!kg || kg < 25 || kg > 350) return;
-  const t = today();
-  const idx = STATE.weightLog.findIndex((x) => x.date === t);
-  if (idx >= 0) STATE.weightLog[idx].weight = kg;
-  else STATE.weightLog.push({ date: t, weight: kg });
-  STATE.weightLog.sort((a, b) => a.date.localeCompare(b.date));
-  if (values.goal) STATE.goalWeight = parseWeightToKg(values.goal, units);
-  saveAndRefresh();
+  const goalKg = values.goal ? parseWeightToKg(values.goal, units) : null;
+  recordWeight(kg, { goalWeight: goalKg });
   render();
-};
-
-const saveAndRefresh = async () => {
-  const { saveState } = await import('./state.js');
-  saveState();
 };
 
 const bindQuick = () => {
@@ -245,5 +236,6 @@ export function initDashboard() {
   on('tracker:update', render);
   on('goals:applied', render);
   on('state:replaced', render);
+  on('weight:logged', render);
   render();
 }

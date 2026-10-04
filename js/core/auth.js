@@ -8,7 +8,7 @@
 import { cloudConfigured, getCloudProvider, setAccountMode, setGuestMode } from './storage/index.js';
 import { openModal, formModal } from './modal.js';
 import { toast } from '../utils.js';
-import { emit } from './bus.js';
+import { emit, on } from './bus.js';
 
 let session = null;
 let provider = null;
@@ -165,16 +165,14 @@ export function initAccountUI(statusEl, actionsEl) {
     else if (action === 'signup') openAuthModal({ mode: 'signup' });
     else if (action === 'signout') signOut();
     else if (action === 'migrate') {
-      import('../migration-wizard.js').then((m) => m.openMigrationWizard());
+      emit('migration:open');
     }
   });
 
   render();
   window.addEventListener('auth:changed', render);
-  import('./bus.js').then(({ on }) => {
-    on('auth:signed-in', render);
-    on('auth:signed-out', render);
-  });
+  on('auth:signed-in', render);
+  on('auth:signed-out', render);
 }
 
 const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

@@ -212,19 +212,13 @@ export const habitStreak = (dayMap, mode = 'quit', todayKey) => {
     status === 'ok' || (mode === 'reduce' && status === 'partial');
 
   const d = new Date(todayKey + 'T00:00:00');
-  const keyOf = (dt) => {
-    const y = dt.getFullYear();
-    const m = String(dt.getMonth() + 1).padStart(2, '0');
-    const dd = String(dt.getDate()).padStart(2, '0');
-    return `${y}-${m}-${dd}`;
-  };
 
   let current = 0;
   let cursor = new Date(d);
-  if (!isWin(dayMap[keyOf(cursor)])) {
+  if (!isWin(dayMap[toDateStr(cursor)])) {
     cursor.setDate(cursor.getDate() - 1);
   }
-  while (isWin(dayMap[keyOf(cursor)])) {
+  while (isWin(dayMap[toDateStr(cursor)])) {
     current++;
     cursor.setDate(cursor.getDate() - 1);
   }

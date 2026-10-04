@@ -10,7 +10,7 @@ import { STATE, saveState } from './state.js';
 import { formModal } from './core/modal.js';
 import { on, emit } from './core/bus.js';
 import { computeDailyScore } from './core/metrics.js';
-import { today } from './datetime.js';
+import { toDateStr, today } from './datetime.js';
 import { formatWater } from './core/format.js';
 
 const QUICK_ADDS = [250, 500, 750, 1000];
@@ -199,10 +199,7 @@ const renderSleep = () => {
   for (let i = 6; i >= 0; i--) {
     const d = new Date(now);
     d.setDate(now.getDate() - i);
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, '0');
-    const dd = String(d.getDate()).padStart(2, '0');
-    const key = `${y}-${m}-${dd}`;
+    const key = toDateStr(d);
     const entry = STATE.sleepLog.find((s) => s.date === key);
     last7.push({ key, label: d.toLocaleDateString(undefined, { weekday: 'short' }), hours: entry?.hours ?? null });
   }

@@ -81,12 +81,73 @@ const renderItem = (item) => {
 `;
 };
 
-export const addToPlanner = (food, mealKey) => {
+export const addPlannerItem = (mealKey, food) => {
   if (!STATE.planner[mealKey]) return;
   STATE.planner[mealKey].push({ ...food, uid: makeId(), servings: food.servings ?? 100 });
   saveState();
   updatePlanner();
+};
+
+export const addToPlanner = (food, mealKey) => {
+  addPlannerItem(mealKey, food);
   toast(`Added to ${mealKey}`, 'success');
+};
+
+export const removePlannerItem = (mealKey, uid) => {
+  if (!STATE.planner[mealKey]) return;
+  STATE.planner[mealKey] = STATE.planner[mealKey].filter((i) => i.uid !== uid);
+  saveState();
+  updatePlanner();
+};
+
+export const updatePlannerItemGrams = (mealKey, uid, grams) => {
+  const item = (STATE.planner[mealKey] || []).find((i) => i.uid === uid);
+  if (!item) return;
+  item.servings = clamp(num(grams) ?? 100, 1, 5000);
+  saveState();
+  updatePlanner();
+};
+
+export const replacePlannerSlot = (mealKey, items = []) => {
+  if (!STATE.planner[mealKey]) return;
+  STATE.planner[mealKey] = items.map((i) => ({
+    ...i,
+    uid: i.uid || makeId(),
+    servings: i.servings ?? 100
+  }));
+  saveState();
+  updatePlanner();
+};
+
+export const replacePlannerSlots = (slotsMap = {}) => {
+  for (const [key, items] of Object.entries(slotsMap)) {
+    if (STATE.planner[key]) {
+      STATE.planner[key] = (items || []).map((i) => ({
+        ...i,
+        uid: i.uid || makeId(),
+        servings: i.servings ?? 100
+      }));
+    }
+  }
+  saveState();
+  updatePlanner();
+};
+
+export const clearPlannerSlot = (mealKey) => {
+  if (!STATE.planner[mealKey]) return;
+  STATE.planner[mealKey] = [];
+  saveState();
+  updatePlanner();
+};
+
+export const loadMealIntoSlot = (mealKey, items = [], name = '') => {
+  if (!STATE.planner[mealKey]) return;
+  for (const item of items) {
+    STATE.planner[mealKey].push({ ...item, uid: makeId(), servings: item.servings ?? 100 });
+  }
+  saveState();
+  updatePlanner();
+  if (name) toast(`Added "${name}" to ${mealKey}`, 'success');
 };
 
 export function updatePlanner() {
@@ -148,14 +209,12 @@ const bindSlotEvents = (slotEl) => {
       const itemEl = btn.closest('.meal-item');
       const uidVal = itemEl ? itemEl.dataset.uid : null;
       if (!uidVal) return;
-      STATE.planner[meal] = STATE.planner[meal].filter((i) => i.uid !== uidVal);
-      saveState();
-      updatePlanner();
+      removePlannerItem(meal, uidVal);
       return;
     }
     const saveBtn = e.target.closest('[data-save-meal]');
     if (saveBtn) {
-      import('./saved-meals.js').then((mod) => mod.saveMealFromSlot(meal));
+      emit('planner:save-meal', { mealKey: meal });
     }
   });
 
@@ -164,12 +223,10 @@ const bindSlotEvents = (slotEl) => {
     if (!input) return;
     const itemEl = input.closest('.meal-item');
     const uidVal = itemEl?.dataset.uid;
+    if (!uidVal) return;
+    updatePlannerItemGrams(meal, uidVal, input.value);
     const item = (STATE.planner[meal] || []).find((i) => i.uid === uidVal);
-    if (!item) return;
-    item.servings = clamp(num(input.value) ?? 100, 1, 5000);
-    input.value = item.servings;
-    saveState();
-    updatePlanner();
+    if (item) input.value = item.servings;
   });
 };
 
@@ -206,5 +263,9 @@ export function initPlanner() {
   };
 
   on('state:replaced', updatePlanner);
+  on('planner:update', updatePlanner);
+  on('planner:load-meal', ({ mealKey, items, name }) => {
+    if (mealKey && items) loadMealIntoSlot(mealKey, items, name);
+  });
   updatePlanner();
 }

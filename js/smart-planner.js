@@ -8,6 +8,7 @@
    ============================================================ */
 import { $, escapeHtml, icon, makeId, toast } from './utils.js';
 import { STATE, saveState } from './state.js';
+import { replacePlannerSlots } from './planner.js';
 import { FOODS_DB } from './foods-db.js';
 import { on } from './core/bus.js';
 
@@ -325,11 +326,11 @@ const applyPlan = () => {
   const hasExisting = MEAL_ORDER.some((k) => (STATE.planner[k] || []).length > 0);
   if (hasExisting && !confirm('Replace your current planner meals with this plan?')) return;
 
+  const slots = {};
   for (const key of MEAL_ORDER) {
     const meal = lastPlan.meals[key];
     if (!meal || !meal.foods) continue;
-    STATE.planner[key] = meal.foods.map((f) => ({
-      uid: makeId(),
+    slots[key] = meal.foods.map((f) => ({
       name: f.name,
       brand: 'Smart Plan',
       calories: f.calories ? Math.round((f.calories / f.grams) * 100) : 0,
@@ -339,8 +340,7 @@ const applyPlan = () => {
       servings: f.grams
     }));
   }
-  saveState();
-  import('./planner.js').then((m) => m.updatePlanner());
+  replacePlannerSlots(slots);
   toast('Meal plan loaded into your planner!', 'success');
 };
 

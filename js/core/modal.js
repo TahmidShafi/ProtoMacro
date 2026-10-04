@@ -7,6 +7,8 @@
    - optional confirm() style API for destructive prompts
    ============================================================ */
 
+import { $, escapeHtml, escapeAttr } from '../utils.js';
+
 let openStack = [];
 
 const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -166,9 +168,3 @@ export function formModal({ title, fields, submitLabel = 'Save', wide = false })
     });
   });
 }
-
-/* Small helpers duplicated locally to avoid a circular import with utils */
-const escapeHtml = (s) =>
-  String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const escapeAttr = (s) => escapeHtml(s);
-const $ = (sel, root = document) => root.querySelector(sel);

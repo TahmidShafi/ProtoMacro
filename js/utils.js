@@ -9,6 +9,7 @@ export const $$ = (sel, root) => Array.from((root || document).querySelectorAll(
 /* HTML escaping (safe for text interpolation inside templates) */
 const ESC_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const escapeHtml = (str) => String(str).replace(/[&<>"']/g, (s) => ESC_MAP[s]);
+export const escapeAttr = (str) => escapeHtml(str);
 
 /* Numeric parsing: returns null if NaN/infinite */
 export const num = (v) => {

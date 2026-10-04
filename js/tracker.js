@@ -207,20 +207,24 @@ export function updateTracker() {
 
 export const addToTracker = (food) => {
   STATE.log.push({ ...food, uid: makeId(), servings: 100 });
-  rememberRecent(food);
+  recordRecent(food);
   saveState();
   updateTracker();
   toast(`Added "${food.name.slice(0, 36)}" to tracker`, 'success');
 };
 
-/* Track recently used foods (by stable id) for quick re-logging */
-const rememberRecent = (food) => {
-  if (!food?.id) return;
+/* Track recently used foods (by stable id) for quick re-logging.
+   Canonical recents operation: skips ephemeral USDA items, dedupes by ID,
+   orders newest-first, and retains up to 30 items. */
+export const recordRecent = (food) => {
+  if (!food?.id || food.source === 'usda') return;
   STATE.recents = [
     { id: food.id, ts: Date.now() },
     ...STATE.recents.filter((r) => r.id !== food.id)
   ].slice(0, 30);
 };
+
+export const rememberRecent = recordRecent;
 
 const bindEvents = () => {
   dom.tbody.addEventListener('click', (e) => {

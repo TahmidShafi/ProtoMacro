@@ -11,7 +11,7 @@
 import { $, escapeHtml, icon, toast, debounce, makeId, clamp, num } from './utils.js';
 import { FOODS_DB } from './foods-db.js';
 import { STATE, saveState } from './state.js';
-import { addToTracker } from './tracker.js';
+import { addToTracker, recordRecent } from './tracker.js';
 import { addToPlanner } from './planner.js';
 import { openModal, formModal } from './core/modal.js';
 import { openRecipeBuilder, recipeAsFood, addRecipeToPlanner, toggleFavoriteRecipe, deleteRecipe } from './recipes.js';
@@ -467,13 +467,6 @@ const mealSlotPicker = async (label) => {
   return values?.meal ?? null;
 };
 
-const rememberRecent = (food) => {
-  if (!food?.id || food.source === 'usda') return;
-  STATE.recents = [
-    { id: food.id, ts: Date.now() },
-    ...STATE.recents.filter((r) => r.id !== food.id)
-  ].slice(0, 30);
-};
 
 const toggleFoodFav = (food, starBtn = null) => {
   const list = STATE.favorites.foods;
@@ -620,7 +613,6 @@ const bindEvents = () => {
       const food = findFoodById(rowTrack.dataset.rowTrack);
       if (food) {
         addToTracker(food);
-        rememberRecent(food);
       }
       return;
     }
@@ -640,12 +632,11 @@ const bindEvents = () => {
       toggleFoodFav(food, btn);
     } else if (btn.dataset.action === 'track') {
       addToTracker(food);
-      rememberRecent(food);
     } else if (btn.dataset.action === 'plan') {
       const meal = await mealSlotPicker(food.name);
       if (meal) {
         addToPlanner(food, meal);
-        rememberRecent(food);
+        recordRecent(food);
       }
     } else if (btn.dataset.action === 'edit-custom') {
       customFoodModal(food);

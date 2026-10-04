@@ -8,6 +8,7 @@ import { openModal } from './core/modal.js';
 import { toast } from './utils.js';
 import { isSignedIn, openAuthModal } from './core/auth.js';
 import { retrySync } from './core/sync.js';
+import { on } from './core/bus.js';
 
 const COUNT_KEYS = [
   ['Daily goals & mode', () => 1],
@@ -66,3 +67,8 @@ export function openMigrationWizard() {
     ]
   });
 }
+
+export function initMigrationWizard() {
+  on('migration:open', openMigrationWizard);
+}
+

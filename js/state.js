@@ -11,6 +11,9 @@ import { today } from './datetime.js';
 import { normalizeState, SCHEMA_VERSION } from './core/migrate.js';
 import { getProvider } from './core/storage/index.js';
 import { emit } from './core/bus.js';
+import { makeId } from './utils.js';
+
+export { makeId };
 
 const DEFAULT_SUPPLEMENTS = [
   { id: 'creatine',   name: 'Creatine',       dose: '5g',       time: 'Morning',        calories: 0,   protein: 0 },
@@ -22,10 +25,6 @@ const DEFAULT_SUPPLEMENTS = [
   { id: 'casein',     name: 'Casein Protein', dose: '30g',      time: 'Before bed',     calories: 110, protein: 22 }
 ];
 
-/* Stable IDs — crypto.randomUUID where available, fallback otherwise */
-export const makeId = () =>
-  (globalThis.crypto?.randomUUID?.() ||
-    Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
 
 export const STATE = {
   schemaVersion: SCHEMA_VERSION,
@@ -193,3 +192,21 @@ export function recordDailySnapshot(totals, extra = {}) {
     STATE.history = STATE.history.slice(-90);
   }
 }
+
+/* Canonical weight-log mutation operation */
+export const recordWeight = (kg, { date = today(), goalWeight = null } = {}) => {
+  if (typeof kg !== 'number' || !Number.isFinite(kg) || kg < 25 || kg > 350) return false;
+  const d = date || today();
+  const idx = STATE.weightLog.findIndex((x) => x.date === d);
+  if (idx >= 0) STATE.weightLog[idx].weight = kg;
+  else STATE.weightLog.push({ date: d, weight: kg });
+  if (STATE.weightLog.length > 365) STATE.weightLog = STATE.weightLog.slice(-365);
+  STATE.weightLog.sort((a, b) => a.date.localeCompare(b.date));
+  if (typeof goalWeight === 'number' && Number.isFinite(goalWeight) && goalWeight >= 25 && goalWeight <= 350) {
+    STATE.goalWeight = goalWeight;
+  }
+  saveState();
+  emit('weight:logged', { date: d, weight: kg });
+  return true;
+};
+

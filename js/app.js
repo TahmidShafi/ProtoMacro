@@ -41,6 +41,8 @@ import { initWorkouts } from './workouts.js';
 import { initSettings, applyTheme } from './settings.js';
 import { initBackup } from './backup.js';
 import { initGrocery } from './grocery.js';
+import { initSavedMeals } from './saved-meals.js';
+import { initMigrationWizard } from './migration-wizard.js';
 
 /* Cloud (optional, env-gated — no-ops in guest mode) */
 import { initAuth, maybeShowWelcome } from './core/auth.js';
@@ -83,6 +85,7 @@ const boot = () => {
   initSearch();
   initTracker();
   initPlanner();
+  initSavedMeals();
   initGrocery();
   initWorkouts();
   initRecovery();
@@ -93,6 +96,7 @@ const boot = () => {
   initShare();
   initBackup();
   initSettings();
+  initMigrationWizard();
 
   bindSyncPill();
   initReveal();

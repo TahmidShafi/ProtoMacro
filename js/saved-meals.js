@@ -6,9 +6,8 @@
 import { escapeHtml, icon, makeId, toast } from './utils.js';
 import { STATE, saveState } from './state.js';
 import { formModal, openModal } from './core/modal.js';
-import { addToTracker, updateTracker } from './tracker.js';
-import { MEAL_KEYS, itemMacros, updatePlanner } from './planner.js';
-import { emit } from './core/bus.js';
+import { updateTracker } from './tracker.js';
+import { emit, on } from './core/bus.js';
 
 export const savedMealById = (id) => STATE.savedMeals.find((m) => m.id === id);
 
@@ -148,10 +147,12 @@ export const toggleFavoriteMeal = (id) => {
 };
 
 export const loadSavedMealToPlanner = (meal, mealKey) => {
-  for (const item of meal.items) {
-    STATE.planner[mealKey].push({ ...item, uid: makeId() });
-  }
-  saveState();
-  updatePlanner();
-  toast(`Added "${meal.name}" to ${mealKey}`, 'success');
+  if (!meal || !mealKey) return;
+  emit('planner:load-meal', { mealKey, items: meal.items || [], name: meal.name });
 };
+
+export function initSavedMeals() {
+  on('planner:save-meal', ({ mealKey }) => {
+    if (mealKey) saveMealFromSlot(mealKey);
+  });
+}
