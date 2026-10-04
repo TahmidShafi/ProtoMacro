@@ -11,7 +11,7 @@ import { $, icon, toast } from './utils.js';
 import { STATE } from './state.js';
 import { MODES } from './mode.js';
 import { today, toDateStr } from './datetime.js';
-import { getTrackerTotals } from './tracker.js';
+import { calculateLogTotals } from './core/metrics.js';
 
 /* =========================================================
    Utilities
@@ -27,7 +27,7 @@ const downloadDataUrl = (dataUrl, filename) => {
 
 const gradeDay = () => {
   const g = STATE.goals;
-  const t = getTrackerTotals();
+  const t = calculateLogTotals(STATE.log);
   const within = (val, goal, pct) => goal > 0 && Math.abs(val - goal) / goal <= pct;
   const h5 = [within(t.pro, g.protein, 0.05), within(t.car, g.carbs, 0.05), within(t.fat, g.fat, 0.05)].filter(Boolean).length;
   const h10 = [within(t.pro, g.protein, 0.10), within(t.car, g.carbs, 0.10), within(t.fat, g.fat, 0.10)].filter(Boolean).length;

@@ -6,8 +6,8 @@
 import { $, escapeHtml, icon, makeId, clamp, num, toast } from './utils.js';
 import { STATE, saveState, recordDailySnapshot } from './state.js';
 import { MODES } from './mode.js';
-import { on } from './core/bus.js';
-import { computeDailyScore } from './core/metrics.js';
+import { on, emit } from './core/bus.js';
+import { computeDailyScore, calculateLogTotals } from './core/metrics.js';
 import { shareScorecard } from './share.js';
 
 import { today } from './datetime.js';
@@ -23,17 +23,7 @@ const RINGS = [
 
 let dom = null;
 
-export const getTrackerTotals = () => {
-  let cal = 0, pro = 0, car = 0, fat = 0;
-  for (const item of STATE.log) {
-    const mult = (item.servings || 100) / 100;
-    cal += item.calories * mult;
-    pro += item.protein  * mult;
-    car += item.carbs    * mult;
-    fat += item.fat      * mult;
-  }
-  return { cal, pro, car, fat };
-};
+export const getTrackerTotals = () => calculateLogTotals(STATE.log);
 
 /* Pick calorie ring color based on current mode + ratio.
    - CUT: red when over

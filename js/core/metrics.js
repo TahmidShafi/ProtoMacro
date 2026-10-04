@@ -10,6 +10,25 @@
 import { toDateStr } from '../datetime.js';
 
 /* ------------------------------------------------------------
+   NUTRITION LOG TOTALS (pure calculation)
+   Sums calories, protein, carbs, and fat across food items.
+   Items scale with (servings / 100).
+   ------------------------------------------------------------ */
+
+export const calculateLogTotals = (items = []) => {
+  let cal = 0, pro = 0, car = 0, fat = 0;
+  for (const item of items || []) {
+    if (!item) continue;
+    const mult = (item.servings || 100) / 100;
+    cal += (item.calories || 0) * mult;
+    pro += (item.protein  || 0) * mult;
+    car += (item.carbs    || 0) * mult;
+    fat += (item.fat      || 0) * mult;
+  }
+  return { cal, pro, car, fat };
+};
+
+/* ------------------------------------------------------------
    DAILY COMPLETION SCORE (0–100)
    Transparent, tolerance-based. Factors:
      - Calories within ±10% of goal ......... 40

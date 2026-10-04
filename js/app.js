@@ -40,6 +40,7 @@ import { initHabits } from './habits.js';
 import { initWorkouts } from './workouts.js';
 import { initSettings, applyTheme } from './settings.js';
 import { initBackup } from './backup.js';
+import { initGrocery } from './grocery.js';
 
 /* Cloud (optional, env-gated — no-ops in guest mode) */
 import { initAuth, maybeShowWelcome } from './core/auth.js';
@@ -82,6 +83,7 @@ const boot = () => {
   initSearch();
   initTracker();
   initPlanner();
+  initGrocery();
   initWorkouts();
   initRecovery();
   initHabits();

@@ -1,12 +1,13 @@
 /* ============================================================
    ProtoMacro — core/sync.js
    Guest/account sync strategy (simple + reliable):
-   - Local writes are always the source of truth (never lost).
-   - In account mode, every state:persisted pushes the doc up
-     (section-level LWW on updated_at).
-   - On sign-in, remote is pulled; conflict policy: per-item
-     union merge (history/weightLog by date, workouts/habits/
-     recipes/meals by id), today's active log stays local.
+   - Local writes are always the primary source of truth (never lost).
+   - In account mode, every state:persisted pushes the full state document.
+   - On sign-in, remote is pulled; conflict policy: local-preferential
+     union merge (history/weightLog/sleepLog by date, workouts/recipes/
+     meals/customFoods by id), today's active day data stays local.
+     Habit logs and setbacks are merged across local and remote.
+     Remote metadata/goals/settings are accepted on pull.
      A local backup is snapshotted before any pull overwrites.
    - Offline pushes queue automatically (retry on online).
    ============================================================ */
@@ -33,42 +34,53 @@ const snapshotLocalBackup = () => {
   } catch { /* best effort */ }
 };
 
-const unionMerge = (current, incoming) => {
+export const unionMerge = (current, incoming) => {
+  const cur = current || {};
+  const inc = incoming || {};
+
   const byDate = (key) => {
     const m = new Map();
-    for (const x of current[key] || []) m.set(x.date, x);
-    for (const x of incoming[key] || []) if (!m.has(x.date)) m.set(x.date, x);
+    for (const x of cur[key] || []) if (x && x.date) m.set(x.date, x);
+    for (const x of inc[key] || []) if (x && x.date && !m.has(x.date)) m.set(x.date, x);
     return [...m.values()].sort((a, b) => a.date.localeCompare(b.date));
   };
+
   const byId = (key) => {
     const m = new Map();
-    for (const x of current[key] || []) m.set(x.id, x);
-    for (const x of incoming[key] || []) if (!m.has(x.id)) m.set(x.id, x);
+    for (const x of cur[key] || []) if (x && x.id) m.set(x.id, x);
+    for (const x of inc[key] || []) if (x && x.id && !m.has(x.id)) m.set(x.id, x);
     return [...m.values()];
   };
+
   const mergeHabits = () => {
-    const m = new Map(byId('habits').map((h) => [h.id, h]));
-    for (const h of current.habits || []) {
-      const cur = m.get(h.id);
-      if (cur) {
-        cur.log = { ...h.log, ...cur.log };
-        cur.setbacks = [...(cur.setbacks || []), ...(h.setbacks || [])]
+    const m = new Map(
+      byId('habits').map((h) => [
+        h.id,
+        { ...h, log: { ...(h.log || {}) }, setbacks: [...(h.setbacks || [])] }
+      ])
+    );
+    for (const h of inc.habits || []) {
+      if (!h || !h.id) continue;
+      const existing = m.get(h.id);
+      if (existing) {
+        existing.log = { ...h.log, ...existing.log };
+        existing.setbacks = [...(existing.setbacks || []), ...(h.setbacks || [])]
           .filter((s, i, arr) => arr.findIndex((x) => x.id === s.id) === i);
       } else {
-        m.set(h.id, h);
+        m.set(h.id, { ...h, log: { ...(h.log || {}) }, setbacks: [...(h.setbacks || [])] });
       }
     }
     return [...m.values()];
   };
 
   return {
-    ...incoming,
-    log: current.log,                     /* active day: local wins */
-    planner: current.planner,
-    water: current.water,
-    supplements: current.supplements,
-    favorites: current.favorites,
-    recents: current.recents,
+    ...inc,
+    log: cur.log,                         /* active day: local wins */
+    planner: cur.planner,
+    water: cur.water,
+    supplements: cur.supplements,
+    favorites: cur.favorites,
+    recents: cur.recents,
     history: byDate('history').slice(-90),
     weightLog: byDate('weightLog').slice(-365),
     sleepLog: byDate('sleepLog').slice(-365),

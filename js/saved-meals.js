@@ -5,7 +5,7 @@
    ============================================================ */
 import { escapeHtml, icon, makeId, toast } from './utils.js';
 import { STATE, saveState } from './state.js';
-import { formModal } from './core/modal.js';
+import { formModal, openModal } from './core/modal.js';
 import { addToTracker, updateTracker } from './tracker.js';
 import { MEAL_KEYS, itemMacros, updatePlanner } from './planner.js';
 import { emit } from './core/bus.js';

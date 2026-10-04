@@ -8,13 +8,19 @@ import { $, escapeHtml, icon, toast } from './utils.js';
 import { STATE } from './state.js';
 import { openModal } from './core/modal.js';
 import { itemMacros, MEAL_KEYS } from './planner.js';
+import { on } from './core/bus.js';
 
 const checked = new Set();
+let activeModal = null;
+let activeWrap = null;
+let activeItems = [];
+let renderGroceryContent = null;
 
-const aggregate = () => {
+export const aggregateGroceryItems = (planner = STATE.planner) => {
   const byName = new Map();
   for (const key of MEAL_KEYS) {
-    for (const item of STATE.planner[key] || []) {
+    for (const item of (planner && planner[key]) || []) {
+      if (!item || !item.name) continue;
       const grams = item.servings ?? 100;
       const name = item.name.replace(/\s*\(\d+g\)\s*$/, '').trim();
       const existing = byName.get(name);
@@ -29,51 +35,62 @@ const aggregate = () => {
   return [...byName.values()].sort((a, b) => b.grams - a.grams);
 };
 
-const fmtGrams = (g) => (g >= 1000 ? `${(g / 1000).toFixed(1)} kg` : `${Math.round(g)} g`);
+export const formatGrams = (g) => (g >= 1000 ? `${(g / 1000).toFixed(1)} kg` : `${Math.round(g)} g`);
 
 export function openGroceryList() {
-  const items = aggregate();
-  if (!items.length) {
+  activeItems = aggregateGroceryItems();
+  if (!activeItems.length) {
     toast('Your meal plan is empty — add foods first.', 'info');
     return;
   }
 
-  const wrap = document.createElement('div');
-  const render = () => {
-    wrap.innerHTML = `
+  activeWrap = document.createElement('div');
+  renderGroceryContent = () => {
+    activeItems = aggregateGroceryItems();
+    if (!activeItems.length) {
+      activeWrap.innerHTML = '<p class="entity-sub" style="padding:16px 0; text-align:center;">Your meal plan is empty — add foods in the planner.</p>';
+      return;
+    }
+    activeWrap.innerHTML = `
       <div class="grocery-list" role="list">
-        ${items.map((it, i) => `
-          <label class="grocery-item${checked.has(i) ? ' checked' : ''}" role="listitem">
-            <input type="checkbox" data-check="${i}" ${checked.has(i) ? 'checked' : ''} aria-label="Bought ${escapeHtml(it.name)}" />
+        ${activeItems.map((it) => `
+          <label class="grocery-item${checked.has(it.name) ? ' checked' : ''}" role="listitem">
+            <input type="checkbox" data-item="${escapeHtml(it.name)}" ${checked.has(it.name) ? 'checked' : ''} aria-label="Bought ${escapeHtml(it.name)}" />
             <span class="grocery-name">${escapeHtml(it.name)}</span>
-            <span class="grocery-amt">~${fmtGrams(it.grams)}</span>
+            <span class="grocery-amt">~${formatGrams(it.grams)}</span>
           </label>
         `).join('')}
       </div>
       <p class="disclaimer">Totals are summed from your current plan's gram amounts — round to sensible package sizes when you shop.</p>
     `;
   };
-  render();
+  renderGroceryContent();
 
-  wrap.addEventListener('change', (e) => {
-    const i = parseInt(e.target.dataset.check, 10);
-    if (Number.isFinite(i)) {
-      if (e.target.checked) checked.add(i);
-      else checked.delete(i);
-      render();
+  activeWrap.addEventListener('change', (e) => {
+    const itemName = e.target.dataset.item;
+    if (itemName) {
+      if (e.target.checked) checked.add(itemName);
+      else checked.delete(itemName);
+      renderGroceryContent();
     }
   });
 
-  openModal({
+  activeModal = openModal({
     title: '🛒 Grocery list',
-    body: wrap,
+    body: activeWrap,
     wide: true,
+    onClose: () => {
+      activeModal = null;
+      activeWrap = null;
+      renderGroceryContent = null;
+    },
     actions: [
       {
         label: 'Copy',
         class: 'btn btn-ghost',
         onClick: async () => {
-          const text = items.map((it) => `• ${it.name} — ~${fmtGrams(it.grams)}`).join('\n');
+          if (!activeItems.length) return;
+          const text = activeItems.map((it) => `• ${it.name} — ~${formatGrams(it.grams)}`).join('\n');
           try {
             await navigator.clipboard.writeText(`ProtoMacro grocery list:\n\n${text}`);
             toast('Grocery list copied', 'success');
@@ -86,15 +103,30 @@ export function openGroceryList() {
         label: 'Print',
         class: 'btn btn-primary',
         onClick: () => {
+          if (!activeItems.length) return;
           const w = window.open('', '_blank', 'width=480,height=640');
           if (!w) return toast('Pop-up blocked', 'error');
-          w.document.write(`<title>Grocery List — ProtoMacro</title><pre style="font:15px/1.8 sans-serif">${items
-            .map((it) => `☐ ${it.name} — ~${fmtGrams(it.grams)}`)
-            .join('\n')}</pre>`);
+
+          w.document.title = 'Grocery List — ProtoMacro';
+          const pre = w.document.createElement('pre');
+          pre.style.cssText = 'font:15px/1.8 sans-serif; white-space:pre-wrap; margin:20px;';
+          pre.textContent = activeItems
+            .map((it) => `☐ ${it.name} — ~${formatGrams(it.grams)}`)
+            .join('\n');
+          w.document.body.appendChild(pre);
           w.document.close();
           w.print();
         }
       }
     ]
+  });
+}
+
+export function initGrocery() {
+  $('#groceryBtn')?.addEventListener('click', openGroceryList);
+  on('grocery:update', () => {
+    if (activeModal && activeWrap && renderGroceryContent) {
+      renderGroceryContent();
+    }
   });
 }

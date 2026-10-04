@@ -246,12 +246,12 @@ const renderFavorites = () => {
       ${recipes.map((r) => rowHtml({
         name: r.name, badge: '<span class="source-chip recipe">Recipe</span>',
         sub: `${r.perServing.calories} kcal/serving · ${r.perServing.protein}g P`,
-        actions: `<button class="btn btn-primary btn-sm" data-row-recipe="${r.id}">+ Log</button>`
+        actions: `<button class="btn btn-primary btn-sm" data-row-recipe="${escapeHtml(r.id)}">+ Log</button>`
       })).join('')}
       ${meals.map((m) => rowHtml({
         name: m.name, badge: '<span class="source-chip">Meal</span>',
         sub: `${m.items.length} items`,
-        actions: `<button class="btn btn-primary btn-sm" data-row-meal="${m.id}">+ Log</button>`
+        actions: `<button class="btn btn-primary btn-sm" data-row-meal="${escapeHtml(m.id)}">+ Log</button>`
       })).join('')}
     </div>
   `;
@@ -288,10 +288,10 @@ const renderRecipes = () => {
         name: r.name, badge: '<span class="source-chip recipe">Recipe</span>',
         sub: `${r.perServing.calories} kcal · ${r.perServing.protein}g P · ${r.items.length} ingredients`,
         actions: `
-          <button class="icon-btn${fav ? ' active' : ''}" data-recipe-fav="${r.id}" aria-label="Favorite">${icon('star', 14, 2.2)}</button>
-          <button class="btn btn-ghost btn-sm" data-recipe-edit="${r.id}">Edit</button>
-          <button class="btn btn-primary btn-sm" data-row-recipe="${r.id}">+ Log</button>
-          <button class="icon-btn danger" data-recipe-del="${r.id}" aria-label="Delete recipe">${icon('trash', 13)}</button>`
+          <button class="icon-btn${fav ? ' active' : ''}" data-recipe-fav="${escapeHtml(r.id)}" aria-label="Favorite">${icon('star', 14, 2.2)}</button>
+          <button class="btn btn-ghost btn-sm" data-recipe-edit="${escapeHtml(r.id)}">Edit</button>
+          <button class="btn btn-primary btn-sm" data-row-recipe="${escapeHtml(r.id)}">+ Log</button>
+          <button class="icon-btn danger" data-recipe-del="${escapeHtml(r.id)}" aria-label="Delete recipe">${icon('trash', 13)}</button>`
       });
     }).join('')}
   </div>`;
@@ -309,10 +309,10 @@ const renderSavedMeals = () => {
         name: m.name, badge: '<span class="source-chip">Saved meal</span>',
         sub: `${m.items.length} items`,
         actions: `
-          <button class="icon-btn${fav ? ' active' : ''}" data-meal-fav="${m.id}" aria-label="Favorite">${icon('star', 14, 2.2)}</button>
-          <button class="btn btn-ghost btn-sm" data-meal-edit="${m.id}">Edit</button>
-          <button class="btn btn-primary btn-sm" data-row-meal="${m.id}">+ Log</button>
-          <button class="icon-btn danger" data-meal-del="${m.id}" aria-label="Delete meal">${icon('trash', 13)}</button>`
+          <button class="icon-btn${fav ? ' active' : ''}" data-meal-fav="${escapeHtml(m.id)}" aria-label="Favorite">${icon('star', 14, 2.2)}</button>
+          <button class="btn btn-ghost btn-sm" data-meal-edit="${escapeHtml(m.id)}">Edit</button>
+          <button class="btn btn-primary btn-sm" data-row-meal="${escapeHtml(m.id)}">+ Log</button>
+          <button class="icon-btn danger" data-meal-del="${escapeHtml(m.id)}" aria-label="Delete meal">${icon('trash', 13)}</button>`
       });
     }).join('')}
   </div>`;

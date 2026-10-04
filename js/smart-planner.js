@@ -362,14 +362,6 @@ const renderPrefs = () => {
     <button type="button" class="pref-chip${prefs.has(p.key) ? ' active' : ''}" data-pref="${p.key}"
       aria-pressed="${prefs.has(p.key)}">${p.label}</button>
   `).join('');
-  host.addEventListener('click', (e) => {
-    const chip = e.target.closest('[data-pref]');
-    if (!chip) return;
-    const key = chip.dataset.pref;
-    if (prefs.has(key)) prefs.delete(key);
-    else prefs.add(key);
-    renderPrefs();
-  });
 };
 
 export function initAiPlanner() {
@@ -378,5 +370,16 @@ export function initAiPlanner() {
   if (!btn || !result) return;
   dom = { btn, result };
   renderPrefs();
+
+  const host = $('#plannerPrefs');
+  host?.addEventListener('click', (e) => {
+    const chip = e.target.closest('[data-pref]');
+    if (!chip) return;
+    const key = chip.dataset.pref;
+    if (prefs.has(key)) prefs.delete(key);
+    else prefs.add(key);
+    renderPrefs();
+  });
+
   btn.addEventListener('click', run);
 }
