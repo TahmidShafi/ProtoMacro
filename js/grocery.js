@@ -124,6 +124,7 @@ export function openGroceryList() {
 
 export function initGrocery() {
   $('#groceryBtn')?.addEventListener('click', openGroceryList);
+  on('grocery:open', openGroceryList);
   on('grocery:update', () => {
     if (activeModal && activeWrap && renderGroceryContent) {
       renderGroceryContent();

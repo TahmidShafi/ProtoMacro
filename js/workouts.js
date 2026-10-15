@@ -22,12 +22,25 @@ const COMMON_EXERCISES = [
   'Cable Row', 'Face Pull', 'Hip Thrust', 'Calf Raise'
 ];
 
-const COLORS = {
-  grid: 'rgba(255,255,255,0.06)',
-  text: '#8A9691',
-  primary: '#00C853',
-  info: '#4FC3F7',
-  warning: '#FFB648'
+let COLORS = {
+  grid: 'rgba(40, 54, 75, 0.45)',
+  text: '#8593A9',
+  primary: '#62E6B5',
+  primaryBg: 'rgba(98, 230, 181, 0.14)',
+  info: '#79A9FF',
+  warning: '#F4C66A',
+  title: '#F3F6FC'
+};
+
+const updateWorkoutPalette = () => {
+  const isLight = document.documentElement.dataset.theme === 'light';
+  COLORS.grid = isLight ? 'rgba(220, 228, 238, 0.75)' : 'rgba(40, 54, 75, 0.45)';
+  COLORS.text = isLight ? '#69788C' : '#8593A9';
+  COLORS.primary = isLight ? '#087F68' : '#62E6B5';
+  COLORS.primaryBg = isLight ? 'rgba(8, 127, 104, 0.12)' : 'rgba(98, 230, 181, 0.14)';
+  COLORS.info = isLight ? '#315FC5' : '#79A9FF';
+  COLORS.warning = isLight ? '#B57400' : '#F4C66A';
+  COLORS.title = isLight ? '#172033' : '#F3F6FC';
 };
 
 /* ---------------- form / sets ---------------- */
@@ -112,6 +125,7 @@ const ensureChart = (id, ctx, config) => {
 };
 
 const renderCharts = () => {
+  updateWorkoutPalette();
   const e1 = e1rmTrend();
   if (dom.chartE1rm) {
     ensureChart('e1rm', dom.chartE1rm, {
@@ -120,13 +134,13 @@ const renderCharts = () => {
         labels: e1.map(([d]) => d.slice(5)),
         datasets: [{
           label: 'Best e1RM (kg)', data: e1.map(([, v]) => +v.toFixed(1)),
-          borderColor: COLORS.primary, backgroundColor: 'rgba(0,200,83,0.12)',
+          borderColor: COLORS.primary, backgroundColor: COLORS.primaryBg,
           fill: true, tension: 0.35, pointRadius: 3
         }]
       },
       options: {
         responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false }, title: { display: true, text: 'Estimated 1RM trend', color: '#F1F5F2' } },
+        plugins: { legend: { display: false }, title: { display: true, text: 'Estimated 1RM trend', color: COLORS.title } },
         scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: COLORS.grid } } }
       }
     });
@@ -145,7 +159,7 @@ const renderCharts = () => {
       },
       options: {
         responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false }, title: { display: true, text: 'Training volume by week', color: '#F1F5F2' } },
+        plugins: { legend: { display: false }, title: { display: true, text: 'Training volume by week', color: COLORS.title } },
         scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: COLORS.grid } } }
       }
     });
@@ -246,6 +260,12 @@ export function initWorkouts() {
   });
 
   on('state:replaced', renderAll);
+  on('theme:applied', renderAll);
+  on('nav:view-changed', ({ view }) => {
+    if (view === 'workouts') {
+      setTimeout(() => renderAll(), 40);
+    }
+  });
   renderSetsPreview();
   renderAll();
 }

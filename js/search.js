@@ -659,6 +659,18 @@ const bindEvents = () => {
   on('food-data:update', () => {
     if (activeTab !== 'results') renderTab();
   });
+
+  on('search:tab', ({ tab }) => {
+    if (!dom?.tabs) return;
+    activeTab = tab;
+    dom.tabs.querySelectorAll('.search-tab').forEach((t) => t.classList.toggle('active', t.dataset.tab === tab));
+    if (activeTab === 'results') {
+      if (dom.input.value.trim()) runSearch(dom.input.value.trim());
+      else dom.results.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-title">Start typing to find foods</div><div>Try: <em>chicken breast, oats, banana, dal</em></div></div>';
+    } else {
+      renderTab();
+    }
+  });
 };
 
 export function initSearch() {

@@ -21,7 +21,7 @@ export const applyTheme = () => {
   const effective = theme === 'system' ? (systemDark() ? 'dark' : 'light') : theme;
   document.documentElement.dataset.theme = effective;
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.content = effective === 'dark' ? '#0A0E0C' : '#F4F7F5';
+  if (meta) meta.content = effective === 'dark' ? '#0B1020' : '#F4F7FB';
 };
 
 const setTheme = (theme) => {
@@ -29,6 +29,7 @@ const setTheme = (theme) => {
   saveState();
   applyTheme();
   renderSegs();
+  import('./core/bus.js').then(({ emit }) => emit('theme:applied', { theme }));
 };
 
 /* ---------------- units ---------------- */
@@ -117,4 +118,8 @@ export function initSettings() {
 
   renderSegs();
   on('state:replaced', () => { renderSegs(); applyTheme(); });
+  on('theme:toggle', () => {
+    const current = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    setTheme(current);
+  });
 }

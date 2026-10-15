@@ -5,49 +5,222 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ProtoMacro — Fuel Your Gains. Track Your Nutrition.</title>
   <meta name="description" content="ProtoMacro is a private, local-first nutrition and fitness platform: BMI, TDEE, macro tracking, food search, meal planner, habits, workouts and progress analytics — all on your device." />
-  <meta name="theme-color" content="#0A0E0C" />
+  <meta name="theme-color" content="#0B1020" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%AA%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <div class="nav-inner">
-      <a class="logo" href="#today">
+<!-- APPLICATION SHELL -->
+<div class="app-shell" id="appShell">
+  <!-- Mobile drawer backdrop -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <!-- Primary Sidebar Navigation -->
+  <aside class="app-sidebar" id="appSidebar" aria-label="Primary Navigation">
+    <div class="sidebar-header">
+      <a class="sidebar-logo" href="#today" aria-label="ProtoMacro Today">
         <div class="logo-icon">&#128170;</div>
         <div class="logo-text">Proto<span>Macro</span></div>
       </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#today"       class="nav-link active">Today</a></li>
-        <li><a href="#bmi"         class="nav-link">Goals</a></li>
-        <li><a href="#search"      class="nav-link">Foods</a></li>
-        <li><a href="#tracker"     class="nav-link">Tracker</a></li>
-        <li><a href="#planner"     class="nav-link">Plan</a></li>
-        <li><a href="#workouts"    class="nav-link">Train</a></li>
-        <li><a href="#recovery"    class="nav-link">Recover</a></li>
-        <li><a href="#reset"       class="nav-link">Reset</a></li>
-        <li><a href="#progress"    class="nav-link">Progress</a></li>
-        <li><a href="#calculators" class="nav-link">Tools</a></li>
-        <li><a href="#settings"    class="nav-link">Settings</a></li>
-      </ul>
-      <div class="nav-right">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar" title="Collapse sidebar">
+        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav">
+      <!-- Group A: Overview -->
+      <div class="nav-group">
+        <div class="nav-group-title">Overview</div>
+        <ul class="nav-group-list">
+          <li>
+            <a href="#today" class="sidebar-link active" data-nav="today" title="Today Dashboard">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+              </span>
+              <span class="sidebar-label">Today</span>
+            </a>
+          </li>
+          <li>
+            <a href="#progress" class="sidebar-link" data-nav="progress" title="Progress & Analytics">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </span>
+              <span class="sidebar-label">Progress</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group B: Nutrition -->
+      <div class="nav-group">
+        <div class="nav-group-title">Nutrition</div>
+        <ul class="nav-group-list">
+          <li>
+            <a href="#tracker" class="sidebar-link" data-nav="tracker" title="Daily Food Tracker">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </span>
+              <span class="sidebar-label">Food Tracker</span>
+            </a>
+          </li>
+          <li>
+            <a href="#search" class="sidebar-link" data-nav="search" title="Food Search & Database">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </span>
+              <span class="sidebar-label">Food Search</span>
+            </a>
+          </li>
+          <li>
+            <a href="#planner" class="sidebar-link" data-nav="planner" title="Meal Planner">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </span>
+              <span class="sidebar-label">Meal Planner</span>
+            </a>
+          </li>
+          <li>
+            <a href="#recipes" class="sidebar-link" data-nav="recipes" title="Custom Recipes">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              </span>
+              <span class="sidebar-label">Recipes</span>
+            </a>
+          </li>
+          <li>
+            <a href="#saved-meals" class="sidebar-link" data-nav="saved-meals" title="Saved Meals">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </span>
+              <span class="sidebar-label">Saved Meals</span>
+            </a>
+          </li>
+          <li>
+            <a href="#grocery" class="sidebar-link" data-nav="grocery" title="Grocery Shopping List">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              </span>
+              <span class="sidebar-label">Grocery List</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group C: Fitness -->
+      <div class="nav-group">
+        <div class="nav-group-title">Fitness</div>
+        <ul class="nav-group-list">
+          <li>
+            <a href="#workouts" class="sidebar-link" data-nav="workouts" title="Workout Logging & Personal Records">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16M18 4v16M2 8h4M18 8h4M2 16h4M18 16h4M6 12h12"></path></svg>
+              </span>
+              <span class="sidebar-label">Workouts</span>
+            </a>
+          </li>
+          <li>
+            <a href="#recovery" class="sidebar-link" data-nav="recovery" title="Recovery (Water, Supplements, Sleep)">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+              </span>
+              <span class="sidebar-label">Recovery</span>
+            </a>
+          </li>
+          <li>
+            <a href="#calculators" class="sidebar-link" data-nav="calculators" title="Lifter Calculators">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path></svg>
+              </span>
+              <span class="sidebar-label">Calculators</span>
+            </a>
+          </li>
+          <li>
+            <a href="#bmi" class="sidebar-link" data-nav="bmi" title="BMI & TDEE Goals">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+              </span>
+              <span class="sidebar-label">Goals & TDEE</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group D: Personal Growth -->
+      <div class="nav-group">
+        <div class="nav-group-title">Personal Growth</div>
+        <ul class="nav-group-list">
+          <li>
+            <a href="#reset" class="sidebar-link" data-nav="reset" title="Habit Reset Tracker">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+              </span>
+              <span class="sidebar-label">Habit Reset</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group E: Preferences -->
+      <div class="nav-group">
+        <div class="nav-group-title">Preferences</div>
+        <ul class="nav-group-list">
+          <li>
+            <a href="#settings" class="sidebar-link" data-nav="settings" title="Settings & Units">
+              <span class="sidebar-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              </span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="theme-quick-btn" id="themeQuickBtn" title="Toggle Theme" aria-label="Toggle Theme">
+        <span class="theme-icon">&#9681;</span>
+        <span class="sidebar-label theme-label">Theme</span>
+      </button>
+      <div class="sidebar-badge">v2.0</div>
+    </div>
+  </aside>
+
+  <!-- APP BODY (Topbar + Main Views) -->
+  <div class="app-body">
+    <header class="app-topbar" id="appTopbar">
+      <div class="topbar-left">
+        <button class="hamburger-btn" id="hamburger" aria-label="Open Navigation Drawer" aria-expanded="false" aria-controls="appSidebar">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-title-wrap">
+          <span class="topbar-brand">ProtoMacro</span>
+          <span class="topbar-sep">/</span>
+          <h1 class="topbar-title" id="pageTitle">Today</h1>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <a href="#search" class="topbar-action-btn" title="Quick Food Search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="action-btn-label">Search Foods</span>
+        </a>
+
         <span class="sync-pill" id="syncPill" title="Data storage status">
           <span class="sync-dot"></span><span class="sync-label">Saved locally</span>
         </span>
-        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-          <span></span><span></span><span></span>
+
+        <button class="topbar-icon-btn" id="topbarThemeToggle" title="Toggle theme" aria-label="Toggle theme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </button>
       </div>
-    </div>
-  </div>
-</nav>
+    </header>
 
-<main>
-
+    <main class="app-main" id="appMain">
 <!-- TODAY DASHBOARD -->
-<section class="hero" id="today">
+<section class="hero app-view active" id="today">
   <div class="container">
     <div class="section-header" style="margin-bottom:24px;">
       <div class="section-eyebrow">Your day at a glance</div>
@@ -97,7 +270,7 @@
 </section>
 
 <!-- GOALS: BMI CALCULATOR -->
-<section id="bmi">
+<section class="app-view" id="bmi">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 01</div>
@@ -232,7 +405,7 @@
 </section>
 
 <!-- FOOD SEARCH -->
-<section id="search">
+<section class="app-view" id="search">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 02</div>
@@ -269,7 +442,7 @@
 </section>
 
 <!-- MACRO TRACKER -->
-<section id="tracker">
+<section class="app-view" id="tracker">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 03</div>
@@ -393,7 +566,7 @@
 </section>
 
 <!-- MEAL PLANNER -->
-<section id="planner">
+<section class="app-view" id="planner">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 04</div>
@@ -453,7 +626,7 @@
 </section>
 
 <!-- WORKOUTS -->
-<section id="workouts">
+<section class="app-view" id="workouts">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 05</div>
@@ -505,7 +678,7 @@
 </section>
 
 <!-- RECOVERY TRACKER -->
-<section id="recovery">
+<section class="app-view" id="recovery">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 06</div>
@@ -599,7 +772,7 @@
 </section>
 
 <!-- RESET: HABIT TRACKER -->
-<section id="reset">
+<section class="app-view" id="reset">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 07</div>
@@ -620,7 +793,7 @@
 </section>
 
 <!-- CALCULATORS -->
-<section id="calculators">
+<section class="app-view" id="calculators">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 08</div>
@@ -758,7 +931,7 @@
 </section>
 
 <!-- PROGRESS -->
-<section id="progress">
+<section class="app-view" id="progress">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Step 09</div>
@@ -825,7 +998,7 @@
 </section>
 
 <!-- SETTINGS -->
-<section id="settings">
+<section class="app-view" id="settings">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">Final step</div>
@@ -892,7 +1065,6 @@
   </div>
 </section>
 
-</main>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -937,6 +1109,13 @@
     </div>
   </div>
 </footer>
+    </main>
+  </div>
+</div>
+
+<!-- Backward compatibility anchor for legacy references -->
+<div id="navbar" style="display:none;" aria-hidden="true"><div id="navLinks"></div></div>
+
 
 <!-- TOASTS -->
 <div class="toast-container" id="toastContainer" aria-live="polite"></div>

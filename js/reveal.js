@@ -5,6 +5,8 @@
    no-JS users and reduced-motion users see everything instantly.
    ============================================================ */
 
+import { on } from './core/bus.js';
+
 const REDUCED = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
 export function initReveal() {
@@ -34,8 +36,15 @@ export function initReveal() {
 
   targets.forEach((el) => {
     el.setAttribute('data-reveal', '');
-    /* elements already in the first viewport reveal immediately
-       (observer fires on observe) — no artificial delay */
     io.observe(el);
+  });
+
+  on('nav:view-changed', ({ view }) => {
+    const activeSection = document.getElementById(view);
+    if (activeSection) {
+      activeSection.querySelectorAll('[data-reveal]').forEach((el) => {
+        el.classList.add('in-view');
+      });
+    }
   });
 }

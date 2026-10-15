@@ -18,27 +18,41 @@ import { initCalendar } from './calendar.js';
 import { on } from './core/bus.js';
 
 const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const COLORS = {
-  protein: '#FF6B9D',
-  carbs:   '#FFB648',
-  fat:     '#4FC3F7',
-  grid:    'rgba(255,255,255,0.06)',
-  text:    '#8A9691',
-  good:    '#00C853'
+let COLORS = {
+  protein: '#FF7EAE',
+  carbs:   '#F4C66A',
+  fat:     '#62D2FF',
+  grid:    'rgba(40, 54, 75, 0.45)',
+  text:    '#8593A9',
+  good:    '#62E6B5'
+};
+
+const updateChartPalette = () => {
+  const isLight = document.documentElement.dataset.theme === 'light';
+  COLORS.protein = isLight ? '#D8326E' : '#FF7EAE';
+  COLORS.carbs   = isLight ? '#B57400' : '#F4C66A';
+  COLORS.fat     = isLight ? '#0082BD' : '#62D2FF';
+  COLORS.grid    = isLight ? 'rgba(220, 228, 238, 0.75)' : 'rgba(40, 54, 75, 0.45)';
+  COLORS.text    = isLight ? '#69788C' : '#8593A9';
+  COLORS.good    = isLight ? '#087F68' : '#62E6B5';
 };
 
 const charts = {}; /* active Chart.js instances, indexed by id */
 
 const applyChartDefaults = () => {
+  updateChartPalette();
+  const isLight = document.documentElement.dataset.theme === 'light';
   Chart.defaults.color = COLORS.text;
   Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
   Chart.defaults.borderColor = COLORS.grid;
   Chart.defaults.plugins.legend.labels.color = COLORS.text;
   Chart.defaults.plugins.legend.labels.boxWidth = 12;
   Chart.defaults.plugins.legend.labels.usePointStyle = true;
-  Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(10, 14, 12, 0.92)';
-  Chart.defaults.plugins.tooltip.titleColor = '#F1F5F2';
-  Chart.defaults.plugins.tooltip.bodyColor = '#C9D4CE';
+  Chart.defaults.plugins.tooltip.backgroundColor = isLight ? 'rgba(255, 255, 255, 0.96)' : 'rgba(19, 29, 48, 0.95)';
+  Chart.defaults.plugins.tooltip.titleColor = isLight ? '#172033' : '#F3F6FC';
+  Chart.defaults.plugins.tooltip.bodyColor = isLight ? '#4F5E73' : '#B2BED0';
+  Chart.defaults.plugins.tooltip.borderColor = isLight ? '#DCE4EE' : '#28364B';
+  Chart.defaults.plugins.tooltip.borderWidth = 1;
   Chart.defaults.plugins.tooltip.padding = 10;
   Chart.defaults.plugins.tooltip.cornerRadius = 8;
   Chart.defaults.plugins.tooltip.displayColors = false;
@@ -449,4 +463,10 @@ export function initProgress() {
 
   on('state:replaced', renderProgress);
   on('weight:logged', renderProgress);
+  on('theme:applied', renderProgress);
+  on('nav:view-changed', ({ view }) => {
+    if (view === 'progress') {
+      setTimeout(() => renderProgress(), 40);
+    }
+  });
 }

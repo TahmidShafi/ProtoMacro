@@ -195,14 +195,13 @@ const bindQuick = () => {
     if (!btn) return;
     const action = btn.dataset.quick;
     if (action === 'food' || action === 'plan') {
-      document.getElementById(action === 'food' ? 'search' : 'planner')
-        ?.scrollIntoView({ behavior: 'smooth' });
+      window.location.hash = action === 'food' ? '#search' : '#planner';
     } else if (action === 'water') {
-      document.getElementById('recovery')?.scrollIntoView({ behavior: 'smooth' });
+      window.location.hash = '#recovery';
     } else if (action === 'weight') {
       quickWeight();
     } else if (action === 'workout') {
-      document.getElementById('workouts')?.scrollIntoView({ behavior: 'smooth' });
+      window.location.hash = '#workouts';
     }
   });
 
