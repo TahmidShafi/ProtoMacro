@@ -5,13 +5,13 @@
    Inter font + styles are bundled locally (no CDN, offline OK).
    ============================================================ */
 
-/* Fonts (bundled locally via @fontsource) */
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/inter/800.css';
-import '@fontsource/inter/900.css';
+/* Fonts (bundled locally via @fontsource — Latin subset only) */
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/inter/latin-700.css';
+import '@fontsource/inter/latin-800.css';
+import '@fontsource/inter/latin-900.css';
 
 /* Styles */
 import '../css/styles.css';
