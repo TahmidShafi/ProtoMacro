@@ -1664,11 +1664,9 @@ section { padding: var(--section-pad) 0; position: relative; }
    ============================================================ */
 .calc-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 22px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  -webkit-overflow-scrolling: touch;
 }
 .calc-tab {
   display: inline-flex;
