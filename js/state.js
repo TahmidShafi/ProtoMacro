@@ -11,7 +11,7 @@ import { today } from './datetime.js';
 import { normalizeState, SCHEMA_VERSION } from './core/migrate.js';
 import { getProvider } from './core/storage/index.js';
 import { emit } from './core/bus.js';
-import { makeId } from './utils.js';
+import { makeId, toast } from './utils.js';
 
 export { makeId };
 
@@ -80,7 +80,6 @@ const persistNow = async () => {
     lastSaveError = result.error;
     emit('storage:error', result);
     if (result.error === 'quota') {
-      const { toast } = await import('./utils.js');
       toast('Storage is full — export a backup and clear old data.', 'error');
     }
   } else if (result.ok) {

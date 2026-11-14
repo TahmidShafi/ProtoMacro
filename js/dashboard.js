@@ -9,7 +9,7 @@ import { STATE, recordWeight } from './state.js';
 import { MODES } from './mode.js';
 import { getTrackerTotals } from './tracker.js';
 import { computeDailyScore } from './core/metrics.js';
-import { formatWater, weightUnit, formatWeight } from './core/format.js';
+import { formatWater, weightUnit, formatWeight, parseWeightToKg } from './core/format.js';
 import { today } from './datetime.js';
 import { on } from './core/bus.js';
 import { addToTracker } from './tracker.js';
@@ -181,7 +181,6 @@ const quickWeight = async () => {
     submitLabel: 'Log'
   });
   if (!values) return;
-  const { parseWeightToKg } = await import('./core/format.js');
   const kg = parseWeightToKg(values.weight, units);
   if (!kg || kg < 25 || kg > 350) return;
   const goalKg = values.goal ? parseWeightToKg(values.goal, units) : null;

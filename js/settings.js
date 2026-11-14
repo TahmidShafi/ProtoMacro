@@ -6,9 +6,10 @@
    ============================================================ */
 import { $, $$, toast, num } from './utils.js';
 import { STATE, saveState } from './state.js';
-import { on } from './core/bus.js';
+import { on, emit } from './core/bus.js';
 import { openModal, formModal } from './core/modal.js';
 import { initAccountUI } from './core/auth.js';
+import { getProvider, localProvider } from './core/storage/index.js';
 
 let dom = null;
 
@@ -29,7 +30,7 @@ const setTheme = (theme) => {
   saveState();
   applyTheme();
   renderSegs();
-  import('./core/bus.js').then(({ emit }) => emit('theme:applied', { theme }));
+  emit('theme:applied', { theme });
 };
 
 /* ---------------- units ---------------- */
@@ -107,7 +108,6 @@ export function initSettings() {
       submitLabel: 'Erase everything'
     });
     if (values?.confirm?.toUpperCase() !== 'CLEAR') return;
-    const { getProvider, localProvider } = await import('./core/storage/index.js');
     localProvider.clear();
     if (getProvider().key === 'cloud') await getProvider().save(null).catch(() => {});
     location.reload();
