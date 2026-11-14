@@ -32,6 +32,7 @@ export const FOODS_DB = catalog.foods.map((f) => ({
   brand: SOURCE_LABELS[f.source.dataset] || 'Estimate',
   sourceInfo: f.source,
   qualityFlags: f.quality_flags || [],
+  suspectReason: f.suspect_reason || null,
   relatedIds: f.related_ids || [],
   tags: f.tags || []
 }));

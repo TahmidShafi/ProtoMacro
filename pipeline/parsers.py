@@ -63,40 +63,42 @@ def parse_fctb_cell(raw: Any, *, bracket_flag: str = "bracketed_value") -> tuple
 def infer_state(name: str, biblio: str = "") -> str:
     """Infer 'raw' | 'cooked' | 'prepared' from English food name and biblio."""
     low = name.lower()
-    if "raw" in low or "unprepared" in low or ", dry" in low or "dried" in low:
-        return "raw"
-    if (
-        "recipe calculation" in biblio.lower()
-        or "*" in name
-        or any(
-            kw in low
-            for kw in (
-                "boiled",
-                "cooked",
-                "fried",
-                "fry",
-                "roasted",
-                "broiled",
-                "grilled",
-                "baked",
-                "steamed",
-                "mash",
-                "kabab",
-                "khichuri",
-                "pulao",
-                "payesh",
-                "ruti",
-                "curry",
-                "biryani",
-                "halwa",
-                "bhaji",
-                "soup",
-                "stew",
-                "omelette",
-            )
+    # Check cooking terms before raw/dry patterns so e.g. "cooked, dry heat" -> "cooked".
+    if any(
+        kw in low
+        for kw in (
+            "cooked",
+            "boiled",
+            "fried",
+            "fry",
+            "roasted",
+            "broiled",
+            "grilled",
+            "baked",
+            "steamed",
+            "dry heat",
+            "mash",
+            "kabab",
+            "khichuri",
+            "pulao",
+            "ruti",
+            "curry",
+            "biryani",
+            "halwa",
+            "bhaji",
+            "soup",
+            "stew",
+            "omelette",
         )
     ):
         return "cooked"
+    if (
+        "raw" in low
+        or "unprepared" in low
+        or "dried" in low
+        or re.search(r",\s*dry\b", low) is not None
+    ):
+        return "raw"
     return "prepared"
 
 

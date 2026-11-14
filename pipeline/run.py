@@ -43,6 +43,28 @@ DEFAULT_MANIFEST = PIPELINE_DIR / "sources.yml"
 DEFAULT_RAW_DIR = REPO_ROOT / "data" / "raw"
 DEFAULT_SEED = PIPELINE_DIR / "seeds" / "curated_v2.json"
 DEFAULT_CROSSWALK = PIPELINE_DIR / "mappings" / "curated_crosswalk.csv"
+DEFAULT_ANOMALIES = PIPELINE_DIR / "mappings" / "source_anomalies.csv"
+
+CUISINE_RANGES: list[tuple[int, int, str]] = [
+    (0, 35, "Bangladeshi / South Asian"),
+    (36, 59, "Indian"),
+    (60, 79, "Chinese"),
+    (80, 99, "Arab / Middle Eastern"),
+    (100, 128, "European"),
+    (129, 160, "American"),
+    (161, 170, "Common Proteins"),
+    (171, 177, "Common Carbs"),
+    (178, 183, "Common Fats"),
+    (184, 187, "Dairy"),
+    (188, 193, "Drinks"),
+]
+
+
+def _cuisine_for_index(idx: int) -> str:
+    for lo, hi, label in CUISINE_RANGES:
+        if lo <= idx <= hi:
+            return label
+    return "Other"
 DEFAULT_FOODS_OUT = REPO_ROOT / "js" / "data" / "foods.json"
 DEFAULT_MIGRATION_OUT = REPO_ROOT / "js" / "data" / "id_migration_v2_to_v3.json"
 DEFAULT_RUN_LOG = PIPELINE_DIR / "reports" / "run_log.json"
@@ -292,15 +314,25 @@ def build_data_quality_report(
 
     macro_errs: dict[str, list[float]] = {"kcal": [], "protein": [], "carbs": [], "fat": []}
     worst: list[tuple[float, int, str, str, dict[str, Any], dict[str, Any]]] = []
+    low_kcal_exact: list[tuple[int, str, str, float, float, float]] = []
+    cuisine_counts: dict[str, Counter[str]] = {label: Counter() for _, _, label in CUISINE_RANGES}
 
     for r in cw:
-        if r["match_type"] != "exact":
-            continue
         idx = int(r["curated_index"])
+        mt = r["match_type"].strip()
+        cuisine_counts[_cuisine_for_index(idx)][mt] += 1
+        if mt != "exact":
+            continue
         old = seed[idx]
         new_id = mig_map[f"local_{idx}"]
         new_item = by_id[new_id]
         np = new_item["per_100g"]
+
+        if np["kcal"] < 20:
+            low_kcal_exact.append(
+                (idx, old["name"], new_id, float(old["calories"]), float(np["kcal"]), abs(float(old["calories"]) - float(np["kcal"])))
+            )
+            continue
 
         ek = _pct_err(old["calories"], np["kcal"])
         ep = _pct_err(old["protein"], np["protein"])
@@ -367,7 +399,25 @@ def build_data_quality_report(
         f"- 90th percentile `|kcal - atwater| / atwater`: **{p90_atw:.2f}%**",
         f"- Flagged (`atwater_mismatch`, > max(20 kcal, 15%)): **{by_flag.get('atwater_mismatch', 0)}**",
         "",
-        "## Accuracy of the Old Hand-Entered Values (`exact` matches)",
+        "### What the Atwater check does and does not prove",
+        "",
+        "In FCTB 2013, energy (`ENERC`) is itself calculated from the reported proximates using Atwater/INFOODS factors, so close agreement here validates our parsing and internal consistency of the extracted numbers — not real-world laboratory accuracy.",
+        "",
+        "## Crosswalk Match Types by Cuisine",
+        "",
+        "| Cuisine | `exact` | `approximate` | `different_state` | `none` | Total |",
+        "|---|---:|---:|---:|---:|---:|",
+    ]
+    for _, _, label in CUISINE_RANGES:
+        c = cuisine_counts[label]
+        tot = sum(c.values())
+        lines.append(
+            f"| {label} | {c['exact']} | {c['approximate']} | {c['different_state']} | {c['none']} | {tot} |"
+        )
+
+    lines += [
+        "",
+        "## Accuracy of the Old Hand-Entered Values (`exact` matches, source kcal >= 20)",
         "",
         "| Macro | n | Median Abs % Error | 90th Percentile Abs % Error |",
         "|---|---:|---:|---:|",
@@ -376,9 +426,22 @@ def build_data_quality_report(
         med, p90, cnt = stats(macro_errs[m])
         lines.append(f"| `{m}` | {cnt} | {med:.1f}% | {p90:.1f}% |")
 
+    if low_kcal_exact:
+        lines += [
+            "",
+            "### Low-Calorie `exact` Matches Excluded from % Stats (source kcal < 20)",
+            "",
+            "| # | Curated Name | New ID | Old kcal | Source kcal | Abs kcal Diff |",
+            "|---:|---|---|---:|---:|---:|",
+        ]
+        for idx, name, new_id, old_k, src_k, diff_k in low_kcal_exact:
+            lines.append(
+                f"| {idx} | {name} | `{new_id}` | {old_k} | {src_k} | {diff_k:.2f} |"
+            )
+
     lines += [
         "",
-        "### 10 Worst Hand-Entered `exact` Foods (by kcal % error)",
+        "### 10 Worst Hand-Entered `exact` Foods (by kcal % error, source kcal >= 20)",
         "",
         "| # | Curated Name | New ID | Old kcal | Source kcal | Abs % Error |",
         "|---:|---|---|---:|---:|---:|",
@@ -396,6 +459,7 @@ def run_pipeline(
     raw_dir: Path = DEFAULT_RAW_DIR,
     seed_path: Path = DEFAULT_SEED,
     crosswalk_path: Path = DEFAULT_CROSSWALK,
+    anomalies_path: Path = DEFAULT_ANOMALIES,
     foods_out: Path = DEFAULT_FOODS_OUT,
     migration_out: Path = DEFAULT_MIGRATION_OUT,
     run_log_out: Path = DEFAULT_RUN_LOG,
@@ -413,12 +477,17 @@ def run_pipeline(
     raw_fdc_sr = parse_fdc_sr_legacy_zip(raw_dir / manifest["fdc_sr_legacy"]["filename"])
     raw_fdc_found = parse_fdc_foundation_json_zip(raw_dir / manifest["fdc_foundation"]["filename"])
     raw_curated = parse_curated_seed(seed_path, crosswalk_path)
+    if anomalies_path.exists():
+        raw_anomalies = pd.read_csv(anomalies_path, dtype=str).fillna("")
+    else:
+        raw_anomalies = pd.DataFrame(columns=["source", "code", "reason", "evidence"])
 
     con = duckdb.connect(":memory:")
     con.register("raw_fctb", raw_fctb)
     con.register("raw_fdc_sr_legacy", raw_fdc_sr)
     con.register("raw_fdc_foundation", raw_fdc_found)
     con.register("raw_curated", raw_curated)
+    con.register("raw_source_anomalies", raw_anomalies)
 
     for sql_file in ("01_staging.sql", "02_normalize.sql", "03_validate.sql"):
         con.execute((SQL_DIR / sql_file).read_text(encoding="utf-8"))
@@ -443,7 +512,8 @@ def run_pipeline(
         SELECT
           id, source_code, name, local_name, state, food_group,
           kcal, protein, fat, carbs_available, carbs_total, fibre,
-          basis, dataset, version, citation_key, quality_flags, tags, related_ids
+          basis, dataset, version, citation_key, quality_flags, tags, related_ids,
+          suspect_reason
         FROM validated_foods
         ORDER BY id
         """
@@ -474,6 +544,7 @@ def run_pipeline(
                     "citation_key": r[15],
                 },
                 "quality_flags": sorted(r[16] or []),
+                "suspect_reason": r[19],
                 "tags": sorted(r[17] or []),
                 "related_ids": sorted(r[18] or []),
             }

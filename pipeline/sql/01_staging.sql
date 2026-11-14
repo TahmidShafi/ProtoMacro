@@ -93,3 +93,11 @@ SELECT
   carbs_total,
   tags
 FROM raw_curated;
+
+CREATE OR REPLACE TABLE stg_source_anomalies AS
+SELECT
+  TRIM(CAST(source AS VARCHAR)) AS source,
+  TRIM(CAST(code AS VARCHAR)) AS code,
+  TRIM(CAST(reason AS VARCHAR)) AS reason,
+  TRIM(CAST(evidence AS VARCHAR)) AS evidence
+FROM raw_source_anomalies;

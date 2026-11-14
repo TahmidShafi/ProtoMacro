@@ -1,11 +1,11 @@
 -- Stage 2: Normalize and merge FCTB > FDC Foundation > FDC SR Legacy > Curated estimate
--- Also compute curated tag carry-over, related_ids for different_state, and v2->v3 id migration map.
+-- Also compute curated tag carry-over, related_ids for different_state/approximate, and v2->v3 id migration map.
 
 CREATE OR REPLACE TABLE referenced_fdc_ids AS
 SELECT DISTINCT CAST(fdc_id AS VARCHAR) AS source_code
 FROM stg_curated
 WHERE fdc_id IS NOT NULL AND TRIM(fdc_id) <> ''
-  AND match_type IN ('exact', 'approximate')
+  AND match_type IN ('exact', 'approximate', 'different_state')
   AND (fctb_code IS NULL OR TRIM(fctb_code) = '');
 
 CREATE OR REPLACE TABLE selected_fdc AS
@@ -43,18 +43,20 @@ SELECT
   CASE
     WHEN c.match_type = 'different_state'
       THEN ['curated_estimate', 'different_state_crosswalk']
+    WHEN c.match_type = 'approximate'
+      THEN ['curated_estimate', 'approximate_crosswalk']
     ELSE ['curated_estimate']
   END AS quality_flags,
   c.tags,
   CASE
-    WHEN c.match_type = 'different_state' AND c.fctb_code IS NOT NULL AND TRIM(c.fctb_code) <> ''
+    WHEN c.match_type IN ('different_state', 'approximate') AND c.fctb_code IS NOT NULL AND TRIM(c.fctb_code) <> ''
       THEN ['fctb_' || c.fctb_code]
-    WHEN c.match_type = 'different_state' AND c.fdc_id IS NOT NULL AND TRIM(c.fdc_id) <> ''
+    WHEN c.match_type IN ('different_state', 'approximate') AND c.fdc_id IS NOT NULL AND TRIM(c.fdc_id) <> ''
       THEN ['fdc_' || c.fdc_id]
     ELSE CAST([] AS VARCHAR[])
   END AS related_ids
 FROM stg_curated c
-WHERE c.match_type IN ('none', 'different_state');
+WHERE c.match_type IN ('none', 'different_state', 'approximate');
 
 CREATE OR REPLACE TABLE norm_foods_base AS
 SELECT
@@ -78,25 +80,26 @@ SELECT
   related_ids
 FROM curated_estimates;
 
--- Bidirectional related_ids (link FCTB/FDC source items back to different_state curated items)
+-- Bidirectional related_ids (link FCTB/FDC source items back to different_state and approximate curated items)
 CREATE OR REPLACE TABLE reverse_links AS
 SELECT
   'fctb_' || fctb_code AS target_id,
   LIST(id ORDER BY id) AS back_ids
 FROM stg_curated
-WHERE match_type = 'different_state' AND fctb_code IS NOT NULL AND TRIM(fctb_code) <> ''
+WHERE match_type IN ('different_state', 'approximate')
+  AND fctb_code IS NOT NULL AND TRIM(fctb_code) <> ''
 GROUP BY 1
 UNION ALL
 SELECT
   'fdc_' || fdc_id AS target_id,
   LIST(id ORDER BY id) AS back_ids
 FROM stg_curated
-WHERE match_type = 'different_state'
+WHERE match_type IN ('different_state', 'approximate')
   AND (fctb_code IS NULL OR TRIM(fctb_code) = '')
   AND fdc_id IS NOT NULL AND TRIM(fdc_id) <> ''
 GROUP BY 1;
 
--- Carry over curated tags onto matched FCTB/FDC items
+-- Carry over curated tags onto exact-matched FCTB/FDC items
 CREATE OR REPLACE TABLE curated_tag_carryover AS
 SELECT
   CASE
@@ -105,7 +108,7 @@ SELECT
   END AS target_id,
   LIST_DISTINCT(FLATTEN(LIST(tags))) AS extra_tags
 FROM stg_curated
-WHERE match_type IN ('exact', 'approximate')
+WHERE match_type = 'exact'
 GROUP BY 1;
 
 CREATE OR REPLACE TABLE norm_foods AS
@@ -128,21 +131,27 @@ SELECT
   b.dataset,
   b.version,
   b.citation_key,
-  b.quality_flags,
+  LIST_SORT(LIST_DISTINCT(LIST_CONCAT(
+    b.quality_flags,
+    CASE WHEN a.reason IS NOT NULL THEN ['suspect_value'] ELSE CAST([] AS VARCHAR[]) END
+  ))) AS quality_flags,
+  a.reason AS suspect_reason,
   LIST_SORT(LIST_DISTINCT(LIST_CONCAT(b.tags, COALESCE(t.extra_tags, CAST([] AS VARCHAR[]))))) AS tags,
   LIST_SORT(LIST_DISTINCT(LIST_CONCAT(b.related_ids, COALESCE(r.back_ids, CAST([] AS VARCHAR[]))))) AS related_ids
 FROM norm_foods_base b
 LEFT JOIN curated_tag_carryover t ON b.id = t.target_id
-LEFT JOIN reverse_links r ON b.id = r.target_id;
+LEFT JOIN reverse_links r ON b.id = r.target_id
+LEFT JOIN stg_source_anomalies a ON b.dataset = a.source AND b.source_code = a.code;
 
 -- v2 -> v3 ID migration mapping for every local_0..local_193
+-- Only match_type = 'exact' migrates to the source ID; approximate/different_state/none migrate to curated_<slug>.
 CREATE OR REPLACE TABLE id_migration_map AS
 SELECT
   legacy_id,
   CASE
-    WHEN match_type IN ('exact', 'approximate') AND fctb_code IS NOT NULL AND TRIM(fctb_code) <> ''
+    WHEN match_type = 'exact' AND fctb_code IS NOT NULL AND TRIM(fctb_code) <> ''
       THEN 'fctb_' || fctb_code
-    WHEN match_type IN ('exact', 'approximate') AND fdc_id IS NOT NULL AND TRIM(fdc_id) <> ''
+    WHEN match_type = 'exact' AND fdc_id IS NOT NULL AND TRIM(fdc_id) <> ''
       THEN 'fdc_' || fdc_id
     ELSE id
   END AS new_id

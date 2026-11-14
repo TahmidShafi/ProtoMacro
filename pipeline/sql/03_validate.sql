@@ -44,6 +44,7 @@ SELECT
         THEN ['proximates_over_100g'] ELSE CAST([] AS VARCHAR[]) END
     )
   ))) AS quality_flags,
+  suspect_reason,
   tags,
   related_ids
 FROM checks;

@@ -48,6 +48,7 @@
           "basis",
           "source",
           "quality_flags",
+          "suspect_reason",
           "tags",
           "related_ids"
         ],
@@ -92,6 +93,9 @@
           "quality_flags": {
             "type": "array",
             "items": { "type": "string" }
+          },
+          "suspect_reason": {
+            "type": ["string", "null"]
           },
           "tags": {
             "type": "array",

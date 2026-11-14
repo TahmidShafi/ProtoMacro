@@ -3,6 +3,42 @@
     {
       "basis": "100 g",
       "food_group": "Curated Estimate",
+      "id": "curated_aloo_bhaji_potato_stir_fry",
+      "local_name": null,
+      "name": "Aloo bhaji (potato stir fry)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 18.0,
+        "fat": 6.0,
+        "fibre": null,
+        "kcal": 130.0,
+        "protein": 2.0
+      },
+      "quality_flags": [
+        "curated_estimate"
+      ],
+      "related_ids": [],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_29",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "aloo",
+        "bangladeshi",
+        "bhaji",
+        "fry",
+        "indian",
+        "potato",
+        "stir"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
       "id": "curated_aloo_gobi",
       "local_name": null,
       "name": "Aloo gobi",
@@ -25,6 +61,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "aloo",
         "cauliflower",
@@ -58,6 +95,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "baba",
@@ -91,6 +129,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "baklava",
@@ -124,6 +163,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "barfi",
         "burfi",
@@ -160,11 +200,84 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "bbq",
         "pork",
         "ribs"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_beef_curry_cooked",
+      "local_name": null,
+      "name": "Beef curry (cooked)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 4.0,
+        "fat": 9.0,
+        "fibre": null,
+        "kcal": 185.0,
+        "protein": 21.0
+      },
+      "quality_flags": [
+        "curated_estimate"
+      ],
+      "related_ids": [],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_14",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "bangladeshi",
+        "beef",
+        "cooked",
+        "curry",
+        "indian",
+        "meat"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_beef_steak_grilled",
+      "local_name": null,
+      "name": "Beef steak (grilled)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 0.0,
+        "fat": 12.0,
+        "fibre": null,
+        "kcal": 217.0,
+        "protein": 26.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_168731"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_115",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "american",
+        "beef",
+        "european",
+        "grilled",
+        "steak"
       ]
     },
     {
@@ -192,6 +305,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "beguni",
@@ -225,6 +339,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "biryani",
@@ -258,6 +373,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "biryani",
@@ -291,6 +407,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "bacon",
@@ -323,6 +440,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bok",
         "chinese",
@@ -356,6 +474,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beef",
         "bolognese",
@@ -390,11 +509,48 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "buffalo",
         "chicken",
         "wings"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_burrito_chicken",
+      "local_name": null,
+      "name": "Burrito (chicken)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 38.0,
+        "fat": 9.0,
+        "fibre": null,
+        "kcal": 310.0,
+        "protein": 18.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_170334"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_156",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "american",
+        "burrito",
+        "chicken",
+        "mexican"
       ]
     },
     {
@@ -422,6 +578,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "butter",
         "chicken",
@@ -455,6 +612,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "caesar",
@@ -486,6 +644,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "carbonara",
         "european",
@@ -518,6 +677,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "casein",
         "powder",
@@ -553,11 +713,47 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "catla",
         "cooked",
         "fish"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_cheeseburger",
+      "local_name": null,
+      "name": "Cheeseburger",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 25.0,
+        "fat": 18.0,
+        "fibre": null,
+        "kcal": 350.0,
+        "protein": 20.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_170320"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_130",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "american",
+        "burger",
+        "cheeseburger"
       ]
     },
     {
@@ -588,6 +784,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "chicken",
@@ -622,11 +819,82 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "indian",
         "masala",
         "tikka"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_chole_chana_masala",
+      "local_name": null,
+      "name": "Chole / Chana masala",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 26.0,
+        "fat": 4.0,
+        "fibre": null,
+        "kcal": 168.0,
+        "protein": 9.0
+      },
+      "quality_flags": [
+        "curated_estimate"
+      ],
+      "related_ids": [],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_45",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "chana",
+        "chickpea",
+        "chole",
+        "indian",
+        "masala"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_chow_mein",
+      "local_name": null,
+      "name": "Chow mein",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 25.0,
+        "fat": 6.0,
+        "fibre": null,
+        "kcal": 175.0,
+        "protein": 7.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_168083"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_62",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "chinese",
+        "chow",
+        "mein",
+        "noodles"
       ]
     },
     {
@@ -654,12 +922,84 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "churros",
         "dessert",
         "european",
         "pastry",
         "spanish"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_clam_chowder",
+      "local_name": null,
+      "name": "Clam chowder",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 13.0,
+        "fat": 6.0,
+        "fibre": null,
+        "kcal": 130.0,
+        "protein": 7.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_174556"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_141",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "american",
+        "chowder",
+        "clam",
+        "soup"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_coleslaw",
+      "local_name": null,
+      "name": "Coleslaw",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 14.0,
+        "fat": 10.0,
+        "fibre": null,
+        "kcal": 150.0,
+        "protein": 1.5
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_169020"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_143",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "american",
+        "coleslaw",
+        "salad"
       ]
     },
     {
@@ -687,6 +1027,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "congee",
@@ -722,6 +1063,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "cob",
@@ -754,6 +1096,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "bread",
@@ -785,6 +1128,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "crepe",
         "european",
@@ -817,11 +1161,91 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "dal",
         "indian",
         "lentil",
         "makhani"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_dal_red_lentil_cooked",
+      "local_name": null,
+      "name": "Dal, red lentil (cooked)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 20.0,
+        "fat": 0.4,
+        "fibre": null,
+        "kcal": 116.0,
+        "protein": 9.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fctb_02_0015"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_6",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "bangladeshi",
+        "cooked",
+        "daal",
+        "dal",
+        "indian",
+        "lentil",
+        "masoor",
+        "red"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_dal_yellow_moong_cooked",
+      "local_name": null,
+      "name": "Dal, yellow moong (cooked)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 18.0,
+        "fat": 0.4,
+        "fibre": null,
+        "kcal": 105.0,
+        "protein": 7.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fctb_02_0013"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_7",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "bangladeshi",
+        "cooked",
+        "dal",
+        "indian",
+        "moong",
+        "mung",
+        "yellow"
       ]
     },
     {
@@ -849,6 +1273,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "dim",
@@ -883,6 +1308,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "dolma",
@@ -917,11 +1343,45 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "dosa",
         "indian",
         "plain",
         "south indian"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_egg_curry",
+      "local_name": null,
+      "name": "Egg curry",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 5.0,
+        "fat": 11.0,
+        "fibre": null,
+        "kcal": 160.0,
+        "protein": 11.0
+      },
+      "quality_flags": [
+        "curated_estimate"
+      ],
+      "related_ids": [],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_17",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "bangladeshi",
+        "curry",
+        "egg",
+        "indian"
       ]
     },
     {
@@ -949,6 +1409,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "fattoush",
@@ -981,11 +1442,47 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "british",
         "chips",
         "european",
         "fish"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_french_fries_medium",
+      "local_name": null,
+      "name": "French fries (medium)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 48.0,
+        "fat": 17.0,
+        "fibre": null,
+        "kcal": 365.0,
+        "protein": 4.0
+      },
+      "quality_flags": [
+        "curated_estimate"
+      ],
+      "related_ids": [],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_132",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "american",
+        "chips",
+        "french",
+        "fries",
+        "medium",
+        "potato"
       ]
     },
     {
@@ -1013,6 +1510,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "european",
         "french",
@@ -1045,11 +1543,48 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "american",
         "chicken",
         "fried",
         "piece"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_fried_rice_egg",
+      "local_name": null,
+      "name": "Fried rice (egg)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 26.0,
+        "fat": 5.0,
+        "fibre": null,
+        "kcal": 163.0,
+        "protein": 4.5
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_167668"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_60",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "chinese",
+        "egg",
+        "fried",
+        "rice"
       ]
     },
     {
@@ -1077,6 +1612,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "breakfast",
         "british",
@@ -1110,6 +1646,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "gazpacho",
@@ -1142,6 +1679,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "greek",
@@ -1174,6 +1712,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "american",
         "cheese",
@@ -1206,6 +1745,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "avocado",
@@ -1238,6 +1778,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "dessert",
         "gulab",
@@ -1271,6 +1812,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "cheese",
@@ -1304,6 +1846,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "dessert",
@@ -1341,6 +1884,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "cooked",
@@ -1374,6 +1918,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "bun",
@@ -1407,6 +1952,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "idli",
         "indian",
@@ -1439,6 +1985,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "cooked",
@@ -1473,6 +2020,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "dessert",
@@ -1506,6 +2054,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "chicken",
@@ -1538,6 +2087,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "kebab",
@@ -1570,6 +2120,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "baked",
@@ -1603,6 +2154,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "labneh",
@@ -1636,6 +2188,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "besan",
         "dessert",
@@ -1669,12 +2222,85 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "drink",
         "indian",
         "lassi",
         "plain",
         "yogurt"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_lo_mein",
+      "local_name": null,
+      "name": "Lo mein",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 26.0,
+        "fat": 6.0,
+        "fibre": null,
+        "kcal": 180.0,
+        "protein": 7.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_167677"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_76",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "chinese",
+        "lo",
+        "mein",
+        "noodles"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_mac_and_cheese",
+      "local_name": null,
+      "name": "Mac and cheese",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 23.0,
+        "fat": 6.0,
+        "fibre": null,
+        "kcal": 172.0,
+        "protein": 6.5
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_169770"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_133",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "american",
+        "cheese",
+        "mac",
+        "macaroni"
       ]
     },
     {
@@ -1702,6 +2328,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "drink",
         "indian",
@@ -1734,6 +2361,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "jordanian",
@@ -1767,10 +2395,50 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "mapo",
         "tofu"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_masala_chai_with_milk_sugar",
+      "local_name": null,
+      "name": "Masala chai (with milk & sugar)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 8.0,
+        "fat": 2.0,
+        "fibre": null,
+        "kcal": 60.0,
+        "protein": 2.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fctb_14_0007"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_56",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "chai",
+        "drink",
+        "indian",
+        "masala",
+        "milk",
+        "sugar",
+        "tea"
       ]
     },
     {
@@ -1798,6 +2466,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "indian",
         "matar",
@@ -1830,6 +2499,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "meatballs",
@@ -1861,6 +2531,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "greek",
@@ -1892,6 +2563,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "lentil",
@@ -1928,6 +2600,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "cooked",
@@ -1936,6 +2609,38 @@
         "indian",
         "meat",
         "mutton"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_noodles_boiled",
+      "local_name": null,
+      "name": "Noodles, boiled",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 28.0,
+        "fat": 0.9,
+        "fibre": null,
+        "kcal": 138.0,
+        "protein": 4.5
+      },
+      "quality_flags": [
+        "curated_estimate"
+      ],
+      "related_ids": [],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_61",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "boiled",
+        "chinese",
+        "noodles"
       ]
     },
     {
@@ -1963,6 +2668,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "paella",
@@ -1996,6 +2702,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "indian",
         "palak",
@@ -2031,6 +2738,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "cooked",
@@ -2064,6 +2772,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "golgappa",
         "indian",
@@ -2097,12 +2806,52 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "bread",
         "indian",
         "paratha",
         "plain"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_payesh_kheer",
+      "local_name": null,
+      "name": "Payesh / Kheer",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 25.0,
+        "fat": 4.0,
+        "fibre": null,
+        "kcal": 150.0,
+        "protein": 4.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fctb_12_0013"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_22",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "bangladeshi",
+        "dessert",
+        "indian",
+        "kheer",
+        "payesh",
+        "pudding",
+        "rice"
       ]
     },
     {
@@ -2130,6 +2879,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "butter",
@@ -2162,6 +2912,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "duck",
@@ -2193,12 +2944,87 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "fritter",
         "lentil",
         "piyaju",
         "snack"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_pizza_margherita_1_slice",
+      "local_name": null,
+      "name": "Pizza, margherita (1 slice)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 25.0,
+        "fat": 8.0,
+        "fibre": null,
+        "kcal": 200.0,
+        "protein": 8.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_170317"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_102",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "european",
+        "italian",
+        "margherita",
+        "pizza",
+        "slice"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_pizza_pepperoni_1_slice",
+      "local_name": null,
+      "name": "Pizza, pepperoni (1 slice)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 25.0,
+        "fat": 13.0,
+        "fibre": null,
+        "kcal": 260.0,
+        "protein": 11.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_172096"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_103",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "european",
+        "italian",
+        "pepperoni",
+        "pizza",
+        "slice"
       ]
     },
     {
@@ -2226,6 +3052,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "breakfast",
         "flattened",
@@ -2261,7 +3088,8 @@
         "dataset": "curated",
         "version": "v2"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "chingri",
@@ -2269,6 +3097,41 @@
         "prawn",
         "seafood",
         "shrimp"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_protein_shake_milk_based",
+      "local_name": null,
+      "name": "Protein shake (milk based)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 12.0,
+        "fat": 4.0,
+        "fibre": null,
+        "kcal": 180.0,
+        "protein": 25.0
+      },
+      "quality_flags": [
+        "curated_estimate"
+      ],
+      "related_ids": [],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_193",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "based",
+        "drink",
+        "milk",
+        "protein",
+        "shake",
+        "supplement"
       ]
     },
     {
@@ -2296,6 +3159,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "bread",
@@ -2330,6 +3194,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "french",
@@ -2363,6 +3228,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bean",
         "curry",
@@ -2396,6 +3262,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "dessert",
@@ -2429,11 +3296,48 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "french",
         "ratatouille",
         "vegetable"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_rice_brown_cooked",
+      "local_name": null,
+      "name": "Rice, brown (cooked)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 26.0,
+        "fat": 1.0,
+        "fibre": null,
+        "kcal": 123.0,
+        "protein": 2.7
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fctb_01_0039"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_172",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "brown",
+        "cooked",
+        "grain",
+        "rice"
       ]
     },
     {
@@ -2461,6 +3365,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "italian",
@@ -2497,6 +3402,7 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "cooked",
@@ -2530,6 +3436,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "aloo",
         "indian",
@@ -2563,6 +3470,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "indian",
         "lentil",
@@ -2595,6 +3503,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "austrian",
         "european",
@@ -2628,6 +3537,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "noodles",
@@ -2659,6 +3569,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "chicken",
@@ -2691,6 +3602,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "lamb",
@@ -2723,6 +3635,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "british",
         "european",
@@ -2755,6 +3668,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "fish",
@@ -2789,6 +3703,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "indian",
@@ -2822,11 +3737,48 @@
         "version": "v2"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "fried",
         "roll",
         "spring"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_sweet_potato_baked",
+      "local_name": null,
+      "name": "Sweet potato (baked)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 21.0,
+        "fat": 0.2,
+        "fibre": null,
+        "kcal": 90.0,
+        "protein": 2.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fctb_05_0016"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_174",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "cooked",
+      "suspect_reason": null,
+      "tags": [
+        "baked",
+        "potato",
+        "sweet",
+        "vegetable"
       ]
     },
     {
@@ -2854,11 +3806,48 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "middle eastern",
         "salad",
         "tabouleh"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Curated Estimate",
+      "id": "curated_taco_beef",
+      "local_name": null,
+      "name": "Taco (beef)",
+      "per_100g": {
+        "carbs_available": null,
+        "carbs_total": 18.0,
+        "fat": 10.0,
+        "fibre": null,
+        "kcal": 210.0,
+        "protein": 12.0
+      },
+      "quality_flags": [
+        "approximate_crosswalk",
+        "curated_estimate"
+      ],
+      "related_ids": [
+        "fdc_170332"
+      ],
+      "source": {
+        "citation_key": "protomacro_curated_v2",
+        "code": "local_157",
+        "dataset": "curated",
+        "version": "v2"
+      },
+      "state": "prepared",
+      "suspect_reason": null,
+      "tags": [
+        "american",
+        "beef",
+        "mexican",
+        "taco"
       ]
     },
     {
@@ -2886,6 +3875,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "indian",
@@ -2917,6 +3907,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "dessert",
         "european",
@@ -2949,6 +3940,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "delight",
@@ -2983,6 +3975,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "breakfast",
         "indian",
@@ -3015,6 +4008,7 @@
         "version": "v2"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "indian",
         "pav",
@@ -3047,6 +4041,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "barley",
         "cereals",
@@ -3084,6 +4079,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bonruti",
         "bread",
@@ -3119,6 +4115,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bread",
         "cereals",
@@ -3154,6 +4151,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "atta",
         "bhutta",
@@ -3192,6 +4190,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bhutta",
         "cereals",
@@ -3230,6 +4229,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "foxtail",
@@ -3265,6 +4265,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "cheena",
@@ -3304,6 +4305,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bajra",
         "cereals",
@@ -3343,6 +4345,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "added",
         "bhutta",
@@ -3379,6 +4382,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "chira",
@@ -3413,6 +4417,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "chira",
@@ -3451,7 +4456,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "28",
         "br",
@@ -3491,7 +4497,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "11",
         "br",
@@ -3530,7 +4537,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "16",
         "br",
@@ -3569,7 +4577,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "26",
         "br",
@@ -3608,7 +4617,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "br",
         "cereals",
@@ -3646,7 +4656,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "30",
         "brri",
@@ -3686,7 +4697,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "40",
         "brri",
@@ -3729,6 +4741,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bran",
         "cereals",
@@ -3764,7 +4777,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "brown",
         "cereals",
@@ -3804,7 +4818,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "brown",
         "cereals",
@@ -3845,6 +4860,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "khoi",
@@ -3879,6 +4895,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "muri",
@@ -3914,6 +4931,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "aromatic",
         "atop",
@@ -3956,6 +4974,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "atop",
         "cereals",
@@ -3997,6 +5016,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "gom",
@@ -4033,6 +5053,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "jowar",
@@ -4069,6 +5090,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bhutta",
         "cereals",
@@ -4108,6 +5130,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "products",
@@ -4143,6 +5166,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "ata",
         "brown",
@@ -4182,6 +5206,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "ata",
         "cereals",
@@ -4219,6 +5244,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "flour",
@@ -4255,6 +5281,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "gom",
@@ -4289,7 +5316,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "cooked",
+      "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "biscuit",
         "cereals",
@@ -4324,6 +5352,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "cereals",
@@ -4362,6 +5391,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "cereals",
         "plain",
@@ -4395,6 +5425,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "28",
         "bangladeshi",
@@ -4437,6 +5468,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bhat",
         "boiled",
@@ -4469,7 +5501,9 @@
       "quality_flags": [
         "recipe_calculated"
       ],
-      "related_ids": [],
+      "related_ids": [
+        "curated_rice_brown_cooked"
+      ],
       "source": {
         "citation_key": "fctb_2013",
         "code": "01_0039",
@@ -4477,13 +5511,12 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bhat",
         "boiled",
         "brown",
         "cereals",
-        "cooked",
-        "grain",
         "kolechata",
         "lal",
         "milled",
@@ -4520,6 +5553,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "aromatic",
         "bhat",
@@ -4560,6 +5594,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "atop",
         "bangladeshi",
@@ -4606,6 +5641,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "bread",
@@ -4643,6 +5679,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "cereals",
@@ -4680,6 +5717,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bengal",
         "cholar",
@@ -4721,6 +5759,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bengal",
         "chola",
@@ -4760,6 +5799,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "asto",
         "black",
@@ -4801,6 +5841,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "black",
         "dal",
@@ -4842,6 +5883,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dal",
         "dried",
@@ -4882,6 +5924,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "gram",
@@ -4921,6 +5964,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dal",
         "dried",
@@ -4961,6 +6005,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dal",
         "dried",
@@ -4998,6 +6043,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "legumes",
@@ -5035,6 +6081,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "arhar",
         "dal",
@@ -5074,6 +6121,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "gari",
@@ -5112,6 +6160,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "bengal",
@@ -5152,7 +6201,9 @@
         "crude_fibre_fallback",
         "recipe_calculated"
       ],
-      "related_ids": [],
+      "related_ids": [
+        "curated_dal_yellow_moong_cooked"
+      ],
       "source": {
         "citation_key": "fctb_2013",
         "code": "02_0013",
@@ -5160,26 +6211,22 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
-        "bangladeshi",
         "boiled",
         "chara",
-        "cooked",
         "dal",
         "gram",
         "green",
-        "indian",
         "legumes",
         "lobon",
-        "moong",
         "mung",
         "products",
         "pulses",
         "salt",
         "siddha",
         "split",
-        "their",
-        "yellow"
+        "their"
       ]
     },
     {
@@ -5208,6 +6255,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -5242,7 +6290,9 @@
       "quality_flags": [
         "recipe_calculated"
       ],
-      "related_ids": [],
+      "related_ids": [
+        "curated_dal_red_lentil_cooked"
+      ],
       "source": {
         "citation_key": "fctb_2013",
         "code": "02_0015",
@@ -5250,23 +6300,17 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
-        "bangladeshi",
         "boiled",
         "chara",
-        "cooked",
-        "daal",
         "dal",
-        "indian",
         "legumes",
-        "lentil",
         "lentis",
         "lobon",
-        "masoor",
         "mosur",
         "products",
         "pulses",
-        "red",
         "salt",
         "siddha",
         "their"
@@ -5297,6 +6341,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -5337,6 +6382,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "amaranth",
         "data",
@@ -5372,6 +6418,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bean",
         "products",
@@ -5408,6 +6455,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bean",
         "pods",
@@ -5444,6 +6492,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "beet",
         "products",
@@ -5479,6 +6528,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "begun",
         "brinjal",
@@ -5517,6 +6567,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "beans",
         "broad",
@@ -5553,6 +6604,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "badhakopi",
         "cabbage",
@@ -5587,6 +6639,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "carrot",
         "gajor",
@@ -5621,6 +6674,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cauliflower",
         "fulkopi",
@@ -5655,6 +6709,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chilli",
         "green",
@@ -5692,6 +6747,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "borboti",
         "cowpea",
@@ -5728,6 +6784,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cucumber",
         "peeled",
@@ -5763,6 +6820,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "data",
         "drumstick",
@@ -5799,6 +6857,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "garlic",
         "products",
@@ -5833,6 +6892,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "ash",
         "chalkumra",
@@ -5868,6 +6928,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "bitter",
@@ -5909,6 +6970,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bottle",
         "gourd",
@@ -5944,6 +7006,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "gourd",
         "pointed",
@@ -5979,6 +7042,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "gourd",
         "jhinga",
@@ -6014,6 +7078,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chichinga",
         "gourd",
@@ -6049,6 +7114,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dhundul",
         "gourd",
@@ -6084,6 +7150,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "gourd",
         "kakrol",
@@ -6119,6 +7186,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dheros",
         "finger",
@@ -6155,6 +7223,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "onion",
         "piaj",
@@ -6189,6 +7258,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "kancha",
         "papaya",
@@ -6225,6 +7295,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "motorshuti",
         "peas",
@@ -6259,6 +7330,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "kancha",
         "kola",
@@ -6294,6 +7366,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "mistikumra",
         "products",
@@ -6328,6 +7401,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "mula",
         "products",
@@ -6362,6 +7436,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "green",
         "kancha",
@@ -6397,6 +7472,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "paka",
         "products",
@@ -6433,6 +7509,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "products",
         "raw",
@@ -6467,6 +7544,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "begun",
         "boiled",
@@ -6507,6 +7585,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "badhakopi",
         "boiled",
@@ -6545,6 +7624,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "carrot",
@@ -6583,6 +7663,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "cauliflower",
@@ -6621,6 +7702,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "borboti",
@@ -6660,6 +7742,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -6699,6 +7782,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -6738,6 +7822,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -6778,6 +7863,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -6818,6 +7904,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -6857,6 +7944,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -6895,6 +7983,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -6933,6 +8022,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -6972,7 +8062,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "cooked",
+      "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bhuna",
         "dheros",
@@ -7009,6 +8100,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bitter",
         "boiled",
@@ -7048,6 +8140,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bitter",
         "fry",
@@ -7084,6 +8177,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "agathi",
         "bok",
@@ -7119,6 +8213,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alligator",
         "leafy",
@@ -7154,6 +8249,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "amaranth",
         "kanta",
@@ -7191,6 +8287,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "amaranth",
         "lal",
@@ -7227,6 +8324,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "amaranth",
         "data",
@@ -7265,6 +8363,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bivinno",
         "chukai",
@@ -7302,6 +8401,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beet",
         "greens",
@@ -7337,6 +8437,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "baitta",
         "bat",
@@ -7374,6 +8475,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bitter",
         "gourd",
@@ -7411,6 +8513,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bottle",
         "gourd",
@@ -7447,6 +8550,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bugleweed",
         "leafy",
@@ -7480,6 +8584,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "cassava",
@@ -7516,6 +8621,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "black",
         "colocasia",
@@ -7553,6 +8659,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "colocasia",
         "green",
@@ -7590,6 +8697,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "borboti",
         "cowpea",
@@ -7625,6 +8733,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dima",
         "leafy",
@@ -7659,6 +8768,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "drumstick",
         "leafy",
@@ -7694,6 +8804,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dheki",
         "farn",
@@ -7730,6 +8841,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fenugreek",
         "leafy",
@@ -7765,6 +8877,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "indian",
         "leafy",
@@ -7800,6 +8913,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "jute",
         "leafy",
@@ -7836,6 +8950,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "kumra",
         "leafy",
@@ -7872,6 +8987,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "leafy",
         "leaves",
@@ -7907,6 +9023,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "amaranth",
         "leafy",
@@ -7943,6 +9060,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "leafy",
         "palong",
@@ -7977,6 +9095,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "leafy",
@@ -8012,6 +9131,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "dark",
@@ -8051,6 +9171,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "dark",
@@ -8090,6 +9211,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "green",
@@ -8131,6 +9253,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "kolmee",
         "leafy",
@@ -8166,6 +9289,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "helencha",
         "leafy",
@@ -8200,6 +9324,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "amaranth",
         "boiled",
@@ -8240,6 +9365,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "amaranth",
         "boiled",
@@ -8281,6 +9407,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "amaranth",
         "boiled",
@@ -8321,6 +9448,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -8359,6 +9487,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -8398,6 +9527,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "colocasia",
         "corm",
@@ -8437,6 +9567,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "colocasia",
         "cormel",
@@ -8477,6 +9608,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "corm",
         "elephant",
@@ -8516,6 +9648,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "corm",
         "giant",
@@ -8554,6 +9687,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "chara",
@@ -8595,6 +9729,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "flesh",
@@ -8637,6 +9772,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "flesh",
@@ -8679,6 +9815,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "flesh",
@@ -8724,6 +9861,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "flesh",
@@ -8765,6 +9903,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "bivinno",
@@ -8805,6 +9944,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -8847,6 +9987,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "boiled",
@@ -8889,6 +10030,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "boiled",
@@ -8935,6 +10077,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "boiled",
@@ -8980,6 +10123,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "boiled",
@@ -9021,7 +10165,9 @@
       "quality_flags": [
         "recipe_calculated"
       ],
-      "related_ids": [],
+      "related_ids": [
+        "curated_sweet_potato_baked"
+      ],
       "source": {
         "citation_key": "fctb_2013",
         "code": "05_0016",
@@ -9029,9 +10175,9 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "alu",
-        "baked",
         "boiled",
         "chara",
         "flesh",
@@ -9048,8 +10194,7 @@
         "sundori",
         "sweet",
         "their",
-        "tubers",
-        "vegetable"
+        "tubers"
       ]
     },
     {
@@ -9077,6 +10222,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -9121,6 +10267,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -9164,6 +10311,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -9206,6 +10354,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "alu",
         "boiled",
@@ -9248,13 +10397,9 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
-        "aloo",
         "alu",
-        "bangladeshi",
-        "bhaji",
-        "fry",
-        "indian",
         "lobon",
         "mash",
         "potato",
@@ -9263,7 +10408,6 @@
         "siddha",
         "soho",
         "starchy",
-        "stir",
         "their",
         "tubers"
       ]
@@ -9293,6 +10437,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bij",
         "dried",
@@ -9329,6 +10474,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "badam",
         "cashew",
@@ -9365,6 +10511,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chilgoza",
         "dried",
@@ -9400,6 +10547,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "coconut",
         "dudh",
@@ -9436,6 +10584,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "coconut",
         "desiccated",
@@ -9472,6 +10621,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "coconut",
         "kernel",
@@ -9508,6 +10658,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "badam",
         "china",
@@ -9546,6 +10697,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bichi",
         "er",
@@ -9583,6 +10735,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "linseed",
         "nuts",
@@ -9619,6 +10772,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "gota",
@@ -9657,6 +10811,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "gota",
         "green",
@@ -9694,6 +10849,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "mustard",
@@ -9729,6 +10885,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "nuts",
@@ -9764,6 +10921,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bichi",
         "dried",
@@ -9800,6 +10958,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "nuts",
@@ -9836,6 +10995,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "akhrot",
         "nut",
@@ -9872,6 +11032,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bay",
         "condiments",
@@ -9907,6 +11068,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cardamom",
         "condiments",
@@ -9940,6 +11102,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chilli",
         "condiments",
@@ -9976,6 +11139,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cinnamon",
         "condiments",
@@ -10011,6 +11175,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cloves",
         "condiments",
@@ -10045,6 +11210,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "coriander",
@@ -10081,6 +11247,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "coriander",
@@ -10116,6 +11283,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "cumin",
@@ -10150,6 +11318,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "fennel",
@@ -10184,6 +11353,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "fenugreek",
@@ -10218,6 +11388,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "ada",
         "condiments",
@@ -10251,6 +11422,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "herbs",
@@ -10288,6 +11460,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "ghas",
@@ -10323,6 +11496,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "herbs",
@@ -10359,6 +11533,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "ground",
@@ -10394,6 +11569,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "dried",
@@ -10428,6 +11604,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "black",
         "condiments",
@@ -10462,6 +11639,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "dana",
@@ -10497,6 +11675,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "fresh",
@@ -10533,6 +11712,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "condiments",
         "dried",
@@ -10567,6 +11747,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "apel",
         "apple",
@@ -10602,6 +11783,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "apel",
         "apple",
@@ -10637,6 +11819,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "asian",
         "fruits",
@@ -10670,6 +11853,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "banana",
         "fruit",
@@ -10706,6 +11890,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "breadfruit",
         "fruits",
@@ -10739,6 +11924,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "ata",
         "bullocks",
@@ -10774,6 +11960,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "carambola",
         "fruits",
@@ -10806,6 +11993,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "apple",
         "atafol",
@@ -10839,6 +12027,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "dates",
@@ -10874,6 +12063,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dates",
         "fruits",
@@ -10906,6 +12096,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "apple",
         "elephant",
@@ -10941,6 +12132,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "amloki",
         "emblic",
@@ -10973,6 +12165,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dumur",
         "fig",
@@ -11008,6 +12201,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "angur",
         "fruits",
@@ -11043,6 +12237,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bivinno",
         "fruits",
@@ -11080,6 +12275,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "amra",
         "fruits",
@@ -11113,6 +12309,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "fruit",
@@ -11150,6 +12347,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "jambolan",
@@ -11183,6 +12381,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "jambos",
@@ -11216,6 +12415,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "apple",
         "fruits",
@@ -11249,6 +12449,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "boroi",
         "fruits",
@@ -11282,6 +12483,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "kagoji",
@@ -11316,6 +12518,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "lime",
@@ -11349,6 +12552,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "lichu",
@@ -11381,6 +12585,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "aam",
         "fazli",
@@ -11418,6 +12623,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "aam",
         "flesh",
@@ -11455,6 +12661,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "flesh",
         "fruits",
@@ -11491,6 +12698,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dewa",
         "flesh",
@@ -11527,6 +12735,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bangee",
         "flesh",
@@ -11554,7 +12763,8 @@
         "protein": 0.2
       },
       "quality_flags": [
-        "borrowed_value"
+        "borrowed_value",
+        "suspect_value"
       ],
       "related_ids": [],
       "source": {
@@ -11564,6 +12774,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": "Anomalously low energy (9 kcal) and high water (97.7%) for raw orange juice",
       "tags": [
         "fruits",
         "juice",
@@ -11599,6 +12810,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "komola",
@@ -11631,6 +12843,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "malta",
@@ -11667,6 +12880,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "cotyledon",
         "er",
@@ -11704,6 +12918,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "flesh",
         "fruits",
@@ -11742,6 +12957,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "paka",
@@ -11776,6 +12992,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bilati",
         "fruits",
@@ -11811,6 +13028,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "anaros",
         "fruits",
@@ -11846,6 +13064,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "anaros",
         "fruits",
@@ -11880,6 +13099,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bedana",
         "bichi",
@@ -11917,6 +13137,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "pomelo",
@@ -11949,6 +13170,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "misti",
@@ -11986,6 +13208,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fruits",
         "lal",
@@ -12021,6 +13244,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bel",
         "fruits",
@@ -12055,6 +13279,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "anchovy",
         "dried",
@@ -12093,6 +13318,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "anchovy",
         "fesha",
@@ -12128,6 +13354,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "anchovy",
         "fish",
@@ -12165,6 +13392,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "anchovy",
         "fesha",
@@ -12203,6 +13431,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "barb",
         "fish",
@@ -12239,6 +13468,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "barb",
         "bones",
@@ -12278,6 +13508,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "barb",
         "chokh",
@@ -12319,6 +13550,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "barb",
         "bones",
@@ -12363,6 +13595,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bata",
         "fish",
@@ -12397,6 +13630,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "boal",
         "bones",
@@ -12434,6 +13668,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bronze",
         "featherback",
@@ -12470,6 +13705,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "calbasu",
@@ -12508,6 +13744,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bacha",
         "catfish",
@@ -12543,6 +13780,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "catfish",
         "fish",
@@ -12581,6 +13819,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "catla",
         "fish",
@@ -12614,6 +13853,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chanda",
         "chokh",
@@ -12655,6 +13895,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chokh",
         "climbing",
@@ -12697,6 +13938,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chokh",
@@ -12739,6 +13981,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -12778,6 +14021,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "carp",
@@ -12816,6 +14060,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "blackspotted",
         "bones",
@@ -12855,6 +14100,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bivinno",
         "chokh",
@@ -12897,6 +14143,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "catla",
         "dorsal",
@@ -12939,6 +14186,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "catla",
         "fish",
@@ -12979,6 +14227,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bivinno",
         "combined",
@@ -13018,6 +14267,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "ailia",
         "fish",
@@ -13052,6 +14302,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fish",
         "gangetic",
@@ -13088,6 +14339,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "catfish",
         "fish",
@@ -13125,6 +14377,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "fish",
@@ -13163,6 +14416,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -13202,6 +14456,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bele",
         "fish",
@@ -13238,6 +14493,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "banded",
         "chara",
@@ -13282,6 +14538,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -13318,6 +14575,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chapila",
         "fish",
@@ -13355,6 +14613,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -13394,6 +14653,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bijoram",
         "bones",
@@ -13436,6 +14696,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -13475,6 +14736,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "ayre",
         "bones",
@@ -13515,6 +14777,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "barred",
         "chompa",
@@ -13551,6 +14814,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chela",
         "finescale",
@@ -13589,6 +14853,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chela",
         "dried",
@@ -13628,6 +14893,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chela",
         "fish",
@@ -13664,6 +14930,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "carplet",
         "chokh",
@@ -13704,6 +14971,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "carp",
         "chokh",
@@ -13743,6 +15011,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fish",
         "goldspot",
@@ -13779,6 +15048,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "clam",
         "fish",
@@ -13819,6 +15089,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -13854,6 +15125,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fish",
         "meni",
@@ -13891,6 +15163,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bivinno",
         "black",
@@ -13930,6 +15203,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "china",
         "chinese",
@@ -13967,6 +15241,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dried",
         "fish",
@@ -14005,6 +15280,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "fish",
@@ -14041,6 +15317,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "birma",
         "chingri",
@@ -14077,6 +15354,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chingri",
         "fish",
@@ -14115,6 +15393,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bagda",
         "chingri",
@@ -14153,6 +15432,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chingri",
         "fish",
@@ -14190,6 +15470,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chingri",
         "fish",
@@ -14227,6 +15508,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chingri",
         "fish",
@@ -14265,6 +15547,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fish",
         "nodir",
@@ -14304,6 +15587,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -14340,6 +15624,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chingri",
         "fish",
@@ -14375,6 +15660,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "carp",
@@ -14413,6 +15699,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chokh",
         "eyes",
@@ -14453,6 +15740,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chara",
         "fish",
@@ -14491,6 +15779,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "catfiah",
         "chara",
@@ -14530,6 +15819,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fish",
         "products",
@@ -14566,6 +15856,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chara",
         "fish",
@@ -14605,6 +15896,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -14643,6 +15935,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "chara",
@@ -14680,6 +15973,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bones",
         "catifish",
@@ -14719,6 +16013,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "fish",
         "fry",
@@ -14755,7 +16050,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "cooked",
+      "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "ball",
         "fish",
@@ -14791,6 +16087,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "beef",
         "gorur",
@@ -14828,6 +16125,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "beef",
         "boneless",
@@ -14869,6 +16167,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "15",
         "20",
@@ -14911,6 +16210,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "beef",
         "gorur",
@@ -14950,6 +16250,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "buffalo",
         "mangsaw",
@@ -14988,6 +16289,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "breast",
         "buker",
@@ -15029,6 +16331,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chamra",
         "charano",
@@ -15070,6 +16373,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "koliza",
@@ -15107,6 +16411,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "duck",
         "hasher",
@@ -15143,6 +16448,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "bang",
         "frog",
@@ -15179,6 +16485,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "goat",
         "khaseer",
@@ -15219,6 +16526,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fat",
         "lamb",
@@ -15258,6 +16566,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "koliza",
         "lamb",
@@ -15296,6 +16605,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "kobutorer",
         "mangsaw",
@@ -15332,6 +16642,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "fat",
         "mangsaw",
@@ -15369,15 +16680,12 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
-        "bangladeshi",
         "beef",
-        "cooked",
-        "curry",
         "goru",
         "haaree",
         "handi",
-        "indian",
         "kabab",
         "meat",
         "poultry",
@@ -15411,6 +16719,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "dim",
@@ -15452,6 +16761,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "deshi",
@@ -15490,6 +16800,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "deshi",
@@ -15529,6 +16840,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dim",
         "duck",
@@ -15566,17 +16878,15 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
-        "bangladeshi",
         "boiled",
         "chara",
         "chicken",
-        "curry",
         "dim",
         "egg",
         "eggs",
         "farmed",
-        "indian",
         "lobon",
         "murgir",
         "products",
@@ -15611,6 +16921,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -15653,6 +16964,7 @@
         "version": "2013-07-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "boiled",
         "chara",
@@ -15694,6 +17006,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "buttermilk",
         "fat",
@@ -15730,6 +17043,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "25",
         "cheese",
@@ -15769,6 +17083,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "curd",
@@ -15810,6 +17125,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "buffalo",
         "dudh",
@@ -15846,6 +17162,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cow",
         "dudh",
@@ -15886,6 +17203,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cow",
         "dudh",
@@ -15923,6 +17241,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cow",
         "dudh",
@@ -15961,6 +17280,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cow",
         "dairy",
@@ -16004,6 +17324,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chini",
         "condensed",
@@ -16043,6 +17364,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "breeds",
         "chagoler",
@@ -16079,6 +17401,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "colostrum",
         "human",
@@ -16114,6 +17437,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dudh",
         "human",
@@ -16142,25 +17466,22 @@
       "quality_flags": [
         "recipe_calculated"
       ],
-      "related_ids": [],
+      "related_ids": [
+        "curated_payesh_kheer"
+      ],
       "source": {
         "citation_key": "fctb_2013",
         "code": "12_0013",
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "cooked",
+      "state": "prepared",
+      "suspect_reason": null,
       "tags": [
-        "bangladeshi",
-        "dessert",
-        "indian",
         "its",
-        "kheer",
         "milk",
         "payesh",
-        "product",
-        "pudding",
-        "rice"
+        "product"
       ]
     },
     {
@@ -16188,6 +17509,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "butter",
         "fat",
@@ -16222,6 +17544,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bij",
         "cottonseed",
@@ -16258,6 +17581,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cod",
         "fat",
@@ -16294,6 +17618,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "cow",
@@ -16331,6 +17656,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bonoshpati",
         "dalda",
@@ -16365,6 +17691,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "fat",
         "margarine",
@@ -16396,6 +17723,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "fat",
         "mayonnaise",
@@ -16429,6 +17757,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bangladeshi",
         "fat",
@@ -16465,6 +17794,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "fat",
         "oil",
@@ -16498,6 +17828,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "badam",
         "china",
@@ -16534,6 +17865,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "fat",
@@ -16567,6 +17899,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "fat",
         "oil",
@@ -16601,6 +17934,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "coconut",
@@ -16634,7 +17968,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "cooked",
+      "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "chini",
@@ -16675,6 +18010,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "coffee",
@@ -16706,6 +18042,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "carbonated",
@@ -16740,6 +18077,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "dudh",
@@ -16775,6 +18113,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "akher",
         "beverages",
@@ -16801,24 +18140,23 @@
       "quality_flags": [
         "recipe_calculated"
       ],
-      "related_ids": [],
+      "related_ids": [
+        "curated_masala_chai_with_milk_sugar"
+      ],
       "source": {
         "citation_key": "fctb_2013",
         "code": "14_0007",
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "cooked",
+      "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "cha",
-        "chai",
-        "drink",
         "dudh",
         "fat",
-        "indian",
         "infusion",
-        "masala",
         "milk",
         "powder",
         "sugar",
@@ -16850,7 +18188,8 @@
         "dataset": "fctb_2013",
         "version": "2013-07-04"
       },
-      "state": "cooked",
+      "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "cha",
@@ -16885,6 +18224,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "cha",
@@ -16918,6 +18258,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverages",
         "drinking",
@@ -16952,6 +18293,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "baking",
         "miscellaneous",
@@ -16983,6 +18325,7 @@
         "version": "2013-07-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "betel",
         "leaves",
@@ -17017,6 +18360,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "honey",
         "miscellaneous",
@@ -17048,6 +18392,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "akh",
         "gur",
@@ -17083,6 +18428,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "date",
         "gur",
@@ -17119,6 +18465,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "date",
         "gur",
@@ -17154,6 +18501,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "lobon",
         "miscellaneous",
@@ -17185,6 +18533,7 @@
         "version": "2013-07-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chini",
         "miscellaneous",
@@ -17216,6 +18565,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "bread",
         "european",
@@ -17243,7 +18593,9 @@
         "protein": 4.05
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_fried_rice_egg"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "167668",
@@ -17251,9 +18603,9 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "chinese",
-        "egg",
         "foods",
         "fried",
         "meat",
@@ -17284,6 +18636,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "chinese",
@@ -17316,6 +18669,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "chinese",
@@ -17340,7 +18694,9 @@
         "protein": 4.77
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_lo_mein"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "167677",
@@ -17348,13 +18704,13 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "foods",
         "lo",
         "meat",
         "mein",
-        "noodles",
         "restaurant",
         "vegetable"
       ]
@@ -17382,6 +18738,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "foods",
@@ -17406,7 +18763,9 @@
         "protein": 6.76
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_chow_mein"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "168083",
@@ -17414,14 +18773,54 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chicken",
         "chinese",
         "chow",
         "foods",
         "mein",
-        "noodles",
         "restaurant"
+      ]
+    },
+    {
+      "basis": "100 g",
+      "food_group": "Pork Products",
+      "id": "fdc_168305",
+      "local_name": null,
+      "name": "Pork, fresh, loin, country-style ribs, separable lean only, raw",
+      "per_100g": {
+        "carbs_available": 0.0,
+        "carbs_total": 0.0,
+        "fat": 5.64,
+        "fibre": 0.0,
+        "kcal": 140.0,
+        "protein": 20.76
+      },
+      "quality_flags": [],
+      "related_ids": [
+        "curated_bbq_ribs_pork"
+      ],
+      "source": {
+        "citation_key": "fdc_sr_legacy_2018_04",
+        "code": "168305",
+        "dataset": "fdc_sr_legacy",
+        "version": "2018-04"
+      },
+      "state": "raw",
+      "suspect_reason": null,
+      "tags": [
+        "country",
+        "fresh",
+        "lean",
+        "loin",
+        "only",
+        "pork",
+        "products",
+        "raw",
+        "ribs",
+        "separable",
+        "style"
       ]
     },
     {
@@ -17447,6 +18846,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "butter",
@@ -17487,6 +18887,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "beef",
         "broiled",
@@ -17519,7 +18920,9 @@
         "protein": 28.54
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_beef_steak_grilled"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "168731",
@@ -17527,13 +18930,12 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
-        "american",
         "beef",
         "boneless",
         "choice",
         "cooked",
-        "european",
         "fat",
         "grilled",
         "lean",
@@ -17544,40 +18946,6 @@
         "steak",
         "to",
         "trimmed"
-      ]
-    },
-    {
-      "basis": "100 g",
-      "food_group": "Cereal Grains and Pasta",
-      "id": "fdc_168914",
-      "local_name": null,
-      "name": "Rice noodles, cooked",
-      "per_100g": {
-        "carbs_available": 23.01,
-        "carbs_total": 24.01,
-        "fat": 0.2,
-        "fibre": 1.0,
-        "kcal": 108.0,
-        "protein": 1.79
-      },
-      "quality_flags": [],
-      "related_ids": [],
-      "source": {
-        "citation_key": "fdc_sr_legacy_2018_04",
-        "code": "168914",
-        "dataset": "fdc_sr_legacy",
-        "version": "2018-04"
-      },
-      "state": "cooked",
-      "tags": [
-        "boiled",
-        "cereal",
-        "chinese",
-        "cooked",
-        "grains",
-        "noodles",
-        "pasta",
-        "rice"
       ]
     },
     {
@@ -17603,6 +18971,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "cereal",
         "cooked",
@@ -17635,6 +19004,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "added",
         "cereal",
@@ -17664,7 +19034,9 @@
         "protein": 0.79
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_coleslaw"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "169020",
@@ -17672,13 +19044,12 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
-        "american",
         "applebee",
         "coleslaw",
         "foods",
-        "restaurant",
-        "salad"
+        "restaurant"
       ]
     },
     {
@@ -17704,6 +19075,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "cheese",
@@ -17736,6 +19108,7 @@
         "version": "2018-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "distribution",
         "drink",
@@ -17751,53 +19124,6 @@
         "program",
         "raw",
         "usda"
-      ]
-    },
-    {
-      "basis": "100 g",
-      "food_group": "Vegetables and Vegetable Products",
-      "id": "fdc_169264",
-      "local_name": null,
-      "name": "Potatoes, french fried, all types, salt added in processing, frozen, home-prepared, oven heated",
-      "per_100g": {
-        "carbs_available": 23.55,
-        "carbs_total": 25.55,
-        "fat": 5.48,
-        "fibre": 2.0,
-        "kcal": 158.0,
-        "protein": 2.75
-      },
-      "quality_flags": [],
-      "related_ids": [],
-      "source": {
-        "citation_key": "fdc_sr_legacy_2018_04",
-        "code": "169264",
-        "dataset": "fdc_sr_legacy",
-        "version": "2018-04"
-      },
-      "state": "cooked",
-      "tags": [
-        "added",
-        "american",
-        "chips",
-        "french",
-        "fried",
-        "fries",
-        "frozen",
-        "heated",
-        "home",
-        "in",
-        "medium",
-        "oven",
-        "potato",
-        "potatoes",
-        "prepared",
-        "processing",
-        "products",
-        "salt",
-        "types",
-        "vegetable",
-        "vegetables"
       ]
     },
     {
@@ -17823,6 +19149,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cabbage",
         "canned",
@@ -17851,7 +19178,9 @@
         "protein": 6.68
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_mac_and_cheese"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "169770",
@@ -17859,13 +19188,12 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
-        "american",
         "box",
         "cheese",
         "dishes",
         "entrees",
-        "mac",
         "macaroni",
         "meals",
         "mix",
@@ -17897,6 +19225,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "european",
         "foods",
@@ -17930,6 +19259,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "cheese",
@@ -17954,7 +19284,9 @@
         "protein": 10.36
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_pizza_margherita_1_slice"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "170317",
@@ -17962,19 +19294,16 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "cheese",
         "cooked",
         "crust",
-        "european",
         "fast",
         "foods",
         "frozen",
-        "italian",
-        "margherita",
         "pizza",
         "regular",
-        "slice",
         "topping"
       ]
     },
@@ -17993,7 +19322,9 @@
         "protein": 12.97
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_cheeseburger"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "170320",
@@ -18001,9 +19332,8 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
-        "american",
-        "burger",
         "cheeseburger",
         "fast",
         "foods",
@@ -18025,7 +19355,9 @@
         "protein": 8.86
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_taco_beef"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "170332",
@@ -18033,15 +19365,14 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
-        "american",
         "beef",
         "bell",
         "cheese",
         "fast",
         "foods",
         "lettuce",
-        "mexican",
         "original",
         "taco"
       ]
@@ -18061,7 +19392,9 @@
         "protein": 9.84
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_burrito_chicken"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "170334",
@@ -18069,14 +19402,13 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
-        "american",
         "bell",
         "burrito",
         "chicken",
         "fast",
         "foods",
-        "mexican",
         "supreme",
         "taco"
       ]
@@ -18104,6 +19436,7 @@
         "version": "2018-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "chia",
         "dried",
@@ -18136,6 +19469,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "almond",
         "almonds",
@@ -18168,6 +19502,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "beef",
@@ -18204,6 +19539,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "dairy",
         "distribution",
@@ -18243,6 +19579,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cheddar",
         "cheese",
@@ -18251,43 +19588,6 @@
         "products",
         "sharp",
         "sliced"
-      ]
-    },
-    {
-      "basis": "100 g",
-      "food_group": "Soups, Sauces, and Gravies",
-      "id": "fdc_171181",
-      "local_name": null,
-      "name": "SMART SOUP, Indian Bean Masala",
-      "per_100g": {
-        "carbs_available": 7.9,
-        "carbs_total": 10.5,
-        "fat": 0.88,
-        "fibre": 2.6,
-        "kcal": 57.0,
-        "protein": 3.3
-      },
-      "quality_flags": [],
-      "related_ids": [],
-      "source": {
-        "citation_key": "fdc_sr_legacy_2018_04",
-        "code": "171181",
-        "dataset": "fdc_sr_legacy",
-        "version": "2018-04"
-      },
-      "state": "cooked",
-      "tags": [
-        "bean",
-        "chana",
-        "chickpea",
-        "chole",
-        "gravies",
-        "indian",
-        "masala",
-        "sauces",
-        "smart",
-        "soup",
-        "soups"
       ]
     },
     {
@@ -18313,6 +19613,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cooking",
         "fat",
@@ -18347,6 +19648,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "breast",
         "broilers",
@@ -18384,6 +19686,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "bratwurst",
         "cooked",
@@ -18419,6 +19722,7 @@
         "version": "2018-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "avocado",
         "avocados",
@@ -18454,6 +19758,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "gravies",
@@ -18487,6 +19792,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "baked",
         "bangladeshi",
@@ -18523,6 +19829,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverage",
         "beverages",
@@ -18558,6 +19865,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "beverage",
         "beverages",
@@ -18592,7 +19900,8 @@
         "dataset": "fdc_sr_legacy",
         "version": "2018-04"
       },
-      "state": "raw",
+      "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "chinook",
         "cooked",
@@ -18621,7 +19930,9 @@
         "protein": 14.38
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_pizza_pepperoni_1_slice"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "172096",
@@ -18629,18 +19940,16 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "cooked",
         "crust",
-        "european",
         "fast",
         "foods",
         "frozen",
-        "italian",
         "pepperoni",
         "pizza",
         "regular",
-        "slice",
         "topping"
       ]
     },
@@ -18667,6 +19976,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "cheese",
         "cottage",
@@ -18700,6 +20010,7 @@
         "version": "2018-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "dairy",
         "egg",
@@ -18733,6 +20044,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "falafel",
@@ -18768,6 +20080,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "firm",
@@ -18804,6 +20117,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "butter",
         "legume",
@@ -18839,6 +20153,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "baguette",
         "baked",
@@ -18875,6 +20190,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "baked",
         "bread",
@@ -18909,6 +20225,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "baked",
@@ -18944,6 +20261,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "baked",
@@ -18980,6 +20298,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "baked",
@@ -19020,6 +20339,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "based",
         "beverages",
@@ -19052,6 +20372,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "barbecue",
@@ -19089,6 +20410,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "cheese",
@@ -19096,43 +20418,6 @@
         "dairy",
         "egg",
         "products"
-      ]
-    },
-    {
-      "basis": "100 g",
-      "food_group": "Dairy and Egg Products",
-      "id": "fdc_173459",
-      "local_name": null,
-      "name": "Protein supplement, milk based, Muscle Milk, powder",
-      "per_100g": {
-        "carbs_available": 11.4,
-        "carbs_total": 18.5,
-        "fat": 17.14,
-        "fibre": 7.1,
-        "kcal": 411.0,
-        "protein": 45.71
-      },
-      "quality_flags": [],
-      "related_ids": [],
-      "source": {
-        "citation_key": "fdc_sr_legacy_2018_04",
-        "code": "173459",
-        "dataset": "fdc_sr_legacy",
-        "version": "2018-04"
-      },
-      "state": "prepared",
-      "tags": [
-        "based",
-        "dairy",
-        "drink",
-        "egg",
-        "milk",
-        "muscle",
-        "powder",
-        "products",
-        "protein",
-        "shake",
-        "supplement"
       ]
     },
     {
@@ -19158,6 +20443,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "broilers",
         "chicken",
@@ -19195,6 +20481,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "canned",
         "distribution",
@@ -19239,6 +20526,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "american",
         "baked",
@@ -19273,6 +20561,7 @@
         "version": "2018-04"
       },
       "state": "raw",
+      "suspect_reason": null,
       "tags": [
         "breakfast",
         "cereals",
@@ -19311,6 +20600,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "15",
         "85",
@@ -19349,6 +20639,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "condiment",
@@ -19384,6 +20675,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "commercial",
@@ -19418,6 +20710,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "gravies",
@@ -19446,7 +20739,9 @@
         "protein": 2.46
       },
       "quality_flags": [],
-      "related_ids": [],
+      "related_ids": [
+        "curated_clam_chowder"
+      ],
       "source": {
         "citation_key": "fdc_sr_legacy_2018_04",
         "code": "174556",
@@ -19454,8 +20749,8 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
-        "american",
         "campbell",
         "chowder",
         "chunky",
@@ -19464,7 +20759,6 @@
         "gravies",
         "new",
         "sauces",
-        "soup",
         "soups"
       ]
     },
@@ -19491,6 +20785,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "drop",
@@ -19525,6 +20820,7 @@
         "version": "2018-04"
       },
       "state": "cooked",
+      "suspect_reason": null,
       "tags": [
         "chinese",
         "gravies",
@@ -19559,6 +20855,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "bagel",
@@ -19599,6 +20896,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "arab",
         "baked",
@@ -19633,6 +20931,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "baked",
         "butter",
@@ -19667,6 +20966,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "baked",
@@ -19701,6 +21001,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "apple",
@@ -19738,6 +21039,7 @@
         "version": "2018-04"
       },
       "state": "prepared",
+      "suspect_reason": null,
       "tags": [
         "american",
         "baked",
@@ -19753,11 +21055,11 @@
   "metadata": {
     "counts": {
       "by_dataset": {
-        "curated": 92,
+        "curated": 117,
         "fctb_2013": 381,
-        "fdc_sr_legacy": 72
+        "fdc_sr_legacy": 69
       },
-      "total": 545
+      "total": 567
     },
     "schema_version": 3,
     "sources": {

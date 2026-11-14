@@ -102,7 +102,12 @@ const searchLocal = (query) => {
     if (score > 0) hits.push({ food, score });
   }
   return hits
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => {
+      const sa = a.food.qualityFlags?.includes('suspect_value') ? 1 : 0;
+      const sb = b.food.qualityFlags?.includes('suspect_value') ? 1 : 0;
+      if (sa !== sb) return sa - sb;
+      return b.score - a.score;
+    })
     .slice(0, LOCAL_LIMIT)
     .map((h) => ({ ...h.food, source: h.food.source === 'custom' ? 'custom' : 'local' }));
 };
@@ -210,6 +215,10 @@ const renderCard = (food) => {
   const showBrand = food.brand && !food.sourceInfo && food.source !== 'custom';
   const basisNote = food.sourceInfo?.dataset === 'fctb_2013' ? 'Values per 100 g edible portion' : 'Values per 100g';
   const fibreNote = food.fibre != null ? ` · Fibre: ${food.fibre}g` : '';
+  const isSuspect = food.qualityFlags?.includes('suspect_value');
+  const suspectBadge = isSuspect
+    ? `<span class="food-card-brand-text" style="color:var(--warning);" title="${escapeHtml(food.suspectReason || 'Value disputed in source data')}">· value disputed</span>`
+    : '';
   el.innerHTML = `
     <button type="button" class="fav-btn${isFav ? ' active' : ''}" data-action="fav" aria-label="${isFav ? 'Unfavorite' : 'Favorite'} ${escapeHtml(food.name)}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">${icon('star', 15, 2.2)}</button>
     <div class="food-card-head">
@@ -218,6 +227,7 @@ const renderCard = (food) => {
         <div class="food-card-brand">
           ${sourceBadge(food)}
           ${showBrand ? `<span class="food-card-brand-text">· ${escapeHtml(food.brand)}</span>` : ''}
+          ${suspectBadge}
         </div>
       </div>
       <div class="food-card-cal">${food.calories} kcal</div>

@@ -397,4 +397,13 @@ describe('migrateV2toV3', () => {
     expect(state.schemaVersion).toBe(3);
     expect(state.favorites.foods).toEqual(['fctb_01_0041']);
   });
+
+  it('migrates reclassified local_193 to curated_protein_shake_milk_based, not fdc_', () => {
+    const v2 = {
+      favorites: { foods: ['local_193'] }
+    };
+    const v3 = migrateV2toV3(v2);
+    expect(v3.favorites.foods).toEqual(['curated_protein_shake_milk_based']);
+    expect(v3.favorites.foods[0].startsWith('fdc_')).toBe(false);
+  });
 });

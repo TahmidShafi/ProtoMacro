@@ -48,13 +48,14 @@ def test_validation_rules_pass_and_fail() -> None:
           79.0 AS carbs_total, 1.0 AS fibre, 12.0 AS water, 1.0 AS ash,
           '100 g edible portion' AS basis, 'fctb_2013' AS dataset,
           '2013-07-04' AS version, 'fctb_2013' AS citation_key,
-          CAST([] AS VARCHAR[]) AS quality_flags, ['rice'] AS tags, CAST([] AS VARCHAR[]) AS related_ids
+          CAST([] AS VARCHAR[]) AS quality_flags, CAST(NULL AS VARCHAR) AS suspect_reason,
+          ['rice'] AS tags, CAST([] AS VARCHAR[]) AS related_ids
         UNION ALL
         SELECT
           'curated_weird', 'local_999', 'Weird', NULL, 'prepared', 'Curated',
           500.0, 10.0, 5.0, NULL, 10.0, NULL, 80.0, 5.0,
           '100 g', 'curated', 'v2', 'protomacro_curated_v2',
-          ['curated_estimate'], ['weird'], []
+          ['curated_estimate'], NULL, ['weird'], []
         """
     )
     con.execute(validate_sql)
@@ -73,11 +74,12 @@ def test_validation_rules_pass_and_fail() -> None:
           1.0 AS fat, 1.0 AS carbs_available, 1.0 AS carbs_total, 0.0 AS fibre,
           100.0 AS water, 20.0 AS ash, '100 g' AS basis, 'curated' AS dataset,
           'v2' AS version, 'k' AS citation_key, CAST([] AS VARCHAR[]) AS quality_flags,
+          CAST(NULL AS VARCHAR) AS suspect_reason,
           CAST([] AS VARCHAR[]) AS tags, CAST([] AS VARCHAR[]) AS related_ids
         UNION ALL
         SELECT
           'dup_1', 'c2', NULL, NULL, 'raw', 'Test', 100.0, 1.0, 1.0, 1.0, 1.0,
-          0.0, 10.0, 1.0, '100 g', 'curated', 'v2', 'k', [], [], []
+          0.0, 10.0, 1.0, '100 g', 'curated', 'v2', 'k', [], NULL, [], []
         """
     )
     con.execute(validate_sql)
@@ -140,3 +142,70 @@ def test_committed_outputs_valid_and_complete() -> None:
         assert f"local_{i}" in mig
     valid_ids = {f["id"] for f in foods_doc["foods"]}
     assert all(v in valid_ids for v in mig.values())
+
+
+def test_infer_state_cases() -> None:
+    from pipeline.parsers import infer_state
+
+    assert infer_state("Fish, salmon, chinook, cooked, dry heat") == "cooked"
+    assert infer_state("Cereals, oats, regular and quick, not fortified, dry") == "raw"
+    assert infer_state("Hilsa, without bones, raw") == "raw"
+    assert infer_state("Payesh*") == "prepared"
+
+
+def test_approximate_policy_and_suspect_value(tmp_path: Path) -> None:
+    manifest = tmp_path / "sources.yml"
+    manifest.write_text(
+        yaml.safe_dump(
+            {
+                "sources": {
+                    "fctb_xlsx": {"filename": "fctb_fixture.xlsx", "sha256": "abc", "retrieved_at": "2026-11-15"},
+                    "fdc_sr_legacy": {"filename": "fdc_sr_fixture.zip", "sha256": "def", "retrieved_at": "2026-11-15"},
+                    "fdc_foundation": {"filename": "fdc_foundation_fixture.zip", "sha256": "ghi", "retrieved_at": "2026-11-15"},
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    seed_path = tmp_path / "seed.json"
+    seed_path.write_text(
+        json.dumps([{"name": "Approx Dish", "calories": 250, "protein": 10, "carbs": 30, "fat": 8, "tags": []}]),
+        encoding="utf-8",
+    )
+    cw_path = tmp_path / "cw.csv"
+    cw_path.write_text(
+        "curated_index,curated_name,fctb_code,fdc_id,match_type,source_name,source_state,notes\n"
+        "0,Approx Dish,01_0041,,approximate,Rice boiled*,cooked,test approx\n",
+        encoding="utf-8",
+    )
+    anom_path = tmp_path / "anomalies.csv"
+    anom_path.write_text(
+        "source,code,reason,evidence\n"
+        'fctb_2013,01_0041,"Test anomaly reason","Test evidence"\n',
+        encoding="utf-8",
+    )
+    out = tmp_path / "out"
+    run_pipeline(
+        manifest_path=manifest,
+        raw_dir=FIXTURES,
+        seed_path=seed_path,
+        crosswalk_path=cw_path,
+        anomalies_path=anom_path,
+        foods_out=out / "foods.json",
+        migration_out=out / "mig.json",
+        run_log_out=out / "log.json",
+        quality_report_out=out / "dq.md",
+        skip_extract=True,
+    )
+    mig = json.loads((out / "mig.json").read_text(encoding="utf-8"))
+    assert mig["local_0"] == "curated_approx_dish"
+
+    foods = {f["id"]: f for f in json.loads((out / "foods.json").read_text(encoding="utf-8"))["foods"]}
+    approx = foods["curated_approx_dish"]
+    assert approx["per_100g"]["kcal"] == 250
+    assert "approximate_crosswalk" in approx["quality_flags"]
+    assert "fctb_01_0041" in approx["related_ids"]
+
+    flagged = foods["fctb_01_0041"]
+    assert "suspect_value" in flagged["quality_flags"]
+    assert flagged["suspect_reason"] == "Test anomaly reason"

@@ -88,8 +88,11 @@ Each food record in the normalized output conforms to:
   - `recipe_calculated`: FCTB `*` / `Recipe calculation` item
   - `atwater_mismatch`: Reported `kcal` differs from Atwater estimate beyond tolerance
   - `proximates_over_100g`: Sum of `water + protein + fat + carbs + fibre + ash > 102 g`
-  - `curated_estimate`: Retained from legacy `js/foods-db.js` with no external source match
+  - `curated_estimate`: Retained from legacy `js/foods-db.js` (no exact external source match)
+  - `approximate_crosswalk`: Legacy item has only an approximate external source match (values preserved from curated; `related_ids` links to source)
   - `different_state_crosswalk`: Legacy item matched only to a different cooking state in source
+  - `suspect_value`: Source row flagged in `pipeline/mappings/source_anomalies.csv` (source numbers preserved unmodified; `suspect_reason` exposed on output)
+- **`suspect_reason`** (`string | null`): Human-readable explanation when `suspect_value` is present in `quality_flags`, otherwise `null`.
 - **`tags`** (`string[]`): Lowercase search keywords (including Bengali transliterations and synonyms from `js/foods-db.js`).
 
 ---
@@ -99,7 +102,13 @@ Each food record in the normalized output conforms to:
 1. **Merge priority**: `FCTB 2013 > USDA FDC (Foundation > SR Legacy) > Curated estimate`
    - Bangladeshi / South Asian foods present in FCTB take priority over USDA so local cultivars, fish, pulses, and recipes reflect regional composition.
    - Generic Western / international whole foods not in FCTB resolve to USDA FDC (preferring newer Foundation Foods over SR Legacy when both exist).
-2. **Cooked vs. raw rule**: A cooked or prepared curated food is **never** silently replaced by a raw source row. In `curated_crosswalk.csv` such pairs are classified as `different_state` (`approximate` if a different preparation). For D2 output, cooked curated items without a cooked source match are either kept as `curated_estimate` (labeled `state: "cooked"`) or paired with a cooked FCTB/FDC entry.
+2. **Exact-only replacement policy**:
+   - **ONLY `match_type = exact`** replaces curated values with the matched source item and migrates `local_N` to the source ID (`fctb_<Code>` or `fdc_<fdc_id>`).
+   - **`match_type = approximate`**: Keeps the curated item and its values (`id = curated_<slug>`), sets `quality_flags` to `["curated_estimate", "approximate_crosswalk"]`, links `related_ids` to the source item (with a reverse link on the source item), and migrates `local_N` to `curated_<slug>`.
+   - **`match_type = different_state`**: Cooked/prepared curated food is **never** silently replaced by a raw source row. Keeps the curated item (`id = curated_<slug>`, `quality_flags = ["curated_estimate", "different_state_crosswalk"]`), links `related_ids` to the source item, and migrates `local_N` to `curated_<slug>`.
+   - **Crosswalk classification rules**:
+     - Branded/restaurant sources (e.g., McDonald's, Taco Bell, Applebee's, Campbell's) can be at most `approximate` for a generic curated food.
+     - Different physical form (e.g., powder vs. liquid drink, soup vs. curry, mash vs. stir-fry, rice noodles vs. wheat noodles) must be `none` (do not link).
 3. **Foods with no match (`match_type = none`)**:
    - Retained in the catalog with `source: { dataset: "curated", code: "local_<N>", version: "v2" }` and `quality_flags: ["curated_estimate"]`.
    - Any false legacy `brand: "USDA"` label is stripped unless backed by a real `fdc_id`.
