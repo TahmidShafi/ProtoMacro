@@ -2874,8 +2874,18 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
   min-width: 0;
 }
 .progress-ring-card.mini .mini-ring-svg {
+  position: relative;
   width: 80px;
   height: 80px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-ring-card.mini .ring-inner {
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 .progress-ring-card.mini:hover { transform: none; border-color: transparent; }
 .progress-ring-card.mini .mini-ring-svg circle.ring-arc {

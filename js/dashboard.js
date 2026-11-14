@@ -46,7 +46,7 @@ const renderMacroRings = (totals) => {
             <circle class="ring-arc" data-arc="${m.key}" cx="40" cy="40" r="${R}" fill="none" stroke="${m.color}" stroke-width="7"
               stroke-linecap="round" stroke-dasharray="${CIRC}" stroke-dashoffset="${CIRC}"/>
           </svg>
-          <div class="ring-inner" style="width:80px;height:80px;">
+          <div class="ring-inner">
             <div class="ring-val" style="font-size:var(--text-sm);" data-val="${m.key}">0g</div>
           </div>
         </div>
