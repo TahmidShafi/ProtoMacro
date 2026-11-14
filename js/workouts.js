@@ -114,11 +114,22 @@ const weeklyVolume = () => {
 
 /* ---------------- charts ---------------- */
 
+const mergeChartOptions = (target, src) => {
+  if (!src || typeof src !== 'object') return;
+  for (const [k, v] of Object.entries(src)) {
+    if (v && typeof v === 'object' && !Array.isArray(v) && target[k] && typeof target[k] === 'object') {
+      mergeChartOptions(target[k], v);
+    } else {
+      target[k] = v;
+    }
+  }
+};
+
 const ensureChart = (id, ctx, config) => {
   if (charts[id]) {
     charts[id].data = config.data;
-    charts[id].options = config.options;
-    charts[id].update();
+    mergeChartOptions(charts[id].options, config.options);
+    charts[id].update('none');
     return;
   }
   charts[id] = new Chart(ctx, config);

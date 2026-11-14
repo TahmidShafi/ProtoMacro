@@ -57,9 +57,11 @@ const applyChartDefaults = () => {
   Chart.defaults.plugins.tooltip.cornerRadius = 8;
   Chart.defaults.plugins.tooltip.displayColors = false;
   /* charts stay quiet for reduced-motion users */
-  Chart.defaults.animation = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-    ? false
-    : { duration: 400, easing: 'easeOutQuart' };
+  const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  if (Chart.defaults.animation && typeof Chart.defaults.animation === 'object') {
+    Chart.defaults.animation.duration = reducedMotion ? 0 : 400;
+    Chart.defaults.animation.easing = 'easeOutQuart';
+  }
 };
 
 /* =========================================================
@@ -89,12 +91,23 @@ const last30Days = () => {
 
 const findHistory = (date) => STATE.history.find((h) => h.date === date);
 
+const mergeChartOptions = (target, src) => {
+  if (!src || typeof src !== 'object') return;
+  for (const [k, v] of Object.entries(src)) {
+    if (v && typeof v === 'object' && !Array.isArray(v) && target[k] && typeof target[k] === 'object') {
+      mergeChartOptions(target[k], v);
+    } else {
+      target[k] = v;
+    }
+  }
+};
+
 /* Update-in-place chart helper (perf fix: no destroy/recreate churn) */
 const ensureChart = (id, ctx, config) => {
   if (charts[id]) {
     charts[id].data = config.data;
-    charts[id].options = config.options;
-    charts[id].update();
+    mergeChartOptions(charts[id].options, config.options);
+    charts[id].update('none');
     return charts[id];
   }
   charts[id] = new Chart(ctx, config);
