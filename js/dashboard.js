@@ -140,6 +140,13 @@ const renderRecents = () => {
   `).join('');
 };
 
+export const formatCalorieDelta = (consumed, goal) => {
+  const diff = Math.round(goal - consumed);
+  if (diff === 0) return { text: 'On target', over: false };
+  if (diff < 0) return { text: `${Math.abs(diff).toLocaleString()} kcal over`, over: true };
+  return { text: `${diff.toLocaleString()} kcal remaining`, over: false };
+};
+
 const render = () => {
   if (!dom) return;
   const totals = getTrackerTotals();
@@ -152,7 +159,9 @@ const render = () => {
   dom.modeChip.textContent = `${mode.emoji} ${mode.label} · ${goal.toLocaleString()} kcal`;
   animateNumber(dom.calConsumed, Math.round(totals.cal), 500);
   dom.calGoal.textContent = goal.toLocaleString();
-  dom.calRemaining.textContent = Math.max(0, Math.round(goal - totals.cal)).toLocaleString();
+  const delta = formatCalorieDelta(totals.cal, goal);
+  dom.calRemaining.textContent = delta.text;
+  dom.calRemaining.style.color = delta.over ? 'var(--warning)' : '';
 
   renderMacroRings(totals);
 

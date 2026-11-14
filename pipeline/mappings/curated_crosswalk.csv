@@ -1,0 +1,195 @@
+curated_index,curated_name,fctb_code,fdc_id,match_type,source_name,source_state,notes
+0,"Rice, white Bangladeshi (cooked)",01_0041,168880,exact,"Rice, white, sunned, polished, milled, boiled* (without salt)",cooked,FCTB boiled white sunned rice (bosa bhat); diff +17.1%
+1,"Rice, parboiled (cooked)",01_0037,169708,exact,"Rice, BR-28, boiled* (without salt)",cooked,FCTB BR-28 parboiled rice boiled (bosa bhat); diff +17.4%
+2,Ruti / Chapati,01_0042,171844,exact,Ruti*,cooked,FCTB Ruti*; diff +20.7%
+3,Paratha (plain),,,none,,,No plain paratha entry in FCTB or FDC SR Legacy
+4,Naan bread,,171845,exact,"Bread, naan, plain, commercially prepared, refrigerated",prepared,FDC plain naan commercially prepared
+5,Puri (fried bread),,,none,,,No South Asian puri in FCTB or FDC SR Legacy
+6,"Dal, red lentil (cooked)",02_0015,172421,approximate,"Lentis, boiled* (without salt)",cooked,"FCTB Lentis boiled* is thick recipe calc (56.9% water, 155 kcal) vs thinner household dal (-25.2%)"
+7,"Dal, yellow moong (cooked)",02_0013,174257,approximate,"Green gram, split, boiled* (without salt)",cooked,"FCTB Green gram split boiled* is thick recipe calc (58.5% water, 161 kcal) vs thinner household dal (-34.8%)"
+8,"Dal, chana (cooked)",02_0012,173757,exact,"Bengal gram, whole, boiled* (without salt)",cooked,FCTB Bengal gram boiled* recipe calc (-9.9% kcal)
+9,Hilsa fish (cooked),09_0033,,different_state,"Hilsa, without bones, raw",raw,Curated is cooked; FCTB 09_0033 (Hilsa without bones) is raw
+10,Rohu fish (cooked),09_0060,,different_state,"Rohu, without bones, raw",raw,Curated is cooked; FCTB 09_0060 (Rohu without bones) is raw
+11,Catla fish (cooked),09_0015,,different_state,"Catla, raw",raw,Curated is cooked; FCTB 09_0015 (Catla) is raw
+12,Pangas fish (cooked),09_0047,,different_state,"Pangas, without bones, raw",raw,Curated is cooked; FCTB 09_0047 (Pangas without bones) is raw
+13,Prawn / Chingri (cooked),09_0056,,different_state,"Prawn, Hairy river prawn, raw",raw,Curated is cooked; FCTB 09_0056 (Prawn/Chingri) is raw
+14,Beef curry (cooked),,,none,,,"Reclassified to none: FCTB 10_0016 is Beef handi kabab*, different dish from beef curry"
+15,Mutton curry (cooked),10_0012,167634,different_state,"Lamb/mutton, meat, moderately fat, raw",raw,FCTB 10_0012 is raw mutton; FDC 167634 is plain roasted mutton
+16,Chicken curry (cooked),10_0006,,different_state,"Chicken breast, without skin, raw",raw,FCTB 10_0006 is raw chicken breast; no chicken curry recipe in FCTB
+17,Egg curry,,,none,,,"Reclassified to none: FCTB 11_0005 is plain boiled egg, different dish from egg curry"
+18,"Biryani, chicken",,,none,,,No chicken biryani in FCTB or FDC SR Legacy
+19,"Biryani, mutton",,,none,,,No mutton biryani in FCTB or FDC SR Legacy
+20,Khichuri,01_0035,,exact,Plain Khichuri*,cooked,FCTB Plain Khichuri* (-20.2% kcal; FCTB recipe uses more oil)
+21,"Halwa, suji",,,none,,,No suji halwa in FCTB or FDC SR Legacy
+22,Payesh / Kheer,12_0013,,approximate,Payesh*,prepared,"FCTB Payesh* recipe calc has lower water (53.8%) & higher sugar (205 kcal vs curated 150 kcal, -26.8%)"
+23,Mishti doi (sweet yogurt),12_0003,,exact,"Curd, sweetened, whole milk",prepared,"FCTB Curd, sweetened, whole milk (Doi, misti); +48.9% diff because curated assumed higher sugar/solids vs FCTB 80.6% water"
+24,Rasgulla,,,none,,,No rasgulla in FCTB or FDC SR Legacy
+25,Jalebi,,,none,,,No jalebi in FCTB or FDC SR Legacy
+26,Singara / Samosa,,,none,,,No singara/samosa in FCTB or FDC SR Legacy
+27,Piyaju (lentil fritter),,,none,,,No piyaju lentil fritter in FCTB or FDC SR Legacy
+28,Beguni (eggplant fritter),,,none,,,No beguni eggplant fritter in FCTB or FDC SR Legacy
+29,Aloo bhaji (potato stir fry),,,none,,,"Reclassified to none: FCTB 05_0021 is Potato Mash*, different physical form from aloo bhaji stir-fry"
+30,Shorshe ilish (mustard hilsa),,,none,,,No shorshe ilish recipe in FCTB or FDC SR Legacy
+31,Bitter gourd / Karela,03_0016,168393,exact,"Gourd, bitter, raw",raw,"FCTB Gourd, bitter, raw (Korola, 31 kcal); -45.2% diff because curated used USDA 17 kcal figure"
+32,"Jackfruit, ripe",08_0017,174687,exact,"Jackfruit, ripe, raw",raw,"FCTB Jackfruit, ripe, raw (74 kcal); +28.4% diff because curated used USDA 95 kcal figure"
+33,"Jackfruit, young (cooked)",,,none,,,No cooked young/green jackfruit in FCTB or FDC SR Legacy
+34,Mustard oil,13_0008,172337,exact,Mustard oil,prepared,FCTB Mustard oil (Sorishar tel); FDC mustard oil
+35,Ghee,13_0004,171314,exact,"Ghee, cow",prepared,"FCTB Ghee, cow; FDC clarified butter (ghee)"
+36,Idli,,,none,,,No idli in FCTB or FDC SR Legacy
+37,Dosa (plain),,,none,,,No dosa in FCTB or FDC SR Legacy
+38,Sambar,,,none,,,No sambar in FCTB or FDC SR Legacy
+39,Palak paneer,,,none,,,No palak paneer in FCTB or FDC SR Legacy
+40,Paneer,12_0002,,exact,"Cheese, cottage, 25% fat",prepared,"FCTB Cheese, cottage, 25% fat / Poneer"
+41,Butter chicken (murgh makhani),,,none,,,No butter chicken in FCTB or FDC SR Legacy
+42,Tandoori chicken,,,none,,,No tandoori chicken in FCTB or FDC SR Legacy
+43,Chicken tikka masala,,,none,,,No chicken tikka masala in FCTB or FDC SR Legacy
+44,Rajma (kidney bean curry),,,none,,,No rajma curry in FCTB or FDC SR Legacy
+45,Chole / Chana masala,,,none,,,Reclassified to none: FDC 171181 is SMART SOUP Indian Bean Masala (soup vs chole curry)
+46,Aloo gobi,,,none,,,No aloo gobi in FCTB or FDC SR Legacy
+47,Saag aloo,,,none,,,No saag aloo in FCTB or FDC SR Legacy
+48,Matar paneer,,,none,,,No matar paneer in FCTB or FDC SR Legacy
+49,Dal makhani,,,none,,,No dal makhani in FCTB or FDC SR Legacy
+50,Upma,,,none,,,No upma in FCTB or FDC SR Legacy
+51,Poha,,,none,,,No poha (flattened rice dish) in FCTB or FDC SR Legacy
+52,Vada pav,,,none,,,No vada pav in FCTB or FDC SR Legacy
+53,Pani puri / Golgappa,,,none,,,No pani puri in FCTB or FDC SR Legacy
+54,Lassi (plain),,,none,,,No plain lassi in FCTB or FDC SR Legacy
+55,Mango lassi,,,none,,,No mango lassi in FCTB or FDC SR Legacy
+56,Masala chai (with milk & sugar),14_0007,,approximate,"Tea infusion (with sugar and milk powder, whole fat)",prepared,"FCTB Tea infusion with sugar and milk powder (no spices, different milk ratio; +46.3% kcal)"
+57,Gulab jamun,,,none,,,No gulab jamun in FCTB or FDC SR Legacy
+58,Barfi / Burfi,,,none,,,No barfi in FCTB or FDC SR Legacy
+59,"Ladoo, besan",,,none,,,No besan ladoo in FCTB or FDC SR Legacy
+60,Fried rice (egg),,167668,approximate,"Restaurant, Chinese, fried rice, without meat",cooked,FDC Chinese fried rice without meat (curated has egg)
+61,"Noodles, boiled",,,none,,,"Reclassified to none: FDC 168914 is cooked rice noodles, different grain/form from wheat boiled noodles"
+62,Chow mein,,168083,approximate,"Restaurant, Chinese, chicken chow mein",prepared,FDC Restaurant Chinese chicken chow mein
+63,"Dim sum, pork dumpling",,,none,,,No pork dim sum dumpling in FDC SR Legacy
+64,Spring roll (fried),,,none,,,No fried spring roll in FDC SR Legacy
+65,Kung pao chicken,,167676,exact,"Restaurant, Chinese, kung pao chicken",prepared,FDC Restaurant Chinese kung pao chicken; +43.4% diff because curated overestimated kcal/fat
+66,Sweet and sour pork,,168082,exact,"Restaurant, Chinese, sweet and sour pork",prepared,FDC Restaurant Chinese sweet and sour pork
+67,Mapo tofu,,,none,,,No mapo tofu in FDC SR Legacy
+68,Hot and sour soup,,174808,exact,"Soup, hot and sour, Chinese restaurant",cooked,"FDC Soup, hot and sour, Chinese restaurant; +79.5% diff because curated overestimated density"
+69,Wonton soup,,171821,exact,"Soup, wonton, Chinese restaurant",cooked,"FDC Soup, wonton, Chinese restaurant; +134.4% diff because curated overestimated density"
+70,Peking duck,,,none,,,No roasted Peking duck in FDC SR Legacy
+71,General Tso chicken,,167675,exact,"Restaurant, Chinese, general tso's chicken",prepared,FDC Restaurant Chinese General Tso's chicken
+72,Egg drop soup,,174807,exact,"Soup, egg drop, Chinese restaurant",cooked,"FDC Soup, egg drop, Chinese restaurant; +140.7% diff because curated overestimated density"
+73,Sesame noodles,,,none,,,No sesame noodles in FDC SR Legacy
+74,Bok choy (cooked),,,none,,,No cooked bok choy matched cleanly
+75,"Tofu, silken",,172461,exact,"MORI-NU, Tofu, silken, firm",prepared,FDC MORI-NU Tofu silken firm
+76,Lo mein,,167677,approximate,"Restaurant, Chinese, vegetable lo mein, without meat",prepared,FDC Restaurant Chinese vegetable lo mein without meat
+77,Congee (rice porridge),,,none,,,No congee rice porridge in FCTB or FDC SR Legacy
+78,Soy sauce,,174278,exact,Soy sauce made from soy (tamari),prepared,FDC Soy sauce made from soy (tamari)
+79,Sesame oil,13_0011,171016,exact,Sesame oil,prepared,FCTB Sesame oil (Tiler tel); FDC sesame oil
+80,Hummus,,174289,exact,"Hummus, commercial",prepared,"FDC Hummus, commercial; -30.0% diff because curated used lower-fat recipe estimate"
+81,Falafel (fried),,172455,exact,"Falafel, home-prepared",prepared,"FDC Falafel, home-prepared"
+82,"Shawarma, chicken",,,none,,,No chicken shawarma in FDC SR Legacy
+83,"Shawarma, lamb",,,none,,,No lamb shawarma in FDC SR Legacy
+84,"Kebab, lamb",,,none,,,No lamb kebab in FDC SR Legacy
+85,"Kebab, chicken",,,none,,,No chicken kebab in FDC SR Legacy
+86,Tabouleh,,,none,,,No tabouleh in FDC SR Legacy
+87,Fattoush salad,,,none,,,No fattoush salad in FDC SR Legacy
+88,Baba ganoush,,,none,,,No baba ganoush in FDC SR Legacy
+89,Pita bread,,174915,exact,"Bread, pita, white, enriched",prepared,"FDC Bread, pita, white, enriched"
+90,Mansaf (lamb & rice),,,none,,,No mansaf in FDC SR Legacy
+91,Mujaddara (lentil rice),,,none,,,No mujaddara in FDC SR Legacy
+92,Dolma (stuffed grape leaves),,,none,,,No stuffed grape leaves (dolma) in FDC SR Legacy
+93,Kibbeh (baked),,,none,,,No baked kibbeh in FDC SR Legacy
+94,Baklava,,,none,,,No baklava in FDC SR Legacy
+95,Dates,08_0009,168191,exact,"Dates, dried",raw,"FCTB Dates, dried (Khorma); FDC Dates, medjool"
+96,Tahini,,168604,exact,"Seeds, sesame butter, tahini, type of kernels unspecified",prepared,"FDC Seeds, sesame butter, tahini"
+97,Halloumi cheese (grilled),,,none,,,No grilled halloumi in FDC SR Legacy
+98,Turkish delight,,,none,,,No Turkish delight in FDC SR Legacy
+99,Labneh (strained yogurt),,,none,,,No labneh in FDC SR Legacy
+100,"Pasta, spaghetti (cooked)",,168928,exact,"Pasta, cooked, unenriched, without added salt",cooked,"FDC Pasta, cooked, unenriched, without added salt"
+101,"Pasta, penne (cooked)",,168928,exact,"Pasta, cooked, unenriched, without added salt",cooked,"FDC Pasta, cooked, unenriched, without added salt"
+102,"Pizza, margherita (1 slice)",,170317,approximate,"Pizza, cheese topping, regular crust, frozen, cooked",cooked,"FDC Pizza, cheese topping, regular crust, frozen, cooked"
+103,"Pizza, pepperoni (1 slice)",,172096,approximate,"Pizza, pepperoni topping, regular crust, frozen, cooked",cooked,"FDC Pizza, pepperoni topping, regular crust, frozen, cooked"
+104,Risotto (plain),,,none,,,No risotto in FDC SR Legacy
+105,Lasagna (meat),,169850,exact,"Restaurant, Italian, lasagna with meat",prepared,"FDC Restaurant, Italian, lasagna with meat"
+106,Carbonara pasta,,,none,,,No carbonara pasta in FDC SR Legacy
+107,Bolognese (beef ragu),,,none,,,No beef bolognese ragu in FDC SR Legacy
+108,Tiramisu,,,none,,,No tiramisu in FDC SR Legacy
+109,Croissant,,174987,exact,"Croissants, butter",prepared,"FDC Croissants, butter"
+110,Baguette,,172675,exact,"Bread, french or vienna (includes sourdough)",prepared,"FDC Bread, french or vienna (baguette)"
+111,French onion soup,,,none,,,No ready-to-eat French onion soup in FDC SR Legacy
+112,Crepe (plain),,,none,,,No plain crepe in FDC SR Legacy
+113,Quiche lorraine (1 slice),,,none,,,No quiche lorraine in FDC SR Legacy
+114,Ratatouille,,,none,,,No ratatouille in FDC SR Legacy
+115,Beef steak (grilled),,168731,approximate,"Beef, shoulder steak, boneless, separable lean only, trimmed to 0"" fat, choice, cooked, grilled",cooked,Reclassified exact -> approximate: FDC 168731 is shoulder steak lean only vs generic grilled beef steak
+116,Fish and chips,,,none,,,No fish and chips in FDC SR Legacy
+117,Shepherd pie,,,none,,,No shepherd pie in FDC SR Legacy
+118,Full English breakfast,,,none,,,No full English breakfast in FDC SR Legacy
+119,Bratwurst sausage,,171620,exact,"Bratwurst, pork, cooked",cooked,"FDC Bratwurst, pork, cooked"
+120,Sauerkraut,,169279,exact,"Sauerkraut, canned, solids and liquids",prepared,"FDC Sauerkraut, canned, solids and liquids"
+121,Pretzel,,167555,exact,"Snacks, pretzels, hard, plain, salted",prepared,"FDC Snacks, pretzels, hard, plain, salted"
+122,Schnitzel (pork),,,none,,,No pork schnitzel in FDC SR Legacy
+123,Paella (seafood),,,none,,,No seafood paella in FDC SR Legacy
+124,Churros,,,none,,,No churros in FDC SR Legacy
+125,Gazpacho,,,none,,,No gazpacho in FDC SR Legacy
+126,"Meatballs, Swedish",,,none,,,No Swedish meatballs in FDC SR Legacy
+127,Greek salad,,,none,,,No Greek salad in FDC SR Legacy
+128,Moussaka,,,none,,,No moussaka in FDC SR Legacy
+129,"Burger (beef, plain)",,170693,exact,"Fast foods, hamburger; single, regular patty; plain",prepared,"FDC Fast foods, hamburger; single, regular patty; plain"
+130,Cheeseburger,,170320,approximate,"McDONALD'S, Cheeseburger",prepared,"FDC McDONALD'S, Cheeseburger"
+131,Hot dog (with bun),,,none,,,No plain hotdog with bun in FDC SR Legacy
+132,French fries (medium),,,none,,,Reclassified to none: FDC 169264 is oven-heated frozen fries (158 kcal) vs deep-fried french fries (365 kcal)
+133,Mac and cheese,,169770,approximate,"Macaroni and cheese, box mix with cheese sauce, prepared",prepared,"FDC Macaroni and cheese, box mix with cheese sauce, prepared"
+134,Pancakes (plain),,175009,exact,"Pancakes, plain, prepared from recipe",prepared,"FDC Pancakes, plain, prepared from recipe"
+135,Waffles,,175039,exact,"Waffles, plain, prepared from recipe",prepared,"FDC Waffles, plain, prepared from recipe"
+136,Bagel (plain),,174899,exact,"Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",prepared,"FDC Bagels, plain, enriched"
+137,Cream cheese,,173418,exact,"Cheese, cream",prepared,"FDC Cheese, cream"
+138,Buffalo wings,,,none,,,No buffalo wings in FDC SR Legacy
+139,BBQ ribs (pork),,168305,different_state,"Pork, fresh, loin, country-style ribs, separable lean only, raw",raw,Curated is BBQ ribs (cooked); FDC 168305 is raw pork loin ribs
+140,Pulled pork,,173344,exact,Pulled pork in barbecue sauce,prepared,FDC Pulled pork in barbecue sauce; +42.9% diff because curated overestimated kcal/fat
+141,Clam chowder,,174556,approximate,"CAMPBELL'S CHUNKY, New England Clam Chowder",prepared,FDC CAMPBELL'S CHUNKY New England Clam Chowder
+142,Caesar salad,,,none,,,No Caesar salad in FDC SR Legacy (only dressing)
+143,Coleslaw,,169020,approximate,"APPLEBEE'S, coleslaw",prepared,"FDC APPLEBEE'S, coleslaw"
+144,Cornbread,,,none,,,No baked cornbread in FDC SR Legacy
+145,Brownie (chocolate),,172713,exact,"Cookies, brownies, commercially prepared",prepared,"FDC Cookies, brownies, commercially prepared"
+146,Cheesecake (plain),,172711,exact,"Cake, cheesecake, commercially prepared",prepared,"FDC Cake, cheesecake, commercially prepared"
+147,Apple pie (1 slice),,175011,exact,"Pie, apple, commercially prepared, enriched flour",prepared,"FDC Pie, apple, commercially prepared, enriched flour"
+148,Donut (glazed),,172758,exact,"Doughnuts, yeast-leavened, glazed, enriched (includes honey buns)",prepared,"FDC Doughnuts, yeast-leavened, glazed"
+149,Peanut butter sandwich,,,none,,,No peanut butter sandwich in FDC SR Legacy
+150,BLT sandwich,,,none,,,No BLT sandwich in FDC SR Legacy
+151,Grilled cheese sandwich,,,none,,,No grilled cheese sandwich in FDC SR Legacy
+152,Fried chicken (1 piece),,,none,,,No fried chicken piece matched cleanly
+153,Corn on the cob,01_0028,168400,different_state,"Sweet corn, yellow, on the cob, raw",raw,Curated is cooked corn on the cob; FCTB 01_0028 & FDC 168400 are raw/unprepared
+154,Baked beans,,173731,exact,"Beans, baked, home prepared",cooked,"FDC Beans, baked, home prepared"
+155,Nachos with cheese,,170291,exact,"Fast foods, nachos, with cheese",prepared,"FDC Fast foods, nachos, with cheese"
+156,Burrito (chicken),,170334,approximate,"TACO BELL, BURRITO SUPREME with chicken",prepared,"FDC TACO BELL, BURRITO SUPREME with chicken"
+157,Taco (beef),,170332,approximate,"TACO BELL, Original Taco with beef, cheese and lettuce",prepared,"FDC TACO BELL, Original Taco with beef, cheese and lettuce"
+158,Quesadilla (cheese),,169035,exact,"Restaurant, Mexican, cheese quesadilla",prepared,"FDC Restaurant, Mexican, cheese quesadilla"
+159,Guacamole,,,none,,,No guacamole in FDC SR Legacy
+160,Salsa,,174524,exact,"Sauce, salsa, ready-to-serve",prepared,"FDC Sauce, salsa, ready-to-serve"
+161,Chicken breast (cooked),,171477,exact,"Chicken, broilers or fryers, breast, meat only, cooked, roasted",cooked,"FDC Chicken, broilers or fryers, breast, meat only, cooked, roasted"
+162,Chicken thigh (cooked),,173625,exact,"Chicken, broilers or fryers, thigh, meat and skin, cooked, roasted",cooked,"FDC Chicken, broilers or fryers, thigh, meat and skin, cooked, roasted (-1.3% kcal)"
+163,Ground beef 85/15 (cooked),,174032,exact,"Beef, ground, 85% lean meat / 15% fat, patty, cooked, broiled",cooked,"FDC Beef, ground, 85% lean meat / 15% fat, patty, cooked, broiled"
+164,Sirloin steak (cooked),,168633,exact,"Beef, top sirloin, steak, separable lean and fat, trimmed to 0"" fat, select, cooked, broiled",cooked,"FDC Beef, top sirloin, steak, cooked, broiled"
+165,Salmon (cooked),,171999,exact,"Fish, salmon, chinook, cooked, dry heat",cooked,"FDC Fish, salmon, chinook, cooked, dry heat"
+166,"Tuna, canned",,173709,exact,"Fish, tuna, light, canned in water, drained solids (Includes foods for USDA's Food Distribution Program)",prepared,"FDC Fish, tuna, light, canned in water, drained solids"
+167,"Egg, whole",11_0001,171287,exact,"Egg, chicken, farmed, raw",raw,"FCTB Egg, chicken, farmed, raw; FDC Egg, whole, raw, fresh"
+168,Egg white,,172183,exact,"Egg, white, raw, fresh",raw,"FDC Egg, white, raw, fresh"
+169,Whey protein powder,,173180,exact,"Beverages, Protein powder whey based",prepared,"FDC Beverages, Protein powder whey based"
+170,Casein protein powder,,,none,,,No casein protein powder in FDC SR Legacy
+171,"Rice, white (cooked)",01_0041,168880,exact,"Rice, white, sunned, polished, milled, boiled* (without salt)",cooked,"FCTB Rice, white, sunned, boiled*; FDC cooked white rice"
+172,"Rice, brown (cooked)",01_0039,173263,approximate,"Rice, brown, parboiled, milled, boiled* (without salt)",cooked,Reclassified exact -> approximate: FCTB 01_0039 is parboiled brown rice vs regular brown rice
+173,"Oats, rolled (dry)",,173904,exact,"Cereals, oats, regular and quick, not fortified, dry",raw,"FDC Cereals, oats, regular and quick, not fortified, dry"
+174,Sweet potato (baked),05_0016,169307,approximate,"Sweet potato, Komola Sundori, orange flesh, boiled* (without salt)",cooked,Reclassified exact -> approximate: FCTB 05_0016 is boiled sweet potato vs baked sweet potato
+175,Banana,08_0004,,exact,"Banana, Sagar, ripe, raw",raw,"FCTB Banana, Sagar, ripe, raw"
+176,"Bread, whole wheat",,172688,exact,"Bread, whole-wheat, commercially prepared",prepared,"FDC Bread, whole-wheat, commercially prepared"
+177,Quinoa (cooked),,168917,exact,"Quinoa, cooked",cooked,"FDC Quinoa, cooked"
+178,Avocado,,171705,exact,"Avocados, raw, all commercial varieties",raw,"FDC Avocados, raw, all commercial varieties"
+179,Almonds,,170567,exact,"Nuts, almonds",prepared,"FDC Nuts, almonds"
+180,Peanut butter,,172470,exact,"Peanut butter, smooth style, without salt",prepared,"FDC Peanut butter, smooth style, without salt"
+181,Olive oil,,171413,exact,"Oil, olive, salad or cooking",prepared,"FDC Oil, olive, salad or cooking"
+182,Walnuts,06_0016,170187,exact,Walnuts,prepared,FCTB Walnuts (Akhrot); FDC walnuts english
+183,Chia seeds,,170554,exact,"Seeds, chia seeds, dried",raw,"FDC Seeds, chia seeds, dried"
+184,Greek yogurt (nonfat),,170894,exact,"Yogurt, Greek, plain, nonfat (Includes foods for USDA's Food Distribution Program)",prepared,"FDC Yogurt, Greek, plain, nonfat"
+185,"Milk, whole",12_0008,171265,exact,"Milk, cow, whole fat (pasteurised, UTH)",prepared,"FCTB Milk, cow, whole fat; FDC Milk, whole, 3.25% milkfat"
+186,Cheddar cheese,,170899,exact,"Cheese, cheddar, sharp, sliced",prepared,"FDC Cheese, cheddar, sharp, sliced"
+187,Cottage cheese,,172182,exact,"Cheese, cottage, lowfat, 2% milkfat",prepared,"FDC Cheese, cottage, lowfat, 2% milkfat"
+188,Orange juice (fresh),,169098,exact,"Orange juice, raw (Includes foods for USDA's Food Distribution Program)",raw,"FDC Orange juice, raw (FCTB 08_0030 is anomalously 9 kcal / 97.7% water)"
+189,Coconut water,14_0001,170174,exact,Coconut water,prepared,FCTB Coconut water (Daber pani); FDC coconut water
+190,Whole milk,12_0008,171265,exact,"Milk, cow, whole fat (pasteurised, UTH)",prepared,"Duplicate of 185: FCTB Milk, cow, whole fat; FDC whole milk"
+191,"Coffee, black",,171890,exact,"Beverages, coffee, brewed, prepared with tap water",prepared,"FDC Beverages, coffee, brewed, prepared with tap water (1 vs 2 kcal/100g rounding)"
+192,Green tea,,171917,exact,"Beverages, tea, green, brewed, regular",prepared,"FDC Beverages, tea, green, brewed, regular"
+193,Protein shake (milk based),,,none,,,"Reclassified to none: FDC 173459 is Muscle Milk powder, different physical form from liquid protein shake"

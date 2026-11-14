@@ -1,0 +1,40 @@
+sources:
+  fctb_xlsx:
+    name: Food Composition Table for Bangladesh (FCTB 2013) — Workbook
+    url: https://www.fao.org/fileadmin/templates/food_composition/documents/FCDB_7_4_14.xlsx
+    filename: FCDB_7_4_14.xlsx
+    sha256: 899a0346fd8a8e0cc65c87688ae719cd7d3f0c99bf15c2aa8a53ce2314cfa9e0
+    retrieved_at: '2026-11-14T19:21:04.555033+00:00'
+    citation: Shaheen, N., Rahim, A.T.M.A., Mohiduzzaman, M., Banu, C.P., Bari, M.L.,
+      Tukun, A.B., Mannan, M.A., Bhattacharjee, L. & Stadlmayr, B. (2013). Food Composition
+      Table for Bangladesh. Institute of Nutrition and Food Science (INFS), Centre
+      for Advanced Research in Sciences (CARS), University of Dhaka.
+    license: Listed by FAO/INFOODS as "free access" (no explicit named open license
+      such as CC-BY or CC0). Attribution required; redistribution terms open for verification.
+  fctb_pdf:
+    name: Food Composition Table for Bangladesh (FCTB 2013) — Documentation PDF
+    url: https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_10_2_14_final_version.pdf
+    filename: FCT_10_2_14_final_version.pdf
+    sha256: 9728be753c4675e0673d02624297d81d1da41fea8a78fa36dee586aa9224cb93
+    retrieved_at: '2026-11-14T19:21:05.479193+00:00'
+    citation: Shaheen, N. et al. (2013). Food Composition Table for Bangladesh (Documentation
+      & Printed Tables). INFS, University of Dhaka / FAO.
+    license: Listed by FAO/INFOODS as "free access" (no explicit named open license).
+  fdc_sr_legacy:
+    name: USDA FoodData Central — SR Legacy (CSV)
+    url: https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip
+    filename: FoodData_Central_sr_legacy_food_csv_2018-04.zip
+    sha256: b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0
+    retrieved_at: '2026-11-14T19:21:08.831123+00:00'
+    citation: 'U.S. Department of Agriculture, Agricultural Research Service. FoodData
+      Central: SR Legacy (April 2018). https://fdc.nal.usda.gov/download-datasets'
+    license: CC0 1.0 Universal (Public Domain Dedication)
+  fdc_foundation:
+    name: USDA FoodData Central — Foundation Foods (JSON, 2026-10-29)
+    url: https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_foundation_food_json_2026-10-29.zip
+    filename: FoodData_Central_foundation_food_json_2026-10-29.zip
+    sha256: dd414cc9f1a132626bad354ef6655972c78b44aff14f16114dc899708663c579
+    retrieved_at: '2026-11-14T19:35:59.916701+00:00'
+    citation: 'U.S. Department of Agriculture, Agricultural Research Service. FoodData
+      Central: Foundation Foods (2026-10-29). https://fdc.nal.usda.gov/download-datasets'
+    license: CC0 1.0 Universal (Public Domain Dedication)

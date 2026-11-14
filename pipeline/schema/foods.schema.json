@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProtoMacro Food Catalog (v3)",
+  "type": "object",
+  "required": ["metadata", "foods"],
+  "additionalProperties": false,
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["schema_version", "sources", "counts"],
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": { "type": "integer", "const": 3 },
+        "sources": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "object",
+            "required": ["version", "sha256"],
+            "properties": {
+              "version": { "type": "string", "minLength": 1 },
+              "sha256": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "counts": {
+          "type": "object",
+          "required": ["total", "by_dataset"],
+          "properties": {
+            "total": { "type": "integer", "minimum": 1 },
+            "by_dataset": { "type": "object" }
+          }
+        }
+      }
+    },
+    "foods": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "local_name",
+          "state",
+          "food_group",
+          "per_100g",
+          "basis",
+          "source",
+          "quality_flags",
+          "suspect_reason",
+          "tags",
+          "related_ids"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^(fctb_\\d{2}_\\d{4}|fdc_\\d+|curated_[a-z0-9_]+)$"
+          },
+          "name": { "type": "string", "minLength": 1 },
+          "local_name": { "type": ["string", "null"] },
+          "state": { "type": "string", "enum": ["raw", "cooked", "prepared"] },
+          "food_group": { "type": ["string", "null"] },
+          "per_100g": {
+            "type": "object",
+            "required": ["kcal", "protein", "fat", "carbs_available", "carbs_total", "fibre"],
+            "additionalProperties": false,
+            "properties": {
+              "kcal": { "type": "number", "minimum": 0 },
+              "protein": { "type": "number", "minimum": 0 },
+              "fat": { "type": "number", "minimum": 0 },
+              "carbs_available": { "type": ["number", "null"], "minimum": 0 },
+              "carbs_total": { "type": "number", "minimum": 0 },
+              "fibre": { "type": ["number", "null"], "minimum": 0 }
+            }
+          },
+          "basis": { "type": "string", "minLength": 1 },
+          "source": {
+            "type": "object",
+            "required": ["dataset", "code", "version", "citation_key"],
+            "additionalProperties": false,
+            "properties": {
+              "dataset": {
+                "type": "string",
+                "enum": ["fctb_2013", "fdc_foundation", "fdc_sr_legacy", "curated"]
+              },
+              "code": { "type": "string", "minLength": 1 },
+              "version": { "type": "string", "minLength": 1 },
+              "citation_key": { "type": "string", "minLength": 1 }
+            }
+          },
+          "quality_flags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "suspect_reason": {
+            "type": ["string", "null"]
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "related_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

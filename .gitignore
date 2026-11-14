@@ -21,3 +21,9 @@ Thumbs.db
 # Audit artifacts
 status-screens/
 PROTOMACRO_STATUS.md
+
+# Data pipeline raw downloads & Python environment
+data/raw/
+pipeline/.venv/
+**/__pycache__/
+.pytest_cache/

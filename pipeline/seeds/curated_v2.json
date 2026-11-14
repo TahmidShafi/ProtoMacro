@@ -1,0 +1,2917 @@
+[
+  {
+    "name": "Rice, white Bangladeshi (cooked)",
+    "calories": 130,
+    "protein": 2.7,
+    "carbs": 28,
+    "fat": 0.3,
+    "tags": [
+      "rice",
+      "bhaat",
+      "bangladeshi",
+      "south asian"
+    ],
+    "id": "local_0",
+    "brand": "Curated"
+  },
+  {
+    "name": "Rice, parboiled (cooked)",
+    "calories": 128,
+    "protein": 2.6,
+    "carbs": 28,
+    "fat": 0.3,
+    "tags": [
+      "rice",
+      "seddho",
+      "bangladeshi"
+    ],
+    "id": "local_1",
+    "brand": "Curated"
+  },
+  {
+    "name": "Ruti / Chapati",
+    "calories": 297,
+    "protein": 9,
+    "carbs": 55,
+    "fat": 3.7,
+    "tags": [
+      "ruti",
+      "chapati",
+      "roti",
+      "bread",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_2",
+    "brand": "Curated"
+  },
+  {
+    "name": "Paratha (plain)",
+    "calories": 326,
+    "protein": 7,
+    "carbs": 45,
+    "fat": 14,
+    "tags": [
+      "paratha",
+      "bread",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_3",
+    "brand": "Curated"
+  },
+  {
+    "name": "Naan bread",
+    "calories": 310,
+    "protein": 9,
+    "carbs": 55,
+    "fat": 7,
+    "tags": [
+      "naan",
+      "bread",
+      "indian",
+      "bangladeshi"
+    ],
+    "id": "local_4",
+    "brand": "Curated"
+  },
+  {
+    "name": "Puri (fried bread)",
+    "calories": 340,
+    "protein": 7,
+    "carbs": 45,
+    "fat": 15,
+    "tags": [
+      "puri",
+      "luchi",
+      "bread",
+      "fried",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_5",
+    "brand": "Curated"
+  },
+  {
+    "name": "Dal, red lentil (cooked)",
+    "calories": 116,
+    "protein": 9,
+    "carbs": 20,
+    "fat": 0.4,
+    "tags": [
+      "dal",
+      "daal",
+      "lentil",
+      "masoor",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_6",
+    "brand": "Curated"
+  },
+  {
+    "name": "Dal, yellow moong (cooked)",
+    "calories": 105,
+    "protein": 7,
+    "carbs": 18,
+    "fat": 0.4,
+    "tags": [
+      "dal",
+      "moong",
+      "mung",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_7",
+    "brand": "Curated"
+  },
+  {
+    "name": "Dal, chana (cooked)",
+    "calories": 164,
+    "protein": 9,
+    "carbs": 27,
+    "fat": 2.6,
+    "tags": [
+      "dal",
+      "chana",
+      "chickpea",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_8",
+    "brand": "Curated"
+  },
+  {
+    "name": "Hilsa fish (cooked)",
+    "calories": 273,
+    "protein": 22,
+    "carbs": 0,
+    "fat": 20,
+    "tags": [
+      "hilsa",
+      "ilish",
+      "fish",
+      "bangladeshi"
+    ],
+    "id": "local_9",
+    "brand": "Curated"
+  },
+  {
+    "name": "Rohu fish (cooked)",
+    "calories": 97,
+    "protein": 17,
+    "carbs": 0,
+    "fat": 2.7,
+    "tags": [
+      "rohu",
+      "fish",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_10",
+    "brand": "Curated"
+  },
+  {
+    "name": "Catla fish (cooked)",
+    "calories": 111,
+    "protein": 19,
+    "carbs": 0,
+    "fat": 3.5,
+    "tags": [
+      "catla",
+      "fish",
+      "bangladeshi"
+    ],
+    "id": "local_11",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pangas fish (cooked)",
+    "calories": 88,
+    "protein": 15,
+    "carbs": 0,
+    "fat": 2.8,
+    "tags": [
+      "pangas",
+      "pangasius",
+      "fish",
+      "bangladeshi"
+    ],
+    "id": "local_12",
+    "brand": "Curated"
+  },
+  {
+    "name": "Prawn / Chingri (cooked)",
+    "calories": 99,
+    "protein": 24,
+    "carbs": 0,
+    "fat": 0.3,
+    "tags": [
+      "prawn",
+      "chingri",
+      "shrimp",
+      "seafood",
+      "bangladeshi"
+    ],
+    "id": "local_13",
+    "brand": "Curated"
+  },
+  {
+    "name": "Beef curry (cooked)",
+    "calories": 185,
+    "protein": 21,
+    "carbs": 4,
+    "fat": 9,
+    "tags": [
+      "beef",
+      "curry",
+      "meat",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_14",
+    "brand": "Curated"
+  },
+  {
+    "name": "Mutton curry (cooked)",
+    "calories": 225,
+    "protein": 20,
+    "carbs": 3,
+    "fat": 15,
+    "tags": [
+      "mutton",
+      "goat",
+      "curry",
+      "meat",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_15",
+    "brand": "Curated"
+  },
+  {
+    "name": "Chicken curry (cooked)",
+    "calories": 175,
+    "protein": 20,
+    "carbs": 4,
+    "fat": 9,
+    "tags": [
+      "chicken",
+      "curry",
+      "meat",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_16",
+    "brand": "Curated"
+  },
+  {
+    "name": "Egg curry",
+    "calories": 160,
+    "protein": 11,
+    "carbs": 5,
+    "fat": 11,
+    "tags": [
+      "egg",
+      "curry",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_17",
+    "brand": "Curated"
+  },
+  {
+    "name": "Biryani, chicken",
+    "calories": 190,
+    "protein": 12,
+    "carbs": 22,
+    "fat": 6,
+    "tags": [
+      "biryani",
+      "chicken",
+      "rice",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_18",
+    "brand": "Curated"
+  },
+  {
+    "name": "Biryani, mutton",
+    "calories": 220,
+    "protein": 13,
+    "carbs": 22,
+    "fat": 9,
+    "tags": [
+      "biryani",
+      "mutton",
+      "rice",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_19",
+    "brand": "Curated"
+  },
+  {
+    "name": "Khichuri",
+    "calories": 130,
+    "protein": 5,
+    "carbs": 22,
+    "fat": 3,
+    "tags": [
+      "khichuri",
+      "khichdi",
+      "rice",
+      "lentil",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_20",
+    "brand": "Curated"
+  },
+  {
+    "name": "Halwa, suji",
+    "calories": 280,
+    "protein": 4,
+    "carbs": 45,
+    "fat": 10,
+    "tags": [
+      "halwa",
+      "suji",
+      "semolina",
+      "dessert",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_21",
+    "brand": "Curated"
+  },
+  {
+    "name": "Payesh / Kheer",
+    "calories": 150,
+    "protein": 4,
+    "carbs": 25,
+    "fat": 4,
+    "tags": [
+      "payesh",
+      "kheer",
+      "rice",
+      "pudding",
+      "dessert",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_22",
+    "brand": "Curated"
+  },
+  {
+    "name": "Mishti doi (sweet yogurt)",
+    "calories": 140,
+    "protein": 4,
+    "carbs": 24,
+    "fat": 3,
+    "tags": [
+      "mishti",
+      "doi",
+      "yogurt",
+      "sweet",
+      "dessert",
+      "bangladeshi"
+    ],
+    "id": "local_23",
+    "brand": "Curated"
+  },
+  {
+    "name": "Rasgulla",
+    "calories": 186,
+    "protein": 4,
+    "carbs": 37,
+    "fat": 3,
+    "tags": [
+      "rasgulla",
+      "sweet",
+      "dessert",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_24",
+    "brand": "Curated"
+  },
+  {
+    "name": "Jalebi",
+    "calories": 370,
+    "protein": 2,
+    "carbs": 68,
+    "fat": 10,
+    "tags": [
+      "jalebi",
+      "sweet",
+      "dessert",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_25",
+    "brand": "Curated"
+  },
+  {
+    "name": "Singara / Samosa",
+    "calories": 262,
+    "protein": 4,
+    "carbs": 30,
+    "fat": 14,
+    "tags": [
+      "singara",
+      "samosa",
+      "snack",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_26",
+    "brand": "Curated"
+  },
+  {
+    "name": "Piyaju (lentil fritter)",
+    "calories": 220,
+    "protein": 8,
+    "carbs": 25,
+    "fat": 10,
+    "tags": [
+      "piyaju",
+      "fritter",
+      "snack",
+      "bangladeshi"
+    ],
+    "id": "local_27",
+    "brand": "Curated"
+  },
+  {
+    "name": "Beguni (eggplant fritter)",
+    "calories": 180,
+    "protein": 3,
+    "carbs": 22,
+    "fat": 9,
+    "tags": [
+      "beguni",
+      "eggplant",
+      "fritter",
+      "snack",
+      "bangladeshi"
+    ],
+    "id": "local_28",
+    "brand": "Curated"
+  },
+  {
+    "name": "Aloo bhaji (potato stir fry)",
+    "calories": 130,
+    "protein": 2,
+    "carbs": 18,
+    "fat": 6,
+    "tags": [
+      "aloo",
+      "potato",
+      "bhaji",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_29",
+    "brand": "Curated"
+  },
+  {
+    "name": "Shorshe ilish (mustard hilsa)",
+    "calories": 290,
+    "protein": 22,
+    "carbs": 3,
+    "fat": 21,
+    "tags": [
+      "hilsa",
+      "ilish",
+      "mustard",
+      "shorshe",
+      "fish",
+      "bangladeshi"
+    ],
+    "id": "local_30",
+    "brand": "Curated"
+  },
+  {
+    "name": "Bitter gourd / Karela",
+    "calories": 17,
+    "protein": 1,
+    "carbs": 3.7,
+    "fat": 0.2,
+    "tags": [
+      "bitter",
+      "gourd",
+      "karela",
+      "uchhe",
+      "vegetable",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_31",
+    "brand": "Curated"
+  },
+  {
+    "name": "Jackfruit, ripe",
+    "calories": 95,
+    "protein": 1.7,
+    "carbs": 23,
+    "fat": 0.6,
+    "tags": [
+      "jackfruit",
+      "kathal",
+      "fruit",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_32",
+    "brand": "Curated"
+  },
+  {
+    "name": "Jackfruit, young (cooked)",
+    "calories": 98,
+    "protein": 1.5,
+    "carbs": 22,
+    "fat": 0.3,
+    "tags": [
+      "jackfruit",
+      "echor",
+      "vegetable",
+      "bangladeshi"
+    ],
+    "id": "local_33",
+    "brand": "Curated"
+  },
+  {
+    "name": "Mustard oil",
+    "calories": 884,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "tags": [
+      "mustard",
+      "oil",
+      "fat",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_34",
+    "brand": "Curated"
+  },
+  {
+    "name": "Ghee",
+    "calories": 900,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "tags": [
+      "ghee",
+      "fat",
+      "oil",
+      "bangladeshi",
+      "indian"
+    ],
+    "id": "local_35",
+    "brand": "Curated"
+  },
+  {
+    "name": "Idli",
+    "calories": 58,
+    "protein": 2,
+    "carbs": 12,
+    "fat": 0.4,
+    "tags": [
+      "idli",
+      "rice",
+      "south indian",
+      "indian"
+    ],
+    "id": "local_36",
+    "brand": "Curated"
+  },
+  {
+    "name": "Dosa (plain)",
+    "calories": 133,
+    "protein": 3.5,
+    "carbs": 22,
+    "fat": 3.7,
+    "tags": [
+      "dosa",
+      "south indian",
+      "indian"
+    ],
+    "id": "local_37",
+    "brand": "Curated"
+  },
+  {
+    "name": "Sambar",
+    "calories": 55,
+    "protein": 3,
+    "carbs": 8,
+    "fat": 1.5,
+    "tags": [
+      "sambar",
+      "lentil",
+      "south indian",
+      "indian"
+    ],
+    "id": "local_38",
+    "brand": "Curated"
+  },
+  {
+    "name": "Palak paneer",
+    "calories": 180,
+    "protein": 10,
+    "carbs": 7,
+    "fat": 13,
+    "tags": [
+      "palak",
+      "paneer",
+      "spinach",
+      "indian"
+    ],
+    "id": "local_39",
+    "brand": "Curated"
+  },
+  {
+    "name": "Paneer",
+    "calories": 265,
+    "protein": 18,
+    "carbs": 3.4,
+    "fat": 20,
+    "tags": [
+      "paneer",
+      "cheese",
+      "indian",
+      "vegetarian"
+    ],
+    "id": "local_40",
+    "brand": "Curated"
+  },
+  {
+    "name": "Butter chicken (murgh makhani)",
+    "calories": 200,
+    "protein": 19,
+    "carbs": 6,
+    "fat": 11,
+    "tags": [
+      "butter",
+      "chicken",
+      "murgh",
+      "makhani",
+      "indian"
+    ],
+    "id": "local_41",
+    "brand": "Curated"
+  },
+  {
+    "name": "Tandoori chicken",
+    "calories": 162,
+    "protein": 25,
+    "carbs": 3,
+    "fat": 6,
+    "tags": [
+      "tandoori",
+      "chicken",
+      "indian"
+    ],
+    "id": "local_42",
+    "brand": "Curated"
+  },
+  {
+    "name": "Chicken tikka masala",
+    "calories": 195,
+    "protein": 21,
+    "carbs": 8,
+    "fat": 9,
+    "tags": [
+      "tikka",
+      "masala",
+      "chicken",
+      "indian"
+    ],
+    "id": "local_43",
+    "brand": "Curated"
+  },
+  {
+    "name": "Rajma (kidney bean curry)",
+    "calories": 140,
+    "protein": 8,
+    "carbs": 22,
+    "fat": 2.5,
+    "tags": [
+      "rajma",
+      "kidney",
+      "bean",
+      "curry",
+      "indian"
+    ],
+    "id": "local_44",
+    "brand": "Curated"
+  },
+  {
+    "name": "Chole / Chana masala",
+    "calories": 168,
+    "protein": 9,
+    "carbs": 26,
+    "fat": 4,
+    "tags": [
+      "chole",
+      "chana",
+      "chickpea",
+      "masala",
+      "indian"
+    ],
+    "id": "local_45",
+    "brand": "Curated"
+  },
+  {
+    "name": "Aloo gobi",
+    "calories": 95,
+    "protein": 3,
+    "carbs": 14,
+    "fat": 4,
+    "tags": [
+      "aloo",
+      "gobi",
+      "potato",
+      "cauliflower",
+      "indian"
+    ],
+    "id": "local_46",
+    "brand": "Curated"
+  },
+  {
+    "name": "Saag aloo",
+    "calories": 110,
+    "protein": 3,
+    "carbs": 15,
+    "fat": 5,
+    "tags": [
+      "saag",
+      "aloo",
+      "spinach",
+      "potato",
+      "indian"
+    ],
+    "id": "local_47",
+    "brand": "Curated"
+  },
+  {
+    "name": "Matar paneer",
+    "calories": 170,
+    "protein": 8,
+    "carbs": 10,
+    "fat": 11,
+    "tags": [
+      "matar",
+      "paneer",
+      "peas",
+      "indian"
+    ],
+    "id": "local_48",
+    "brand": "Curated"
+  },
+  {
+    "name": "Dal makhani",
+    "calories": 150,
+    "protein": 8,
+    "carbs": 18,
+    "fat": 5,
+    "tags": [
+      "dal",
+      "makhani",
+      "lentil",
+      "indian"
+    ],
+    "id": "local_49",
+    "brand": "Curated"
+  },
+  {
+    "name": "Upma",
+    "calories": 148,
+    "protein": 3.5,
+    "carbs": 25,
+    "fat": 4,
+    "tags": [
+      "upma",
+      "semolina",
+      "breakfast",
+      "indian"
+    ],
+    "id": "local_50",
+    "brand": "Curated"
+  },
+  {
+    "name": "Poha",
+    "calories": 130,
+    "protein": 2.5,
+    "carbs": 24,
+    "fat": 3,
+    "tags": [
+      "poha",
+      "rice",
+      "flattened",
+      "breakfast",
+      "indian"
+    ],
+    "id": "local_51",
+    "brand": "Curated"
+  },
+  {
+    "name": "Vada pav",
+    "calories": 290,
+    "protein": 6,
+    "carbs": 40,
+    "fat": 12,
+    "tags": [
+      "vada",
+      "pav",
+      "street food",
+      "indian"
+    ],
+    "id": "local_52",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pani puri / Golgappa",
+    "calories": 180,
+    "protein": 3,
+    "carbs": 28,
+    "fat": 6,
+    "tags": [
+      "pani",
+      "puri",
+      "golgappa",
+      "street food",
+      "indian"
+    ],
+    "id": "local_53",
+    "brand": "Curated"
+  },
+  {
+    "name": "Lassi (plain)",
+    "calories": 70,
+    "protein": 3.5,
+    "carbs": 8,
+    "fat": 2.5,
+    "tags": [
+      "lassi",
+      "drink",
+      "yogurt",
+      "indian"
+    ],
+    "id": "local_54",
+    "brand": "Curated"
+  },
+  {
+    "name": "Mango lassi",
+    "calories": 120,
+    "protein": 3,
+    "carbs": 20,
+    "fat": 2.5,
+    "tags": [
+      "mango",
+      "lassi",
+      "drink",
+      "indian"
+    ],
+    "id": "local_55",
+    "brand": "Curated"
+  },
+  {
+    "name": "Masala chai (with milk & sugar)",
+    "calories": 60,
+    "protein": 2,
+    "carbs": 8,
+    "fat": 2,
+    "tags": [
+      "chai",
+      "tea",
+      "masala",
+      "drink",
+      "indian"
+    ],
+    "id": "local_56",
+    "brand": "Curated"
+  },
+  {
+    "name": "Gulab jamun",
+    "calories": 175,
+    "protein": 3,
+    "carbs": 30,
+    "fat": 5,
+    "tags": [
+      "gulab",
+      "jamun",
+      "dessert",
+      "sweet",
+      "indian"
+    ],
+    "id": "local_57",
+    "brand": "Curated"
+  },
+  {
+    "name": "Barfi / Burfi",
+    "calories": 370,
+    "protein": 8,
+    "carbs": 55,
+    "fat": 14,
+    "tags": [
+      "barfi",
+      "burfi",
+      "dessert",
+      "sweet",
+      "indian"
+    ],
+    "id": "local_58",
+    "brand": "Curated"
+  },
+  {
+    "name": "Ladoo, besan",
+    "calories": 380,
+    "protein": 7,
+    "carbs": 55,
+    "fat": 16,
+    "tags": [
+      "ladoo",
+      "laddoo",
+      "besan",
+      "dessert",
+      "indian"
+    ],
+    "id": "local_59",
+    "brand": "Curated"
+  },
+  {
+    "name": "Fried rice (egg)",
+    "calories": 163,
+    "protein": 4.5,
+    "carbs": 26,
+    "fat": 5,
+    "tags": [
+      "fried",
+      "rice",
+      "egg",
+      "chinese"
+    ],
+    "id": "local_60",
+    "brand": "Curated"
+  },
+  {
+    "name": "Noodles, boiled",
+    "calories": 138,
+    "protein": 4.5,
+    "carbs": 28,
+    "fat": 0.9,
+    "tags": [
+      "noodles",
+      "chinese"
+    ],
+    "id": "local_61",
+    "brand": "Curated"
+  },
+  {
+    "name": "Chow mein",
+    "calories": 175,
+    "protein": 7,
+    "carbs": 25,
+    "fat": 6,
+    "tags": [
+      "chow",
+      "mein",
+      "noodles",
+      "chinese"
+    ],
+    "id": "local_62",
+    "brand": "Curated"
+  },
+  {
+    "name": "Dim sum, pork dumpling",
+    "calories": 80,
+    "protein": 5,
+    "carbs": 7,
+    "fat": 3,
+    "tags": [
+      "dim sum",
+      "dumpling",
+      "pork",
+      "chinese"
+    ],
+    "id": "local_63",
+    "brand": "Curated"
+  },
+  {
+    "name": "Spring roll (fried)",
+    "calories": 220,
+    "protein": 5,
+    "carbs": 24,
+    "fat": 12,
+    "tags": [
+      "spring",
+      "roll",
+      "fried",
+      "chinese"
+    ],
+    "id": "local_64",
+    "brand": "Curated"
+  },
+  {
+    "name": "Kung pao chicken",
+    "calories": 185,
+    "protein": 18,
+    "carbs": 8,
+    "fat": 9,
+    "tags": [
+      "kung",
+      "pao",
+      "chicken",
+      "chinese"
+    ],
+    "id": "local_65",
+    "brand": "Curated"
+  },
+  {
+    "name": "Sweet and sour pork",
+    "calories": 210,
+    "protein": 14,
+    "carbs": 22,
+    "fat": 8,
+    "tags": [
+      "sweet",
+      "sour",
+      "pork",
+      "chinese"
+    ],
+    "id": "local_66",
+    "brand": "Curated"
+  },
+  {
+    "name": "Mapo tofu",
+    "calories": 110,
+    "protein": 7,
+    "carbs": 6,
+    "fat": 7,
+    "tags": [
+      "mapo",
+      "tofu",
+      "chinese"
+    ],
+    "id": "local_67",
+    "brand": "Curated"
+  },
+  {
+    "name": "Hot and sour soup",
+    "calories": 70,
+    "protein": 4,
+    "carbs": 8,
+    "fat": 2.5,
+    "tags": [
+      "hot",
+      "sour",
+      "soup",
+      "chinese"
+    ],
+    "id": "local_68",
+    "brand": "Curated"
+  },
+  {
+    "name": "Wonton soup",
+    "calories": 75,
+    "protein": 5,
+    "carbs": 8,
+    "fat": 2,
+    "tags": [
+      "wonton",
+      "soup",
+      "chinese"
+    ],
+    "id": "local_69",
+    "brand": "Curated"
+  },
+  {
+    "name": "Peking duck",
+    "calories": 339,
+    "protein": 19,
+    "carbs": 0,
+    "fat": 29,
+    "tags": [
+      "peking",
+      "duck",
+      "chinese"
+    ],
+    "id": "local_70",
+    "brand": "Curated"
+  },
+  {
+    "name": "General Tso chicken",
+    "calories": 296,
+    "protein": 22,
+    "carbs": 25,
+    "fat": 11,
+    "tags": [
+      "general",
+      "tso",
+      "chicken",
+      "chinese"
+    ],
+    "id": "local_71",
+    "brand": "Curated"
+  },
+  {
+    "name": "Egg drop soup",
+    "calories": 65,
+    "protein": 4,
+    "carbs": 7,
+    "fat": 2,
+    "tags": [
+      "egg",
+      "drop",
+      "soup",
+      "chinese"
+    ],
+    "id": "local_72",
+    "brand": "Curated"
+  },
+  {
+    "name": "Sesame noodles",
+    "calories": 210,
+    "protein": 6,
+    "carbs": 30,
+    "fat": 8,
+    "tags": [
+      "sesame",
+      "noodles",
+      "chinese"
+    ],
+    "id": "local_73",
+    "brand": "Curated"
+  },
+  {
+    "name": "Bok choy (cooked)",
+    "calories": 21,
+    "protein": 2.5,
+    "carbs": 3,
+    "fat": 0.3,
+    "tags": [
+      "bok",
+      "choy",
+      "vegetable",
+      "chinese"
+    ],
+    "id": "local_74",
+    "brand": "Curated"
+  },
+  {
+    "name": "Tofu, silken",
+    "calories": 55,
+    "protein": 5,
+    "carbs": 2,
+    "fat": 3,
+    "tags": [
+      "tofu",
+      "silken",
+      "chinese",
+      "vegan"
+    ],
+    "id": "local_75",
+    "brand": "Curated"
+  },
+  {
+    "name": "Lo mein",
+    "calories": 180,
+    "protein": 7,
+    "carbs": 26,
+    "fat": 6,
+    "tags": [
+      "lo",
+      "mein",
+      "noodles",
+      "chinese"
+    ],
+    "id": "local_76",
+    "brand": "Curated"
+  },
+  {
+    "name": "Congee (rice porridge)",
+    "calories": 65,
+    "protein": 1.5,
+    "carbs": 14,
+    "fat": 0.2,
+    "tags": [
+      "congee",
+      "rice",
+      "porridge",
+      "chinese"
+    ],
+    "id": "local_77",
+    "brand": "Curated"
+  },
+  {
+    "name": "Soy sauce",
+    "calories": 53,
+    "protein": 8,
+    "carbs": 5,
+    "fat": 0.1,
+    "tags": [
+      "soy",
+      "sauce",
+      "condiment",
+      "chinese"
+    ],
+    "id": "local_78",
+    "brand": "Curated"
+  },
+  {
+    "name": "Sesame oil",
+    "calories": 884,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "tags": [
+      "sesame",
+      "oil",
+      "fat",
+      "chinese"
+    ],
+    "id": "local_79",
+    "brand": "Curated"
+  },
+  {
+    "name": "Hummus",
+    "calories": 166,
+    "protein": 8,
+    "carbs": 14,
+    "fat": 10,
+    "tags": [
+      "hummus",
+      "arab",
+      "middle eastern",
+      "dip"
+    ],
+    "id": "local_80",
+    "brand": "Curated"
+  },
+  {
+    "name": "Falafel (fried)",
+    "calories": 333,
+    "protein": 13,
+    "carbs": 32,
+    "fat": 18,
+    "tags": [
+      "falafel",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_81",
+    "brand": "Curated"
+  },
+  {
+    "name": "Shawarma, chicken",
+    "calories": 215,
+    "protein": 20,
+    "carbs": 15,
+    "fat": 8,
+    "tags": [
+      "shawarma",
+      "chicken",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_82",
+    "brand": "Curated"
+  },
+  {
+    "name": "Shawarma, lamb",
+    "calories": 260,
+    "protein": 18,
+    "carbs": 15,
+    "fat": 13,
+    "tags": [
+      "shawarma",
+      "lamb",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_83",
+    "brand": "Curated"
+  },
+  {
+    "name": "Kebab, lamb",
+    "calories": 235,
+    "protein": 20,
+    "carbs": 2,
+    "fat": 16,
+    "tags": [
+      "kebab",
+      "lamb",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_84",
+    "brand": "Curated"
+  },
+  {
+    "name": "Kebab, chicken",
+    "calories": 180,
+    "protein": 22,
+    "carbs": 2,
+    "fat": 9,
+    "tags": [
+      "kebab",
+      "chicken",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_85",
+    "brand": "Curated"
+  },
+  {
+    "name": "Tabouleh",
+    "calories": 90,
+    "protein": 2.5,
+    "carbs": 13,
+    "fat": 4,
+    "tags": [
+      "tabouleh",
+      "salad",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_86",
+    "brand": "Curated"
+  },
+  {
+    "name": "Fattoush salad",
+    "calories": 80,
+    "protein": 2,
+    "carbs": 12,
+    "fat": 3,
+    "tags": [
+      "fattoush",
+      "salad",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_87",
+    "brand": "Curated"
+  },
+  {
+    "name": "Baba ganoush",
+    "calories": 90,
+    "protein": 2,
+    "carbs": 8,
+    "fat": 6,
+    "tags": [
+      "baba",
+      "ganoush",
+      "eggplant",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_88",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pita bread",
+    "calories": 275,
+    "protein": 9,
+    "carbs": 55,
+    "fat": 1.5,
+    "tags": [
+      "pita",
+      "bread",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_89",
+    "brand": "Curated"
+  },
+  {
+    "name": "Mansaf (lamb & rice)",
+    "calories": 290,
+    "protein": 18,
+    "carbs": 28,
+    "fat": 11,
+    "tags": [
+      "mansaf",
+      "lamb",
+      "rice",
+      "arab",
+      "jordanian"
+    ],
+    "id": "local_90",
+    "brand": "Curated"
+  },
+  {
+    "name": "Mujaddara (lentil rice)",
+    "calories": 150,
+    "protein": 6,
+    "carbs": 27,
+    "fat": 3,
+    "tags": [
+      "mujaddara",
+      "lentil",
+      "rice",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_91",
+    "brand": "Curated"
+  },
+  {
+    "name": "Dolma (stuffed grape leaves)",
+    "calories": 100,
+    "protein": 2.5,
+    "carbs": 12,
+    "fat": 5,
+    "tags": [
+      "dolma",
+      "stuffed",
+      "grape",
+      "leaves",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_92",
+    "brand": "Curated"
+  },
+  {
+    "name": "Kibbeh (baked)",
+    "calories": 218,
+    "protein": 14,
+    "carbs": 18,
+    "fat": 10,
+    "tags": [
+      "kibbeh",
+      "lamb",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_93",
+    "brand": "Curated"
+  },
+  {
+    "name": "Baklava",
+    "calories": 428,
+    "protein": 5,
+    "carbs": 52,
+    "fat": 23,
+    "tags": [
+      "baklava",
+      "pastry",
+      "dessert",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_94",
+    "brand": "Curated"
+  },
+  {
+    "name": "Dates",
+    "calories": 277,
+    "protein": 1.8,
+    "carbs": 75,
+    "fat": 0.2,
+    "tags": [
+      "dates",
+      "fruit",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_95",
+    "brand": "Curated"
+  },
+  {
+    "name": "Tahini",
+    "calories": 595,
+    "protein": 17,
+    "carbs": 21,
+    "fat": 54,
+    "tags": [
+      "tahini",
+      "sesame",
+      "paste",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_96",
+    "brand": "Curated"
+  },
+  {
+    "name": "Halloumi cheese (grilled)",
+    "calories": 319,
+    "protein": 21,
+    "carbs": 1,
+    "fat": 26,
+    "tags": [
+      "halloumi",
+      "cheese",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_97",
+    "brand": "Curated"
+  },
+  {
+    "name": "Turkish delight",
+    "calories": 322,
+    "protein": 0.4,
+    "carbs": 81,
+    "fat": 0.1,
+    "tags": [
+      "turkish",
+      "delight",
+      "sweet",
+      "dessert",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_98",
+    "brand": "Curated"
+  },
+  {
+    "name": "Labneh (strained yogurt)",
+    "calories": 130,
+    "protein": 7,
+    "carbs": 4,
+    "fat": 10,
+    "tags": [
+      "labneh",
+      "yogurt",
+      "arab",
+      "middle eastern"
+    ],
+    "id": "local_99",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pasta, spaghetti (cooked)",
+    "calories": 131,
+    "protein": 5,
+    "carbs": 25,
+    "fat": 1.1,
+    "tags": [
+      "pasta",
+      "spaghetti",
+      "italian",
+      "european"
+    ],
+    "id": "local_100",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pasta, penne (cooked)",
+    "calories": 131,
+    "protein": 5,
+    "carbs": 25,
+    "fat": 1.1,
+    "tags": [
+      "pasta",
+      "penne",
+      "italian",
+      "european"
+    ],
+    "id": "local_101",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pizza, margherita (1 slice)",
+    "calories": 200,
+    "protein": 8,
+    "carbs": 25,
+    "fat": 8,
+    "tags": [
+      "pizza",
+      "margherita",
+      "italian",
+      "european"
+    ],
+    "id": "local_102",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pizza, pepperoni (1 slice)",
+    "calories": 260,
+    "protein": 11,
+    "carbs": 25,
+    "fat": 13,
+    "tags": [
+      "pizza",
+      "pepperoni",
+      "italian",
+      "european"
+    ],
+    "id": "local_103",
+    "brand": "Curated"
+  },
+  {
+    "name": "Risotto (plain)",
+    "calories": 145,
+    "protein": 3.5,
+    "carbs": 26,
+    "fat": 3.5,
+    "tags": [
+      "risotto",
+      "rice",
+      "italian",
+      "european"
+    ],
+    "id": "local_104",
+    "brand": "Curated"
+  },
+  {
+    "name": "Lasagna (meat)",
+    "calories": 185,
+    "protein": 11,
+    "carbs": 16,
+    "fat": 8,
+    "tags": [
+      "lasagna",
+      "pasta",
+      "italian",
+      "european"
+    ],
+    "id": "local_105",
+    "brand": "Curated"
+  },
+  {
+    "name": "Carbonara pasta",
+    "calories": 220,
+    "protein": 10,
+    "carbs": 26,
+    "fat": 9,
+    "tags": [
+      "carbonara",
+      "pasta",
+      "italian",
+      "european"
+    ],
+    "id": "local_106",
+    "brand": "Curated"
+  },
+  {
+    "name": "Bolognese (beef ragu)",
+    "calories": 165,
+    "protein": 12,
+    "carbs": 8,
+    "fat": 9,
+    "tags": [
+      "bolognese",
+      "beef",
+      "pasta",
+      "italian",
+      "european"
+    ],
+    "id": "local_107",
+    "brand": "Curated"
+  },
+  {
+    "name": "Tiramisu",
+    "calories": 240,
+    "protein": 5,
+    "carbs": 28,
+    "fat": 12,
+    "tags": [
+      "tiramisu",
+      "dessert",
+      "italian",
+      "european"
+    ],
+    "id": "local_108",
+    "brand": "Curated"
+  },
+  {
+    "name": "Croissant",
+    "calories": 406,
+    "protein": 8,
+    "carbs": 46,
+    "fat": 21,
+    "tags": [
+      "croissant",
+      "pastry",
+      "french",
+      "european"
+    ],
+    "id": "local_109",
+    "brand": "Curated"
+  },
+  {
+    "name": "Baguette",
+    "calories": 270,
+    "protein": 9,
+    "carbs": 55,
+    "fat": 1.5,
+    "tags": [
+      "baguette",
+      "bread",
+      "french",
+      "european"
+    ],
+    "id": "local_110",
+    "brand": "Curated"
+  },
+  {
+    "name": "French onion soup",
+    "calories": 95,
+    "protein": 4,
+    "carbs": 12,
+    "fat": 3.5,
+    "tags": [
+      "french",
+      "onion",
+      "soup",
+      "european"
+    ],
+    "id": "local_111",
+    "brand": "Curated"
+  },
+  {
+    "name": "Crepe (plain)",
+    "calories": 205,
+    "protein": 6,
+    "carbs": 30,
+    "fat": 7,
+    "tags": [
+      "crepe",
+      "french",
+      "european"
+    ],
+    "id": "local_112",
+    "brand": "Curated"
+  },
+  {
+    "name": "Quiche lorraine (1 slice)",
+    "calories": 330,
+    "protein": 11,
+    "carbs": 22,
+    "fat": 22,
+    "tags": [
+      "quiche",
+      "french",
+      "european"
+    ],
+    "id": "local_113",
+    "brand": "Curated"
+  },
+  {
+    "name": "Ratatouille",
+    "calories": 70,
+    "protein": 2,
+    "carbs": 10,
+    "fat": 3,
+    "tags": [
+      "ratatouille",
+      "vegetable",
+      "french",
+      "european"
+    ],
+    "id": "local_114",
+    "brand": "Curated"
+  },
+  {
+    "name": "Beef steak (grilled)",
+    "calories": 217,
+    "protein": 26,
+    "carbs": 0,
+    "fat": 12,
+    "tags": [
+      "steak",
+      "beef",
+      "european",
+      "american"
+    ],
+    "id": "local_115",
+    "brand": "Curated"
+  },
+  {
+    "name": "Fish and chips",
+    "calories": 290,
+    "protein": 16,
+    "carbs": 28,
+    "fat": 13,
+    "tags": [
+      "fish",
+      "chips",
+      "british",
+      "european"
+    ],
+    "id": "local_116",
+    "brand": "Curated"
+  },
+  {
+    "name": "Shepherd pie",
+    "calories": 170,
+    "protein": 10,
+    "carbs": 16,
+    "fat": 7,
+    "tags": [
+      "shepherd",
+      "pie",
+      "british",
+      "european"
+    ],
+    "id": "local_117",
+    "brand": "Curated"
+  },
+  {
+    "name": "Full English breakfast",
+    "calories": 560,
+    "protein": 30,
+    "carbs": 30,
+    "fat": 33,
+    "tags": [
+      "english",
+      "breakfast",
+      "british",
+      "european"
+    ],
+    "id": "local_118",
+    "brand": "Curated"
+  },
+  {
+    "name": "Bratwurst sausage",
+    "calories": 333,
+    "protein": 12,
+    "carbs": 3,
+    "fat": 30,
+    "tags": [
+      "bratwurst",
+      "sausage",
+      "german",
+      "european"
+    ],
+    "id": "local_119",
+    "brand": "Curated"
+  },
+  {
+    "name": "Sauerkraut",
+    "calories": 19,
+    "protein": 0.9,
+    "carbs": 4.3,
+    "fat": 0.1,
+    "tags": [
+      "sauerkraut",
+      "cabbage",
+      "german",
+      "european"
+    ],
+    "id": "local_120",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pretzel",
+    "calories": 380,
+    "protein": 10,
+    "carbs": 78,
+    "fat": 2,
+    "tags": [
+      "pretzel",
+      "bread",
+      "german",
+      "european"
+    ],
+    "id": "local_121",
+    "brand": "Curated"
+  },
+  {
+    "name": "Schnitzel (pork)",
+    "calories": 280,
+    "protein": 22,
+    "carbs": 14,
+    "fat": 15,
+    "tags": [
+      "schnitzel",
+      "pork",
+      "german",
+      "austrian",
+      "european"
+    ],
+    "id": "local_122",
+    "brand": "Curated"
+  },
+  {
+    "name": "Paella (seafood)",
+    "calories": 180,
+    "protein": 12,
+    "carbs": 22,
+    "fat": 5,
+    "tags": [
+      "paella",
+      "seafood",
+      "rice",
+      "spanish",
+      "european"
+    ],
+    "id": "local_123",
+    "brand": "Curated"
+  },
+  {
+    "name": "Churros",
+    "calories": 440,
+    "protein": 5,
+    "carbs": 55,
+    "fat": 22,
+    "tags": [
+      "churros",
+      "pastry",
+      "dessert",
+      "spanish",
+      "european"
+    ],
+    "id": "local_124",
+    "brand": "Curated"
+  },
+  {
+    "name": "Gazpacho",
+    "calories": 45,
+    "protein": 1.5,
+    "carbs": 7,
+    "fat": 1.5,
+    "tags": [
+      "gazpacho",
+      "soup",
+      "spanish",
+      "european"
+    ],
+    "id": "local_125",
+    "brand": "Curated"
+  },
+  {
+    "name": "Meatballs, Swedish",
+    "calories": 227,
+    "protein": 14,
+    "carbs": 8,
+    "fat": 16,
+    "tags": [
+      "meatballs",
+      "swedish",
+      "european"
+    ],
+    "id": "local_126",
+    "brand": "Curated"
+  },
+  {
+    "name": "Greek salad",
+    "calories": 100,
+    "protein": 3.5,
+    "carbs": 7,
+    "fat": 7,
+    "tags": [
+      "greek",
+      "salad",
+      "european",
+      "mediterranean"
+    ],
+    "id": "local_127",
+    "brand": "Curated"
+  },
+  {
+    "name": "Moussaka",
+    "calories": 190,
+    "protein": 11,
+    "carbs": 12,
+    "fat": 11,
+    "tags": [
+      "moussaka",
+      "greek",
+      "european"
+    ],
+    "id": "local_128",
+    "brand": "Curated"
+  },
+  {
+    "name": "Burger (beef, plain)",
+    "calories": 295,
+    "protein": 17,
+    "carbs": 24,
+    "fat": 14,
+    "tags": [
+      "burger",
+      "beef",
+      "american"
+    ],
+    "id": "local_129",
+    "brand": "Curated"
+  },
+  {
+    "name": "Cheeseburger",
+    "calories": 350,
+    "protein": 20,
+    "carbs": 25,
+    "fat": 18,
+    "tags": [
+      "cheeseburger",
+      "burger",
+      "american"
+    ],
+    "id": "local_130",
+    "brand": "Curated"
+  },
+  {
+    "name": "Hot dog (with bun)",
+    "calories": 290,
+    "protein": 11,
+    "carbs": 23,
+    "fat": 17,
+    "tags": [
+      "hot",
+      "dog",
+      "sausage",
+      "american"
+    ],
+    "id": "local_131",
+    "brand": "Curated"
+  },
+  {
+    "name": "French fries (medium)",
+    "calories": 365,
+    "protein": 4,
+    "carbs": 48,
+    "fat": 17,
+    "tags": [
+      "fries",
+      "chips",
+      "potato",
+      "american"
+    ],
+    "id": "local_132",
+    "brand": "Curated"
+  },
+  {
+    "name": "Mac and cheese",
+    "calories": 172,
+    "protein": 6.5,
+    "carbs": 23,
+    "fat": 6,
+    "tags": [
+      "mac",
+      "cheese",
+      "macaroni",
+      "american"
+    ],
+    "id": "local_133",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pancakes (plain)",
+    "calories": 227,
+    "protein": 6,
+    "carbs": 38,
+    "fat": 7,
+    "tags": [
+      "pancakes",
+      "breakfast",
+      "american"
+    ],
+    "id": "local_134",
+    "brand": "Curated"
+  },
+  {
+    "name": "Waffles",
+    "calories": 291,
+    "protein": 8,
+    "carbs": 37,
+    "fat": 13,
+    "tags": [
+      "waffles",
+      "breakfast",
+      "american"
+    ],
+    "id": "local_135",
+    "brand": "Curated"
+  },
+  {
+    "name": "Bagel (plain)",
+    "calories": 270,
+    "protein": 10,
+    "carbs": 53,
+    "fat": 1.5,
+    "tags": [
+      "bagel",
+      "bread",
+      "american"
+    ],
+    "id": "local_136",
+    "brand": "Curated"
+  },
+  {
+    "name": "Cream cheese",
+    "calories": 342,
+    "protein": 6,
+    "carbs": 4.1,
+    "fat": 34,
+    "tags": [
+      "cream",
+      "cheese",
+      "american"
+    ],
+    "id": "local_137",
+    "brand": "Curated"
+  },
+  {
+    "name": "Buffalo wings",
+    "calories": 320,
+    "protein": 26,
+    "carbs": 7,
+    "fat": 21,
+    "tags": [
+      "buffalo",
+      "wings",
+      "chicken",
+      "american"
+    ],
+    "id": "local_138",
+    "brand": "Curated"
+  },
+  {
+    "name": "BBQ ribs (pork)",
+    "calories": 290,
+    "protein": 21,
+    "carbs": 10,
+    "fat": 19,
+    "tags": [
+      "bbq",
+      "ribs",
+      "pork",
+      "american"
+    ],
+    "id": "local_139",
+    "brand": "Curated"
+  },
+  {
+    "name": "Pulled pork",
+    "calories": 240,
+    "protein": 20,
+    "carbs": 9,
+    "fat": 14,
+    "tags": [
+      "pulled",
+      "pork",
+      "bbq",
+      "american"
+    ],
+    "id": "local_140",
+    "brand": "Curated"
+  },
+  {
+    "name": "Clam chowder",
+    "calories": 130,
+    "protein": 7,
+    "carbs": 13,
+    "fat": 6,
+    "tags": [
+      "clam",
+      "chowder",
+      "soup",
+      "american"
+    ],
+    "id": "local_141",
+    "brand": "Curated"
+  },
+  {
+    "name": "Caesar salad",
+    "calories": 140,
+    "protein": 5,
+    "carbs": 8,
+    "fat": 10,
+    "tags": [
+      "caesar",
+      "salad",
+      "american"
+    ],
+    "id": "local_142",
+    "brand": "Curated"
+  },
+  {
+    "name": "Coleslaw",
+    "calories": 150,
+    "protein": 1.5,
+    "carbs": 14,
+    "fat": 10,
+    "tags": [
+      "coleslaw",
+      "salad",
+      "american"
+    ],
+    "id": "local_143",
+    "brand": "Curated"
+  },
+  {
+    "name": "Cornbread",
+    "calories": 198,
+    "protein": 4,
+    "carbs": 29,
+    "fat": 8,
+    "tags": [
+      "cornbread",
+      "bread",
+      "american"
+    ],
+    "id": "local_144",
+    "brand": "Curated"
+  },
+  {
+    "name": "Brownie (chocolate)",
+    "calories": 415,
+    "protein": 5,
+    "carbs": 63,
+    "fat": 17,
+    "tags": [
+      "brownie",
+      "chocolate",
+      "dessert",
+      "american"
+    ],
+    "id": "local_145",
+    "brand": "Curated"
+  },
+  {
+    "name": "Cheesecake (plain)",
+    "calories": 321,
+    "protein": 6,
+    "carbs": 25,
+    "fat": 23,
+    "tags": [
+      "cheesecake",
+      "dessert",
+      "american"
+    ],
+    "id": "local_146",
+    "brand": "Curated"
+  },
+  {
+    "name": "Apple pie (1 slice)",
+    "calories": 296,
+    "protein": 2.5,
+    "carbs": 43,
+    "fat": 13,
+    "tags": [
+      "apple",
+      "pie",
+      "dessert",
+      "american"
+    ],
+    "id": "local_147",
+    "brand": "Curated"
+  },
+  {
+    "name": "Donut (glazed)",
+    "calories": 452,
+    "protein": 5,
+    "carbs": 51,
+    "fat": 25,
+    "tags": [
+      "donut",
+      "doughnut",
+      "dessert",
+      "american"
+    ],
+    "id": "local_148",
+    "brand": "Curated"
+  },
+  {
+    "name": "Peanut butter sandwich",
+    "calories": 380,
+    "protein": 14,
+    "carbs": 42,
+    "fat": 18,
+    "tags": [
+      "peanut",
+      "butter",
+      "sandwich",
+      "american"
+    ],
+    "id": "local_149",
+    "brand": "Curated"
+  },
+  {
+    "name": "BLT sandwich",
+    "calories": 350,
+    "protein": 16,
+    "carbs": 32,
+    "fat": 18,
+    "tags": [
+      "blt",
+      "bacon",
+      "sandwich",
+      "american"
+    ],
+    "id": "local_150",
+    "brand": "Curated"
+  },
+  {
+    "name": "Grilled cheese sandwich",
+    "calories": 391,
+    "protein": 16,
+    "carbs": 32,
+    "fat": 23,
+    "tags": [
+      "grilled",
+      "cheese",
+      "sandwich",
+      "american"
+    ],
+    "id": "local_151",
+    "brand": "Curated"
+  },
+  {
+    "name": "Fried chicken (1 piece)",
+    "calories": 320,
+    "protein": 22,
+    "carbs": 14,
+    "fat": 20,
+    "tags": [
+      "fried",
+      "chicken",
+      "american"
+    ],
+    "id": "local_152",
+    "brand": "Curated"
+  },
+  {
+    "name": "Corn on the cob",
+    "calories": 96,
+    "protein": 3.4,
+    "carbs": 21,
+    "fat": 1.5,
+    "tags": [
+      "corn",
+      "cob",
+      "american"
+    ],
+    "id": "local_153",
+    "brand": "Curated"
+  },
+  {
+    "name": "Baked beans",
+    "calories": 155,
+    "protein": 8,
+    "carbs": 28,
+    "fat": 1.5,
+    "tags": [
+      "baked",
+      "beans",
+      "american"
+    ],
+    "id": "local_154",
+    "brand": "Curated"
+  },
+  {
+    "name": "Nachos with cheese",
+    "calories": 346,
+    "protein": 9,
+    "carbs": 35,
+    "fat": 19,
+    "tags": [
+      "nachos",
+      "cheese",
+      "american",
+      "mexican"
+    ],
+    "id": "local_155",
+    "brand": "Curated"
+  },
+  {
+    "name": "Burrito (chicken)",
+    "calories": 310,
+    "protein": 18,
+    "carbs": 38,
+    "fat": 9,
+    "tags": [
+      "burrito",
+      "chicken",
+      "mexican",
+      "american"
+    ],
+    "id": "local_156",
+    "brand": "Curated"
+  },
+  {
+    "name": "Taco (beef)",
+    "calories": 210,
+    "protein": 12,
+    "carbs": 18,
+    "fat": 10,
+    "tags": [
+      "taco",
+      "beef",
+      "mexican",
+      "american"
+    ],
+    "id": "local_157",
+    "brand": "Curated"
+  },
+  {
+    "name": "Quesadilla (cheese)",
+    "calories": 370,
+    "protein": 16,
+    "carbs": 35,
+    "fat": 18,
+    "tags": [
+      "quesadilla",
+      "cheese",
+      "mexican",
+      "american"
+    ],
+    "id": "local_158",
+    "brand": "Curated"
+  },
+  {
+    "name": "Guacamole",
+    "calories": 150,
+    "protein": 2,
+    "carbs": 8,
+    "fat": 13,
+    "tags": [
+      "guacamole",
+      "avocado",
+      "mexican",
+      "american"
+    ],
+    "id": "local_159",
+    "brand": "Curated"
+  },
+  {
+    "name": "Salsa",
+    "calories": 36,
+    "protein": 1.5,
+    "carbs": 7,
+    "fat": 0.3,
+    "tags": [
+      "salsa",
+      "sauce",
+      "mexican",
+      "american"
+    ],
+    "id": "local_160",
+    "brand": "Curated"
+  },
+  {
+    "name": "Chicken breast (cooked)",
+    "calories": 165,
+    "protein": 31,
+    "carbs": 0,
+    "fat": 3.6,
+    "tags": [
+      "chicken",
+      "breast",
+      "poultry",
+      "meat"
+    ],
+    "id": "local_161",
+    "brand": "USDA"
+  },
+  {
+    "name": "Chicken thigh (cooked)",
+    "calories": 229,
+    "protein": 25,
+    "carbs": 0,
+    "fat": 14,
+    "tags": [
+      "chicken",
+      "thigh",
+      "poultry",
+      "meat"
+    ],
+    "id": "local_162",
+    "brand": "USDA"
+  },
+  {
+    "name": "Ground beef 85/15 (cooked)",
+    "calories": 250,
+    "protein": 26,
+    "carbs": 0,
+    "fat": 15,
+    "tags": [
+      "beef",
+      "ground",
+      "meat",
+      "mince"
+    ],
+    "id": "local_163",
+    "brand": "USDA"
+  },
+  {
+    "name": "Sirloin steak (cooked)",
+    "calories": 201,
+    "protein": 29,
+    "carbs": 0,
+    "fat": 9,
+    "tags": [
+      "beef",
+      "steak",
+      "sirloin",
+      "meat"
+    ],
+    "id": "local_164",
+    "brand": "USDA"
+  },
+  {
+    "name": "Salmon (cooked)",
+    "calories": 208,
+    "protein": 20,
+    "carbs": 0,
+    "fat": 13,
+    "tags": [
+      "salmon",
+      "fish",
+      "seafood"
+    ],
+    "id": "local_165",
+    "brand": "USDA"
+  },
+  {
+    "name": "Tuna, canned",
+    "calories": 116,
+    "protein": 25,
+    "carbs": 0,
+    "fat": 1,
+    "tags": [
+      "tuna",
+      "fish",
+      "seafood"
+    ],
+    "id": "local_166",
+    "brand": "USDA"
+  },
+  {
+    "name": "Egg, whole",
+    "calories": 143,
+    "protein": 13,
+    "carbs": 1,
+    "fat": 10,
+    "tags": [
+      "egg",
+      "eggs"
+    ],
+    "id": "local_167",
+    "brand": "USDA"
+  },
+  {
+    "name": "Egg white",
+    "calories": 52,
+    "protein": 11,
+    "carbs": 0.7,
+    "fat": 0.2,
+    "tags": [
+      "egg",
+      "white",
+      "eggs"
+    ],
+    "id": "local_168",
+    "brand": "USDA"
+  },
+  {
+    "name": "Whey protein powder",
+    "calories": 400,
+    "protein": 80,
+    "carbs": 8,
+    "fat": 5,
+    "tags": [
+      "whey",
+      "protein",
+      "supplement",
+      "powder"
+    ],
+    "id": "local_169",
+    "brand": "USDA"
+  },
+  {
+    "name": "Casein protein powder",
+    "calories": 370,
+    "protein": 75,
+    "carbs": 10,
+    "fat": 4,
+    "tags": [
+      "casein",
+      "protein",
+      "supplement",
+      "powder"
+    ],
+    "id": "local_170",
+    "brand": "USDA"
+  },
+  {
+    "name": "Rice, white (cooked)",
+    "calories": 130,
+    "protein": 2.7,
+    "carbs": 28,
+    "fat": 0.3,
+    "tags": [
+      "rice",
+      "white",
+      "grain"
+    ],
+    "id": "local_171",
+    "brand": "USDA"
+  },
+  {
+    "name": "Rice, brown (cooked)",
+    "calories": 123,
+    "protein": 2.7,
+    "carbs": 26,
+    "fat": 1,
+    "tags": [
+      "rice",
+      "brown",
+      "grain"
+    ],
+    "id": "local_172",
+    "brand": "USDA"
+  },
+  {
+    "name": "Oats, rolled (dry)",
+    "calories": 389,
+    "protein": 17,
+    "carbs": 66,
+    "fat": 7,
+    "tags": [
+      "oats",
+      "oatmeal",
+      "porridge",
+      "grain"
+    ],
+    "id": "local_173",
+    "brand": "USDA"
+  },
+  {
+    "name": "Sweet potato (baked)",
+    "calories": 90,
+    "protein": 2,
+    "carbs": 21,
+    "fat": 0.2,
+    "tags": [
+      "sweet",
+      "potato",
+      "vegetable"
+    ],
+    "id": "local_174",
+    "brand": "USDA"
+  },
+  {
+    "name": "Banana",
+    "calories": 89,
+    "protein": 1.1,
+    "carbs": 23,
+    "fat": 0.3,
+    "tags": [
+      "banana",
+      "fruit"
+    ],
+    "id": "local_175",
+    "brand": "USDA"
+  },
+  {
+    "name": "Bread, whole wheat",
+    "calories": 247,
+    "protein": 13,
+    "carbs": 41,
+    "fat": 3.5,
+    "tags": [
+      "bread",
+      "wheat",
+      "grain"
+    ],
+    "id": "local_176",
+    "brand": "USDA"
+  },
+  {
+    "name": "Quinoa (cooked)",
+    "calories": 120,
+    "protein": 4.4,
+    "carbs": 21,
+    "fat": 1.9,
+    "tags": [
+      "quinoa",
+      "grain"
+    ],
+    "id": "local_177",
+    "brand": "USDA"
+  },
+  {
+    "name": "Avocado",
+    "calories": 160,
+    "protein": 2,
+    "carbs": 9,
+    "fat": 15,
+    "tags": [
+      "avocado",
+      "fruit",
+      "fat"
+    ],
+    "id": "local_178",
+    "brand": "USDA"
+  },
+  {
+    "name": "Almonds",
+    "calories": 579,
+    "protein": 21,
+    "carbs": 22,
+    "fat": 50,
+    "tags": [
+      "almond",
+      "nut",
+      "nuts"
+    ],
+    "id": "local_179",
+    "brand": "USDA"
+  },
+  {
+    "name": "Peanut butter",
+    "calories": 588,
+    "protein": 25,
+    "carbs": 20,
+    "fat": 50,
+    "tags": [
+      "peanut",
+      "butter",
+      "nut"
+    ],
+    "id": "local_180",
+    "brand": "USDA"
+  },
+  {
+    "name": "Olive oil",
+    "calories": 884,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "tags": [
+      "olive",
+      "oil",
+      "fat"
+    ],
+    "id": "local_181",
+    "brand": "USDA"
+  },
+  {
+    "name": "Walnuts",
+    "calories": 654,
+    "protein": 15,
+    "carbs": 14,
+    "fat": 65,
+    "tags": [
+      "walnut",
+      "nut",
+      "nuts"
+    ],
+    "id": "local_182",
+    "brand": "USDA"
+  },
+  {
+    "name": "Chia seeds",
+    "calories": 486,
+    "protein": 17,
+    "carbs": 42,
+    "fat": 31,
+    "tags": [
+      "chia",
+      "seeds"
+    ],
+    "id": "local_183",
+    "brand": "USDA"
+  },
+  {
+    "name": "Greek yogurt (nonfat)",
+    "calories": 59,
+    "protein": 10,
+    "carbs": 3.6,
+    "fat": 0.4,
+    "tags": [
+      "yogurt",
+      "greek",
+      "dairy"
+    ],
+    "id": "local_184",
+    "brand": "USDA"
+  },
+  {
+    "name": "Milk, whole",
+    "calories": 61,
+    "protein": 3.2,
+    "carbs": 4.8,
+    "fat": 3.3,
+    "tags": [
+      "milk",
+      "dairy"
+    ],
+    "id": "local_185",
+    "brand": "USDA"
+  },
+  {
+    "name": "Cheddar cheese",
+    "calories": 404,
+    "protein": 23,
+    "carbs": 3.4,
+    "fat": 33,
+    "tags": [
+      "cheese",
+      "cheddar",
+      "dairy"
+    ],
+    "id": "local_186",
+    "brand": "USDA"
+  },
+  {
+    "name": "Cottage cheese",
+    "calories": 81,
+    "protein": 11,
+    "carbs": 3.4,
+    "fat": 2.3,
+    "tags": [
+      "cottage",
+      "cheese",
+      "dairy"
+    ],
+    "id": "local_187",
+    "brand": "USDA"
+  },
+  {
+    "name": "Orange juice (fresh)",
+    "calories": 45,
+    "protein": 0.7,
+    "carbs": 10,
+    "fat": 0.2,
+    "tags": [
+      "orange",
+      "juice",
+      "drink"
+    ],
+    "id": "local_188",
+    "brand": "USDA"
+  },
+  {
+    "name": "Coconut water",
+    "calories": 19,
+    "protein": 0.7,
+    "carbs": 3.7,
+    "fat": 0.2,
+    "tags": [
+      "coconut",
+      "water",
+      "drink"
+    ],
+    "id": "local_189",
+    "brand": "USDA"
+  },
+  {
+    "name": "Whole milk",
+    "calories": 61,
+    "protein": 3.2,
+    "carbs": 4.8,
+    "fat": 3.3,
+    "tags": [
+      "milk",
+      "whole",
+      "drink",
+      "dairy"
+    ],
+    "id": "local_190",
+    "brand": "USDA"
+  },
+  {
+    "name": "Coffee, black",
+    "calories": 2,
+    "protein": 0.1,
+    "carbs": 0,
+    "fat": 0,
+    "tags": [
+      "coffee",
+      "drink",
+      "beverage"
+    ],
+    "id": "local_191",
+    "brand": "USDA"
+  },
+  {
+    "name": "Green tea",
+    "calories": 1,
+    "protein": 0,
+    "carbs": 0.2,
+    "fat": 0,
+    "tags": [
+      "green",
+      "tea",
+      "drink",
+      "beverage"
+    ],
+    "id": "local_192",
+    "brand": "USDA"
+  },
+  {
+    "name": "Protein shake (milk based)",
+    "calories": 180,
+    "protein": 25,
+    "carbs": 12,
+    "fat": 4,
+    "tags": [
+      "protein",
+      "shake",
+      "supplement",
+      "drink"
+    ],
+    "id": "local_193",
+    "brand": "USDA"
+  }
+]
