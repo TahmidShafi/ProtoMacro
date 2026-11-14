@@ -26,6 +26,7 @@ import pandas as pd
 import yaml
 
 from pipeline.extract import run_extract
+from pipeline.report_charts import DEFAULT_DOCS_DIR, generate_report_charts
 from pipeline.parsers import (
     has_foreign_biblio,
     infer_state,
@@ -464,6 +465,7 @@ def run_pipeline(
     migration_out: Path = DEFAULT_MIGRATION_OUT,
     run_log_out: Path = DEFAULT_RUN_LOG,
     quality_report_out: Path = DEFAULT_QUALITY_REPORT,
+    charts_dir: Path | None = DEFAULT_DOCS_DIR,
     skip_extract: bool = False,
 ) -> dict[str, Any]:
     """Run the full food data pipeline and return run metadata."""
@@ -587,6 +589,9 @@ def run_pipeline(
     quality_md = build_data_quality_report(foods_list, seed_data, crosswalk_path, mig_map, energy_rows)
     quality_report_out.parent.mkdir(parents=True, exist_ok=True)
     quality_report_out.write_text(quality_md, encoding="utf-8")
+
+    if charts_dir is not None:
+        generate_report_charts(foods_list, seed_data, crosswalk_path, mig_map, docs_dir=charts_dir)
 
     flag_counts = dict(sorted(Counter(fl for f in foods_list for fl in f["quality_flags"]).items()))
     run_log = {

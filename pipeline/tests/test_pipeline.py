@@ -113,6 +113,7 @@ def test_pipeline_determinism_on_fixtures(tmp_path: Path) -> None:
         migration_out=out1 / "mig.json",
         run_log_out=out1 / "log.json",
         quality_report_out=out1 / "dq.md",
+        charts_dir=out1 / "charts",
         skip_extract=True,
     )
     r2 = run_pipeline(
@@ -124,6 +125,7 @@ def test_pipeline_determinism_on_fixtures(tmp_path: Path) -> None:
         migration_out=out2 / "mig.json",
         run_log_out=out2 / "log.json",
         quality_report_out=out2 / "dq.md",
+        charts_dir=out2 / "charts",
         skip_extract=True,
     )
     assert r1["foods_json_sha256"] == r2["foods_json_sha256"]
@@ -195,6 +197,7 @@ def test_approximate_policy_and_suspect_value(tmp_path: Path) -> None:
         migration_out=out / "mig.json",
         run_log_out=out / "log.json",
         quality_report_out=out / "dq.md",
+        charts_dir=out / "charts",
         skip_extract=True,
     )
     mig = json.loads((out / "mig.json").read_text(encoding="utf-8"))
