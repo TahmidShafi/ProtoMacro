@@ -48,8 +48,7 @@ const VIEW_DOC_TITLES = {
 // Aliases that map a virtual route or feature to a host view
 const ROUTE_HOST_VIEWS = {
   recipes: 'search',
-  'saved-meals': 'search',
-  grocery: 'planner'
+  'saved-meals': 'search'
 };
 
 let currentRoute = 'today';

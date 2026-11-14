@@ -122,12 +122,95 @@ export function openGroceryList() {
   });
 }
 
+const copyGroceryList = async (items) => {
+  if (!items.length) return;
+  const text = items.map((it) => `• ${it.name} — ~${formatGrams(it.grams)}`).join('\n');
+  try {
+    await navigator.clipboard.writeText(`ProtoMacro grocery list:\n\n${text}`);
+    toast('Grocery list copied', 'success');
+  } catch {
+    toast('Clipboard unavailable', 'error');
+  }
+};
+
+const printGroceryList = (items) => {
+  if (!items.length) return;
+  const w = window.open('', '_blank', 'width=480,height=640');
+  if (!w) return toast('Pop-up blocked', 'error');
+  w.document.title = 'Grocery List — ProtoMacro';
+  const pre = w.document.createElement('pre');
+  pre.style.cssText = 'font:15px/1.8 sans-serif; white-space:pre-wrap; margin:20px;';
+  pre.textContent = items.map((it) => `☐ ${it.name} — ~${formatGrams(it.grams)}`).join('\n');
+  w.document.body.appendChild(pre);
+  w.document.close();
+  w.print();
+};
+
+const renderGroceryMarkup = (items) => `
+  <div class="grocery-list" role="list">
+    ${items.map((it) => `
+      <label class="grocery-item${checked.has(it.name) ? ' checked' : ''}" role="listitem">
+        <input type="checkbox" data-item="${escapeHtml(it.name)}" ${checked.has(it.name) ? 'checked' : ''} aria-label="Bought ${escapeHtml(it.name)}" />
+        <span class="grocery-name">${escapeHtml(it.name)}</span>
+        <span class="grocery-amt">~${formatGrams(it.grams)}</span>
+      </label>
+    `).join('')}
+  </div>
+  <p class="disclaimer">Totals are summed from your current plan's gram amounts — round to sensible package sizes when you shop.</p>
+`;
+
+export function renderGroceryView() {
+  const container = $('#groceryViewBody');
+  if (!container) return;
+  const items = aggregateGroceryItems();
+  if (!items.length) {
+    container.innerHTML = `
+      <div class="log-empty" style="padding:36px 20px; text-align:center;">
+        <p style="font-size:var(--text-base); font-weight:600; color:var(--text); margin-bottom:6px;">Your grocery list is empty</p>
+        <p class="entity-sub" style="margin-bottom:18px;">Add meals or generate a Smart Meal Plan first, and your ingredients will be aggregated here automatically.</p>
+        <a href="#planner" class="btn btn-primary" data-go-planner>Go to Meal Planner</a>
+      </div>
+    `;
+    return;
+  }
+  container.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+      <div class="entity-sub">${items.length} ingredient${items.length === 1 ? '' : 's'} from your meal plan</div>
+      <div style="display:flex; gap:8px;">
+        <button type="button" class="btn btn-ghost btn-sm" id="groceryViewCopyBtn">Copy</button>
+        <button type="button" class="btn btn-primary btn-sm" id="groceryViewPrintBtn">Print</button>
+      </div>
+    </div>
+    ${renderGroceryMarkup(items)}
+  `;
+}
+
 export function initGrocery() {
   $('#groceryBtn')?.addEventListener('click', openGroceryList);
-  on('grocery:open', openGroceryList);
+
+  const viewBody = $('#groceryViewBody');
+  if (viewBody) {
+    viewBody.addEventListener('change', (e) => {
+      const itemName = e.target.dataset.item;
+      if (itemName) {
+        if (e.target.checked) checked.add(itemName);
+        else checked.delete(itemName);
+        renderGroceryView();
+      }
+    });
+    viewBody.addEventListener('click', (e) => {
+      if (e.target.closest('#groceryViewCopyBtn')) copyGroceryList(aggregateGroceryItems());
+      else if (e.target.closest('#groceryViewPrintBtn')) printGroceryList(aggregateGroceryItems());
+    });
+  }
+
+  on('grocery:open', renderGroceryView);
   on('grocery:update', () => {
+    renderGroceryView();
     if (activeModal && activeWrap && renderGroceryContent) {
       renderGroceryContent();
     }
   });
+  on('state:replaced', renderGroceryView);
+  renderGroceryView();
 }

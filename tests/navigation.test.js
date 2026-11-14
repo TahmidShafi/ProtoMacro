@@ -48,7 +48,7 @@ describe('ProtoMacro Navigation & Application Shell', () => {
     };
 
     const views = [
-      'today', 'bmi', 'search', 'tracker', 'planner',
+      'today', 'bmi', 'search', 'tracker', 'planner', 'grocery',
       'workouts', 'recovery', 'reset', 'calculators', 'progress', 'settings'
     ];
 
@@ -136,13 +136,13 @@ describe('ProtoMacro Navigation & Application Shell', () => {
     expect(receivedTab).toBe('meals');
   });
 
-  it('routes grocery to host planner view and emits grocery:open event', () => {
+  it('routes grocery to grocery view and emits grocery:open event', () => {
     let groceryOpened = false;
     on('grocery:open', () => { groceryOpened = true; });
 
     navigateTo('grocery');
     expect(getCurrentRoute()).toBe('grocery');
-    expect(mockElements.planner.classList.contains('active')).toBe(true);
+    expect(mockElements.grocery.classList.contains('active')).toBe(true);
     expect(groceryOpened).toBe(true);
   });
 
