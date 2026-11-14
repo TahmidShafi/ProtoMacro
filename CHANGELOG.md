@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-15 — v3.0.0: 100% Local-First
+- Removed optional Supabase cloud sync, auth, and migration wizard (`js/core/sync.js`, `js/core/auth.js`, `js/core/storage/cloud.js`, `js/migration-wizard.js`, `supabase/`, `.env.example`) and uninstalled `@supabase/supabase-js`.
+- Simplified `js/core/storage/index.js` to the local `localStorage` provider only while keeping `protomacro_v1`, schema, and any existing `protomacro_pre_sync_backup` untouched.
+- Removed the topbar sync pill and Settings account/cloud card; updated Settings, footer, and `README.md` to document local-only storage and JSON backup/restore for moving devices.
+
 ## 2026-11-15 — UI, Performance & Security Polish
 - Fixed 390px mobile horizontal overflow on `#today`, `#progress`, `#workouts`, and `#tracker`, plus calculator tab wrapping.
 - Fixed Chart.js `Animation.tick` `this._fn` runtime error on `#workouts` and added empty-state cards for bare chart axes.

@@ -1,9 +1,9 @@
 {
   "name": "protomacro",
   "private": true,
-  "version": "2.0.0",
+  "version": "3.0.0",
   "type": "module",
-  "description": "ProtoMacro — private, local-first nutrition & fitness tracker: BMI/TDEE, macro tracking, food search, meal planner, recovery, habits, workouts and progress analytics. Optional cloud sync via Supabase.",
+  "description": "ProtoMacro — private, 100% local-first nutrition & fitness tracker: BMI/TDEE, macro tracking, food search, meal planner, recovery, habits, workouts and progress analytics.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
