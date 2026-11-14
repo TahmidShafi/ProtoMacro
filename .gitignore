@@ -17,3 +17,7 @@ secrets.*
 # OS / editor
 .DS_Store
 Thumbs.db
+
+# Audit artifacts
+status-screens/
+PROTOMACRO_STATUS.md
