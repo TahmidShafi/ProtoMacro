@@ -6,7 +6,6 @@
    All day keys use the shared local-date helpers from
    datetime.js so reports always match tracker history.
    ============================================================ */
-import { jsPDF } from 'jspdf';
 import { $, icon, toast } from './utils.js';
 import { STATE } from './state.js';
 import { MODES } from './mode.js';
@@ -193,8 +192,26 @@ export const shareScorecard = () => {
 /* =========================================================
    2) WEEKLY PDF REPORT (jsPDF)
    ========================================================= */
-export function exportWeeklyPdf() {
-  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+export async function exportWeeklyPdf() {
+  const btn = $('#exportPdfBtn');
+  const prevLabel = btn?.textContent;
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Generating PDF…';
+  }
+  let jsPDF;
+  try {
+    ({ jsPDF } = await import('jspdf'));
+  } catch {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = prevLabel;
+    }
+    toast('Could not load PDF generator.', 'error');
+    return;
+  }
+  try {
+    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
   const W = doc.internal.pageSize.getWidth();
   let y = 50;
 
@@ -322,8 +339,14 @@ export function exportWeeklyPdf() {
   else if (pct >= 70 && tracked >= 5) tip = 'Great consistency! Consider refining portion sizes to tighten macros to within 5%.';
   doc.text(tip, 40, y, { maxWidth: W - 80 });
 
-  doc.save(`protomacro-weekly-${today()}.pdf`);
-  toast('Weekly report saved', 'success');
+    doc.save(`protomacro-weekly-${today()}.pdf`);
+    toast('Weekly report saved', 'success');
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = prevLabel;
+    }
+  }
 }
 
 /* =========================================================
