@@ -135,45 +135,69 @@ const ensureChart = (id, ctx, config) => {
   charts[id] = new Chart(ctx, config);
 };
 
+const setChartEmpty = (canvas, isEmpty, title, subtitle) => {
+  const wrap = canvas?.parentElement;
+  if (!wrap) return;
+  let emptyEl = wrap.querySelector('.chart-empty-state');
+  if (isEmpty) {
+    canvas.style.display = 'none';
+    if (!emptyEl) {
+      emptyEl = document.createElement('div');
+      emptyEl.className = 'chart-empty-state';
+      wrap.appendChild(emptyEl);
+    }
+    emptyEl.innerHTML = `<div class="chart-empty-title">${title}</div><div class="chart-empty-sub">${subtitle}</div>`;
+  } else {
+    canvas.style.display = '';
+    emptyEl?.remove();
+  }
+};
+
 const renderCharts = () => {
   updateWorkoutPalette();
   const e1 = e1rmTrend();
   if (dom.chartE1rm) {
-    ensureChart('e1rm', dom.chartE1rm, {
-      type: 'line',
-      data: {
-        labels: e1.map(([d]) => d.slice(5)),
-        datasets: [{
-          label: 'Best e1RM (kg)', data: e1.map(([, v]) => +v.toFixed(1)),
-          borderColor: COLORS.primary, backgroundColor: COLORS.primaryBg,
-          fill: true, tension: 0.35, pointRadius: 3
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false }, title: { display: true, text: 'Estimated 1RM trend', color: COLORS.title } },
-        scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: COLORS.grid } } }
-      }
-    });
+    setChartEmpty(dom.chartE1rm, e1.length === 0, 'Estimated 1RM trend', 'Log exercises with sets and reps to track your estimated 1RM progression.');
+    if (e1.length > 0) {
+      ensureChart('e1rm', dom.chartE1rm, {
+        type: 'line',
+        data: {
+          labels: e1.map(([d]) => d.slice(5)),
+          datasets: [{
+            label: 'Best e1RM (kg)', data: e1.map(([, v]) => +v.toFixed(1)),
+            borderColor: COLORS.primary, backgroundColor: COLORS.primaryBg,
+            fill: true, tension: 0.35, pointRadius: 3
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, title: { display: true, text: 'Estimated 1RM trend', color: COLORS.title } },
+          scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: COLORS.grid } } }
+        }
+      });
+    }
   }
 
   const vol = weeklyVolume();
   if (dom.chartVolume) {
-    ensureChart('volume', dom.chartVolume, {
-      type: 'bar',
-      data: {
-        labels: vol.map(([d]) => d.slice(5)),
-        datasets: [{
-          label: 'Weekly volume (kg)', data: vol.map(([, v]) => v),
-          backgroundColor: COLORS.info, borderRadius: 6
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false }, title: { display: true, text: 'Training volume by week', color: COLORS.title } },
-        scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: COLORS.grid } } }
-      }
-    });
+    setChartEmpty(dom.chartVolume, vol.length === 0, 'Training volume by week', 'Log workouts to visualize your weekly training volume (kg).');
+    if (vol.length > 0) {
+      ensureChart('volume', dom.chartVolume, {
+        type: 'bar',
+        data: {
+          labels: vol.map(([d]) => d.slice(5)),
+          datasets: [{
+            label: 'Weekly volume (kg)', data: vol.map(([, v]) => v),
+            backgroundColor: COLORS.info, borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, title: { display: true, text: 'Training volume by week', color: COLORS.title } },
+          scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: COLORS.grid } } }
+        }
+      });
+    }
   }
 };
 

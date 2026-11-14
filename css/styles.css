@@ -1871,6 +1871,30 @@ section { padding: var(--section-pad) 0; position: relative; }
   width: 100%;
   height: 280px;
 }
+.chart-empty-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  gap: 6px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+}
+.chart-empty-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text);
+}
+.chart-empty-sub {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  max-width: 340px;
+}
 .dough-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

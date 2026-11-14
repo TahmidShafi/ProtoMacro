@@ -102,6 +102,24 @@ const mergeChartOptions = (target, src) => {
   }
 };
 
+const setChartEmpty = (canvas, isEmpty, title, subtitle) => {
+  const wrap = canvas?.parentElement;
+  if (!wrap) return;
+  let emptyEl = wrap.querySelector('.chart-empty-state');
+  if (isEmpty) {
+    canvas.style.display = 'none';
+    if (!emptyEl) {
+      emptyEl = document.createElement('div');
+      emptyEl.className = 'chart-empty-state';
+      wrap.appendChild(emptyEl);
+    }
+    emptyEl.innerHTML = `<div class="chart-empty-title">${title}</div><div class="chart-empty-sub">${subtitle}</div>`;
+  } else {
+    canvas.style.display = '';
+    emptyEl?.remove();
+  }
+};
+
 /* Update-in-place chart helper (perf fix: no destroy/recreate churn) */
 const ensureChart = (id, ctx, config) => {
   if (charts[id]) {
@@ -205,15 +223,21 @@ const renderMacroChart = () => {
     const h = findHistory(d.date);
     return h && (h.items ?? 1) > 0 ? (h[key] ?? 0) : 0;
   });
+  const pData = val('protein');
+  const cData = val('carbs');
+  const fData = val('fat');
+  const hasData = [...pData, ...cData, ...fData].some((v) => v > 0);
+  setChartEmpty(ctx, !hasData, 'Daily Macro Breakdown (g)', 'Log foods in Food Tracker to see your daily protein, carbs, and fat breakdown.');
+  if (!hasData) return;
 
   ensureChart('mac', ctx, {
     type: 'bar',
     data: {
       labels: days.map((d) => d.label),
       datasets: [
-        { label: 'Protein', data: val('protein'), backgroundColor: COLORS.protein, borderRadius: 6, stack: 'm' },
-        { label: 'Carbs',   data: val('carbs'),   backgroundColor: COLORS.carbs,   borderRadius: 6, stack: 'm' },
-        { label: 'Fat',     data: val('fat'),     backgroundColor: COLORS.fat,     borderRadius: 6, stack: 'm' }
+        { label: 'Protein', data: pData, backgroundColor: COLORS.protein, borderRadius: 6, stack: 'm' },
+        { label: 'Carbs',   data: cData, backgroundColor: COLORS.carbs,   borderRadius: 6, stack: 'm' },
+        { label: 'Fat',     data: fData, backgroundColor: COLORS.fat,     borderRadius: 6, stack: 'm' }
       ]
     },
     options: {
@@ -289,6 +313,8 @@ const renderWeightChart = () => {
 
   /* 7-day moving average over actual readings, forward-filled */
   const readings = [...STATE.weightLog].sort((a, b) => a.date.localeCompare(b.date));
+  setChartEmpty(ctx, readings.length === 0, 'Body weight trend', 'Log your weight above to see actual readings and your 7-day moving average.');
+  if (!readings.length) return;
   const ma = [];
   for (let i = 0; i < readings.length; i++) {
     const slice = readings.slice(Math.max(0, i - 6), i + 1);
