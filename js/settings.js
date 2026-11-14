@@ -1,15 +1,14 @@
 /* ============================================================
    ProtoMacro — settings.js
    Units (display-only conversion; storage stays metric),
-   theme (dark/light/system), account & cloud, USDA key override,
+   theme (dark/light/system), USDA key override,
    danger zone.
    ============================================================ */
 import { $, $$, toast, num } from './utils.js';
 import { STATE, saveState } from './state.js';
 import { on, emit } from './core/bus.js';
 import { openModal, formModal } from './core/modal.js';
-import { initAccountUI } from './core/auth.js';
-import { getProvider, localProvider } from './core/storage/index.js';
+import { localProvider } from './core/storage/index.js';
 
 let dom = null;
 
@@ -109,12 +108,8 @@ export function initSettings() {
     });
     if (values?.confirm?.toUpperCase() !== 'CLEAR') return;
     localProvider.clear();
-    if (getProvider().key === 'cloud') await getProvider().save(null).catch(() => {});
     location.reload();
   });
-
-  /* Account UI */
-  initAccountUI($('#accountStatus'), $('#accountActions'));
 
   renderSegs();
   on('state:replaced', () => { renderSegs(); applyTheme(); });

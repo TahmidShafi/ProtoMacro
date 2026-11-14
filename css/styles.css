@@ -2283,31 +2283,6 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
 @keyframes modalFade { from { opacity: 0; } }
 @keyframes modalPop { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
 
-/* ---------- SYNC STATUS PILL ---------- */
-.sync-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--bg-3);
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  cursor: default;
-  white-space: nowrap;
-}
-.sync-pill .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-dim); }
-.sync-pill.synced { color: var(--primary); }
-.sync-pill.synced .sync-dot { background: var(--primary); }
-.sync-pill.syncing .sync-dot { background: var(--info); animation: pulse 1s infinite; }
-.sync-pill.offline { color: var(--warning); }
-.sync-pill.offline .sync-dot { background: var(--warning); }
-.sync-pill.error { color: var(--danger); }
-.sync-pill.error .sync-dot { background: var(--danger); }
-@keyframes pulse { 50% { opacity: 0.35; } }
-
 /* ---------- TODAY DASHBOARD ---------- */
 .today-grid {
   display: grid;
@@ -2824,7 +2799,6 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
   .ingredient-row { grid-template-columns: 1fr 70px 70px 34px; }
   .modal-body .form-grid { grid-template-columns: 1fr; }
   .calendar-day { max-height: 38px; }
-  .sync-pill .sync-label { display: none; }
 }
 
 /* ---------- SMALL SHELL ADDS ---------- */
@@ -2930,7 +2904,6 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
   .calendar-day { max-height: 38px; }
   .ai-food { grid-template-columns: 1fr auto; grid-auto-flow: row; }
   .ai-food .icon-btn { justify-self: end; }
-  .sync-pill .sync-label { display: none; }
 }
 
 /* ---------- Modal exit animation ---------- */

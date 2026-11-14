@@ -208,10 +208,6 @@
           <span class="action-btn-label">Search Foods</span>
         </a>
 
-        <span class="sync-pill" id="syncPill" title="Data storage status">
-          <span class="sync-dot"></span><span class="sync-label">Saved locally</span>
-        </span>
-
         <button class="topbar-icon-btn" id="topbarThemeToggle" title="Toggle theme" aria-label="Toggle theme">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </button>
@@ -1015,7 +1011,7 @@
     <div class="section-header">
       <div class="section-eyebrow">Preferences &amp; Data</div>
       <h2 class="section-title">Settings</h2>
-      <p class="section-subtitle">Units, theme, account and backups. Everything works offline in guest mode — an account is only needed for cloud backup &amp; sync.</p>
+      <p class="section-subtitle">Units, theme, and backups. Your data stays in this browser. Export a backup to move it to another device.</p>
     </div>
 
     <div class="settings-grid">
@@ -1053,13 +1049,6 @@
       </div>
 
       <div class="settings-card">
-        <h3>Account &amp; cloud sync</h3>
-        <p class="card-subtitle" style="margin-bottom:12px;">Optional. Your data lives on this device unless you create an account. Cloud sync uses Supabase with Row Level Security — only you can read your data.</p>
-        <div id="accountStatus" style="margin-bottom:12px; font-size:var(--text-sm); color:var(--text-muted);"></div>
-        <div id="accountActions" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
-      </div>
-
-      <div class="settings-card">
         <h3>Backup &amp; restore</h3>
         <p class="card-subtitle" style="margin-bottom:12px;">Export everything as JSON, or restore from a previous export. Imports are validated and previewed before anything changes.</p>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -1087,7 +1076,7 @@
           <div class="logo-icon">&#128170;</div>
           <div class="logo-text">Proto<span>Macro</span></div>
         </a>
-        <p>Fuel your gains and track your nutrition with confidence. A private, local-first fitness platform — your data never leaves your device unless you choose cloud backup.</p>
+        <p>Fuel your gains and track your nutrition with confidence. A private, local-first fitness platform — your data stays in this browser.</p>
         <div class="research-note">
           <strong>Research basis:</strong> Calorie calculations based on the Mifflin-St Jeor (1990) equation &amp; USDA nutritional data. The built-in food database includes curated USDA values and researched cultural cuisine averages; search can also consult USDA FoodData Central live.
         </div>

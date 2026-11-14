@@ -19,8 +19,6 @@ import '../css/styles.css';
 /* Core */
 import { $ } from './utils.js';
 import { loadState } from './state.js';
-import { on, emit } from './core/bus.js';
-import { cloudConfigured } from './core/storage/index.js';
 
 /* Feature modules */
 import { initNav } from './nav.js';
@@ -42,35 +40,6 @@ import { initSettings, applyTheme } from './settings.js';
 import { initBackup } from './backup.js';
 import { initGrocery } from './grocery.js';
 import { initSavedMeals } from './saved-meals.js';
-import { initMigrationWizard } from './migration-wizard.js';
-
-/* Cloud (optional, env-gated — no-ops in guest mode) */
-import { initAuth, maybeShowWelcome } from './core/auth.js';
-import { initSync } from './core/sync.js';
-
-/* ---------------- sync status pill ---------------- */
-
-const bindSyncPill = () => {
-  const pill = $('#syncPill');
-  if (!pill) return;
-  const label = $('.sync-label', pill);
-
-  const LABELS = {
-    local: 'Saved on this device',
-    saved: '✓ Saved locally',
-    syncing: '⟳ Syncing…',
-    synced: '☁ Synced',
-    offline: '⚠ Offline — will sync',
-    error: '⚠ Sync problem'
-  };
-
-  on('sync:status', ({ status }) => {
-    pill.className = `sync-pill ${status === 'local' || status === 'saved' ? '' : status}`;
-    if (label) label.textContent = LABELS[status] || LABELS.local;
-    pill.title = 'Data storage: ' + (LABELS[status] || 'local');
-  });
-  emit('sync:status', { status: 'saved' });
-};
 
 /* ---------------- boot ---------------- */
 
@@ -96,23 +65,11 @@ const boot = () => {
   initShare();
   initBackup();
   initSettings();
-  initMigrationWizard();
 
-  bindSyncPill();
   initReveal();
-  initSync();
-  initAuth().then(() => {
-    maybeShowWelcome();
-    emit('auth:ready');
-  });
 
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  if (!cloudConfigured()) {
-    /* keep pill honest in guest deployments */
-    on('sync:status', () => {});
-  }
 };
 
 if (document.readyState === 'loading') {
