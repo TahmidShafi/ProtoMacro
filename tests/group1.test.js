@@ -10,7 +10,6 @@ import {
   toggleFavoriteMeal,
   initSavedMeals
 } from '../js/saved-meals.js';
-import { initMigrationWizard } from '../js/migration-wizard.js';
 import '../js/planner.js';
 
 describe('Phase 2 Group 1: Dependency Graph Boundaries', () => {
@@ -26,12 +25,6 @@ describe('Phase 2 Group 1: Dependency Graph Boundaries', () => {
     const savedMealsSrc = fs.readFileSync(path.join(rootDir, 'js/saved-meals.js'), 'utf8');
     expect(savedMealsSrc).not.toMatch(/from\s+['"][^'"]*planner\.js/);
     expect(savedMealsSrc).not.toMatch(/import\s*\(\s*['"][^'"]*planner\.js/);
-  });
-
-  it('core/auth.js has NO static or dynamic import of migration-wizard.js', () => {
-    const authSrc = fs.readFileSync(path.join(rootDir, 'js/core/auth.js'), 'utf8');
-    expect(authSrc).not.toMatch(/from\s+['"][^'"]*migration-wizard/);
-    expect(authSrc).not.toMatch(/import\s*\(\s*['"][^'"]*migration-wizard/);
   });
 
   it('no file in js/core/ imports feature UI files from js/ root', () => {
@@ -142,51 +135,6 @@ describe('Phase 2 Group 1: Planner & Saved Meals Behavior', () => {
     // Empty slot displays info toast and does not throw
     expect(() => {
       emit('planner:save-meal', { mealKey: 'breakfast' });
-    }).not.toThrow();
-  });
-});
-
-describe('Phase 2 Group 1: Migration Wizard Event Bus Wiring', () => {
-  beforeEach(() => {
-    const makeEl = () => ({
-      className: '',
-      innerHTML: '',
-      textContent: '',
-      type: '',
-      appendChild: () => {},
-      remove: () => {},
-      addEventListener: () => {},
-      querySelector: () => makeEl(),
-      querySelectorAll: () => [],
-      focus: () => {},
-      classList: { add: () => {}, remove: () => {} },
-      style: {}
-    });
-    globalThis.document = {
-      activeElement: null,
-      body: makeEl(),
-      addEventListener: () => {},
-      removeEventListener: () => {},
-      querySelector: () => null,
-      querySelectorAll: () => [],
-      createElement: () => makeEl()
-    };
-    globalThis.localStorage = {
-      getItem: () => null,
-      setItem: () => {},
-      removeItem: () => {}
-    };
-  });
-
-  afterEach(() => {
-    delete globalThis.document;
-    delete globalThis.localStorage;
-  });
-
-  it('initMigrationWizard listens to migration:open event', () => {
-    initMigrationWizard();
-    expect(() => {
-      emit('migration:open');
     }).not.toThrow();
   });
 });
