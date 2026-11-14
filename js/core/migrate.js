@@ -6,7 +6,9 @@
    load path (localStorage, cloud pull, backup import).
    ============================================================ */
 
-export const SCHEMA_VERSION = 2;
+import idMigrationMap from '../data/id_migration_v2_to_v3.json';
+
+export const SCHEMA_VERSION = 3;
 
 const MEAL_KEYS = ['breakfast', 'lunch', 'dinner', 'snacks'];
 const MODE_KEYS = ['cut', 'maintain', 'bulk'];
@@ -323,7 +325,75 @@ const sanitizeWater = (raw) => {
    ------------------------------------------------------------ */
 export const migrateV1toV2 = (raw) => ({ ...raw, schemaVersion: 2 });
 
-const MIGRATIONS = { 1: migrateV1toV2 };
+const remapFoodId = (id, map) => {
+  if (typeof id !== 'string') return id;
+  if (id.startsWith('custom_')) return id;
+  return map[id] || id;
+};
+
+const remapItemList = (arr, map) =>
+  isArr(arr)
+    ? arr.map((it) => {
+        if (!isObj(it)) return it;
+        const next = { ...it };
+        if (typeof next.id === 'string') next.id = remapFoodId(next.id, map);
+        if (typeof next.foodId === 'string') next.foodId = remapFoodId(next.foodId, map);
+        return next;
+      })
+    : arr;
+
+/* ------------------------------------------------------------
+   v2 → v3 migration: remap legacy positional local_N IDs to
+   stable sourced IDs in favorites, recents, planner, recipes,
+   and savedMeals. Never rewrites log/history macro numbers.
+   ------------------------------------------------------------ */
+export const migrateV2toV3 = (raw, map = idMigrationMap) => {
+  const next = { ...raw, schemaVersion: 3 };
+
+  if (isObj(raw.favorites)) {
+    const foods = isArr(raw.favorites.foods)
+      ? [...new Set(raw.favorites.foods.map((id) => remapFoodId(id, map)))]
+      : raw.favorites.foods;
+    next.favorites = { ...raw.favorites, foods };
+  }
+
+  if (isArr(raw.recents)) {
+    const seen = new Map();
+    for (const r of raw.recents) {
+      if (!isObj(r) || typeof r.id !== 'string') continue;
+      const newId = remapFoodId(r.id, map);
+      const prev = seen.get(newId);
+      if (!prev || numOr(r.ts, 0) > numOr(prev.ts, 0)) {
+        seen.set(newId, { ...r, id: newId });
+      }
+    }
+    next.recents = [...seen.values()];
+  }
+
+  if (isObj(raw.planner)) {
+    const p = { ...raw.planner };
+    for (const key of MEAL_KEYS) {
+      if (isArr(p[key])) p[key] = remapItemList(p[key], map);
+    }
+    next.planner = p;
+  }
+
+  if (isArr(raw.recipes)) {
+    next.recipes = raw.recipes.map((r) =>
+      isObj(r) && isArr(r.items) ? { ...r, items: remapItemList(r.items, map) } : r
+    );
+  }
+
+  if (isArr(raw.savedMeals)) {
+    next.savedMeals = raw.savedMeals.map((m) =>
+      isObj(m) && isArr(m.items) ? { ...m, items: remapItemList(m.items, map) } : m
+    );
+  }
+
+  return next;
+};
+
+const MIGRATIONS = { 1: migrateV1toV2, 2: migrateV2toV3 };
 
 /* ------------------------------------------------------------
    Entry point: raw (any) → clean v2 state (or null if unusable)

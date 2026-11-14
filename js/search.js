@@ -64,14 +64,20 @@ const levenshtein1 = (a, b) => {
 const scoreLocal = (food, queryLc, favSet, recentRank) => {
   let score = 0;
   const name = food.name.toLowerCase();
+  const localName = (food.localName || '').toLowerCase();
   const tags = (food.tags || []).map((t) => t.toLowerCase());
 
   if (name.startsWith(queryLc))          score += 8;
   else if (name.includes(queryLc))       score += 5;
+  if (localName) {
+    if (localName.startsWith(queryLc))   score += 8;
+    else if (localName.includes(queryLc)) score += 6;
+  }
   if (tags.includes(queryLc))            score += 4;
+  else if (tags.some((t) => t.includes(queryLc))) score += 2;
 
   /* word-level match with typo tolerance for longer words */
-  for (const word of name.split(/[^a-z]+/)) {
+  for (const word of `${name} ${localName}`.split(/[^a-z]+/)) {
     if (!word) continue;
     if (word === queryLc) { score += 6; break; }
     if (queryLc.length >= 5 && word.length >= 5 && levenshtein1(word, queryLc)) {
@@ -176,10 +182,23 @@ const mergeResults = (local, api) => {
    Rendering
    ========================================================= */
 
-const sourceBadge = (source) => {
-  const cls = source === 'custom' ? 'custom' : source === 'recipe' ? 'recipe' : '';
-  const label = source === 'custom' ? 'Custom' : source === 'recipe' ? 'Recipe' : source === 'local' ? 'Local' : 'USDA';
-  return `<span class="source-chip ${cls}">${label}</span>`;
+const sourceBadge = (foodOrSource) => {
+  if (typeof foodOrSource === 'string') {
+    const cls = foodOrSource === 'custom' ? 'custom' : foodOrSource === 'recipe' ? 'recipe' : '';
+    const label = foodOrSource === 'custom' ? 'Custom' : foodOrSource === 'recipe' ? 'Recipe' : foodOrSource === 'local' ? 'Estimate' : 'USDA FDC';
+    return `<span class="source-chip ${cls}">${label}</span>`;
+  }
+  const food = foodOrSource || {};
+  if (food.source === 'custom') return `<span class="source-chip custom" title="Custom user food">Custom</span>`;
+  if (food.source === 'recipe') return `<span class="source-chip recipe" title="User recipe">Recipe</span>`;
+  const info = food.sourceInfo;
+  if (info) {
+    const title = escapeHtml(`Source: ${info.dataset} (${info.code})`);
+    if (info.dataset === 'fctb_2013') return `<span class="source-chip" title="${title}">FCT Bangladesh 2013</span>`;
+    if (info.dataset === 'fdc_foundation' || info.dataset === 'fdc_sr_legacy') return `<span class="source-chip" title="${title}">USDA FDC</span>`;
+    return `<span class="source-chip" title="${title}">Estimate</span>`;
+  }
+  return `<span class="source-chip" title="USDA FoodData Central (live)">USDA FDC</span>`;
 };
 
 const renderCard = (food) => {
@@ -188,14 +207,17 @@ const renderCard = (food) => {
   el.draggable = true;
   el.dataset.food = JSON.stringify(food);
   const isFav = STATE.favorites.foods.includes(food.id);
+  const showBrand = food.brand && !food.sourceInfo && food.source !== 'custom';
+  const basisNote = food.sourceInfo?.dataset === 'fctb_2013' ? 'Values per 100 g edible portion' : 'Values per 100g';
+  const fibreNote = food.fibre != null ? ` · Fibre: ${food.fibre}g` : '';
   el.innerHTML = `
     <button type="button" class="fav-btn${isFav ? ' active' : ''}" data-action="fav" aria-label="${isFav ? 'Unfavorite' : 'Favorite'} ${escapeHtml(food.name)}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">${icon('star', 15, 2.2)}</button>
     <div class="food-card-head">
       <div class="food-card-head-main">
-        <div class="food-card-name">${escapeHtml(food.name)}</div>
+        <div class="food-card-name">${escapeHtml(food.name)}${food.localName ? ` <span class="food-card-brand-text">(${escapeHtml(food.localName)})</span>` : ''}</div>
         <div class="food-card-brand">
-          ${sourceBadge(food.source)}
-          ${food.brand ? `<span class="food-card-brand-text">· ${escapeHtml(food.brand)}</span>` : ''}
+          ${sourceBadge(food)}
+          ${showBrand ? `<span class="food-card-brand-text">· ${escapeHtml(food.brand)}</span>` : ''}
         </div>
       </div>
       <div class="food-card-cal">${food.calories} kcal</div>
@@ -205,7 +227,7 @@ const renderCard = (food) => {
       <div class="food-macro c"><div class="food-macro-dot"></div><div class="food-macro-label">Carbs</div><div class="food-macro-val">${food.carbs}g</div></div>
       <div class="food-macro f"><div class="food-macro-dot"></div><div class="food-macro-label">Fat</div><div class="food-macro-val">${food.fat}g</div></div>
     </div>
-    <div class="food-card-note">Values per 100g</div>
+    <div class="food-card-note">${basisNote}${fibreNote}</div>
     <div class="food-card-foot">
       <button class="btn btn-primary btn-sm" data-action="track">${icon('plus', 13, 2.5)} Add to Tracker</button>
       <button class="btn btn-ghost btn-sm" data-action="plan" title="Add to a meal slot" aria-label="Add to meal">${icon('target', 13, 2)}</button>

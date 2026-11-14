@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-15 — v3.1.0: Sourced Food Data Pipeline
+- Added reproducible Python + DuckDB food data pipeline (`pipeline/run.py`, `npm run data:build`) ingesting Food Composition Table for Bangladesh (2013) and USDA FoodData Central (SR Legacy & Foundation Foods).
+- Generated deterministic `js/data/foods.json` (545 sourced foods: `381` FCTB, `72` FDC SR Legacy, `92` curated estimates) and `js/data/id_migration_v2_to_v3.json`.
+- Updated `js/foods-db.js` and `js/search.js` with source chips (`FCT Bangladesh 2013` / `USDA FDC` / `Estimate`), romanized Bangla search, fibre display, and `per 100 g edible portion` notes; added `Data sources` attribution card in Settings.
+- Bumped `SCHEMA_VERSION` to `3` in `js/core/migrate.js` with `migrateV2toV3` remapping `local_N` IDs across `favorites`, `recents`, `planner`, `recipes`, and `savedMeals` without modifying logged macro numbers.
+- Added `pytest` pipeline tests, `vitest` `migrateV2toV3` tests, and `.github/workflows/pipeline.yml` CI workflow.
+
 ## 2026-11-15 — v3.0.0: 100% Local-First
 - Removed optional Supabase cloud sync, auth, and migration wizard (`js/core/sync.js`, `js/core/auth.js`, `js/core/storage/cloud.js`, `js/migration-wizard.js`, `supabase/`, `.env.example`) and uninstalled `@supabase/supabase-js`.
 - Simplified `js/core/storage/index.js` to the local `localStorage` provider only while keeping `protomacro_v1`, schema, and any existing `protomacro_pre_sync_backup` untouched.

@@ -1,0 +1,4 @@
+curated_index,curated_name,fctb_code,fdc_id,match_type,source_name,source_state,notes
+0,"Rice, white (cooked)",01_0041,,exact,"Rice, white, boiled*",cooked,test
+1,"Chicken breast (cooked)",,171477,exact,"Chicken, breast, cooked, roasted",cooked,test
+2,"Hilsa fish (cooked)",09_0033,,different_state,"Hilsa, without bones, raw",raw,test

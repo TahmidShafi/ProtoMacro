@@ -30,11 +30,11 @@ sources:
       Central: SR Legacy (April 2018). https://fdc.nal.usda.gov/download-datasets'
     license: CC0 1.0 Universal (Public Domain Dedication)
   fdc_foundation:
-    name: USDA FoodData Central — Foundation Foods (CSV, 2026-10-29)
-    url: https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_foundation_food_csv_2026-10-29.zip
-    filename: FoodData_Central_foundation_food_csv_2026-10-29.zip
-    sha256: e396b1ffc3ea05d1bdccbcddbfd2a4fcb42f64d37fabdacdd9c35158c4ced817
-    retrieved_at: '2026-11-14T19:21:11.338030+00:00'
+    name: USDA FoodData Central — Foundation Foods (JSON, 2026-10-29)
+    url: https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_foundation_food_json_2026-10-29.zip
+    filename: FoodData_Central_foundation_food_json_2026-10-29.zip
+    sha256: dd414cc9f1a132626bad354ef6655972c78b44aff14f16114dc899708663c579
+    retrieved_at: '2026-11-14T19:35:59.916701+00:00'
     citation: 'U.S. Department of Agriculture, Agricultural Research Service. FoodData
       Central: Foundation Foods (2026-10-29). https://fdc.nal.usda.gov/download-datasets'
     license: CC0 1.0 Universal (Public Domain Dedication)

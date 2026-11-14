@@ -1,0 +1,36 @@
+name: Food Data Pipeline
+
+on:
+  pull_request:
+    paths:
+      - 'pipeline/**'
+      - 'js/data/**'
+  workflow_dispatch:
+
+jobs:
+  test-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+      - run: pip install -r pipeline/requirements.txt
+      - run: pytest pipeline/tests -v
+
+  rebuild-data:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+      - run: pip install -r pipeline/requirements.txt
+      - run: python pipeline/run.py
+      - name: Verify committed js/data/ matches regenerated output
+        run: git diff --exit-code js/data/

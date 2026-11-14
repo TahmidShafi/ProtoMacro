@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-11-14T19:37:55.708559+00:00",
+  "foods_json_sha256": "d275204130f3e2fb34d1b03b29460bb80e298ed73de313fbf88b555e05b1023f",
+  "layer_counts": {
+    "raw_fctb": 381,
+    "raw_fdc_sr_legacy": 7793,
+    "raw_fdc_foundation": 374,
+    "raw_curated": 194,
+    "stg_fctb": 381,
+    "selected_fdc": 72,
+    "curated_estimates": 92,
+    "validated_foods": 545
+  },
+  "dataset_counts": {
+    "curated": 92,
+    "fctb_2013": 381,
+    "fdc_sr_legacy": 72
+  },
+  "flag_counts": {
+    "atwater_mismatch": 1,
+    "borrowed_value": 283,
+    "bracketed_value": 1,
+    "crude_fibre_fallback": 35,
+    "curated_estimate": 92,
+    "different_state_crosswalk": 9,
+    "proximates_over_100g": 6,
+    "recipe_calculated": 57,
+    "trace_to_zero": 5
+  }
+}

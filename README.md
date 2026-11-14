@@ -16,9 +16,10 @@ on your own device.
   completion score (with a transparent breakdown), quick actions
 - **BMI & TDEE** — Mifflin-St Jeor calculator with lose/maintain/gain targets
 - **Cut / Maintain / Bulk modes** — mode-aware calorie and macro goals
-- **Food system** — ~230 curated foods (strong South Asian coverage), custom
-  foods, favorites, recents, debounced typo-tolerant search, USDA FoodData
-  Central fallback
+- **Food system** — 545 sourced foods (381 from FCT Bangladesh 2013 with
+  romanized Bangla names, 72 from USDA FoodData Central SR Legacy, and 92
+  curated regional/dish estimates), custom foods, favorites, recents,
+  debounced typo-tolerant search, USDA FoodData Central live fallback
 - **Macro tracker** — live progress rings, editable servings, daily balance card
 - **Meal planner** — drag-and-drop slots with per-gram editing, per-meal totals,
   save any slot as a reusable meal
@@ -67,14 +68,27 @@ npm test          # vitest (state, metrics, streaks, migrations…)
 
 - Zero-framework vanilla JS, structured as ES modules (`js/`), bundled with Vite.
 - `js/core/` holds the data layer: the local storage provider,
-  schema migrations (v1→v2), pure metric calculations, a11y modal helper and
+  schema migrations (v1→v2→v3), pure metric calculations, a11y modal helper and
   an event bus. Feature modules never touch localStorage directly.
 - Dependencies (Chart.js, jsPDF, Inter font) are bundled locally —
   no CDN calls at runtime.
 - State persists to `localStorage` under the key `protomacro_v1`
-  (schemaVersion 2 inside the payload; v1 data migrates automatically).
+  (schemaVersion 3 inside the payload; v1/v2 data migrates automatically).
 - Clearing your browser data clears your logs — use the weekly report or the
   Settings → Backup export.
+
+## Food Data Pipeline
+
+`pipeline/run.py` (`npm run data:build`) builds the committed catalog [js/data/foods.json](js/data/foods.json) and v2→v3 ID migration map deterministically using Python and DuckDB SQL:
+
+```mermaid
+flowchart LR
+  Raw["data/raw/ (FCTB 2013 XLSX + USDA FDC SR Legacy & Foundation)"] --> Extract["pipeline/extract.py (sha256-verified)"]
+  Extract --> Staging["DuckDB Staging (pipeline/sql/01_staging.sql)"]
+  Staging --> Normalize["DuckDB Normalize & Merge (FCTB > FDC > Curated)"]
+  Normalize --> Validate["DuckDB + JSON Schema Validation (03_validate.sql)"]
+  Validate --> Load["js/data/foods.json + id_migration_v2_to_v3.json + reports/"]
+```
 
 ## Deployment
 

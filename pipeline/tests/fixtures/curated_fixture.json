@@ -1,0 +1,5 @@
+[
+  { "name": "Rice, white (cooked)", "calories": 130, "protein": 2.7, "carbs": 28, "fat": 0.3, "tags": ["rice"] },
+  { "name": "Chicken breast (cooked)", "calories": 165, "protein": 31, "carbs": 0, "fat": 3.6, "tags": ["chicken"] },
+  { "name": "Hilsa fish (cooked)", "calories": 273, "protein": 22, "carbs": 0, "fat": 20, "tags": ["hilsa", "ilish"] }
+]

@@ -1,7 +1,7 @@
 {
   "name": "protomacro",
   "private": true,
-  "version": "3.0.0",
+  "version": "3.1.0",
   "type": "module",
   "description": "ProtoMacro — private, 100% local-first nutrition & fitness tracker: BMI/TDEE, macro tracking, food search, meal planner, recovery, habits, workouts and progress analytics.",
   "scripts": {
@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint js tests",
-    "audit:ui": "node scripts/audit/audit.mjs"
+    "audit:ui": "node scripts/audit/audit.mjs",
+    "data:build": "python pipeline/run.py"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.5",

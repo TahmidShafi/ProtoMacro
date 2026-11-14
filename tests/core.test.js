@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   normalizeState,
+  migrateV2toV3,
   sanitizeFoodItem,
   sanitizeHistory,
   sanitizeWeightLog,
@@ -325,5 +326,75 @@ describe('habit streaks', () => {
   it('success rate from logged days only', () => {
     const log = { [key(1)]: 'ok', [key(2)]: 'ok', [key(3)]: 'setback' };
     expect(habitStreak(log, 'quit', '2026-09-05').successRate).toBe(67);
+  });
+});
+
+describe('migrateV2toV3', () => {
+  it('remaps local_N ids, dedupes many-to-one, preserves custom/unknown ids, and leaves log macros untouched', () => {
+    const v2 = {
+      schemaVersion: 2,
+      favorites: {
+        foods: ['local_0', 'local_171', 'custom_my_oats', 'unknown_ext_42'],
+        recipes: [],
+        meals: []
+      },
+      recents: [
+        { id: 'local_0', ts: 1000 },
+        { id: 'local_171', ts: 2000 },
+        { id: 'custom_my_oats', ts: 1500 },
+        { id: 'unknown_ext_42', ts: 1200 }
+      ],
+      planner: {
+        breakfast: [{ id: 'local_185', name: 'Milk, whole', calories: 61, protein: 3.2, carbs: 4.8, fat: 3.3, unit: 'g', servings: 200 }],
+        lunch: [],
+        dinner: [],
+        snacks: []
+      },
+      recipes: [
+        {
+          id: 'rec_1',
+          name: 'Bowl',
+          servings: 1,
+          items: [{ foodId: 'local_0', name: 'Rice', grams: 150, per100: { calories: 130, protein: 2.7, carbs: 28, fat: 0.3 } }]
+        }
+      ],
+      savedMeals: [
+        {
+          id: 'sm_1',
+          name: 'Lunch',
+          items: [{ id: 'local_190', name: 'Whole milk', calories: 61, protein: 3.2, carbs: 4.8, fat: 3.3, unit: 'g', servings: 100 }]
+        }
+      ],
+      log: [
+        { id: 'local_0', name: 'Rice, white Bangladeshi (cooked)', calories: 130, protein: 2.7, carbs: 28, fat: 0.3, unit: 'g', servings: 100 }
+      ],
+      history: [
+        { date: '2026-11-14', calories: 1999, protein: 120, carbs: 200, fat: 65, mode: 'maintain', items: 3, water: 2000 }
+      ]
+    };
+
+    const v3 = migrateV2toV3(v2);
+    expect(v3.schemaVersion).toBe(3);
+    expect(v3.favorites.foods).toEqual(['fctb_01_0041', 'custom_my_oats', 'unknown_ext_42']);
+    expect(v3.recents).toEqual([
+      { id: 'fctb_01_0041', ts: 2000 },
+      { id: 'custom_my_oats', ts: 1500 },
+      { id: 'unknown_ext_42', ts: 1200 }
+    ]);
+    expect(v3.planner.breakfast[0].id).toBe('fctb_12_0008');
+    expect(v3.recipes[0].items[0].foodId).toBe('fctb_01_0041');
+    expect(v3.savedMeals[0].items[0].id).toBe('fctb_12_0008');
+    expect(v3.log[0].calories).toBe(130);
+    expect(v3.history[0].calories).toBe(1999);
+  });
+
+  it('chains v1 -> v3 through normalizeState', () => {
+    const v1 = {
+      goals: { calories: 2100 },
+      favorites: { foods: ['local_0', 'local_171'] }
+    };
+    const state = normalizeState(v1, makeId);
+    expect(state.schemaVersion).toBe(3);
+    expect(state.favorites.foods).toEqual(['fctb_01_0041']);
   });
 });
