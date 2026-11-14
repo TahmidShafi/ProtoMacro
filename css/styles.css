@@ -2995,17 +2995,7 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
   flex-direction: column;
   z-index: 90;
   transition: width var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard);
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
-}
-.app-sidebar::-webkit-scrollbar {
-  width: 5px;
-}
-.app-sidebar::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+  overflow: hidden;
 }
 
 .sidebar-header {
@@ -3078,10 +3068,22 @@ html[data-theme="light"] .sidebar-logo .logo-icon {
 /* Sidebar navigation groups */
 .sidebar-nav {
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
   padding: 16px 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+.sidebar-nav::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
 }
 
 .nav-group {
