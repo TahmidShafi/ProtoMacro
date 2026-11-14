@@ -852,7 +852,7 @@ section { padding: var(--section-pad) 0; position: relative; }
 .ring-percent { font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-top: 2px; }
 
 /* Food log */
-.log-card {
+.log-card { position: relative; min-width: 0; max-width: 100%;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -873,7 +873,14 @@ section { padding: var(--section-pad) 0; position: relative; }
 .log-sub { color: var(--text-muted); font-size: 0.85rem; margin-top: 2px; }
 .log-actions { display: flex; gap: 8px; }
 
-.log-table-wrap { overflow-x: auto; }
+.log-table-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
 .log-table { width: 100%; border-collapse: collapse; min-width: 640px; }
 
@@ -1851,7 +1858,7 @@ section { padding: var(--section-pad) 0; position: relative; }
   grid-template-columns: repeat(2, 1fr);
   gap: 22px;
 }
-.progress-card { padding: 22px; }
+.progress-card { padding: 22px; min-width: 0; }
 .progress-card.wide { grid-column: span 2; }
 .progress-card-title {
   font-weight: 700;
@@ -1859,7 +1866,7 @@ section { padding: var(--section-pad) 0; position: relative; }
   margin-bottom: 14px;
   color: var(--text);
 }
-.chart-wrap {
+.chart-wrap { min-width: 0; max-width: 100%; overflow: hidden;
   position: relative;
   width: 100%;
   height: 280px;
@@ -2286,11 +2293,12 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
   gap: 20px;
   align-items: stretch;
 }
-.today-card {
+.today-card { min-width: 0;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 22px;
+  min-width: 0;
 }
 .today-card-title {
   font-size: var(--text-sm);
@@ -2302,6 +2310,8 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .today-cal-hero {
   display: flex;
@@ -2347,7 +2357,7 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
 }
 .quick-btn:hover { border-color: var(--border-hover); transform: translateY(-2px); }
 .quick-btn svg { color: var(--primary); }
-.today-side { display: flex; flex-direction: column; gap: 20px; }
+.today-side { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .today-mini-rows { display: flex; flex-direction: column; gap: 10px; }
 .today-mini-row {
   display: flex;
@@ -2837,6 +2847,11 @@ html[data-theme="light"] .modal-overlay { background: rgba(20, 40, 30, 0.35); }
   padding: var(--space-3) var(--space-2);
   background: transparent;
   border: none;
+  min-width: 0;
+}
+.progress-ring-card.mini .mini-ring-svg {
+  width: 80px;
+  height: 80px;
 }
 .progress-ring-card.mini:hover { transform: none; border-color: transparent; }
 .progress-ring-card.mini .mini-ring-svg circle.ring-arc {
