@@ -61,7 +61,14 @@ const levenshtein1 = (a, b) => {
   return true;
 };
 
-const scoreLocal = (food, queryLc, favSet, recentRank) => {
+export const scoreLocal = (food, queryLc, favSet, recentRank) => {
+  if (!queryLc) {
+    let score = 0;
+    if (favSet.has(food.id)) score += 10;
+    if (recentRank >= 0) score += Math.max(0, 5 - recentRank);
+    return score;
+  }
+
   let score = 0;
   const name = food.name.toLowerCase();
   const localName = (food.localName || '').toLowerCase();
@@ -86,12 +93,14 @@ const scoreLocal = (food, queryLc, favSet, recentRank) => {
     }
   }
 
-  if (favSet.has(food.id)) score += 10;
-  if (recentRank > 0) score += Math.max(0, 5 - recentRank);
+  if (score > 0) {
+    if (favSet.has(food.id)) score += 10;
+    if (recentRank >= 0) score += Math.max(0, 5 - recentRank);
+  }
   return score;
 };
 
-const searchLocal = (query) => {
+export const searchLocal = (query) => {
   const q = query.toLowerCase().trim();
   const favSet = new Set(STATE.favorites.foods);
   const recentIdx = new Map(STATE.recents.map((r, i) => [r.id, i]));
@@ -710,8 +719,21 @@ export function initSearch() {
     form:    $('#searchForm'),
     input:   $('#searchInput'),
     results: $('#searchResults'),
-    tabs:    $('#searchTabs')
+    tabs:    $('#searchTabs'),
+    heroSub: $('#searchHeroSubtitle')
   };
+  if (dom.heroSub) {
+    let fctb = 0;
+    let fdc = 0;
+    let est = 0;
+    for (const f of FOODS_DB) {
+      const ds = f.sourceInfo?.dataset;
+      if (ds === 'fctb_2013') fctb++;
+      else if (ds === 'fdc_foundation' || ds === 'fdc_sr_legacy') fdc++;
+      else est++;
+    }
+    dom.heroSub.textContent = `${fctb} foods from the Food Composition Table for Bangladesh, ${fdc} from USDA FoodData Central, and ${est} labelled estimates — plus live USDA search.`;
+  }
   if (!dom.form) return;
   bindEvents();
 }

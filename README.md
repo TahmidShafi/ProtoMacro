@@ -7,13 +7,18 @@ Local-first nutrition & fitness PWA backed by a reproducible DuckDB food composi
 
 **Live Demo:** https://tahmidshafi.github.io/ProtoMacro/
 
+### What I built
+- **Sourced 567-food catalog via a tested DuckDB pipeline:** `381` foods from Bangladesh's FCTB 2013, `69` from USDA FDC SR Legacy, and `117` labelled estimates (`565` Atwater-checked, deterministic SHA-256 output).
+- **Audit of legacy values + safe `v2 → v3` ID migration:** Measured hand-entered macro error against exact primary-source matches (`n = 74`) and migrated `local_0`..`local_193` across saved favorites, recents, planner, recipes, and saved meals without altering logged history.
+- **Offline-first PWA with automated CI:** Vanilla JS + Workbox PWA verified by `104` Vitest unit tests, `8` pytest pipeline tests, and a `14`-route Playwright desktop/mobile UI audit.
+
 ![ProtoMacro Today Dashboard](docs/screenshots/today-desktop.png)
 
 ---
 
 ## The Problem
 
-Mainstream nutrition trackers lack verified Bangladeshi food composition data, forcing users to rely on unverified crowd-sourced entries or rough personal estimates. ProtoMacro originally shipped with 194 hand-entered foods (`local_0`..`local_193`) carrying unverified macros and positional IDs. Auditing those legacy entries against exact primary-source matches (`n = 74`, source `kcal >= 20`) showed a **median 2.5%** and **90th-percentile 34.9%** absolute calorie error (and **13.6% median / 172.7% 90th-percentile** fat error). Replacing that static list with an automated DuckDB ETL pipeline grounds the catalog in primary national and USDA reference tables while migrating existing user logs safely.
+Bangladeshi foods are thinly covered by the reference databases most trackers build on, and ProtoMacro's original list of 194 foods was hand-entered with no sources. Auditing those legacy entries against exact primary-source matches (`n = 74`, source `kcal >= 20`) showed a **median 2.5%** and **90th-percentile 34.9%** absolute calorie error (and **13.6% median / 172.7% 90th-percentile** fat error). These cover the 74 legacy foods with exact source matches; the 90 with no match remain labelled estimates. Replacing that static list with an automated DuckDB ETL pipeline grounds the catalog in primary national and USDA reference tables while migrating saved favorites, recents, planner, recipes and saved meals without changing any logged history.
 
 ![Accuracy of Legacy Hand-Entered Values](docs/accuracy_of_hand_entered_values.svg)
 
@@ -47,7 +52,7 @@ flowchart LR
 | **Flag-don't-drop validation** | Non-fatal checks (`atwater_mismatch`, `proximates_over_100g`, `borrowed_value`, `crude_fibre_fallback`, `suspect_value`) annotate rows rather than silently dropping real foods; hard errors (negative macros, duplicate IDs, missing provenance) fail the build. |
 | **Deterministic output** | Sorted SQL queries, `sort_keys=True` JSON serialization, and fixed-metadata SVG generation keep `foods_json_sha256` identical across runs and verifiable in CI via `git diff --exit-code js/data/`. |
 | **Provenance on every row** | JSON Schema enforces `source.{dataset, code, version, citation_key}` and `basis` on all 567 catalog items (`additionalProperties: false`). |
-| **Stable IDs + `v2 → v3` migration** | Positional `local_0`..`local_193` IDs in `favorites`, `recents`, `planner`, `recipes`, `savedMeals`, and `log` are rewritten deterministically via `id_migration_v2_to_v3.json` inside `normalizeState()`. |
+| **Stable IDs + `v2 → v3` migration** | Positional `local_0`..`local_193` IDs in `favorites`, `recents`, `planner`, `recipes`, and `savedMeals` are rewritten deterministically via `id_migration_v2_to_v3.json` inside `normalizeState()`, leaving logged history untouched. |
 | **`suspect_value` handling** | Known source anomalies (e.g., FCTB `08_0030` orange juice at 9 kcal / 97.7% water) are tracked in `pipeline/mappings/source_anomalies.csv` without mutating source numbers, ranked below unflagged results in search, and labeled `value disputed` with a reason tooltip. |
 | **What the Atwater check proves** | In FCTB 2013, energy (`ENERC`) is itself derived from proximates via Atwater/INFOODS factors. A 0.35% median discrepancy validates parsing and internal consistency — not real-world laboratory accuracy. |
 
@@ -71,7 +76,7 @@ Full report: [`pipeline/reports/data_quality.md`](pipeline/reports/data_quality.
 - **Today Dashboard:** Daily calorie/macro rings, completion score, quick-log actions, recovery summary, and recent foods.
 - **Sourced Food Search:** Local instant search across 567 FCTB/USDA/curated items with source badges, Bengali/transliteration tags, `suspect_value` warnings, and optional live USDA FoodData Central lookup.
 - **Food Tracker & Custom Foods:** Log meals by grams or servings, create custom foods, build multi-ingredient recipes, and save reusable meals.
-- **Meal Planner & Grocery List:** Plan weekly/daily meal slots and aggregate ingredients into a checkable grocery list.
+- **Meal Planner & Grocery List:** Plan `breakfast`, `lunch`, `dinner`, and `snacks` meal slots and aggregate ingredients into a checkable grocery list.
 - **Progress Analytics:** Weight trend, calorie/macro adherence, sleep, and workout volume charts powered by Chart.js.
 - **Workouts, Recovery & Habits:** Log strength sessions, track water/supplements/sleep, and maintain daily habit streaks.
 - **Goals, TDEE & Calculators:** Mifflin-St Jeor TDEE/BMI calculators with cut/maintain/bulk macro targets.
@@ -102,7 +107,7 @@ Full report: [`pipeline/reports/data_quality.md`](pipeline/reports/data_quality.
 
 ## Testing & CI
 
-- **Vitest (`npm test`):** `6` test files, `101` tests covering state normalization, `v2 → v3` ID migration, meal planner solver, grocery aggregation, navigation, and workout/recovery logic.
+- **Vitest (`npm test`):** `6` test files, `104` tests covering state normalization, `v2 → v3` ID migration, search ranking, calorie delta labels, meal planner solver, grocery aggregation, navigation, and workout/recovery logic.
 - **pytest (`pytest pipeline/tests -v`):** `8` tests covering idempotent SHA-256 extraction, FCTB marker/energy parsing, `infer_state` rules, DuckDB validation errors/flags, `approximate` + `suspect_value` policy, fixture determinism, and JSON Schema / migration completeness.
 - **Playwright UI Audit (`npm run audit:ui`):** Visits `14` desktop routes (`1440px`) and `14` mobile routes (`390px`) against `vite preview`, verifying `0` horizontal overflows, `0` console errors, and `0` page errors.
 - **GitHub Actions:** [`pipeline.yml`](.github/workflows/pipeline.yml) runs `pytest` on PRs modifying `pipeline/**` or `js/data/**` and verifies deterministic regeneration on `workflow_dispatch`; [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) builds and deploys `dist/` on `main`.
@@ -116,7 +121,7 @@ Full report: [`pipeline/reports/data_quality.md`](pipeline/reports/data_quality.
 ```bash
 npm ci
 npm run dev          # local dev server
-npm test             # 101 Vitest unit tests
+npm test             # 104 Vitest unit tests
 npm run lint         # ESLint check
 npm run build        # production build -> dist/
 ```

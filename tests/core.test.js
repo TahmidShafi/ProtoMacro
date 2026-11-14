@@ -10,6 +10,9 @@ import {
 import { computeDailyScore, macroConsistency, weightStats, epley1RM, trainingVolume, habitStreak, movingAverage, personalRecords } from '../js/core/metrics.js';
 import { toDateStr, today } from '../js/datetime.js';
 import { calcMacrosFor } from '../js/mode.js';
+import { STATE } from '../js/state.js';
+import { scoreLocal, searchLocal } from '../js/search.js';
+import { formatCalorieDelta } from '../js/dashboard.js';
 
 const makeId = () => 'test_' + Math.random().toString(36).slice(2);
 
@@ -405,5 +408,39 @@ describe('migrateV2toV3', () => {
     const v3 = migrateV2toV3(v2);
     expect(v3.favorites.foods).toEqual(['curated_protein_shake_milk_based']);
     expect(v3.favorites.foods[0].startsWith('fdc_')).toBe(false);
+  });
+});
+
+describe('search ranking and calorie delta label', () => {
+  it('excludes favorited non-matching foods and ranks favorited matches first', () => {
+    const prevFavs = STATE.favorites.foods;
+    const prevRecents = STATE.recents;
+    try {
+      // Favorite white rice (non-matching for "ilish") and a matching ilish dish
+      STATE.favorites.foods = ['fctb_01_0041', 'curated_shorshe_ilish_mustard_hilsa'];
+      STATE.recents = [];
+      const results = searchLocal('ilish');
+      expect(results.some((f) => f.id === 'fctb_01_0041')).toBe(false);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results[0].id).toBe('curated_shorshe_ilish_mustard_hilsa');
+    } finally {
+      STATE.favorites.foods = prevFavs;
+      STATE.recents = prevRecents;
+    }
+  });
+
+  it('gives index 0 the largest recent boost and ignores non-matching recents', () => {
+    const hilsa = { id: 'fctb_09_0033', name: 'Hilsa, without bones, raw', localName: 'Ilish', tags: ['ilish'] };
+    const rice = { id: 'fctb_01_0041', name: 'Rice, white', localName: 'Bhat', tags: ['rice'] };
+    const favs = new Set();
+    expect(scoreLocal(rice, 'ilish', favs, 0)).toBe(0);
+    expect(scoreLocal(hilsa, 'ilish', favs, 0)).toBeGreaterThan(scoreLocal(hilsa, 'ilish', favs, 1));
+    expect(scoreLocal(hilsa, 'ilish', favs, 1)).toBeGreaterThan(scoreLocal(hilsa, 'ilish', favs, -1));
+  });
+
+  it('formats remaining, on-target, and over-goal calorie delta labels', () => {
+    expect(formatCalorieDelta(1950, 2200)).toEqual({ text: '250 kcal remaining', over: false });
+    expect(formatCalorieDelta(2200, 2200)).toEqual({ text: 'On target', over: false });
+    expect(formatCalorieDelta(2390, 2200)).toEqual({ text: '190 kcal over', over: true });
   });
 });
