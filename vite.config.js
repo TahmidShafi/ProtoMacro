@@ -24,8 +24,8 @@ export default defineConfig({
         name: 'ProtoMacro — Nutrition & Fitness Tracker',
         short_name: 'ProtoMacro',
         description: 'Private, local-first nutrition and fitness platform: BMI/TDEE, macro tracking, meal planning, habits, workouts and progress analytics.',
-        theme_color: '#0A0E0C',
-        background_color: '#0A0E0C',
+        theme_color: '#0B1020',
+        background_color: '#0B1020',
         display: 'standalone',
         start_url: './',
         icons: [

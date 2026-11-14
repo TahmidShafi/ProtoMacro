@@ -148,10 +148,28 @@ describe('Phase 2 Group 1: Planner & Saved Meals Behavior', () => {
 
 describe('Phase 2 Group 1: Migration Wizard Event Bus Wiring', () => {
   beforeEach(() => {
+    const makeEl = () => ({
+      className: '',
+      innerHTML: '',
+      textContent: '',
+      type: '',
+      appendChild: () => {},
+      remove: () => {},
+      addEventListener: () => {},
+      querySelector: () => makeEl(),
+      querySelectorAll: () => [],
+      focus: () => {},
+      classList: { add: () => {}, remove: () => {} },
+      style: {}
+    });
     globalThis.document = {
+      activeElement: null,
+      body: makeEl(),
+      addEventListener: () => {},
+      removeEventListener: () => {},
       querySelector: () => null,
       querySelectorAll: () => [],
-      createElement: () => ({ appendChild: () => {}, querySelector: () => null })
+      createElement: () => makeEl()
     };
     globalThis.localStorage = {
       getItem: () => null,

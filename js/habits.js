@@ -76,7 +76,7 @@ const habitCard = (habit) => {
     </div>
 
     ${milestoneHit ? `<div class="habit-milestone">🎉 ${streak.current}-day milestone reached!</div>` : ''}
-    ${milestone ? `<div class="entity-sub">${streak.current} days — next milestone: ${milestone} days</div>` : ''}
+    ${milestone ? `<div class="entity-sub">${streak.current} day${streak.current === 1 ? '' : 's'} — next milestone: ${milestone} day${milestone === 1 ? '' : 's'}</div>` : ''}
     ${habit.costPerDay > 0 ? `<div class="entity-sub">💰 Money saved: <strong>$${(streak.current * habit.costPerDay).toFixed(2)}</strong> (vs. old routine)</div>` : ''}
     <div class="entity-sub">Success rate: <strong>${streak.successRate}%</strong></div>
 
