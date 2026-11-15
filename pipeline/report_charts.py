@@ -47,13 +47,14 @@ def _configure_style() -> None:
 
 def _save_deterministic_svg(fig: plt.Figure, out_path: Path) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(
-        out_path,
-        format="svg",
-        bbox_inches="tight",
-        facecolor=BG_COLOR,
-        metadata={"Creator": None, "Date": None},
-    )
+    with out_path.open("w", encoding="utf-8", newline="\n") as f:
+        fig.savefig(
+            f,
+            format="svg",
+            bbox_inches="tight",
+            facecolor=BG_COLOR,
+            metadata={"Creator": None, "Date": None},
+        )
     plt.close(fig)
 
 

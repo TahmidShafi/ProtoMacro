@@ -2,7 +2,7 @@
 
 Local-first nutrition & fitness PWA backed by a reproducible DuckDB food composition pipeline for Bangladeshi and international foods.
 
-[![Food Data Pipeline](https://github.com/TahmidShafi/ProtoMacro/actions/workflows/pipeline.yml/badge.svg)](https://github.com/TahmidShafi/ProtoMacro/actions/workflows/pipeline.yml)
+[![Food Data Pipeline](https://github.com/TahmidShafi/ProtoMacro/actions/workflows/pipeline.yml/badge.svg?branch=main)](https://github.com/TahmidShafi/ProtoMacro/actions/workflows/pipeline.yml)
 [![Deploy to GitHub Pages](https://github.com/TahmidShafi/ProtoMacro/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/TahmidShafi/ProtoMacro/actions/workflows/deploy-pages.yml)
 
 **Live Demo:** https://tahmidshafi.github.io/ProtoMacro/

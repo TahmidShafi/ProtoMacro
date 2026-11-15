@@ -574,21 +574,21 @@ def run_pipeline(
 
     foods_out.parent.mkdir(parents=True, exist_ok=True)
     foods_text = json.dumps(output_doc, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
-    foods_out.write_text(foods_text, encoding="utf-8")
+    foods_out.write_text(foods_text, encoding="utf-8", newline="\n")
     foods_sha = hashlib.sha256(foods_text.encode("utf-8")).hexdigest()
 
     mig_rows = con.execute("SELECT legacy_id, new_id FROM id_migration_map").fetchall()
     mig_map = {k: v for k, v in sorted(mig_rows, key=lambda x: int(x[0].split("_")[1]))}
     migration_out.parent.mkdir(parents=True, exist_ok=True)
     migration_out.write_text(
-        json.dumps(mig_map, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        json.dumps(mig_map, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n"
     )
 
     energy_rows = con.execute("SELECT id, kcal, atwater_est FROM validated_foods").fetchall()
     seed_data = json.loads(seed_path.read_text(encoding="utf-8"))
     quality_md = build_data_quality_report(foods_list, seed_data, crosswalk_path, mig_map, energy_rows)
     quality_report_out.parent.mkdir(parents=True, exist_ok=True)
-    quality_report_out.write_text(quality_md, encoding="utf-8")
+    quality_report_out.write_text(quality_md, encoding="utf-8", newline="\n")
 
     if charts_dir is not None:
         generate_report_charts(foods_list, seed_data, crosswalk_path, mig_map, docs_dir=charts_dir)
@@ -602,7 +602,7 @@ def run_pipeline(
         "flag_counts": flag_counts,
     }
     run_log_out.parent.mkdir(parents=True, exist_ok=True)
-    run_log_out.write_text(json.dumps(run_log, indent=2) + "\n", encoding="utf-8")
+    run_log_out.write_text(json.dumps(run_log, indent=2) + "\n", encoding="utf-8", newline="\n")
 
     return run_log
 

@@ -1,0 +1,3 @@
+js/data/*.json text eol=lf
+docs/*.svg text eol=lf
+pipeline/reports/* text eol=lf
