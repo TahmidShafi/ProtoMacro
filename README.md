@@ -8,7 +8,7 @@ Local-first nutrition & fitness PWA backed by a reproducible DuckDB food composi
 **Live Demo:** https://tahmidshafi.github.io/ProtoMacro/
 
 ### What I built
-- **Sourced 567-food catalog via a tested DuckDB pipeline:** `381` foods from Bangladesh's FCTB 2013, `69` from USDA FDC SR Legacy, and `117` labelled estimates (`565` Atwater-checked, deterministic SHA-256 output).
+- **Sourced 567-food catalog via a tested DuckDB pipeline:** `381` foods from Bangladesh's FCTB 2013, `69` from USDA FDC SR Legacy, and `117` labelled estimates (provenance on every row, deterministic SHA-256 output).
 - **Audit of legacy values + safe `v2 → v3` ID migration:** Measured hand-entered macro error against exact primary-source matches (`n = 74`) and migrated `local_0`..`local_193` across saved favorites, recents, planner, recipes, and saved meals without altering logged history.
 - **Offline-first PWA with automated CI:** Vanilla JS + Workbox PWA verified by `104` Vitest unit tests, `8` pytest pipeline tests, and a `14`-route Playwright desktop/mobile UI audit.
 
@@ -170,4 +170,4 @@ The application and pipeline source code are licensed under the [MIT License](LI
 
 ## Author
 
-**Tahmid Jawad Shafi** — [GitHub](https://github.com/TahmidShafi) · [LinkedIn](TODO-add-linkedin-url)
+**Tahmid Jawad Shafi** — [GitHub](https://github.com/TahmidShafi) · [LinkedIn](https://www.linkedin.com/in/tahmid-jawad-shafi-70a271268/)
